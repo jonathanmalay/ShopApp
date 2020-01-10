@@ -1,0 +1,57 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="@string/login"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="32dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvLoginTitle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="80dp">
+
+        <EditText
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_username"
+            android:id="@+id/etLoginUsername" />
+        <EditText
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/passowrd"
+            android:id="@+id/etloginPassword" />
+
+        <Button
+            android:layout_width="200.0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:id="@+id/btnConrifeLogin"
+    />
+
+
+
+
+
+
+    </LinearLayout>
+</LinearLayout>

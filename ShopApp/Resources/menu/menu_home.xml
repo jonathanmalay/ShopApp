@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--For all properties see: https://aka.ms/android-menu-resource-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  
+  <item android:id="@+id/action_logout"
+        android:title="@string/Logout"
+         android:showAsAction="never"
+         android:orderInCategory="100"       
+        />
+  
+  <item android:id="@+id/action_register"
+        android:title="@string/Register"
+         android:showAsAction="never"
+         android:orderInCategory="200"
+        />
+  
+  
+   <item android:id="@+id/action_accountSetting"
+        android:title="הגדרות חשבון"
+         android:showAsAction="never"
+         android:orderInCategory="300"
+
+        />
+       
+  
+  
+</menu>
+

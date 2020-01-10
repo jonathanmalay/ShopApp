@@ -1,0 +1,175 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back1">
+    <TextView
+        android:text="הרשמה"
+        android:textColor="@color/colorTitele"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/tvRegisterion" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:paddingTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:background="@drawable/circlelayout">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/edittextbackground">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconusername"
+                />
+            <EditText
+                android:hint="@string/enter_username"
+                android:textColorHint="@color/colorEditTextHint"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etRegisterUsername" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edittextbackground">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconfullname"
+                android:id="@+id/imageVFullname"/>
+            <EditText
+                android:hint="שם מלא"
+                android:textColorHint="@color/colorEditTextHint"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etNameRegister" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+             android:layout_marginTop="5dp"
+            android:background="@drawable/edittextbackground">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconphone"/>
+            <EditText
+                android:hint="@string/phone_number"
+                android:textColorHint="@color/colorEditTextHint"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etPhoneRegister" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+             android:layout_marginTop="5dp"
+            android:background="@drawable/edittextbackground">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/icongmail"/>
+            <EditText
+                android:textColorHint="@color/colorEditTextHint"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etEmailRegister" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+             android:layout_marginTop="5dp"
+            android:background="@drawable/edittextbackground">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconlocation"/>
+            <EditText
+                android:textColorHint="@color/colorEditTextHint"
+                android:hint="עיר מגורים"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etRegisterCity" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+             android:layout_marginTop="5dp"
+            android:background="@drawable/edittextbackground">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconhomeaddress" />
+            <EditText
+                android:textColorHint="@color/colorEditTextHint"
+                android:hint=" רחוב ומספר בית"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etRegisterStreetAddress" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+             android:layout_marginTop="5dp"
+            android:background="@drawable/edittextbackground">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconpassword" />
+            <EditText
+                android:textColorHint="@color/colorEditTextHint"
+                android:hint ="@string/passowrd"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etPasswordRegister"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circlebutton"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:id="@+id/btnConrifeRegister"/>
+    </LinearLayout>
+</LinearLayout>

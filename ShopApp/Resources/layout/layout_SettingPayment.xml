@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back1">
+     <TextView
+        android:text="פרטי אשראי"
+        android:textColor="@color/colorTitele"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="40dp"
+       >
+        <EditText
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColorHint="@color/colorEditTextHint"
+                android:hint="מספר כרטיס"
+                android:id="@+id/etSettingPaymentCardNum"/>
+            <EditText
+                android:inputType="date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColorHint="@color/colorEditTextHint"
+                android:hint="תאריך תפוגה"
+                android:id="@+id/etSettingPaymentDate"/>
+            <EditText
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColorHint="@color/colorEditTextHint"
+                android:hint="CVV"
+                android:id="@+id/etSettingPaymentCvv" />
+        <Button
+            android:layout_marginHorizontal="60dp"
+            android:text="@string/save"
+            android:textStyle="bold"
+            android:layout_marginTop="25sp"
+            android:textColor="@color/white"
+            android:background="@drawable/circlebutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSettingPaymentSave"/>
+    </LinearLayout>
+</LinearLayout>
