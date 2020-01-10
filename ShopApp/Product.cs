@@ -80,10 +80,6 @@ namespace ShopApp
             List<Product> products = snapshot.ToObjects<Product>().ToList();
             return products;
 
-
-
-
-
         }
         
 
