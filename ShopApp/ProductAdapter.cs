@@ -9,20 +9,30 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.Threading.Tasks;
 
 namespace ShopApp
 {
-    class ProductAdapter : BaseAdapter<Product> //הורשה 
+    class  ProductAdapter : BaseAdapter<Product> //הורשה 
     {
         Activity activity;
+        ISharedPreferences sp;
+        string userName;
+
         public List<Product> AllProducts { get; set; }
 
         public ProductAdapter(Activity activity, List<Product> allProducts)//מקבלת אקטיביטי ומקבלת  רשימה של מוצרים
         {
             this.activity = activity;
             this.AllProducts = allProducts;
+             
+            this.sp = activity.GetSharedPreferences("details", FileCreationMode.Private);
+            userName = this.sp.GetString("Username", "");
 
         }
+
+
+
 
         public List<Product> GetList()
         {
@@ -41,6 +51,7 @@ namespace ShopApp
             get { return this.AllProducts.Count; }
         }
 
+     
 
         public override Product this[int position]
         {
@@ -55,6 +66,11 @@ namespace ShopApp
 
         public override View GetView(int position, View convertView, ViewGroup parent)//הפעולה מקבלת שלוש דברים -מיקום שאליו יכנס הויאו בלולאת הפור ,
         {
+
+          
+
+
+
             if (convertView == null)
 
             {
@@ -69,12 +85,12 @@ namespace ShopApp
             ImageView ivProduct = convertView.FindViewById<ImageView>(Resource.Id.ivProductRaw);
 
             Product tempProduct = AllProducts[position];
+            SelectedProduct selectedProductFromCart = await SelectedProduct.GetProductInCart(tempProduct.Name, userName);//יוצר עצם מסוג מוצצר נבחר על מנת שבהמשך ניקח ממנו את הכמות של אותו מוצר שהמשתמש בחר
 
 
-            //ivProduct.SetImageBitmap(temp.Image);
             tvPrice.Text = "מחיר לקילו " + tempProduct.Price;
             tvTitle.Text = tempProduct.Name;
-            tvSubTitle.Text = tempProduct.Quantity.ToString();
+            tvSubTitle.Text =  selectedProductFromCart.Amount.ToString();//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
 
 
             return convertView;

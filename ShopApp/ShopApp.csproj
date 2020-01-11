@@ -72,6 +72,7 @@
     <Compile Include="FirstActivity.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="HomeSetting_Activityt.cs" />
+    <Compile Include="ImageBrodcastReceiver.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Product.cs" />
@@ -233,6 +234,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\layout_first.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layoutAddProductDialog.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
