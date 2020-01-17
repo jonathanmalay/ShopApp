@@ -15,15 +15,18 @@ namespace ShopApp
 {
     class SelectedProduct
     {
+        public string ProductName { get; set; }
+        public int Amount { get; set; }
+
+
         public SelectedProduct() { }// הפעולה הריקה בשביל הפייר בייס על מנת שלא תיווצר שגיאה 
         public SelectedProduct(string productName)
         {
-            ProductName = productName;
-            Amount = 0;
+            this.ProductName = productName;
+            this.Amount = 0;
         }
 
-        public string ProductName { get; set; }
-        public int Amount { get; set; }
+      
 
         public static async void AddSelectedProduct(string username, SelectedProduct sp)
         {
@@ -64,6 +67,22 @@ namespace ShopApp
             return true;   // אמת אם קיים במערכת
         }
 
+
+
+        public static async Task<List<SelectedProduct>> GetAllProductInCart( string username)
+        {  try
+            {
+                IQuerySnapshot snapshot = await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocumentsAsync();//לוקח את כל המוצרים מהעגלה של אותו בן אדם ומכניס אותם לרשימה מסוג מוצר נבחר
+                List<SelectedProduct> productsInCart = snapshot.ToObjects<SelectedProduct>().ToList();
+                return productsInCart;
+            }
+            catch(Exception)
+            {
+                List<SelectedProduct> emptyList = new List<SelectedProduct>();
+                return emptyList;
+            }
+
+        }
 
     }
 }

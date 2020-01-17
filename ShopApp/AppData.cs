@@ -19,7 +19,7 @@ namespace ShopApp
         public static AppData appData { get; set; }
 
         public static IFirestore FireStore { get; set; }
-        public static ICollectionReference usersCollection, paymentCollection, productCollection, cartCollection;
+        public static ICollectionReference usersCollection, paymentCollection, productCollection, cartCollection, orders_historyCollection;
         private AppData(Activity activity)
         { 
             FirebaseOptions options = new FirebaseOptions.Builder()//מגדיר את הנתונים של הפיירבייס שלי כדי שאוכל להתחבר אליו וליצור תקשורת 
@@ -36,7 +36,7 @@ namespace ShopApp
             paymentCollection = FireStore.GetCollection("Payment");//מתחבר לקובץ משתמשים בפיירבייס
             productCollection = FireStore.GetCollection("Product");//connect to the product files collection in the server.
             cartCollection = FireStore.GetCollection("Cart");//connect to the product files collection in the server.
-
+            orders_historyCollection = FireStore.GetCollection("OrdersHistory");
         }
 
         public static void Initialize(Activity activity)

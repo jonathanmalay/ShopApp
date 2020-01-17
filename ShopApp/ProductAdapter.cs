@@ -20,11 +20,13 @@ namespace ShopApp
         string userName;
 
         public List<Product> AllProducts { get; set; }
+        public List<SelectedProduct> CartProductsList { get; set; }
 
-        public ProductAdapter(Activity activity, List<Product> allProducts)//מקבלת אקטיביטי ומקבלת  רשימה של מוצרים
+        public ProductAdapter(Activity activity, List<Product> allProducts,List<SelectedProduct>cartProductsList)//מקבלת אקטיביטי ומקבלת  רשימה של מוצרים
         {
             this.activity = activity;
             this.AllProducts = allProducts;
+            this.CartProductsList = cartProductsList;
              
             this.sp = activity.GetSharedPreferences("details", FileCreationMode.Private);
             userName = this.sp.GetString("Username", "");
@@ -85,14 +87,24 @@ namespace ShopApp
             ImageView ivProduct = convertView.FindViewById<ImageView>(Resource.Id.ivProductRaw);
 
             Product tempProduct = AllProducts[position];
-            SelectedProduct selectedProductFromCart = await SelectedProduct.GetProductInCart(tempProduct.Name, userName);//יוצר עצם מסוג מוצצר נבחר על מנת שבהמשך ניקח ממנו את הכמות של אותו מוצר שהמשתמש בחר
+            tvSubTitle.Text = "0";
+
+            for (int i=0 ;i<CartProductsList.Count;i++)
+            {
+               SelectedProduct currrentSelectedProduct = CartProductsList[i];
+                if (currrentSelectedProduct.ProductName == tempProduct.Name)
+                {
+                    tvSubTitle.Text = currrentSelectedProduct.Amount.ToString();//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
+                    break;
+                }
 
 
+            }
+
+            
             tvPrice.Text = "מחיר לקילו " + tempProduct.Price;
             tvTitle.Text = tempProduct.Name;
-            tvSubTitle.Text =  selectedProductFromCart.Amount.ToString();//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
-
-
+           
             return convertView;
         }
 

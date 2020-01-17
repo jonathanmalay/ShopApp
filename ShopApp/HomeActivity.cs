@@ -34,7 +34,7 @@ namespace ShopApp
                 this.u = await User.GetUser(usernameloged);
 
 
-                tvWelcomeUser.Text = "Welcome " + u.Username; //מציג  הודעת  ברוך הבא בתוספת השם של המשתמש
+                tvWelcomeUser.Text =  u.Username + " ברוך הבא " ; //מציג  הודעת  ברוך הבא בתוספת השם של המשתמש
 
                 this.btnSetting.Click += BtnSetting_Click;
                 this.btnStartOrder.Click += BtnStartOrder_Click;
@@ -49,8 +49,6 @@ namespace ShopApp
             MenuInflater.Inflate(Resource.Menu.menu_home, menu);//הופכים את המניו מאקאםאל לעצם מסוג  תפריט 
 
             return base.OnCreateOptionsMenu(menu);
-
-
 
         }
 

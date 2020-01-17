@@ -21,7 +21,6 @@ namespace ShopApp
 
         ListView lvProducts;
         SelectedProduct cartSelectedProduct;
-
         ProductAdapter pa;
         protected async override void OnCreate(Bundle savedInstanceState)
         {
@@ -30,9 +29,14 @@ namespace ShopApp
 
             this.lvProducts = FindViewById<ListView>(Resource.Id.listViewProducts);
 
-            List<Product> products = new List<Product>();
+
+
+            List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
+            selectedProducts = await SelectedProduct.GetAllProductInCart(userName);//מביא  רשימה של כל המוצרים שיש לאותו משתמש בעגלה 
+
+            List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
             products = await Product.GetAllProduct();
-            this.pa = new ProductAdapter(this, products);//מקבל אקטיביטי ואת רשימת המוצרים
+            this.pa = new ProductAdapter(this, products,selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
 
             this.lvProducts.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
 

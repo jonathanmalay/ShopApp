@@ -67,13 +67,16 @@
   <ItemGroup>
     <Compile Include="Activity_EditAccuntSetting.cs" />
     <Compile Include="Activity_SettingPayment.cs" />
+    <Compile Include="Adapter_OrdersHistory.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="ClientOrder_Activity.cs" />
+    <Compile Include="Client_HistoryOrdersActivity.cs" />
     <Compile Include="FirstActivity.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="HomeSetting_Activityt.cs" />
     <Compile Include="ImageBrodcastReceiver.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Orders_History.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductAdapter.cs" />
@@ -126,6 +129,9 @@
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Firebase.Storage">
+      <Version>71.1602.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\layout_Register.xml">
@@ -239,6 +245,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\layoutAddProductDialog.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_customOrderHistory.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_OrdersHistory.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
