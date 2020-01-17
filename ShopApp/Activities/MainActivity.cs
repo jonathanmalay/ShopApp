@@ -13,7 +13,7 @@ namespace ShopApp
     public class MainActivity : AppCompatActivity //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {
         EditText etUsername,etPassword;
-        Button btnLogin,btnRegister;
+        Button btnLogin;
         TextView tvRegister;
         ISharedPreferences sp;
         ImageView ivShowPassword;

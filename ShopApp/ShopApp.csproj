@@ -66,8 +66,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\Activity_EditAccuntSetting.cs" />
+    <Compile Include="Activities\Activity_FinishOrder.cs" />
     <Compile Include="Activities\Activity_SettingPayment.cs" />
     <Compile Include="Adapters\Adapter_OrdersHistory.cs" />
+    <Compile Include="Adapters\Adapter_FinishOrder_SelectedProducts.cs" />
     <Compile Include="Firebase\AppData.cs" />
     <Compile Include="Activities\ClientOrder_Activity.cs" />
     <Compile Include="Activities\Client_HistoryOrdersActivity.cs" />
@@ -258,7 +260,16 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_FinishOrder.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_selectedProductInCart.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.

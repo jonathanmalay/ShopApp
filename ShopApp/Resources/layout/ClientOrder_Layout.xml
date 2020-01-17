@@ -14,7 +14,7 @@
         android:layout_marginVertical="7dp"
         android:layout_marginHorizontal="5dp"
         
-        android:id="@+id/btnClientOrderLayoutEndOrder"/>
+        android:id="@+id/btnClientOrderLayoutMoveToPayment"/>
 
     <ListView
         android:id="@+id/listViewProducts"

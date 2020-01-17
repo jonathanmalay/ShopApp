@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using ShopApp.Activities;
 
 namespace ShopApp
 {
@@ -21,7 +22,7 @@ namespace ShopApp
 
         Dialog dialogAddProduct;
         TextView tvcurrentAmountProduct; //הכמות הנוכחית של מוצר בקנייה
-
+        Button btnMoveToPayment;
         ListView lvProducts;
         SelectedProduct cartSelectedProduct;
         ProductAdapter pa;
@@ -31,7 +32,7 @@ namespace ShopApp
             SetContentView(Resource.Layout.ClientOrder_Layout);
 
             this.lvProducts = FindViewById<ListView>(Resource.Id.listViewProducts);
-
+            this.btnMoveToPayment = FindViewById<Button>(Resource.Id.btnClientOrderLayoutMoveToPayment);
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
@@ -47,7 +48,15 @@ namespace ShopApp
             this.lvProducts.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
             this.lvProducts.ItemClick += LvProducts_ItemClick;
+            this.btnMoveToPayment.Click += BtnMoveToPayment_Click;
         }
+
+        private void BtnMoveToPayment_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Activity_FinishOrder));//עובר לאקטיביטי תשלום וסיום הזמנה 
+            this.StartActivity(intent);
+        }
+
         public void CreateDialog()
         {
             dialogAddProduct = new Dialog(this);
