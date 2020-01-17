@@ -26,7 +26,7 @@ namespace ShopApp
             this.Amount = 0;
         }
 
-      
+
 
         public static async void AddSelectedProduct(string username, SelectedProduct sp)
         {
@@ -34,18 +34,18 @@ namespace ShopApp
             {
                 await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocument(sp.ProductName).SetDataAsync(sp);//מוסיף מוצר  לקולקשיין עגלה של אותו אדם בפיירבייס
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
         }
 
 
-        public static async Task<SelectedProduct> GetProductInCart(string   product_name ,string username)//הפעולה מחזירה את המוצר שיש למשתמש בעגלה 
+        public static async Task<SelectedProduct> GetProductInCart(string product_name, string username)//הפעולה מחזירה את המוצר שיש למשתמש בעגלה 
         {
             try
             {
-                 IDocumentSnapshot reference = await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocument(product_name).GetDocumentAsync();
+                IDocumentSnapshot reference = await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocument(product_name).GetDocumentAsync();
 
                 return reference.ToObject<SelectedProduct>();//מחזירה עצם מסוג המוצר שנבחר
             }
@@ -56,9 +56,9 @@ namespace ShopApp
             }
         }
 
-        public static async Task<bool> CheckIfProductInCart( string product_name,string username)
+        public static async Task<bool> CheckIfProductInCart(string product_name, string username)
         {//פעולה אשר בודקת האם המוצר  קיים בעגלה כלומר במערכת של הפיירבייס
-            SelectedProduct returned_product = await GetProductInCart(product_name,username);
+            SelectedProduct returned_product = await GetProductInCart(product_name, username);
 
             if (returned_product == null) // אם המוצר עדיין לא נבחר כלומר לא קיים 
             {
@@ -69,19 +69,18 @@ namespace ShopApp
 
 
 
-        public static async Task<List<SelectedProduct>> GetAllProductInCart( string username)
-        {  try
+        public static async Task<List<SelectedProduct>> GetAllProductInCart(string username)
+        {
+            List<SelectedProduct> productsInCart = new List<SelectedProduct>();
+            try
             {
                 IQuerySnapshot snapshot = await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocumentsAsync();//לוקח את כל המוצרים מהעגלה של אותו בן אדם ומכניס אותם לרשימה מסוג מוצר נבחר
-                List<SelectedProduct> productsInCart = snapshot.ToObjects<SelectedProduct>().ToList();
-                return productsInCart;
+                productsInCart = snapshot.ToObjects<SelectedProduct>().ToList();
             }
-            catch(Exception)
+            catch(Exception e)
             {
-                List<SelectedProduct> emptyList = new List<SelectedProduct>();
-                return emptyList;
             }
-
+            return productsInCart;
         }
 
     }

@@ -1,29 +1,23 @@
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back1">
-    <LinearLayout
-        android:orientation="horizontal"
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            anadroid:text="סיום הזמנה"
-            android:layout_gravity="right"
-            android:textSize="22sp"
-            android:textColor="@color/white"
-            android:background="@drawable/circlebutton"
-            android:id="@+id/btnClientOrderLayoutEndOrder"/>
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:background="@drawable/circlebutton"
+        android:text="מעבר לתשלום"
+        android:textColor="@color/colorEditTextHint"
+        android:textStyle="bold"
+        android:layout_marginVertical="7dp"
+        android:layout_marginHorizontal="5dp"
+        
+        android:id="@+id/btnClientOrderLayoutEndOrder"/>
 
     <ListView
-        android:id="@id/listViewProducts"
+        android:id="@+id/listViewProducts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

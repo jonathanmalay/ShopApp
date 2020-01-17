@@ -68,18 +68,10 @@ namespace ShopApp
 
         public override View GetView(int position, View convertView, ViewGroup parent)//הפעולה מקבלת שלוש דברים -מיקום שאליו יכנס הויאו בלולאת הפור ,
         {
-
-          
-
-
-
             if (convertView == null)
-
             {
                 convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.costum_Layout, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
             }
-
-
 
             TextView tvTitle = convertView.FindViewById<TextView>(Resource.Id.tvProductRawTitle);
             TextView tvSubTitle = convertView.FindViewById<TextView>(Resource.Id.tvSubTitle);
@@ -91,16 +83,13 @@ namespace ShopApp
 
             for (int i=0 ;i<CartProductsList.Count;i++)
             {
-               SelectedProduct currrentSelectedProduct = CartProductsList[i];
-                if (currrentSelectedProduct.ProductName == tempProduct.Name)
+               SelectedProduct currentSelectedProduct = CartProductsList[i];
+                if (currentSelectedProduct.ProductName == tempProduct.Name)
                 {
-                    tvSubTitle.Text = currrentSelectedProduct.Amount.ToString();//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
+                    tvSubTitle.Text = currentSelectedProduct.Amount.ToString();//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
                     break;
                 }
-
-
             }
-
             
             tvPrice.Text = "מחיר לקילו " + tempProduct.Price;
             tvTitle.Text = tempProduct.Name;

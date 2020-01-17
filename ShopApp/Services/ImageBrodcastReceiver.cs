@@ -12,16 +12,16 @@ using Android.Views;
 using Android.Widget;
 
 namespace ShopApp
-{/*
+{
     [BroadcastReceiver(Enabled = true)]
     [IntentFilter(new[] { "image_download_firebase" })]
     public class ImageBrodcastReceiver : BroadcastReceiver
-    {/*
+    {
         private ISharedPreferences sp;
         private ImageView imageViewProduct;
         private Activity activity;
 
-       
+        public ImageBrodcastReceiver() { }
         public  ImageBrodcastReceiver(Activity activity, ImageView imageViewProduct)
         {
 
@@ -49,6 +49,6 @@ namespace ShopApp
         }
 
     }
-*/
+
     
 }

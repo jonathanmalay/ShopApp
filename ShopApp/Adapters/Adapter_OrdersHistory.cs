@@ -17,7 +17,7 @@ namespace ShopApp
 
         Activity activity;
         ISharedPreferences sp;
-        string userName;
+        public  string userName;
 
         public List<Orders_History> AllOrders { get; set; }
        

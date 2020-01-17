@@ -14,10 +14,10 @@ using System.IO;
 using System.Threading;
 
 namespace ShopApp
-{/*
+{
     [Service]
     public class ServiceImageDownload : Service
-    {/*
+    {
         ISharedPreferences sp;
 
         private string strUrl = "";
@@ -98,6 +98,6 @@ namespace ShopApp
 
         
     }
-    */
+    
     
 }

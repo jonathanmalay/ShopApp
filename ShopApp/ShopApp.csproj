@@ -65,27 +65,27 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activity_EditAccuntSetting.cs" />
-    <Compile Include="Activity_SettingPayment.cs" />
-    <Compile Include="Adapter_OrdersHistory.cs" />
-    <Compile Include="AppData.cs" />
-    <Compile Include="ClientOrder_Activity.cs" />
-    <Compile Include="Client_HistoryOrdersActivity.cs" />
-    <Compile Include="FirstActivity.cs" />
-    <Compile Include="HomeActivity.cs" />
-    <Compile Include="HomeSetting_Activityt.cs" />
-    <Compile Include="ImageBrodcastReceiver.cs" />
-    <Compile Include="MainActivity.cs" />
-    <Compile Include="Orders_History.cs" />
-    <Compile Include="Payment.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="ProductAdapter.cs" />
-    <Compile Include="RegisterActivity.cs" />
+    <Compile Include="Activities\Activity_EditAccuntSetting.cs" />
+    <Compile Include="Activities\Activity_SettingPayment.cs" />
+    <Compile Include="Adapters\Adapter_OrdersHistory.cs" />
+    <Compile Include="Firebase\AppData.cs" />
+    <Compile Include="Activities\ClientOrder_Activity.cs" />
+    <Compile Include="Activities\Client_HistoryOrdersActivity.cs" />
+    <Compile Include="Activities\FirstActivity.cs" />
+    <Compile Include="Activities\HomeActivity.cs" />
+    <Compile Include="Activities\HomeSetting_Activityt.cs" />
+    <Compile Include="Services\ImageBrodcastReceiver.cs" />
+    <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Models\Orders_History.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Adapters\ProductAdapter.cs" />
+    <Compile Include="Activities\RegisterActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectedProduct.cs" />
-    <Compile Include="ServiceImageDownload.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Models\SelectedProduct.cs" />
+    <Compile Include="Services\ServiceImageDownload.cs" />
+    <Compile Include="Models\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -258,6 +258,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.

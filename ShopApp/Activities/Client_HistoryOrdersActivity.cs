@@ -20,7 +20,7 @@ namespace ShopApp
 
         ListView lvOrdersHistory;
         Orders_History Orders_History;
-        ProductAdapter pa_OrdersHistory;
+        Adapter_OrdersHistory pa_OrdersHistory;
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
