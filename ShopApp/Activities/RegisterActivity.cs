@@ -41,7 +41,7 @@ namespace ShopApp
             {
                 pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
                 pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
-                pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+                pd.SetCancelable(true);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
 
                 string fullName = this.etFullName.Text;
                 string phoneNumber = this.etPhoneNumber.Text;
