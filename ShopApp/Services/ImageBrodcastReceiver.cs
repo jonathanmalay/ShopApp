@@ -17,27 +17,27 @@ namespace ShopApp
     [IntentFilter(new[] { "image_download_firebase" })]
     public class ImageBrodcastReceiver : BroadcastReceiver
     {
-        private ISharedPreferences sp;
-        private ImageView imageViewProduct;
+       
+        private ImageView iv_Product;
         private Activity activity;
 
         public ImageBrodcastReceiver() { }
         public  ImageBrodcastReceiver(Activity activity, ImageView imageViewProduct)
         {
 
-            this.imageViewProduct = imageViewProduct;
+            this.iv_Product = imageViewProduct;
             this.activity = activity;
-            this.sp = this.activity.GetSharedPreferences("details", FileCreationMode.Private);
+            
         }
         public override void OnReceive(Context context, Intent intent)
         {
-            string filePath = sp.GetString("filePath", "");
+            string image_url = intent.GetStringExtra("filePath");
 
-            Bitmap image_Bitmap = BitmapFactory.DecodeFile(filePath);
+            Bitmap image_Bitmap = BitmapFactory.DecodeFile(image_url);
 
             if (image_Bitmap != null)
             {
-                this.imageViewProduct.SetImageBitmap(image_Bitmap);
+                this.iv_Product.SetImageBitmap(image_Bitmap);
 
             }
 

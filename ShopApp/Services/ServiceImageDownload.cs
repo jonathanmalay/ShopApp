@@ -18,7 +18,7 @@ namespace ShopApp
     [Service]
     public class ServiceImageDownload : Service
     {
-        ISharedPreferences sp;
+        
 
         private string strUrl = "";
 
@@ -26,7 +26,7 @@ namespace ShopApp
         public override void OnCreate()
         {
             base.OnCreate();
-            this.sp = this.GetSharedPreferences("details", FileCreationMode.Private);
+          
 
         }
 
@@ -80,12 +80,7 @@ namespace ShopApp
             fStream.Write(bytes, 0, bytes.Length);//מתחיל לכתוב לקובץ את כל הבייטים של התמונה שהורדנו
             fStream.Close();//שומר את התמונה
 
-            sp.Edit().PutString("filePath", local_Path).Apply();
-            ISharedPreferencesEditor editor = sp.Edit();
-
-            editor.PutString("filePath", local_Path);//מוסיף למסמך של השרד פרפרנס עוד שדה עם הנתיב של המיקום של התמונה 
-            editor.Commit();
-
+           
             Intent intent = new Intent("download");
             intent.PutExtra("filePath", local_Path);
 
