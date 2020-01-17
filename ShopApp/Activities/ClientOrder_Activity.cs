@@ -59,6 +59,7 @@ namespace ShopApp
             dialogAddProduct.SetTitle("הוספת מוצר");
             dialogAddProduct.SetCancelable(true);
 
+            tvcurrentAmountProduct = dialogAddProduct.FindViewById<TextView>(Resource.Id.tvDialogAddProductCurrentAmount);
             btnMinusProduct = dialogAddProduct.FindViewById<Button>(Resource.Id.btnDialogAddProductMinus); //כפתור ההורדה של הכמות
             btnPlusProduct = dialogAddProduct.FindViewById<Button>(Resource.Id.btnDialogAddProductPlus); //כפתור ההוספה של הכמות 
             btnSaveProductAmount = dialogAddProduct.FindViewById<Button>(Resource.Id.btnDialogAddProductSave); //כפתור השמירה
@@ -105,14 +106,22 @@ namespace ShopApp
             SelectedProduct.AddSelectedProduct(this.userName, cartSelectedProduct); //מוסיף את המוצר לעגלת הקניות כלומר לקולקשיין  עגלה בפיירבייס שבו יש מסמך עם השם של המשתמש שמחובר  לאפליקציה ובתוך המסמך יש את המוצרים שהזמין 
             Toast.MakeText(this, "הפריט נוסף לעגלת הקניות (:", ToastLength.Long).Show();
 
-            //for (int i = 0; i < pa.CartProductsList.Count; i++)
-            //{
-            //    SelectedProduct currentProduct = pa.CartProductsList[i];
-            //    if (currentProduct.ProductName == cartSelectedProduct.ProductName)
-            //    {
-            //        currentProduct.Amount = cartSelectedProduct.Amount;
-            //    }
-            //}
+            bool exist = false;
+
+            for (int i = 0; i < pa.CartProductsList.Count; i++)
+            {
+                SelectedProduct currentProduct = pa.CartProductsList[i];
+                if (currentProduct.ProductName == cartSelectedProduct.ProductName)
+                {
+                    currentProduct.Amount = cartSelectedProduct.Amount;
+                    exist = true;
+                }
+            }
+
+            if(!exist)
+            {
+                pa.CartProductsList.Add(cartSelectedProduct);
+            }
 
             dialogAddProduct.Dismiss();
             pa.NotifyDataSetChanged();

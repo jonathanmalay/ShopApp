@@ -21,7 +21,10 @@ namespace ShopApp
 
         public List<Orders_History> AllOrders { get; set; }
        
+        //public Adapter_OrdersHistory()
+        //{
 
+        //}
         public Adapter_OrdersHistory(Activity activity, List<Orders_History> orders_history_list)//מקבלת אקטיביטי ומקבלת  רשימה של הזמנות שבוצעו
         {
             this.activity = activity;

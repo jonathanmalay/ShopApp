@@ -27,8 +27,9 @@ namespace ShopApp
 
                 this.btnStartOrder = FindViewById<Button>(Resource.Id.btnStartShop);
                 this.btnSetting = FindViewById<Button>(Resource.Id.btnHomeSetting);
+                this.btnPruchesHistory = FindViewById<Button>(Resource.Id.btnPruchesHistory);
                 this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
-
+          
                 this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
                 string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
                 this.u = await User.GetUser(usernameloged);
@@ -38,11 +39,17 @@ namespace ShopApp
 
                 this.btnSetting.Click += BtnSetting_Click;
                 this.btnStartOrder.Click += BtnStartOrder_Click;
+            this.btnPruchesHistory.Click += BtnPruchesHistory_Click;
            
 
         }
 
-      
+        private void BtnPruchesHistory_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Client_HistoryOrdersActivity));//עובר להאקיביטי של היסטוריית הזמנות 
+            this.StartActivity(intent);
+
+        }
 
         public override bool OnCreateOptionsMenu(IMenu menu) //רשום אובררייד בגלל שתפריט  קיים וערכו נולל לכן אנחנו דורסים את הערך הקודם ויוצרים תפריט חדש
         {
