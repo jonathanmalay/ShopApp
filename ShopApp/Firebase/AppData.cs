@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Firebase;
+using Firebase.Storage;
 using Plugin.CloudFirestore;
 
 namespace ShopApp
@@ -18,8 +19,11 @@ namespace ShopApp
     {
         public static AppData appData { get; set; }
 
+        public static FirebaseStorage FirebaseStorage;
+        public static FirebaseStorageReference ProductsStorage;
+
         public static IFirestore FireStore { get; set; }
-        public static ICollectionReference usersCollection, paymentCollection, productCollection, cartCollection, orders_historyCollection;
+        public static ICollectionReference usersCollection, paymentCollection, productCollection, cartCollection, orders_historyCollection,managersCollection;
         private AppData(Activity activity)
         { 
             FirebaseOptions options = new FirebaseOptions.Builder()//מגדיר את הנתונים של הפיירבייס שלי כדי שאוכל להתחבר אליו וליצור תקשורת 
@@ -37,6 +41,11 @@ namespace ShopApp
             productCollection = FireStore.GetCollection("Product");//connect to the product files collection in the server.
             cartCollection = FireStore.GetCollection("Cart");//connect to the product files collection in the server.
             orders_historyCollection = FireStore.GetCollection("OrdersHistory");
+            managersCollection = FireStore.GetCollection("Managers");//מתחבר לקולקשיין מנהלים
+
+            FirebaseStorage = new FirebaseStorage("gs://bagrutproject-dbe7a.appspot.com/");
+            ProductsStorage = FirebaseStorage.Child("Products");
+
         }
 
         public static void Initialize(Activity activity)

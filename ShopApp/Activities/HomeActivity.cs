@@ -17,7 +17,7 @@ namespace ShopApp
     public class HomeActivity : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {
         ISharedPreferences sp;
-        Button btnStartOrder,btnPruchesHistory,btnSetting;
+        Button btnStartOrder,btnPruchesHistory,btnSetting,btnAddProduct;
         TextView tvWelcomeUser;
         User u;
         protected async override void OnCreate(Bundle savedInstanceState)
@@ -29,6 +29,7 @@ namespace ShopApp
                 this.btnSetting = FindViewById<Button>(Resource.Id.btnHomeSetting);
                 this.btnPruchesHistory = FindViewById<Button>(Resource.Id.btnPruchesHistory);
                 this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
+                this.btnAddProduct = FindViewById<Button>(Resource.Id.btnHomeAddProduct);
           
                 this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
                 string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
@@ -40,8 +41,15 @@ namespace ShopApp
                 this.btnSetting.Click += BtnSetting_Click;
                 this.btnStartOrder.Click += BtnStartOrder_Click;
             this.btnPruchesHistory.Click += BtnPruchesHistory_Click;
+            this.btnAddProduct.Click += BtnAddProduct_Click;
            
 
+        }
+
+        private void BtnAddProduct_Click(object sender, EventArgs e)
+        {
+          Intent intent =new Intent(this, typeof(Activity_ManagerAddProduct));
+            this.StartActivity(intent);
         }
 
         private void BtnPruchesHistory_Click(object sender, EventArgs e)

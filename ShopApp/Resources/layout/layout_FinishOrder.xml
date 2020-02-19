@@ -1,8 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+     <TextView
+        android:text="סיום הזמנה"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/tvFinishOrdertitle" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" 
+        android:layout_margin="25dp">
+   
+    <ListView
+        android:id="@+id/listViewFinishOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+        </LinearLayout>
+      <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circlebutton"
+        android:text="אישור הזמנה וביצוע תשלום"
+        android:textColor="@color/colorEditTextHint"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="30dp"
+        
+        android:id="@+id/btnFinishOrderConrifeOrder"/>
+
 
     
 

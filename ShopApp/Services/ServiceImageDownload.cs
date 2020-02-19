@@ -81,8 +81,8 @@ namespace ShopApp
             fStream.Close();//שומר את התמונה
 
            
-            Intent intent = new Intent("download");
-            intent.PutExtra("filePath", local_Path);
+            Intent intent = new Intent("image_download_firebase");
+            intent.PutExtra("filePath", local_Path);//מעביר לאינטנט את המיקום של התמונה שהורדה בתוך הטלפון
 
             this.StopSelf();
             this.SendBroadcast(intent);

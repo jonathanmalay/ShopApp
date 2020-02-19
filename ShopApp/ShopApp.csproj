@@ -67,7 +67,12 @@
   <ItemGroup>
     <Compile Include="Activities\Activity_EditAccuntSetting.cs" />
     <Compile Include="Activities\Activity_FinishOrder.cs" />
+    <Compile Include="Manager Activities\Activity_ManagerRemoveProduct.cs" />
+    <Compile Include="Manager Activities\Activity_ManagerHomeSetting.cs" />
     <Compile Include="Activities\Activity_SettingPayment.cs" />
+    <Compile Include="Manager Activities\Activity_ManagerAddProduct.cs" />
+    <Compile Include="Manager Activities\Activity_ManagerHome.cs" />
+    <Compile Include="Manager Activities\Activity_LoginManager.cs" />
     <Compile Include="Adapters\Adapter_OrdersHistory.cs" />
     <Compile Include="Adapters\Adapter_FinishOrder_SelectedProducts.cs" />
     <Compile Include="Firebase\AppData.cs" />
@@ -76,6 +81,7 @@
     <Compile Include="Activities\FirstActivity.cs" />
     <Compile Include="Activities\HomeActivity.cs" />
     <Compile Include="Activities\HomeSetting_Activityt.cs" />
+    <Compile Include="Models\Manager.cs" />
     <Compile Include="Services\ImageBrodcastReceiver.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Models\Orders_History.cs" />
@@ -121,6 +127,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FirebaseStorage.net">
+      <Version>1.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Plugin.CloudFirestore">
       <Version>2.0.0</Version>
     </PackageReference>
@@ -131,9 +140,6 @@
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
-    <PackageReference Include="Xamarin.Firebase.Storage">
-      <Version>71.1602.0</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\layout_Register.xml">
@@ -267,6 +273,46 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\layout_selectedProductInCart.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_dialogPickProductImage.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerAddProduct.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerHome.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerSettings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_LoginManager.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerChangePassword.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerRemoveProduct.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerRemoveProductDialog.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

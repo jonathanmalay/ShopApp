@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Android.Content;
 using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using System.Threading.Tasks;
 
 namespace ShopApp
 {
@@ -32,7 +25,6 @@ namespace ShopApp
             userName = this.sp.GetString("Username", "");
 
         }
-
 
 
 
@@ -89,6 +81,9 @@ namespace ShopApp
                     tvSubTitle.Text = currentSelectedProduct.Amount.ToString();//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
                     break;
                 }
+
+                
+
             }
             
             tvPrice.Text = "מחיר לקילו " + tempProduct.Price;

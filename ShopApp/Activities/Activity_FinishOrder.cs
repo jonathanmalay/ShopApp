@@ -30,22 +30,29 @@ namespace ShopApp.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.layout_FinishOrder);
          
-            this.lv_Selected_Products = FindViewById<ListView>(Resource.Id.);
-            this.btn_conrife_order = FindViewById<Button>(Resource.Id.);
+            this.lv_Selected_Products = FindViewById<ListView>(Resource.Id.listViewFinishOrder);
+            this.btn_conrife_order = FindViewById<Button>(Resource.Id.btnFinishOrderConrifeOrder);
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
         
 
-            List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
-            selectedProducts = await SelectedProduct.GetAllProductInCart(userName);//מביא  רשימה של כל המוצרים שיש לאותו משתמש בעגלה 
+            List<SelectedProduct> list_selectedProducts = new List<SelectedProduct>();
+            list_selectedProducts = await SelectedProduct.GetAllProductInCart(userName);//מביא  רשימה של כל המוצרים שיש לאותו משתמש בעגלה 
 
-            List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
-            products = await Product.GetAllProduct();
+            List<Product> list_products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
+            list_products = await Product.GetAllProduct();
 
-            this.adapter_selected_products = new Adapter_FinishOrder_SelectedProducts(this, selectedProducts, products);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
+            this.adapter_selected_products = new Adapter_FinishOrder_SelectedProducts(this, list_selectedProducts, list_products);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
             this.lv_Selected_Products.Adapter = this.adapter_selected_products;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.adapter_selected_products.NotifyDataSetChanged(); //הפעלת המתאם
+
+
+            
+
+
+
+
 
         }
     }

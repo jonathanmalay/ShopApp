@@ -1,91 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back1">
-    <TextView
-        android:text="הגדרות משתמש"
+
+     <TextView
+        android:text="מסך ראשי מנהל החנות"
         android:textColor="@color/colorTitele"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textSize="35dp"
         android:textStyle="bold"
-        android:gravity="center" />
-    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/tvManagerHometitle" />
+
+        <TextView
+        android:text=""
+        android:gravity="center"
+        android:textStyle="normal"
+        android:textColor="@color/white_greyish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="15dp"
+        android:id="@+id/tvManagerHomeWelcomeManager"/>
+
+        <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:background ="@drawable/circlelayout"
-        >
-        <LinearLayout
+        android:layout_margin="30dp"
+        android:background="@drawable/circlelayout">
+
+            <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:background="@drawable/circlebutton"
-            android:paddingHorizontal="10dp"
-            android:layout_marginHorizontal="5dp"
+           android:layout_marginHorizontal="5dp"
             android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/circlebutton"
             android:layout_gravity="center">
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/iconfullname"
-                 />
+                android:src="@drawable/iconsbuy"/>
             <Button
-                android:id="@+id/btnSettingEtitdetails"
-                android:text="ערוך פרטי משתמש"
+                android:text="הוסף מוצר"
                 android:textStyle="bold"
+                android:background="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:background="@android:color/transparent"
-/>
+                android:id="@+id/btnManagerHomeAddProduct"/>
         </LinearLayout>
-        <LinearLayout
+
+
+           <LinearLayout
             android:orientation="horizontal"
+           android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:background="@drawable/circlebutton"
-            android:paddingHorizontal="10dp"
-            android:layout_margin="5dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/circlebutton"
+            android:layout_gravity="center">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconsettinguser"/>
+            <Button
+                android:text="הגדרות"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:id="@+id/btnManagerHomeSetting"/>
+        </LinearLayout>
+
+
+        
+           <LinearLayout
+            android:orientation="horizontal"
+           android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circlebutton"
             android:layout_gravity="center">
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/iconsettingpay"/>
             <Button
-                android:text="ערוך פרטי אשראי"
+                android:text="הזמנות "
                 android:textStyle="bold"
+                android:background="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:background="@android:color/transparent"
-                android:id="@+id/btnSettingPaymentMethods"/>
+                android:id="@+id/btnManagerHomeOrders"/>
         </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:background="@drawable/circlebutton"
-            android:paddingHorizontal="15dp"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/iconpassword"/>
-            <Button
-                android:text="שנה סיסמא"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:background="@android:color/transparent"
-                android:id="@+id/btnSettingChangePassword"/>
+
+
+
+
+
+
+
         </LinearLayout>
-    </LinearLayout>
+
+
+
 </LinearLayout>

@@ -138,4 +138,13 @@
                 android:background="@android:color/transparent"/>
         </LinearLayout>
     </LinearLayout>
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+        android:text="הוסף מוצר"
+        android:textColor="@color/colorEditTextHint"
+        android:textStyle="bold"
+        
+    android:background="@drawable/circlebutton"
+    android:id="@+id/btnHomeAddProduct"/>
 </LinearLayout>

@@ -12,49 +12,94 @@ using Android.Widget;
 using Android.Graphics;
 using Plugin.CloudFirestore;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ShopApp
 {
-     public class Product
-    {  
+    public class Product
+    {
         public int ProductId { get; set; } //
-        public string Name { get; set;} //שם המוצר
+        public string Name { get; set; } //שם המוצר
         public int Price { get; set; } //מחיר המוצר 
 
-        public Bitmap Image { get; set; } //תמונה של המוצר
+        public string ImageUrl { get; set; } //תמונה של המוצר
 
-        public double  Quantity { get; set; }  //כמות המוצר
-        
-        
+        public double Quantity { get; set; }  //כמות המוצר
+
+
+
+
         public Product()
         {
 
         }
 
-        public Product(int productId, string name, int price, Bitmap image, double quantity)
+        public Product(int productId, string name, int price, string imageUrl, double quantity)
         {
             ProductId = productId;
             Name = name;
             Price = price;
-            Image = image;
+            ImageUrl = imageUrl;
             Quantity = quantity;
         }
 
-        public static async void AddProduct(Activity activity, int product_id,string product_name,int product_price,Bitmap product_image,double product_Quantity)
+        public static async void AddProduct(Activity activity, int product_id, string product_name, int product_price, Bitmap product_image, double product_Quantity)
         {//פעולה אשר מוסיפה מוצר 
-            Product p = new Product();
-            p.ProductId = product_id;
-            p.Name = product_name;
-            p.Price = product_price;
-            p.Image = product_image;
-            p.Quantity = product_Quantity;
 
-            await AppData.productCollection.GetDocument(product_name).SetDataAsync(p);//מוסיף לפיירבייס מסמך בפרודוקט קולקשיין עם הערכים של המוצר
+            try
+            {
+                //העלאת התמונה וקבלת הקישור של התמונה
+                string imageUrl = "";
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    product_image.Compress(Bitmap.CompressFormat.Png, 100, ms);
+                    imageUrl = await AppData.ProductsStorage.Child(product_name).PutAsync(ms);
+                }
+
+                if (imageUrl == "")
+                {
+                    Toast.MakeText(activity, "קיימת בעיה בתמונה, אנא נסה שוב", ToastLength.Long).Show();
+                    return;
+                }
+
+
+                //העלאת המוצר לאחר שיש לנו את הקישור של התמונה
+                Product p = new Product();
+                p.ProductId = product_id;
+                p.Name = product_name;
+                p.Price = product_price;
+                p.ImageUrl = imageUrl;
+                p.Quantity = product_Quantity;
+
+                await AppData.productCollection.GetDocument(product_name).SetDataAsync(p);//מוסיף לפיירבייס מסמך בפרודוקט קולקשיין עם הערכים של המוצר
+
+
+                Toast.MakeText(activity, "המוצר הועלה בהצלחה!", ToastLength.Long).Show();
+
+            }
+            catch(Exception e)
+            {
+                Toast.MakeText(activity, "חלה שגיאה, אנא נסה שוב", ToastLength.Long).Show();
+            }
 
         }
+       
+        public static async Task RemoveProduct(string username , Product product)
+        {//הפעולה מוחקת את המוצר מהפייר בייס
+            try
+            {
+                string product_name = product.Name;
+                await AppData.FireStore.GetCollection("Product").GetDocument(product_name).DeleteDocumentAsync();//ההסרה של המוצר
+            }
 
+            catch(Exception)
+            {
+               
+            }
+        }
 
-        public static async Task<Product> GetProduct (string name)
+        public static async Task<Product> GetProduct(string name)
         {//הפעולה מחזירה עצם מסוג מוצר
             try
             {
@@ -72,7 +117,7 @@ namespace ShopApp
 
         }
 
-
+        
 
         public static async Task<List<Product>> GetAllProduct()
         {
@@ -81,7 +126,7 @@ namespace ShopApp
             return products;
 
         }
-        
+
 
 
     }

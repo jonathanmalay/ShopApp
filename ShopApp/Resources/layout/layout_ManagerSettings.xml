@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back1">
+
     <TextView
-        android:text="הגדרות משתמש"
+        android:text="הגדרות חנות"
         android:textColor="@color/colorTitele"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textSize="35dp"
         android:textStyle="bold"
-        android:gravity="center" />
+        android:gravity="center"
+        android:id="@+id/tvManagerSettingHome" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -36,14 +37,13 @@
                 android:src="@drawable/iconfullname"
                  />
             <Button
-                android:id="@+id/btnSettingEtitdetails"
                 android:text="ערוך פרטי משתמש"
-                android:textStyle="bold"
+                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:background="@android:color/transparent"
-/>
+                android:id="@+id/btnManagerSettingEtitdetails"/>
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:background="@android:color/transparent"
-                android:id="@+id/btnSettingPaymentMethods"/>
+                android:id="@+id/btnManagerSettingPaymentMethods"/>
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
             <ImageView
-                android:layout_width="35dp"
+              android:layout_width="35dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/iconpassword"/>
             <Button
@@ -85,7 +85,9 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:background="@android:color/transparent"
-                android:id="@+id/btnSettingChangePassword"/>
+                android:id="@+id/btnManagerSettingChangePassword"/>
         </LinearLayout>
     </LinearLayout>
+
+
 </LinearLayout>

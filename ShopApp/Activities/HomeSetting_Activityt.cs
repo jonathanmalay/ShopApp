@@ -14,8 +14,9 @@ namespace ShopApp
 {
     [Activity(Label = "HomeSetting_Activityt")]
     public class HomeSetting_Activityt : Activity
-
     {
+        Dialog changePasswordDialog;
+
         Button btnChangePassword, btnEditDetails,btnDialogChangePassword,btnPaymentMethods;
         EditText etNewPassword, etNewPasswordConrife,etOldPassword;     
 
@@ -23,11 +24,10 @@ namespace ShopApp
         User u;
         
         protected async override void OnCreate(Bundle savedInstanceState)
-        { Button btnChangePassword, btnEditDetails;
+        { 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.SettingHome_Layout);
 
-            
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.u = await User.GetUser(usernameloged);
@@ -36,35 +36,26 @@ namespace ShopApp
             this.btnChangePassword = this.FindViewById<Button>(Resource.Id.btnSettingChangePassword);
             this.btnPaymentMethods = this.FindViewById<Button>(Resource.Id.btnSettingPaymentMethods);
 
-
             this.btnEditDetails.Click += BtnEditDetails_Click;
             this.btnPaymentMethods.Click += BtnPaymentMethods_Click;
-            this.btnChangePassword.Click += (senderD, eD) =>//הקפצת מסך דיאלוג שמכיל לייאוט לשינוי סיסמא
-            {
-                
-                Dialog d = new Dialog(this);
-                d.SetContentView(Resource.Layout.Layout_SettingChangePassword);
-                d.SetTitle("Change Password");
-                d.SetCancelable(true);
-                etOldPassword = d.FindViewById<EditText>(Resource.Id.etChangePasswordOldPassword);
-                etNewPassword = d.FindViewById<EditText>(Resource.Id.etChangePasswordNew);
-                etNewPasswordConrife = d.FindViewById<EditText>(Resource.Id.etChangePasswordConrife);
-                this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-                string username = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
-
-                btnDialogChangePassword = d.FindViewById<Button>(Resource.Id.btnChangePasswordSave);
-                btnDialogChangePassword.Click += BtnDialogChangePassword_Click;
-
-               
-                d.Show();
+            this.btnChangePassword.Click += BtnChangePassword_Click;
 
 
-            };
+            //Dialog
+            this.changePasswordDialog = new Dialog(this);
+            this.changePasswordDialog.SetContentView(Resource.Layout.Layout_SettingChangePassword);
+            this.changePasswordDialog.SetTitle("Change Password");
+            this.changePasswordDialog.SetCancelable(true);
+            etOldPassword = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.etManagerChangePasswordOldPassword);
+            etNewPassword = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.etManagerChangePasswordNew);
+            etNewPasswordConrife = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.etManagerChangePasswordConrife);
+            btnDialogChangePassword = this.changePasswordDialog.FindViewById<Button>(Resource.Id.btnManagerChangePasswordSave);
+            btnDialogChangePassword.Click += BtnDialogChangePassword_Click;
+        }
 
-       
-
-
-            // Create your application here
+        private void BtnChangePassword_Click(object sender, EventArgs e)
+        {
+            this.changePasswordDialog.Show();
         }
 
         private void BtnPaymentMethods_Click(object sender, EventArgs e)

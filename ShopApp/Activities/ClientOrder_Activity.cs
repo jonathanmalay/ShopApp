@@ -36,7 +36,7 @@ namespace ShopApp
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
-            CreateDialog();
+            CreateDialog(this);
 
             List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
             selectedProducts = await SelectedProduct.GetAllProductInCart(userName);//מביא  רשימה של כל המוצרים שיש לאותו משתמש בעגלה 
@@ -57,7 +57,7 @@ namespace ShopApp
             this.StartActivity(intent);
         }
 
-        public void CreateDialog()
+        public  void CreateDialog(Activity activity)
         {
             dialogAddProduct = new Dialog(this);
 
@@ -80,13 +80,24 @@ namespace ShopApp
             };
             btnMinusProduct.Click += (senderD, eD) =>
             {
-                cartSelectedProduct.Amount--; //מוריד אחד לכמות
-                tvcurrentAmountProduct.Text = cartSelectedProduct.Amount.ToString();
-            };
+                if (cartSelectedProduct.Amount > 0)//מחסר מהכמות רק אם היא גדולה מ0 על מנת למוע כמות שלילית של מוצר.
+                {
+                    cartSelectedProduct.Amount--; //מוריד אחד לכמות
+                    tvcurrentAmountProduct.Text = cartSelectedProduct.Amount.ToString();
 
+                }
+                else
+                {
+                    Toast.MakeText(this, "אנא הכנס כמות גדולה מ-0", ToastLength.Long).Show();
+
+                }
+            };
 
             btnSaveProductAmount.Click += BtnSaveProductAmount_Click;
         }
+
+
+
         public async void LvProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             
