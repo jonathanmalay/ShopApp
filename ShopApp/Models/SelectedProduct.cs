@@ -83,5 +83,31 @@ namespace ShopApp
             return productsInCart;
         }
 
+
+
+
+        public static async Task<int> Calculate_TotalOrderPrice(string username)
+        {
+            int total_price = 0;
+            List<SelectedProduct> productsInCart = new List<SelectedProduct>();
+            try
+            {
+                IQuerySnapshot snapshot = await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocumentsAsync();//לוקח את כל המוצרים מהעגלה של אותו בן אדם ומכניס אותם לרשימה מסוג מוצר נבחר
+                productsInCart = snapshot.ToObjects<SelectedProduct>().ToList();
+
+                for(int i=0; i<productsInCart.Count;i++)
+                {
+                    Product p = await Product.GetProduct(productsInCart[i].ProductName);//מחזיר עצם  מסוג מוצר של המוצר שנבחר
+                    int current_product_price = p.Price;//לוקח ממנו את המחיר
+                    int checkout_product_price = productsInCart[i].Amount * current_product_price; //מוסיף לסכום את מחיר המוצר הנוכחי כפול הכמות שבחר המשתמש
+                    total_price += checkout_product_price;
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return total_price;
+        }
+
     }
 }

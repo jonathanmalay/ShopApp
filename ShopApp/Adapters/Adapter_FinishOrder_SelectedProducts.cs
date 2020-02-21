@@ -72,25 +72,32 @@ namespace ShopApp
             TextView tvProduct_Price = convertView.FindViewById<TextView>(Resource.Id.tvSelectedProductInCartPrice);
 
             SelectedProduct temp_SelectedProduct = list_selected_products[position];
-            string product_name = temp_SelectedProduct.ProductName.ToString() ;
-            for (int i = 0; i < list_AllProducts.Count; i++)
-            {
-                Product currentProduct = list_AllProducts[i];
-                if (currentProduct.Name == temp_SelectedProduct.ProductName)
-                {
-                    tvProduct_Price.Text = currentProduct.Price.ToString() + "מחיר:";//מציג את   המחיר של אותו מוצר 
-                    break;
-                }
-            }
-            tvProductName.Text = temp_SelectedProduct.ProductName.ToString();
-            tvAmount.Text = temp_SelectedProduct.Amount.ToString() + "כמות: ";
+            Product currentProduct = GetProduct(temp_SelectedProduct.ProductName);
 
-            
-      
+            tvProductName.Text = temp_SelectedProduct.ProductName;
+            tvAmount.Text = temp_SelectedProduct.Amount + "כמות: ";
+
+            if (currentProduct != null)
+            {
+                tvProduct_Price.Text = "מחיר כולל: " + temp_SelectedProduct.Amount * currentProduct.Price;//מציג את   המחיר של אותו מוצר 
+            }
+
             return convertView;
         }
 
+        private Product GetProduct(string productName)
+        {
+            for (int i = 0; i < list_AllProducts.Count; i++)
+            {
+                Product currentProduct = list_AllProducts[i];
+                if (currentProduct.Name == productName)
+                {
+                    return currentProduct;
+                }
+            }
 
+            return null;
+        }
 
     }
 }

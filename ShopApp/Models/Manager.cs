@@ -130,5 +130,14 @@ namespace ShopApp
 
         }
 
+
+
+        public static async void ChangeManagerPassword(string username, string newPassword)
+        {
+            await AppData.managersCollection.GetDocument(username).UpdateDataAsync("Password", newPassword);
+
+
+        }
+
     }
 }

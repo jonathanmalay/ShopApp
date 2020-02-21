@@ -59,7 +59,7 @@ namespace ShopApp
             try
             {
                 IQuerySnapshot snapshot = await AppData.orders_historyCollection.GetDocument(username).GetCollection("Orders").GetDocumentsAsync();//לוקח את כל ההזמנות שביצע אותו משתמש
-                List<Orders_History> orders_history = snapshot.ToObjects<Orders_History>().ToList();
+                List<Orders_History> orders_history = snapshot.ToObjects<Orders_History>().ToList(); //ממיר לליסט את כל הזמנות 
                 return orders_history;
             }
             catch (Exception)

@@ -14,7 +14,7 @@ using System.Threading;
 
 namespace ShopApp
 {
-    [Activity(Label = "FirstActivity", Theme = "@style/AppTheme", MainLauncher = true)]   //המסך הראשון שיוצג בפתיחת האפליקציה
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]   //המסך הראשון שיוצג בפתיחת האפליקציה
     public class FirstActivity : AppCompatActivity //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {
         protected override void OnCreate(Bundle savedInstanceState)

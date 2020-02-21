@@ -64,7 +64,8 @@ namespace ShopApp
                 if (manager != null) //במידה ותהליך ההזדהות צלח
                 {
                     this.sp.Edit().PutString("Username", manager_username).Apply();//שומר בשרד רפרנס את השם של המשתמש שהתחבר
-                    Intent intent = new Intent(this, typeof(Activity_ManagerHome));//עובר להום אקטיביטי
+                    this.sp.Edit().PutBoolean("isManager", true).Apply();//כותב לשרד רפרנס שהמנהל מחובר  לצורך התחברות אוטומטית עתידית 
+                    Intent intent = new Intent(this, typeof(Activity_ManagerHome));//עובר להום  מנהל אקטיביטי
                     this.StartActivity(intent);
                     Manager m = new Manager();
                     

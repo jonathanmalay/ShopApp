@@ -7,15 +7,16 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+
 namespace ShopApp
 {
     [Activity(Label = "Activity_ManagerHome")]
-    public class Activity_ManagerHome : Activity
-
+    public class Activity_ManagerHome : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {  
-        Button btnAddProduct, btnOrders, btnSetting;
+        Button btnAddProduct, btnOrders, btnSetting,btnRemoveProduct;
         ISharedPreferences sp;
         Manager m;
 
@@ -28,6 +29,7 @@ namespace ShopApp
             this.btnAddProduct = FindViewById<Button>(Resource.Id.btnManagerHomeAddProduct);
             this.btnOrders = FindViewById<Button>(Resource.Id.btnManagerHomeOrders);
             this.btnSetting = FindViewById<Button>(Resource.Id.btnManagerHomeSetting);
+            this.btnRemoveProduct = FindViewById<Button>(Resource.Id.btnManagerHomeRemoveProduct);
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string manager_usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.m = await Manager.GetManager(manager_usernameloged);
@@ -36,9 +38,15 @@ namespace ShopApp
             this.btnAddProduct.Click += BtnAddProduct_Click;
             this.btnOrders.Click += BtnOrders_Click;
             this.btnSetting.Click += BtnSetting_Click;
+            this.btnRemoveProduct.Click += BtnRemoveProduct_Click;
+            
 
+        }
 
-
+        private void BtnRemoveProduct_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Activity_ManagerRemoveProduct));
+            this.StartActivity(intent);
         }
 
         private void BtnSetting_Click(object sender, EventArgs e)
@@ -61,8 +69,8 @@ namespace ShopApp
         {
             try
             {
-                //Intent intent = new Intent(this, typeof());
-                //this.StartActivity(intent);
+                Intent intent = new Intent(this, typeof(Activity_ManagerOrders));
+                this.StartActivity(intent);
             }
 
             catch(Exception)
@@ -84,16 +92,19 @@ namespace ShopApp
             {
                 
             }
-      
+     
         }
+
 
         public override bool OnCreateOptionsMenu(IMenu menu) //רשום אובררייד בגלל שתפריט  קיים וערכו נולל לכן אנחנו דורסים את הערך הקודם ויוצרים תפריט חדש
         {
-            MenuInflater.Inflate(Resource.Menu.menu_home, menu);//הופכים את המניו מאקאםאל לעצם מסוג  תפריט 
+            MenuInflater.Inflate(Resource.Menu.menu_ManagerHome, menu);//הופכים את המניו מאקאםאל לעצם מסוג  תפריט 
 
             return base.OnCreateOptionsMenu(menu);
 
         }
+
+
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         { //פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים) ב.
@@ -104,24 +115,21 @@ namespace ShopApp
             switch (item.ItemId)
             {
 
-                case Resource.Id.action_logout:
+                case Resource.Id.menu_ManagerHomeLogOut:
 
                     editor.PutString("Username", "").Apply();
+                    editor.PutBoolean("isManager", false).Apply();
                     Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
                     Intent intentLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
                     this.StartActivity(intentLogin);
                     break;
 
 
-                case Resource.Id.action_register:
+          
 
-                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
-                    this.StartActivity(intentRegister);
-                    break;
+                case Resource.Id.menu_ManagerHomeAccountSetting:
 
-                case Resource.Id.action_accountSetting:
-
-                    Intent intentAccountSetting = new Intent(this, typeof(HomeSetting_Activityt));//עובר לאקטיביטי הגדרות משתמש
+                    Intent intentAccountSetting = new Intent(this, typeof(Activity_ManagerHome));//עובר לאקטיביטי הגדרות משתמש
                     this.StartActivity(intentAccountSetting);
                     break;
             }
@@ -130,7 +138,10 @@ namespace ShopApp
             return base.OnOptionsItemSelected(item);
         }
 
+        public override void OnBackPressed()
+        {
 
+        }
 
     }
 }

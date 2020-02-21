@@ -17,7 +17,7 @@ namespace ShopApp
     public class HomeActivity : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {
         ISharedPreferences sp;
-        Button btnStartOrder,btnPruchesHistory,btnSetting,btnAddProduct;
+        Button btnStartOrder, btnPruchesHistory, btnSetting;
         TextView tvWelcomeUser;
         User u;
         protected async override void OnCreate(Bundle savedInstanceState)
@@ -25,32 +25,33 @@ namespace ShopApp
             base.OnCreate(savedInstanceState);
             this.SetContentView(Resource.Layout.layout_home);
 
-                this.btnStartOrder = FindViewById<Button>(Resource.Id.btnStartShop);
-                this.btnSetting = FindViewById<Button>(Resource.Id.btnHomeSetting);
-                this.btnPruchesHistory = FindViewById<Button>(Resource.Id.btnPruchesHistory);
-                this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
-                this.btnAddProduct = FindViewById<Button>(Resource.Id.btnHomeAddProduct);
-          
-                this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-                string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
-                this.u = await User.GetUser(usernameloged);
+            this.btnStartOrder = FindViewById<Button>(Resource.Id.btnStartShop);
+            this.btnSetting = FindViewById<Button>(Resource.Id.btnHomeSetting);
+            this.btnPruchesHistory = FindViewById<Button>(Resource.Id.btnPruchesHistory);
+            this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
+            
 
+            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+            string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
+            this.u = await User.GetUser(usernameloged);
 
-                tvWelcomeUser.Text =  u.Username + " ברוך הבא " ; //מציג  הודעת  ברוך הבא בתוספת השם של המשתמש
+            if (this.u == null)
+            {
+                Toast.MakeText(this, "משתמש לא מחובר", ToastLength.Long).Show();
+                Finish();
+                return;
+            }
+            tvWelcomeUser.Text = u.Username + " ברוך הבא "; //מציג  הודעת  ברוך הבא בתוספת השם של המשתמש
 
-                this.btnSetting.Click += BtnSetting_Click;
-                this.btnStartOrder.Click += BtnStartOrder_Click;
+            this.btnSetting.Click += BtnSetting_Click;
+            this.btnStartOrder.Click += BtnStartOrder_Click;
             this.btnPruchesHistory.Click += BtnPruchesHistory_Click;
-            this.btnAddProduct.Click += BtnAddProduct_Click;
-           
+        
+
 
         }
 
-        private void BtnAddProduct_Click(object sender, EventArgs e)
-        {
-          Intent intent =new Intent(this, typeof(Activity_ManagerAddProduct));
-            this.StartActivity(intent);
-        }
+       
 
         private void BtnPruchesHistory_Click(object sender, EventArgs e)
         {
@@ -85,19 +86,19 @@ namespace ShopApp
                     break;
 
 
-                case  Resource.Id.action_register:
-                    
-                     Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
-                     this.StartActivity(intentRegister);
-                     break;
+                case Resource.Id.action_register:
 
-                case  Resource.Id.action_accountSetting:
+                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
+                    this.StartActivity(intentRegister);
+                    break;
 
-                    Intent intentAccountSetting = new Intent(this, typeof(HomeSetting_Activityt));//עובר לאקטיביטי הגדרות משתמש
+                case Resource.Id.action_accountSetting:
+
+                    Intent intentAccountSetting = new Intent(this, typeof(Activity_ManagerHomeSetting));//עובר לאקטיביטי הגדרות משתמש
                     this.StartActivity(intentAccountSetting);
                     break;
             }
-     
+
 
             return base.OnOptionsItemSelected(item);
         }
@@ -122,11 +123,11 @@ namespace ShopApp
 
         public override void OnBackPressed()
         {
-            
+
         }
 
     }
 
 
- 
+
 }

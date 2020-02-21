@@ -1,0 +1,91 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity = "center"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_weight="0.4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_costum_ManagerOrdersAdapterIsDeliverd"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/Is_Deliverd"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_costum_ManagerOrdersAdapterDate"
+            android:textSize="22sp"
+            android:text="@string/Date"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_costum_ManagerOrdersAdapterUsername"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/enter_username"
+            android:textColor="@color/colorPrimary" />
+
+
+         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_costum_ManagerOrdersAdapterPhoneNum"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/phone_number"
+            android:textColor="@color/colorPrimary" />
+
+
+     
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_costum_ManagerOrdersAdapterCity"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/City"
+            android:textColor="@color/colorPrimary" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_costum_ManagerOrdersAdapterAddress"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/Address"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_weight="0.2"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:id="@+id/tv_costum_ManagerOrdersAdapterPrice"
+        android:textColor="@color/colorAccent"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="50$" />
+
+
+</LinearLayout>

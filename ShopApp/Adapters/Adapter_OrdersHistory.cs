@@ -35,9 +35,6 @@ namespace ShopApp
 
         }
 
-
-
-
         public List<Orders_History> GetList()
         {
             return this.AllOrders;

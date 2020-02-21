@@ -65,12 +65,12 @@ namespace ShopApp
 
         private void BtnPaymentMethods_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+           
         }
 
         private void BtnEditDetails_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+          
         }
 
         private void BtnDialogChangePassword_Click(object sender, EventArgs e)

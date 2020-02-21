@@ -23,7 +23,7 @@ namespace ShopApp
         public static FirebaseStorageReference ProductsStorage;
 
         public static IFirestore FireStore { get; set; }
-        public static ICollectionReference usersCollection, paymentCollection, productCollection, cartCollection, orders_historyCollection,managersCollection;
+        public static ICollectionReference usersCollection, paymentCollection, productCollection, cartCollection, orders_historyCollection,managersCollection , manager_ordersCollection;
         private AppData(Activity activity)
         { 
             FirebaseOptions options = new FirebaseOptions.Builder()//מגדיר את הנתונים של הפיירבייס שלי כדי שאוכל להתחבר אליו וליצור תקשורת 
@@ -42,7 +42,7 @@ namespace ShopApp
             cartCollection = FireStore.GetCollection("Cart");//connect to the product files collection in the server.
             orders_historyCollection = FireStore.GetCollection("OrdersHistory");
             managersCollection = FireStore.GetCollection("Managers");//מתחבר לקולקשיין מנהלים
-
+            manager_ordersCollection = FireStore.GetCollection("ManagerOrders");//connect to the managers orders collection
             FirebaseStorage = new FirebaseStorage("gs://bagrutproject-dbe7a.appspot.com/");
             ProductsStorage = FirebaseStorage.Child("Products");
 

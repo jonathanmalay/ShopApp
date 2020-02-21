@@ -9,7 +9,7 @@ using System;
 
 namespace ShopApp
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class MainActivity : AppCompatActivity //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {
         EditText etUsername,etPassword;
@@ -20,33 +20,48 @@ namespace ShopApp
         ProgressDialog pd;
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-            this.SetContentView(Resource.Layout.activity_main);
-            this.etUsername = this.FindViewById<EditText>(Resource.Id.etLoginUsername);
-            this.etPassword = this.FindViewById<EditText>(Resource.Id.etLoginPassword);
-            this.tvRegister = this.FindViewById<TextView>(Resource.Id.tvMainActivityRegister);
-            this.ivShowPassword = this.FindViewById<ImageView>(Resource.Id.ivLoginHidePassword);
-            this.btnLogin = this.FindViewById<Button>(Resource.Id.btnLogin);
-            this.btnLogin_As_Manager = this.FindViewById<Button>(Resource.Id.btnLoginAsManagerMain);
-            
-            
-            this.btnLogin.Click += BtnLogin_Click;
-            this.btnLogin_As_Manager.Click += BtnLogin_As_Manager_Click;
-            this.tvRegister.Click += TvRegister_Click;
-            this.ivShowPassword.Click += IvShowPassword_Click;
-
-
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-            string usernameloged = this.sp.GetString("Username", "");//
-            if(usernameloged != "")
+            try
             {
-                //כשהמשתמש מחובר
-                Intent intent = new Intent(this, typeof(HomeActivity));
-                this.StartActivity(intent);
+                base.OnCreate(savedInstanceState);
+                this.SetContentView(Resource.Layout.activity_main);
+                this.etUsername = this.FindViewById<EditText>(Resource.Id.etLoginUsername);
+                this.etPassword = this.FindViewById<EditText>(Resource.Id.etLoginPassword);
+                this.tvRegister = this.FindViewById<TextView>(Resource.Id.tvMainActivityRegister);
+                this.ivShowPassword = this.FindViewById<ImageView>(Resource.Id.ivLoginHidePassword);
+                this.btnLogin = this.FindViewById<Button>(Resource.Id.btnLogin);
+                this.btnLogin_As_Manager = this.FindViewById<Button>(Resource.Id.btnLoginAsManagerMain);
+
+
+                this.btnLogin.Click += BtnLogin_Click;
+                this.btnLogin_As_Manager.Click += BtnLogin_As_Manager_Click;
+                this.tvRegister.Click += TvRegister_Click;
+                this.ivShowPassword.Click += IvShowPassword_Click;
+
+
+                this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+                string usernameloged = this.sp.GetString("Username", "");
+                bool isManager = this.sp.GetBoolean("isManager", false);
+                if (isManager)
+                {
+                    Intent intent = new Intent(this, typeof(Activity_ManagerHome));
+                    this.StartActivity(intent);
+                }
+                else if (usernameloged != "")
+                {
+                    //כשהמשתמש מחובר
+                    Intent intent = new Intent(this, typeof(HomeActivity));
+                    this.StartActivity(intent);
+                }
+
+
+                AppData.Initialize(this);
+
             }
 
-
-            AppData.Initialize(this);
+            catch(Exception)
+            {
+                
+            }
 
         }
 
@@ -67,7 +82,6 @@ namespace ShopApp
                 Intent intent = new Intent(this, typeof(RegisterActivity));
                 this.StartActivity(intent);
             
-
         }
 
         
@@ -95,10 +109,14 @@ namespace ShopApp
                     Toast.MakeText(this, "שם משתמש או סיסמא שגויים!", ToastLength.Long).Show();
                 }
             pd.Cancel();
-            
-
-         
-           
+          
         }
+
+
+        public override void OnBackPressed()
+        {
+
+        }
+
     }
 }

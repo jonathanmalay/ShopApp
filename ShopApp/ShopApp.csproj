@@ -65,22 +65,25 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\Activity_EditAccuntSetting.cs" />
-    <Compile Include="Activities\Activity_FinishOrder.cs" />
-    <Compile Include="Manager Activities\Activity_ManagerRemoveProduct.cs" />
-    <Compile Include="Manager Activities\Activity_ManagerHomeSetting.cs" />
-    <Compile Include="Activities\Activity_SettingPayment.cs" />
-    <Compile Include="Manager Activities\Activity_ManagerAddProduct.cs" />
-    <Compile Include="Manager Activities\Activity_ManagerHome.cs" />
-    <Compile Include="Manager Activities\Activity_LoginManager.cs" />
+    <Compile Include="Activities\Client Activities\Activity_EditAccuntSetting.cs" />
+    <Compile Include="Activities\Client Activities\Activity_FinishOrder.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerOrders.cs" />
+    <Compile Include="Adapters\Adapter_ManagerOrders.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerRemoveProduct.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerHomeSetting.cs" />
+    <Compile Include="Activities\Client Activities\Activity_SettingPayment.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerAddProduct.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerHome.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_LoginManager.cs" />
     <Compile Include="Adapters\Adapter_OrdersHistory.cs" />
     <Compile Include="Adapters\Adapter_FinishOrder_SelectedProducts.cs" />
     <Compile Include="Firebase\AppData.cs" />
-    <Compile Include="Activities\ClientOrder_Activity.cs" />
-    <Compile Include="Activities\Client_HistoryOrdersActivity.cs" />
+    <Compile Include="Activities\Client Activities\ClientOrder_Activity.cs" />
+    <Compile Include="Activities\Client Activities\Client_HistoryOrdersActivity.cs" />
     <Compile Include="Activities\FirstActivity.cs" />
-    <Compile Include="Activities\HomeActivity.cs" />
-    <Compile Include="Activities\HomeSetting_Activityt.cs" />
+    <Compile Include="Activities\Client Activities\HomeActivity.cs" />
+    <Compile Include="Activities\Client Activities\HomeSetting_Activityt.cs" />
+    <Compile Include="Models\Manager_Order.cs" />
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Services\ImageBrodcastReceiver.cs" />
     <Compile Include="Activities\MainActivity.cs" />
@@ -88,7 +91,7 @@
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Adapters\ProductAdapter.cs" />
-    <Compile Include="Activities\RegisterActivity.cs" />
+    <Compile Include="Activities\Client Activities\RegisterActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SelectedProduct.cs" />
@@ -315,6 +318,24 @@
     <AndroidResource Include="Resources\layout\layout_ManagerRemoveProductDialog.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_costum_ManagerOrdersAdapter.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerOrders.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerDailogOrderCart.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_ManagerHome.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
