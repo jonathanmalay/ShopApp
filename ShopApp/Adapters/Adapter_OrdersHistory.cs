@@ -28,8 +28,8 @@ namespace ShopApp
         public Adapter_OrdersHistory(Activity activity, List<Orders_History> orders_history_list)//מקבלת אקטיביטי ומקבלת  רשימה של הזמנות שבוצעו
         {
             this.activity = activity;
-       
 
+            this.AllOrders = orders_history_list;
             this.sp = activity.GetSharedPreferences("details", FileCreationMode.Private);
             userName = this.sp.GetString("Username", "");
 

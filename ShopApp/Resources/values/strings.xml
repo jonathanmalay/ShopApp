@@ -22,8 +22,10 @@
   <string name="Address">:כתובת </string>
   <string name="confirmPassword">אשר סיסמא</string>
   <string name="terms_conditions">By clicking SignUp you agree all the Terms and Conditions. </string>
+  <string name="orders_conrife_conditions">:) Y.Malay Software שים לב כי אין אפשרות לבטל הזמנה לאחר לחיצה על אישור , אלא רק במענה טילפוני עם החנות . ההזמנה תגיע תוך 3 ימי עסקים . תודה שבחרתם</string>
   <string name="Register">הרשמה</string>
   <string name="Logout">התנתקות</string>
+  <string name="Conrife_Order">מאשר הזמנה</string>
  
   <string name="submit">אישור</string>
   <string name="enter_username">שם משתמש</string>

@@ -105,6 +105,7 @@ namespace ShopApp
             }
             catch (Exception e)
             {
+
             }
             return total_price;
         }

@@ -40,9 +40,10 @@ namespace ShopApp
             this.btnPaymentMethods.Click += BtnPaymentMethods_Click;
             this.btnChangePassword.Click += BtnChangePassword_Click;
 
-
+         
             //Dialog
             this.changePasswordDialog = new Dialog(this);
+            this.changePasswordDialog.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
             this.changePasswordDialog.SetContentView(Resource.Layout.Layout_SettingChangePassword);
             this.changePasswordDialog.SetTitle("Change Password");
             this.changePasswordDialog.SetCancelable(true);

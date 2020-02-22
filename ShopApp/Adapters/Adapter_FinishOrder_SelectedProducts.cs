@@ -23,7 +23,7 @@ namespace ShopApp
 
         public Adapter_FinishOrder_SelectedProducts(Activity activity, List<SelectedProduct> list_selectedProducts, List<Product> list_all_Products)
         {
-            activity = activity;
+            this.activity = activity;
             this.list_selected_products = list_selectedProducts;
             this.list_AllProducts = list_all_Products;
             this.sp = activity.GetSharedPreferences("details", FileCreationMode.Private);

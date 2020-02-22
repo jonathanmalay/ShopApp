@@ -17,7 +17,7 @@ namespace ShopApp
     public class HomeActivity : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {
         ISharedPreferences sp;
-        Button btnStartOrder, btnPruchesHistory, btnSetting;
+        Button btnStartOrder, btnPruchesHistory, btnSetting,btnContectUs;
         TextView tvWelcomeUser;
         User u;
         protected async override void OnCreate(Bundle savedInstanceState)
@@ -28,6 +28,7 @@ namespace ShopApp
             this.btnStartOrder = FindViewById<Button>(Resource.Id.btnStartShop);
             this.btnSetting = FindViewById<Button>(Resource.Id.btnHomeSetting);
             this.btnPruchesHistory = FindViewById<Button>(Resource.Id.btnPruchesHistory);
+            this.btnContectUs = FindViewById<Button>(Resource.Id.btnContectUs);
             this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
             
 
@@ -46,12 +47,34 @@ namespace ShopApp
             this.btnSetting.Click += BtnSetting_Click;
             this.btnStartOrder.Click += BtnStartOrder_Click;
             this.btnPruchesHistory.Click += BtnPruchesHistory_Click;
+            this.btnContectUs.Click += BtnContectUs_Click;
         
 
 
         }
 
-       
+        private void BtnContectUs_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Intent intent = new Intent();
+
+                intent.SetAction(Intent.ActionCall);
+
+                Android.Net.Uri data = Android.Net.Uri.Parse("tel:" + "053-8285819"); //חייוג
+
+                intent.SetData(data);
+
+                StartActivity(intent);
+
+            }
+
+            catch(Exception)
+            {
+                Toast.MakeText(this, "אירעה שגיאה נסה שנית", ToastLength.Long).Show();
+
+            }
+        }
 
         private void BtnPruchesHistory_Click(object sender, EventArgs e)
         {

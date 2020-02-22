@@ -43,7 +43,7 @@ namespace ShopApp
 
         }
 
-        public static async void Add_Order(Activity activity, int price, DateTime date, string client_username, bool is_deliverd)
+        public static async Task<string> Add_Order(Activity activity, int price, DateTime date, string client_username, bool is_deliverd)
         {
             try
             {
@@ -73,19 +73,18 @@ namespace ShopApp
                 order.ID = document.Id;
 
                 await document.SetDataAsync(order);
+
+
+                return order.ID;
             }
 
             catch (Exception)
             {
                 Toast.MakeText(activity, "אירעה שגיאה נסה שנית", ToastLength.Long).Show();
-
+                return null;
             }
 
         }
-
-
-
-
 
         public static async Task<List<Manager_Order>> GetAllOrders()
         { //return all the orders of the shop 
@@ -104,6 +103,30 @@ namespace ShopApp
             }
             return allOrders;
         }
+
+
+
+
+        public static async Task<Manager_Order> GetOrder(string orderId)
+        { //מחזיר עצם מסוג הזמנה 
+            try
+            {   //TODO:  
+
+                IDocumentSnapshot reference = await AppData.manager_ordersCollection.GetDocument(orderId).GetDocumentAsync();   //מחזיר מהשרת את ההזמנה עם אותו מספר זיהוי 
+
+                return reference.ToObject<Manager_Order>();
+            }
+
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
+
+
+
 
 
     }

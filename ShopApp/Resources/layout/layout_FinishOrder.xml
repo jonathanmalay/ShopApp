@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
      <TextView
         android:text="סיום הזמנה"
@@ -19,15 +20,30 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_gravity="center"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content" 
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+        android:layout_weight="0.6"
         android:layout_margin="25dp">
    
     <ListView
         android:id="@+id/listViewFinishOrder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
         </LinearLayout>
+
+    <TextView
+        android:text="מחיר סופי"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/tvFinishOrderTotalPrice" />
+
+
       <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

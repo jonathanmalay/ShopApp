@@ -24,6 +24,7 @@ namespace ShopApp
         TextView tvcurrentAmountProduct; //הכמות הנוכחית של מוצר בקנייה
         Button btnMoveToPayment;
         ListView lvProducts;
+        List<SelectedProduct> selectedProducts;
         SelectedProduct cartSelectedProduct;
         ProductAdapter pa;
         protected async override void OnCreate(Bundle savedInstanceState)
@@ -38,7 +39,7 @@ namespace ShopApp
 
             CreateDialog(this);
 
-            List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
+            selectedProducts = new List<SelectedProduct>();
             selectedProducts = await SelectedProduct.GetAllProductInCart(userName);//מביא  רשימה של כל המוצרים שיש לאותו משתמש בעגלה 
 
             List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
@@ -53,8 +54,16 @@ namespace ShopApp
 
         private void BtnMoveToPayment_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(Activity_FinishOrder));//עובר לאקטיביטי תשלום וסיום הזמנה 
-            this.StartActivity(intent);
+            if (selectedProducts == null)//אם עגלת הקניות של הקונה ריקה הוא לא יוכל לעבור לאקטיביטי ביצוע תשלום 
+            {
+                Toast.MakeText(this, "!!עליך להוסיף לפחות פריט אחד על מנת לעבור לתשלום", ToastLength.Long).Show();
+
+            }
+            else
+            {
+                Intent intent = new Intent(this, typeof(Activity_FinishOrder));//עובר לאקטיביטי תשלום וסיום הזמנה 
+                this.StartActivity(intent);
+            }
         }
 
         public  void CreateDialog(Activity activity)
