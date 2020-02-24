@@ -74,6 +74,13 @@ namespace ShopApp
 
                 await document.SetDataAsync(order);
 
+                string username_client = order.ClientUsername;
+                DateTime order_date = order.Date;
+                int order_price = order.Price;
+                Orders_History order_history_client = new Orders_History(order_date,order_price);//יצירת עצם מסוג היסטוריית הזמנה של לקוח
+                Orders_History.AddOrderToHistory(username_client, order_history_client);//הוספת ההזמנה להיסטוריית ההזמנות של הלקוח 
+                
+
 
                 return order.ID;
             }

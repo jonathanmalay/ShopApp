@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using AlertDialog = Android.App.AlertDialog;
 
 namespace ShopApp
 {
@@ -20,10 +21,17 @@ namespace ShopApp
         Button btnStartOrder, btnPruchesHistory, btnSetting,btnContectUs;
         TextView tvWelcomeUser;
         User u;
+        AlertDialog dialog_error_history;
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             this.SetContentView(Resource.Layout.layout_home);
+
+            AlertDialog.Builder builder_error_history = new AlertDialog.Builder(this);
+            builder_error_history.SetTitle("Y.Malay Software");
+            builder_error_history.SetMessage("לא ניתן לגשת ליהסטוריית ההזמנות מכיוון שטרם ביצעת הזמנות");
+            builder_error_history.SetCancelable(true);
+           dialog_error_history = builder_error_history.Create();//יוצר את הדיאלוג אך עדיין לא מציג אותו
 
             this.btnStartOrder = FindViewById<Button>(Resource.Id.btnStartShop);
             this.btnSetting = FindViewById<Button>(Resource.Id.btnHomeSetting);
@@ -76,10 +84,24 @@ namespace ShopApp
             }
         }
 
-        private void BtnPruchesHistory_Click(object sender, EventArgs e)
+        private async void BtnPruchesHistory_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(Client_HistoryOrdersActivity));//עובר להאקיביטי של היסטוריית הזמנות 
-            this.StartActivity(intent);
+
+            List<Orders_History> client_orders = await Orders_History.GetAllOrders(u.Username);
+
+            if (client_orders != null && client_orders.Count > 0)//בודק האם יש ללקוח הזמנותקודמות ובמידה וכן עובר לאקטיביטי הזמנות קודמות
+            {
+                Intent intent = new Intent(this, typeof(Client_HistoryOrdersActivity));//עובר להאקיביטי של היסטוריית הזמנות 
+                this.StartActivity(intent);
+            }
+
+            else
+            {
+
+                dialog_error_history.Show();//מראה את הדיאלוג שמסביר כי לא ניתן לגשת להיסטוריית ההזמנות מכיוון שהלקוח עדיין לא ביצע שום הזמנות 
+               // Toast.MakeText(this, "אין לך הזמנות קודמות!", ToastLength.Long).Show();
+
+            }
 
         }
 

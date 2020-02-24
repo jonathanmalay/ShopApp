@@ -15,10 +15,10 @@ namespace ShopApp
 {
     class Orders_History
     {
-        public string Date { get; set;}
-        public double Total_Price { get; set;}
+        public DateTime Date { get; set;}
+        public int Total_Price { get; set;}
         public Orders_History() { }// הפעולה הריקה בשביל הפייר בייס על מנת שלא תיווצר שגיאה
-        public Orders_History(string date , double total_price)
+        public Orders_History(DateTime date , int total_price)
         {
             this.Date = date;
             this.Total_Price = total_price;
@@ -28,7 +28,9 @@ namespace ShopApp
         {
             try
             {
-                await AppData.orders_historyCollection.GetDocument(username).GetCollection("Orders").GetDocument(order.Date).SetDataAsync(order);//מוסיף הזמנה  לקולקשיין היסטוריית הזמנות של אותו אדם בפיירבייס
+                string file_name = order.Date.Day.ToString() + order.Date.Month.ToString() + order.Date.Year.ToString(); //השם של ההזמנה בקולקשיין הזמנות של אותו לקוח יהיה התאריך של ההזמנה ,בשל בעיה שצצה בשמירת עצם מסוג תאריך כשם של מסמך בפייר בייס אילתרתי 
+
+                await AppData.orders_historyCollection.GetDocument(username).GetCollection("Orders").GetDocument(file_name).SetDataAsync(order);//מוסיף הזמנה  לקולקשיין היסטוריית הזמנות של אותו אדם בפיירבייס
             }
             catch (Exception e)
             {
@@ -38,11 +40,11 @@ namespace ShopApp
 
 
 
-        public static async Task<Orders_History> GetOrderInHistory(string username, string date)//הפעולה מחזירה את הזמנה שנעשתה 
+        public static async Task<Orders_History> GetOrderInHistory(string username, DateTime date)//הפעולה מחזירה את הזמנה שנעשתה 
         {
             try
             {
-                IDocumentSnapshot reference = await AppData.orders_historyCollection.GetDocument(username).GetCollection("Orders").GetDocument(date).GetDocumentAsync();
+                IDocumentSnapshot reference = await AppData.orders_historyCollection.GetDocument(username).GetCollection("Orders").GetDocument(date.ToString()).GetDocumentAsync();
 
                 return reference.ToObject<Orders_History>();//מחזירה עצם מסוג הזמנה
             }

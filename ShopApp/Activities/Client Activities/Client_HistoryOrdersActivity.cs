@@ -23,8 +23,7 @@ namespace ShopApp
         Adapter_OrdersHistory pa_OrdersHistory;
         protected async override void OnCreate(Bundle savedInstanceState)
         {
-            try
-            {
+           
                 base.OnCreate(savedInstanceState);
                 SetContentView(Resource.Layout.layout_OrdersHistory);
 
@@ -47,12 +46,7 @@ namespace ShopApp
                 this.lvOrdersHistory.ItemClick += LvOrdersHistory_ItemClick;
 
 
-            }
-
-            catch(Exception)
-            {
-
-            }
+            
         }
 
         private void LvOrdersHistory_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
