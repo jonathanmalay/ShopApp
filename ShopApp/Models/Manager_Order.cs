@@ -79,7 +79,9 @@ namespace ShopApp
                 int order_price = order.Price;
                 Orders_History order_history_client = new Orders_History(order_date,order_price);//יצירת עצם מסוג היסטוריית הזמנה של לקוח
                 Orders_History.AddOrderToHistory(username_client, order_history_client);//הוספת ההזמנה להיסטוריית ההזמנות של הלקוח 
-                
+
+                SelectedProduct.ClearAllProductFromCart(order.ClientUsername);//מנקה את עגלת הקניות של המשתמש על מנת שתהיה ריקה בקנייה הבאה
+
 
 
                 return order.ID;

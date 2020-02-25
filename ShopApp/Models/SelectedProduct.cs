@@ -28,11 +28,20 @@ namespace ShopApp
 
 
 
-        public static async void AddSelectedProduct(string username, SelectedProduct sp)
+        public static async void AddSelectedProduct(Activity activity,string username, SelectedProduct sp)
         {
             try
             {
-                await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocument(sp.ProductName).SetDataAsync(sp);//מוסיף מוצר  לקולקשיין עגלה של אותו אדם בפיירבייס
+                if (sp.Amount != 0)
+                {
+                    await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocument(sp.ProductName).SetDataAsync(sp);//מוסיף מוצר  לקולקשיין עגלה של אותו אדם בפיירבייס
+                }
+
+                else
+                {
+                    Toast.MakeText(activity, "אנא הוסף כמות שגדולה מ-0", ToastLength.Long).Show();
+
+                }
             }
             catch (Exception e)
             {
@@ -65,6 +74,24 @@ namespace ShopApp
                 return false;
             }
             return true;   // אמת אם קיים במערכת
+        }
+
+
+        public static async void ClearAllProductFromCart(string username)
+        {
+            try
+            {
+                
+                await AppData.cartCollection.GetDocument(username).DeleteDocumentAsync();// מוחק את העגלה של אותו משתמש מהפפיר בייס על מנת שתהיה ריקה בקנייה הבאה שלו
+
+            }
+
+            catch(Exception)
+            { 
+
+               
+            }
+
         }
 
 
@@ -110,6 +137,13 @@ namespace ShopApp
 
             }
             return total_price;
+        }
+
+
+        public static async void Remove_Product_From_Cart(string username , string product_name)
+        {
+            await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocument(product_name).DeleteDocumentAsync(); //מסיר את המוצר מעגלת המשתמש 
+
         }
 
     }

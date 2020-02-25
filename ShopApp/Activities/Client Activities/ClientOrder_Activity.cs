@@ -89,7 +89,7 @@ namespace ShopApp
             };
             btnMinusProduct.Click += (senderD, eD) =>
             {
-                if (cartSelectedProduct.Amount > 0)//מחסר מהכמות רק אם היא גדולה מ0 על מנת למוע כמות שלילית של מוצר.
+                if (cartSelectedProduct.Amount > 0)//מחסר מהכמות רק אם היא גדולה מ0 על מנת למנוע כמות שלילית של מוצר.
                 {
                     cartSelectedProduct.Amount--; //מוריד אחד לכמות
                     tvcurrentAmountProduct.Text = cartSelectedProduct.Amount.ToString();
@@ -97,6 +97,8 @@ namespace ShopApp
                 }
                 else
                 {
+                    cartSelectedProduct.Amount = 0;
+                    
                     Toast.MakeText(this, "אנא הכנס כמות גדולה מ-0", ToastLength.Long).Show();
 
                 }
@@ -132,7 +134,7 @@ namespace ShopApp
         private void BtnSaveProductAmount_Click(object sender, EventArgs e)
         {
             // SelectedProduct sp = new SelectedProduct(selectedProduct.Name, AmountProduct);//יוצר עצם מסוג מוצר נבחר ומכניס לפעולה הבונה שלו את הערכים שהתקבלו על ידי המשתמש בדיאלוג כלומר הכמות  של אותו מוצר
-            SelectedProduct.AddSelectedProduct(this.userName, cartSelectedProduct); //מוסיף את המוצר לעגלת הקניות כלומר לקולקשיין  עגלה בפיירבייס שבו יש מסמך עם השם של המשתמש שמחובר  לאפליקציה ובתוך המסמך יש את המוצרים שהזמין 
+            SelectedProduct.AddSelectedProduct(this,this.userName, cartSelectedProduct); //מוסיף את המוצר לעגלת הקניות כלומר לקולקשיין  עגלה בפיירבייס שבו יש מסמך עם השם של המשתמש שמחובר  לאפליקציה ובתוך המסמך יש את המוצרים שהזמין 
             Toast.MakeText(this, "הפריט נוסף לעגלת הקניות (:", ToastLength.Long).Show();
 
             bool exist = false;
@@ -147,9 +149,14 @@ namespace ShopApp
                 }
             }
 
-            if(!exist)
+            if(!exist && cartSelectedProduct.Amount>0)
             {
                 pa.CartProductsList.Add(cartSelectedProduct);
+            }
+
+            else
+            {
+              SelectedProduct.Remove_Product_From_Cart(userName, cartSelectedProduct.ProductName);//מסירה את המוצר שכמותו 0 מהעגלה כי במידה ולא אעשה זאת הוא יוצג בסוף ההזמנה
             }
 
             dialogAddProduct.Dismiss();
