@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
         android:background ="@drawable/circlelayout"
+          
         >
         <LinearLayout
             android:orientation="horizontal"
@@ -35,10 +36,11 @@
                 android:layout_width="35dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/iconfullname"
+                
                  />
             <Button
                 android:text="ערוך פרטי משתמש"
-                 android:textStyle="bold"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"

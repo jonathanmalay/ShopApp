@@ -3,6 +3,7 @@ using Android.Content;
 using Android.App;
 using Android.Views;
 using Android.Widget;
+using Square.Picasso;
 
 namespace ShopApp
 {
@@ -81,13 +82,12 @@ namespace ShopApp
                     tvSubTitle.Text = currentSelectedProduct.Amount.ToString();//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
                     break;
                 }
-
-                
-
             }
             
             tvPrice.Text = "מחיר לקילו " + tempProduct.Price;
             tvTitle.Text = tempProduct.Name;
+
+            Picasso.With(this.activity).Load(tempProduct.ImageUrl).Into(ivProduct);
            
             return convertView;
         }

@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/back1">
 
+
+    
+    <include android:id="@id/toolbar_client_home" layout="@layout/toolbar_client" 
+    />
+
     <TextView
         android:text="פרטי משתמש"
         android:textColor="@color/colorTitele"

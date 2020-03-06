@@ -39,9 +39,9 @@ namespace ShopApp
             {
                 return;
             }
-            string image_url = intent.GetStringExtra("filePath");//לוקח מתוך האינטנט את המיקום של הקובץ
+            string image_uri = intent.GetStringExtra("filePath");//לוקח מתוך האינטנט את המיקום של הקובץ
 
-            Bitmap image_Bitmap = BitmapFactory.DecodeFile(image_url);//לוקח את התמונה והופך אותה לביטמאפ 
+            Bitmap image_Bitmap = BitmapFactory.DecodeFile(image_uri);//לוקח את התמונה והופך אותה לביטמאפ 
 
             if (image_Bitmap != null)
             {

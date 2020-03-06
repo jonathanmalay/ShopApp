@@ -16,7 +16,7 @@ namespace ShopApp
     public class Activity_EditAccuntSetting : Activity
     {
         EditText etEditFullName, etEditPhoneNumber, etEditCity ,etEditStreetAddress , etEditEmail, etEditUsername;
-        Button btnSaveDetails;
+        Button btnSaveDetails, btn_backPage;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,11 +29,22 @@ namespace ShopApp
             this.etEditCity = FindViewById<EditText>(Resource.Id.etEditAccuntSettingCity);
             this.etEditStreetAddress = FindViewById<EditText>(Resource.Id.etEditAccuntSettingStreetAddress);
             this.btnSaveDetails = FindViewById<Button>(Resource.Id.btnEditAccuntSettingConrifeEdit);
+            this.btn_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
 
 
             this.btnSaveDetails.Click += BtnSaveDetails_Click;
-
+            this.btn_backPage.Click += Btn_backPage_Click;
+        
            
+        }
+
+      
+
+        private void Btn_backPage_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(HomeSetting_Activityt));
+            this.StartActivity(intent);
+
         }
 
         private void BtnSaveDetails_Click(object sender, EventArgs e)

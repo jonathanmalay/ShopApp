@@ -43,7 +43,7 @@ namespace ShopApp
             orders_historyCollection = FireStore.GetCollection("OrdersHistory");
             managersCollection = FireStore.GetCollection("Managers");//מתחבר לקולקשיין מנהלים
             manager_ordersCollection = FireStore.GetCollection("ManagerOrders");//connect to the managers orders collection
-            FirebaseStorage = new FirebaseStorage("gs://bagrutproject-dbe7a.appspot.com/");
+            FirebaseStorage = new FirebaseStorage("bagrutproject-dbe7a.appspot.com");
             ProductsStorage = FirebaseStorage.Child("Products");
 
         }

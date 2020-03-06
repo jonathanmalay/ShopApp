@@ -21,12 +21,16 @@ namespace ShopApp
         ListView lvOrdersHistory;
         Orders_History Orders_History;
         Adapter_OrdersHistory pa_OrdersHistory;
+
+        Button btn_backPage;
         protected async override void OnCreate(Bundle savedInstanceState)
         {
            
                 base.OnCreate(savedInstanceState);
                 SetContentView(Resource.Layout.layout_OrdersHistory);
 
+            this.btn_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
+            this.btn_backPage.Click += Btn_backPage_Click;
                 this.sp = GetSharedPreferences("details", FileCreationMode.Private);
                 this.userName = this.sp.GetString("Username", "");
 
@@ -47,6 +51,12 @@ namespace ShopApp
 
 
             
+        }
+
+        private void Btn_backPage_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(HomeActivity));
+            this.StartActivity(intent);
         }
 
         private void LvOrdersHistory_ItemClick(object sender, AdapterView.ItemClickEventArgs e)

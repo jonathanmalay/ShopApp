@@ -1,10 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back1">
+
+    <include
+        android:id="@id/toolbar_client_home"
+        layout="@layout/toolbar_client" 
+    />
+
+
+
+
     <TextView
         android:text="הגדרות משתמש"
         android:textColor="@color/colorTitele"
@@ -12,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textSize="35dp"
+        android:elevation="5dp"
         android:textStyle="bold"
         android:gravity="center" />
     <LinearLayout
@@ -26,6 +36,7 @@
             android:layout_width="match_parent"
             android:background="@drawable/circlebutton"
             android:paddingHorizontal="10dp"
+            android:elevation="5dp"
             android:layout_marginHorizontal="5dp"
             android:layout_marginTop="15dp"
             android:layout_height="wrap_content"
@@ -46,6 +57,7 @@
 />
         </LinearLayout>
         <LinearLayout
+            android:elevation="5dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:background="@drawable/circlebutton"
@@ -67,6 +79,7 @@
                 android:id="@+id/btnSettingPaymentMethods"/>
         </LinearLayout>
         <LinearLayout
+            android:elevation="5dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:background="@drawable/circlebutton"

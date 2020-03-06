@@ -22,8 +22,9 @@ namespace ShopApp.Activities
         ISharedPreferences sp;
         ListView lv_Selected_Products;
         TextView tv_Total_Price; 
-        Button btn_conrife_order;
+        Button btn_conrife_order,btn_BackPage;
         List<SelectedProduct> list_selectedProducts;
+        ProgressDialog pd;
 
 
       
@@ -35,8 +36,13 @@ namespace ShopApp.Activities
                 base.OnCreate(savedInstanceState);
                 SetContentView(Resource.Layout.layout_FinishOrder);
 
+                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
+                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
+                pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+
                 this.lv_Selected_Products = FindViewById<ListView>(Resource.Id.listViewFinishOrder);
                 this.btn_conrife_order = FindViewById<Button>(Resource.Id.btnFinishOrderConrifeOrder);
+                this.btn_BackPage = FindViewById<Button>(Resource.Id.btnClientFinishOrderBack);
                 this.tv_Total_Price = FindViewById<TextView>(Resource.Id.tvFinishOrderTotalPrice);
                 this.sp = GetSharedPreferences("details", FileCreationMode.Private);
                 this.userName = this.sp.GetString("Username", "");
@@ -45,7 +51,7 @@ namespace ShopApp.Activities
                 this.tv_Total_Price.Text = Total_Price.ToString() + " :מחיר סופי" ;
                 CreateDialog(this);
 
-
+                btn_BackPage.Click += Btn_BackPage_Click;
                 btn_conrife_order.Click += Btn_conrife_order_Click;
                 list_selectedProducts = new List<SelectedProduct>();
                 list_selectedProducts = await SelectedProduct.GetAllProductInCart(userName);//מביא  רשימה של כל המוצרים שיש לאותו משתמש בעגלה 
@@ -53,6 +59,7 @@ namespace ShopApp.Activities
                 {
 
                     Toast.MakeText(this, "אירעה שגיאה  נסה שנית", ToastLength.Long).Show();
+                    pd.Cancel();
                 }
 
                 else
@@ -64,7 +71,7 @@ namespace ShopApp.Activities
                     if (list_products == null)
                     {
                         Toast.MakeText(this, "אירעה שגיאה נסה שנית", ToastLength.Long).Show();
-
+                        pd.Cancel();
                     }
 
                     else
@@ -73,6 +80,7 @@ namespace ShopApp.Activities
                         this.adapter_selected_products = new Adapter_FinishOrder_SelectedProducts(this, list_selectedProducts, list_products);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
                         this.lv_Selected_Products.Adapter = this.adapter_selected_products;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
                         this.adapter_selected_products.NotifyDataSetChanged(); //הפעלת המתאם
+                        pd.Cancel();
                     }
 
                 }
@@ -82,7 +90,7 @@ namespace ShopApp.Activities
             catch (Exception)
             {
                 Toast.MakeText(this, "אירעה שגיאה נסה שנית", ToastLength.Long).Show();
-
+                pd.Cancel();
             }
 
 
@@ -90,6 +98,11 @@ namespace ShopApp.Activities
 
         }
 
+        private void Btn_BackPage_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(ClientOrder_Activity));
+            this.StartActivity(intent);
+        }
 
         public void CreateDialog(Activity activity)
         {
@@ -111,7 +124,7 @@ namespace ShopApp.Activities
                 try
                 {
                     DateTime correct_order_date = DateTime.Now; //הזמן הנוכחי 
-                    string order_id = await Manager_Order.Add_Order(this, Total_Price, correct_order_date, userName, false);//שולח את ההזמנה 
+                    string order_id = await Manager_Order.Add_Order(this, Total_Price, correct_order_date, userName, false,list_selectedProducts);//שולח את ההזמנה 
 
                     if (order_id != null)
                     {
@@ -144,6 +157,11 @@ namespace ShopApp.Activities
         {
             dialog_conrife_Order.Show(); //מפעיל את הדיאלוג
 
+
+        }
+
+        public override void OnBackPressed()
+        {
 
         }
     }

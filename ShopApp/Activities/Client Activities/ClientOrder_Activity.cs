@@ -19,7 +19,7 @@ namespace ShopApp
     {
         ISharedPreferences sp;
         string userName;
-
+        Button btn_back_page;
         Dialog dialogAddProduct;
         TextView tvcurrentAmountProduct; //הכמות הנוכחית של מוצר בקנייה
         Button btnMoveToPayment;
@@ -34,6 +34,7 @@ namespace ShopApp
 
             this.lvProducts = FindViewById<ListView>(Resource.Id.listViewProducts);
             this.btnMoveToPayment = FindViewById<Button>(Resource.Id.btnClientOrderLayoutMoveToPayment);
+            this.btn_back_page = FindViewById<Button>(Resource.Id.btnClientOrderGoBack);
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
@@ -49,20 +50,43 @@ namespace ShopApp
             this.lvProducts.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
             this.lvProducts.ItemClick += LvProducts_ItemClick;
-            this.btnMoveToPayment.Click += BtnMoveToPayment_Click;
+            this.btnMoveToPayment.Click += BtnMoveToPayment_ClickAsync;
+            this.btn_back_page.Click += Btn_back_page_Click;
         }
 
-        private void BtnMoveToPayment_Click(object sender, EventArgs e)
+        private void Btn_back_page_Click(object sender, EventArgs e)
         {
-            if (selectedProducts == null)//אם עגלת הקניות של הקונה ריקה הוא לא יוכל לעבור לאקטיביטי ביצוע תשלום 
-            {
-                Toast.MakeText(this, "!!עליך להוסיף לפחות פריט אחד על מנת לעבור לתשלום", ToastLength.Long).Show();
+            Intent intent = new Intent(this, typeof(HomeActivity)); 
+            this.StartActivity(intent);
+        }
 
+
+
+        public async Task<bool> Conrife_Order_Minimum_Price()
+        {
+            int price_check = await SelectedProduct.Calculate_TotalOrderPrice(userName);
+            if (price_check < 50)
+            {
+                return false;
             }
             else
             {
+                return true;
+            }
+        }
+
+        private async void BtnMoveToPayment_ClickAsync(object sender, EventArgs e)
+        {
+            bool Is_Okay = await Conrife_Order_Minimum_Price();
+            if (Is_Okay)//אם סכום ההזמנה קטן מחמישים שקלים  לא יוכל לעבור לאקטיביטי ביצוע תשלום 
+            {
                 Intent intent = new Intent(this, typeof(Activity_FinishOrder));//עובר לאקטיביטי תשלום וסיום הזמנה 
                 this.StartActivity(intent);
+            }
+            else
+            {
+                Toast.MakeText(this, " סכום ההזמנה המינימלי הינו 50 שקלים,על מנת לבצע תשלום אנא הוסף פריטים על מנת להגיע לסכום זה!!", ToastLength.Long).Show();
+
             }
         }
 
@@ -100,7 +124,7 @@ namespace ShopApp
                     cartSelectedProduct.Amount = 0;
                     
                     Toast.MakeText(this, "אנא הכנס כמות גדולה מ-0", ToastLength.Long).Show();
-
+                    
                 }
             };
 
@@ -154,9 +178,9 @@ namespace ShopApp
                 pa.CartProductsList.Add(cartSelectedProduct);
             }
 
-            else
+            else if(cartSelectedProduct.Amount==0)
             {
-              SelectedProduct.Remove_Product_From_Cart(userName, cartSelectedProduct.ProductName);//מסירה את המוצר שכמותו 0 מהעגלה כי במידה ולא אעשה זאת הוא יוצג בסוף ההזמנה
+             SelectedProduct.Remove_Product_From_Cart(userName, cartSelectedProduct.ProductName);//מסירה את המוצר שכמותו 0 מהעגלה כי במידה ולא אעשה זאת הוא יוצג בסוף ההזמנה
             }
 
             dialogAddProduct.Dismiss();

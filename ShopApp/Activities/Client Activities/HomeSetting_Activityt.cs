@@ -17,7 +17,7 @@ namespace ShopApp
     {
         Dialog changePasswordDialog;
 
-        Button btnChangePassword, btnEditDetails,btnDialogChangePassword,btnPaymentMethods;
+        Button btnChangePassword, btnEditDetails, btnDialogChangePassword, btnPaymentMethods, btn_BackPage;
         EditText etNewPassword, etNewPasswordConrife,etOldPassword;     
 
         ISharedPreferences sp;
@@ -35,11 +35,12 @@ namespace ShopApp
             this.btnEditDetails = FindViewById<Button>(Resource.Id.btnSettingEtitdetails);
             this.btnChangePassword = this.FindViewById<Button>(Resource.Id.btnSettingChangePassword);
             this.btnPaymentMethods = this.FindViewById<Button>(Resource.Id.btnSettingPaymentMethods);
+            this.btn_BackPage = this.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);//back page button
 
             this.btnEditDetails.Click += BtnEditDetails_Click;
             this.btnPaymentMethods.Click += BtnPaymentMethods_Click;
             this.btnChangePassword.Click += BtnChangePassword_Click;
-
+            this.btn_BackPage.Click += Btn_BackPage_Click;
          
             //Dialog
             this.changePasswordDialog = new Dialog(this);
@@ -52,6 +53,13 @@ namespace ShopApp
             etNewPasswordConrife = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.etManagerChangePasswordConrife);
             btnDialogChangePassword = this.changePasswordDialog.FindViewById<Button>(Resource.Id.btnManagerChangePasswordSave);
             btnDialogChangePassword.Click += BtnDialogChangePassword_Click;
+        }
+
+        private void Btn_BackPage_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(HomeActivity)); 
+            this.StartActivity(intent);
+
         }
 
         private void BtnChangePassword_Click(object sender, EventArgs e)
@@ -81,7 +89,7 @@ namespace ShopApp
         private async void  BtnDialogChangePassword_Click(object sender, EventArgs e)
         {  
                 User u;
-                ISharedPreferences sp;
+            ISharedPreferences sp;
 
                 this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
                 string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש

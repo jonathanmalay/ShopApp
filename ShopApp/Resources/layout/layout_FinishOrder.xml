@@ -4,25 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
      <TextView
         android:text="סיום הזמנה"
         android:textColor="@color/colorAccent"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        
+        android:layout_weight="0.7"
         android:textSize="35dp"
         android:textStyle="bold"
         android:gravity="center"
         android:id="@+id/tvFinishOrdertitle" />
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="@string/BackPage"
+            android:textColor="@color/colorEditTextHint"
+            android:textStyle="bold"
+            android:id="@+id/btnClientFinishOrderBack"
+            android:background="@drawable/circlebutton"
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_gravity="center"
          android:layout_width="match_parent"
          android:layout_height="0dp"
-        android:layout_weight="0.6"
+        android:layout_weight="0.7"
         android:layout_margin="25dp">
    
     <ListView
@@ -32,7 +49,7 @@
         </LinearLayout>
 
     <TextView
-        android:text="מחיר סופי"
+        android:text=":מחיר סופי"
         android:textColor="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,6 +71,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="30dp"
+        android:drawableLeft = "@drawable/iconsettingpay"
         
         android:id="@+id/btnFinishOrderConrifeOrder"/>
 

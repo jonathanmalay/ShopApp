@@ -43,7 +43,9 @@ namespace ShopApp
             Quantity = quantity;
         }
 
-        public static async void AddProduct(Activity activity, int product_id, string product_name, int product_price, Bitmap product_image, double product_Quantity)
+    //    public static async Task<string> Upload_Image()
+
+       public static async void AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)
         {//פעולה אשר מוסיפה מוצר 
 
             try
@@ -51,16 +53,15 @@ namespace ShopApp
                 //העלאת התמונה וקבלת הקישור של התמונה
                 string imageUrl = "";
 
-                using (MemoryStream ms = new MemoryStream())
+                using (var stream = activity.ContentResolver.OpenInputStream(product_image))
                 {
-                    product_image.Compress(Bitmap.CompressFormat.Png, 100, ms);
-                    imageUrl = await AppData.ProductsStorage.Child(product_name).PutAsync(ms);
+                   imageUrl= await AppData.ProductsStorage.Child(product_name + ".jpg").PutAsync(stream);
                 }
 
                 if (imageUrl == "")
                 {
                     Toast.MakeText(activity, "קיימת בעיה בתמונה, אנא נסה שוב", ToastLength.Long).Show();
-                    return;
+                    imageUrl = "";
                 }
 
 
@@ -79,11 +80,13 @@ namespace ShopApp
 
             }
             catch(Exception e)
-            {
+            {  
                 Toast.MakeText(activity, "חלה שגיאה, אנא נסה שוב", ToastLength.Long).Show();
             }
 
         }
+
+
        
         public static async Task RemoveProduct(string username , Product product)
         {//הפעולה מוחקת את המוצר מהפייר בייס
@@ -103,9 +106,7 @@ namespace ShopApp
         {//הפעולה מחזירה עצם מסוג מוצר
             try
             {
-
                 IDocumentSnapshot reference = await AppData.FireStore.GetCollection("Product").GetDocument(name).GetDocumentAsync();
-
                 return reference.ToObject<Product>();
             }
 

@@ -155,10 +155,13 @@ namespace ShopApp
 
             }
 
-            catch(Exception)
+            catch(Exception e)
+
             {
                 return null;
             }
+  
+           
 
         }
 

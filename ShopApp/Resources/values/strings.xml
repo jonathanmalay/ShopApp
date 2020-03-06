@@ -14,6 +14,7 @@
   <string name="hide_pwd">Hide Password</string>
   <string name="forgot">Forgot password?</string>
   <string name="closebutton">Close Button for Activity</string>
+  <string name="BackPage">חזור</string>
   <string name="newUser">.עדיין לא נרשמת? הירשם כאן</string>
   <string name="fullName">שם מלא</string>
   <string name="mobileNumber">מספר טלפון</string>

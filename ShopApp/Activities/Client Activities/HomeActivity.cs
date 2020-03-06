@@ -27,6 +27,7 @@ namespace ShopApp
             base.OnCreate(savedInstanceState);
             this.SetContentView(Resource.Layout.layout_home);
 
+
             AlertDialog.Builder builder_error_history = new AlertDialog.Builder(this);
             builder_error_history.SetTitle("Y.Malay Software");
             builder_error_history.SetMessage("לא ניתן לגשת ליהסטוריית ההזמנות מכיוון שטרם ביצעת הזמנות");
@@ -67,7 +68,7 @@ namespace ShopApp
             {
                 Intent intent = new Intent();
 
-                intent.SetAction(Intent.ActionCall);
+                intent.SetAction(Intent.ActionDial);
 
                 Android.Net.Uri data = Android.Net.Uri.Parse("tel:" + "053-8285819"); //חייוג
 

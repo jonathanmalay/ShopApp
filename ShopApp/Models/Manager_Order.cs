@@ -43,7 +43,7 @@ namespace ShopApp
 
         }
 
-        public static async Task<string> Add_Order(Activity activity, int price, DateTime date, string client_username, bool is_deliverd)
+        public static async Task<string> Add_Order(Activity activity, int price, DateTime date, string client_username, bool is_deliverd,List<SelectedProduct> products_list)    
         {
             try
             {
@@ -65,14 +65,16 @@ namespace ShopApp
                     order.Address = u.StreetAddress;
                     order.City = u.City;
                     order.ClientPhone = u.PhoneNum;
-
+                    order.CartList = products_list;//עגלת הקניות של המשתמש 
                 }
 
                 var document = AppData.manager_ordersCollection.CreateDocument();
-
+                   
                 order.ID = document.Id;
 
-                await document.SetDataAsync(order);
+                await AppData.manager_ordersCollection.GetDocument(order.ID).SetDataAsync(order);//add the order to the manager_ordersCollection d
+
+                 
 
                 string username_client = order.ClientUsername;
                 DateTime order_date = order.Date;
@@ -87,7 +89,7 @@ namespace ShopApp
                 return order.ID;
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
                 Toast.MakeText(activity, "אירעה שגיאה נסה שנית", ToastLength.Long).Show();
                 return null;

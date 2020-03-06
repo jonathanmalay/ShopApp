@@ -48,6 +48,7 @@ namespace ShopApp
             this.lv_ManagerOrders.ItemClick += Lv_ManagerOrders_ItemClick;
 
 
+
             //Dialog
             this.dialog_order = new Dialog(this);
             this.dialog_order.SetContentView(Resource.Layout.layout_ManagerDailogOrderCart);
