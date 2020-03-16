@@ -16,7 +16,7 @@ namespace ShopApp
     [Activity(Label = "Activity_ManagerHome")]
     public class Activity_ManagerHome : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {  
-        Button btnAddProduct, btnOrders, btnSetting,btnRemoveProduct;
+        Button btn_EditProducts, btnOrders, btnSetting;
         ISharedPreferences sp;
         Manager m;
 
@@ -26,29 +26,39 @@ namespace ShopApp
 
             SetContentView(Resource.Layout.layout_ManagerHome);
 
-            this.btnAddProduct = FindViewById<Button>(Resource.Id.btnManagerHomeAddProduct);
+            this.btn_EditProducts= FindViewById<Button>(Resource.Id.btnManagerHomeEditProducts);
             this.btnOrders = FindViewById<Button>(Resource.Id.btnManagerHomeOrders);
             this.btnSetting = FindViewById<Button>(Resource.Id.btnManagerHomeSetting);
-            this.btnRemoveProduct = FindViewById<Button>(Resource.Id.btnManagerHomeRemoveProduct);
+           
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string manager_usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.m = await Manager.GetManager(manager_usernameloged);
 
 
-            this.btnAddProduct.Click += BtnAddProduct_Click;
+            this.btn_EditProducts.Click += Btn_EditProducts_Click;
             this.btnOrders.Click += BtnOrders_Click;
             this.btnSetting.Click += BtnSetting_Click;
-            this.btnRemoveProduct.Click += BtnRemoveProduct_Click;
             
 
         }
 
-        private void BtnRemoveProduct_Click(object sender, EventArgs e)
+        private void Btn_EditProducts_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(Activity_ManagerRemoveProduct));
-            this.StartActivity(intent);
+            try
+            {
+                Intent intent = new Intent(this, typeof());
+                this.StartActivity(intent);
+            }
+
+
+            catch (Exception)
+            {
+
+            }
+
         }
 
+       
         private void BtnSetting_Click(object sender, EventArgs e)
         {
             try
@@ -78,23 +88,6 @@ namespace ShopApp
 
             }
         }
-
-        private void BtnAddProduct_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Intent intent = new Intent(this, typeof(Activity_ManagerAddProduct));
-                this.StartActivity(intent);
-            }
-
-
-        catch(Exception)
-            {
-                
-            }
-     
-        }
-
 
         public override bool OnCreateOptionsMenu(IMenu menu) //רשום אובררייד בגלל שתפריט  קיים וערכו נולל לכן אנחנו דורסים את הערך הקודם ויוצרים תפריט חדש
         {

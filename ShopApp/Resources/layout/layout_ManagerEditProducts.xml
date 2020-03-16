@@ -3,22 +3,22 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-     <include
-        layout="@layout/toolbar_client"
-        />
 
-     <ListView
-        android:id="@+id/listView_ManagerOrders"
+    <include layout="@layout/toolbar_client" />
+
+     
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:id="@+id/listviewManagerRemoveProduct"/>
 
-
-    <android.support.design.widget.FloatingActionButton
+     <android.support.design.widget.FloatingActionButton      
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_margin="25dp"
-        android:id = "@+id/fab_Manager_addOrder"
+        android:layout_margin="15dp"
+        android:id = "@+id/fab_Manager_addNewProduct"
         android:src="@drawable/plusicon"/>
+
 
 </FrameLayout>

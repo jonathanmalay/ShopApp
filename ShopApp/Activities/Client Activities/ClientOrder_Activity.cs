@@ -21,7 +21,7 @@ namespace ShopApp
         string userName;
         Button btn_back_page;
         Dialog dialogAddProduct;
-        TextView tvcurrentAmountProduct; //הכמות הנוכחית של מוצר בקנייה
+        TextView tvcurrentAmountProduct,tv_toolbar_title; //הכמות הנוכחית של מוצר בקנייה
         Button btnMoveToPayment;
         ListView lvProducts;
         List<SelectedProduct> selectedProducts;
@@ -32,9 +32,12 @@ namespace ShopApp
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ClientOrder_Layout);
 
+            this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+            this.tv_toolbar_title.Text = "הזמנה";
+
             this.lvProducts = FindViewById<ListView>(Resource.Id.listViewProducts);
             this.btnMoveToPayment = FindViewById<Button>(Resource.Id.btnClientOrderLayoutMoveToPayment);
-            this.btn_back_page = FindViewById<Button>(Resource.Id.btnClientOrderGoBack);
+            this.btn_back_page = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
@@ -94,7 +97,7 @@ namespace ShopApp
         {
             dialogAddProduct = new Dialog(this);
 
-            Button btnPlusProduct, btnMinusProduct, btnSaveProductAmount;
+            Button btnPlusProduct, btnMinusProduct, btnSaveProductAmount , btn_close_dialog;
 
             dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
             dialogAddProduct.SetContentView(Resource.Layout.layoutAddProductDialog);
@@ -105,7 +108,7 @@ namespace ShopApp
             btnMinusProduct = dialogAddProduct.FindViewById<Button>(Resource.Id.btnDialogAddProductMinus); //כפתור ההורדה של הכמות
             btnPlusProduct = dialogAddProduct.FindViewById<Button>(Resource.Id.btnDialogAddProductPlus); //כפתור ההוספה של הכמות 
             btnSaveProductAmount = dialogAddProduct.FindViewById<Button>(Resource.Id.btnDialogAddProductSave); //כפתור השמירה
-
+            btn_close_dialog = dialogAddProduct.FindViewById<Button>(Resource.Id.btn_CloentOrderActivity_dialogAddProduct_CloseDialog);
             btnPlusProduct.Click += (senderD, eD) =>
             {
                 cartSelectedProduct.Amount++; //מוסיף אחד לכמות
@@ -128,8 +131,15 @@ namespace ShopApp
                 }
             };
 
+            btn_close_dialog.Click += (senderD, eD) =>
+            {
+                dialogAddProduct.Dismiss(); // סוגר את הדיאלוג 
+
+            };
+
             btnSaveProductAmount.Click += BtnSaveProductAmount_Click;
         }
+
 
 
 

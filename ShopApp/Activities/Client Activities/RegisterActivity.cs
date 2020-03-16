@@ -18,12 +18,18 @@ namespace ShopApp
         ISharedPreferences sp;
         EditText etFullName, etPhoneNumber ,etPassword,etEmail,etUsername,etCity,etStreetAddress;
         Button btnConrifRegister;
+        TextView tv_toolbar_title;
         ProgressDialog pd;
+
+        Button btn_backPage;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             this.SetContentView(Resource.Layout.layout_Register);
 
+            this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+            this.tv_toolbar_title.Text = "הרשמה";
+            this.btn_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.etFullName = FindViewById<EditText>(Resource.Id.etNameRegister);
             this.etPhoneNumber = FindViewById<EditText>(Resource.Id.etPhoneRegister);
             this.etPassword = FindViewById<EditText>(Resource.Id.etPasswordRegister);
@@ -33,7 +39,15 @@ namespace ShopApp
             this.etStreetAddress = FindViewById<EditText>(Resource.Id.etRegisterStreetAddress);
             this.btnConrifRegister = FindViewById<Button>(Resource.Id.btnConrifeRegister);
             this.btnConrifRegister.Click += BtnConrifRegister_Click;
+            this.btn_backPage.Click += Btn_backPage_Click;
            
+        }
+
+        private void Btn_backPage_Click(object sender, EventArgs e)
+        {
+
+            Intent intent = new Intent(this, typeof(MainActivity));//עובר לאקטיביטי login
+            this.StartActivity(intent);
         }
 
         private void BtnConrifRegister_Click(object sender, EventArgs e)

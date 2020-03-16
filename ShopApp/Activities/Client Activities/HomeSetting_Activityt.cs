@@ -16,7 +16,7 @@ namespace ShopApp
     public class HomeSetting_Activityt : Activity
     {
         Dialog changePasswordDialog;
-
+        TextView tv_toolbar_title;
         Button btnChangePassword, btnEditDetails, btnDialogChangePassword, btnPaymentMethods, btn_BackPage;
         EditText etNewPassword, etNewPasswordConrife,etOldPassword;     
 
@@ -27,6 +27,9 @@ namespace ShopApp
         { 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.SettingHome_Layout);
+
+            this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+            this.tv_toolbar_title.Text = "הגדרות";
 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש

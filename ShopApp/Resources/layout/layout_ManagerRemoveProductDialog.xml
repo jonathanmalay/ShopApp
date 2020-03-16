@@ -3,12 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/circlelayout">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="!!במידה ותלחץ על הסר המוצר ימחק לחלוטין"
+        android:layout_marginHorizontal="30dp"
+        android:gravity="center"
+        android:text="במידה ותלחץ על הסר המוצר ימחק לחלוטין"
         android:textColor="@color/colorAccent"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -16,12 +19,14 @@
 
 
     <Button
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="75dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="הסר מוצר"
         android:textSize="35sp"
+       
         android:textColor="@color/colorEditTextHint"
         android:background="@drawable/circlebutton"
         android:id="@+id/btnManagerRemoveProductDialog"/>

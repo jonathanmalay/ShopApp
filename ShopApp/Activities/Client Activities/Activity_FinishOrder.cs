@@ -21,7 +21,7 @@ namespace ShopApp.Activities
         bool Is_Payed;
         ISharedPreferences sp;
         ListView lv_Selected_Products;
-        TextView tv_Total_Price; 
+        TextView tv_Total_Price,tv_toolbar_title; 
         Button btn_conrife_order,btn_BackPage;
         List<SelectedProduct> list_selectedProducts;
         ProgressDialog pd;
@@ -36,13 +36,16 @@ namespace ShopApp.Activities
                 base.OnCreate(savedInstanceState);
                 SetContentView(Resource.Layout.layout_FinishOrder);
 
+                this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+                this.tv_toolbar_title.Text = " סיום הזמנה";
+
                 pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
                 pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
                 pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
 
                 this.lv_Selected_Products = FindViewById<ListView>(Resource.Id.listViewFinishOrder);
                 this.btn_conrife_order = FindViewById<Button>(Resource.Id.btnFinishOrderConrifeOrder);
-                this.btn_BackPage = FindViewById<Button>(Resource.Id.btnClientFinishOrderBack);
+                this.btn_BackPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
                 this.tv_Total_Price = FindViewById<TextView>(Resource.Id.tvFinishOrderTotalPrice);
                 this.sp = GetSharedPreferences("details", FileCreationMode.Private);
                 this.userName = this.sp.GetString("Username", "");

@@ -8,6 +8,29 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="1dp"
+    >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:layout_gravity="right"
+            android:id="@+id/btn_CloentOrderActivity_dialogAddProduct_CloseDialog"
+            android:background="@android:drawable/ic_menu_close_clear_cancel"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:background="@drawable/circlebutton"
         android:layout_margin="10dp"
         android:orientation="horizontal"
@@ -22,7 +45,6 @@
             android:textSize="35sp"
             android:textColor="@color/colorEditTextHint"
             android:background="@android:color/transparent"
-
             android:id="@+id/btnDialogAddProductMinus"/>
         <TextView
             android:layout_width="0dp"
@@ -49,6 +71,7 @@
     <Button
         android:layout_marginHorizontal="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/save"

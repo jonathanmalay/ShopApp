@@ -7,13 +7,17 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V7.App;
+using Android.Support.Design;
+
 using Android.Views;
 using Android.Widget;
+using Android.Support.Design.Widget;
 
 namespace ShopApp
 {
-    [Activity(Label = "Activity_ManagerRemoveProduct")]
-    public class Activity_ManagerRemoveProduct : Activity
+    [Activity(Label = "Activity_ManagerEditProducts")]
+    public class Activity_ManagerRemoveProduct : AppCompatActivity
     {
         ISharedPreferences sp;
         string userName;
@@ -22,15 +26,16 @@ namespace ShopApp
         TextView tvcurrentAmountProduct; //הכמות הנוכחית של מוצר בקנייה
         Button btnMoveToPayment;
         ListView lvProducts;
+        FloatingActionButton fab_add_NewProduct;
         Product selected_product;
         ProductAdapter pa;
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.layout_ManagerRemoveProduct);
+            SetContentView(Resource.Layout.layout_ManagerEditProducts);
 
 
-
+            this.fab_add_NewProduct = FindViewById<FloatingActionButton>(Resource.Id.fab_Manager_addOrder);
             this.lvProducts = FindViewById<ListView>(Resource.Id.listviewManagerRemoveProduct);
 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
@@ -47,8 +52,15 @@ namespace ShopApp
             this.lvProducts.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
             this.lvProducts.ItemClick += LvProducts_ItemClick;
+            this.fab_add_NewProduct.Click += Fab_add_NewProduct_Click;
 
 
+        }
+
+        private void Fab_add_NewProduct_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Activity_ManagerAddProduct));
+            StartActivity(intent);
         }
 
         public async void LvProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -67,19 +79,15 @@ namespace ShopApp
             dialogRemoveProduct = new Dialog(this);
 
             Button btn_remove_product;
-            
+
             dialogRemoveProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
             dialogRemoveProduct.SetContentView(Resource.Layout.layout_ManagerRemoveProductDialog);
             dialogRemoveProduct.SetTitle("הוספת מוצר");
             dialogRemoveProduct.SetCancelable(true);
 
-            
+
             btn_remove_product = dialogRemoveProduct.FindViewById<Button>(Resource.Id.btnManagerRemoveProductDialog); //כפתור ההסרה של מוצר
-
             btn_remove_product.Click += Btn_remove_product_Click;
-           
-
-
 
         }
 
@@ -107,7 +115,7 @@ namespace ShopApp
             }
 
 
-            catch(Exception)
+            catch (Exception)
             {
 
             }

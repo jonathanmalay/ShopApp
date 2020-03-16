@@ -15,6 +15,7 @@ namespace ShopApp
     [Activity(Label = "Activity_EditAccuntSetting")]
     public class Activity_EditAccuntSetting : Activity
     {
+        TextView tv_toolbar_title;
         EditText etEditFullName, etEditPhoneNumber, etEditCity ,etEditStreetAddress , etEditEmail, etEditUsername;
         Button btnSaveDetails, btn_backPage;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -22,6 +23,8 @@ namespace ShopApp
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Layout_EditAccuntSetting);
 
+            this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+            this.tv_toolbar_title.Text = "פרטי משתמש";
             this.etEditUsername = FindViewById<EditText>(Resource.Id.etEditAccuntSettingUsername);
             this.etEditFullName = FindViewById<EditText>(Resource.Id.etEditAccuntSettingFullName);
             this.etEditPhoneNumber = FindViewById<EditText>(Resource.Id.etEditAccuntSettingPhoneNumber);

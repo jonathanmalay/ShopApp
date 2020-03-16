@@ -5,16 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back1">
-    <TextView
-        android:text="הרשמה"
-        android:textColor="@color/colorTitele"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:id="@+id/tvRegisterion" />
+    
+     <include
+        layout="@layout/toolbar_client"/>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

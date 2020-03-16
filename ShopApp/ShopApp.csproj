@@ -68,8 +68,8 @@
     <Compile Include="Activities\Client Activities\Activity_EditAccuntSetting.cs" />
     <Compile Include="Activities\Client Activities\Activity_FinishOrder.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerOrders.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerEditProducts.cs" />
     <Compile Include="Adapters\Adapter_ManagerOrders.cs" />
-    <Compile Include="Activities\Manager Activities\Activity_ManagerRemoveProduct.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerHomeSetting.cs" />
     <Compile Include="Activities\Client Activities\Activity_SettingPayment.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerAddProduct.cs" />
@@ -142,10 +142,31 @@
     <PackageReference Include="Square.Picasso">
       <Version>2.5.2.2</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Android.Support.Annotations">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Collections">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Compat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.Fragment">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Media.Compat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v4">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\layout_Register.xml">
@@ -159,11 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SettingHome_Layout.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\EditUserDetails_layout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -313,7 +329,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerRemoveProduct.xml">
+    <AndroidResource Include="Resources\layout\layout_ManagerEditProducts.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -356,6 +372,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\toolbar_Client.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\close_button.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\plusIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
