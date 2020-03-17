@@ -20,7 +20,7 @@ namespace ShopApp
         Button btnConrifRegister;
         TextView tv_toolbar_title;
         ProgressDialog pd;
-
+        
         Button btn_backPage;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -45,13 +45,13 @@ namespace ShopApp
 
         private void Btn_backPage_Click(object sender, EventArgs e)
         {
-
-            Intent intent = new Intent(this, typeof(MainActivity));//עובר לאקטיביטי login
-            this.StartActivity(intent);
+           Finish(); //עובר לאקטיביטי 
         }
 
         private void BtnConrifRegister_Click(object sender, EventArgs e)
-        { try
+        { 
+            try
+
             {
                 pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
                 pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה

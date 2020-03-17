@@ -96,16 +96,21 @@ namespace ShopApp.Activities
                 pd.Cancel();
             }
 
-
-
-
         }
 
+
+
+
+        
         private void Btn_BackPage_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(ClientOrder_Activity));
-            this.StartActivity(intent);
+            Finish(); //מוחק את האקטיביטי מהמחסנית של האקטיביטים
         }
+
+
+
+
+
 
         public void CreateDialog(Activity activity)
         {

@@ -4,13 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar_client" />
+    
 
-     
-    <ListView
+     <LinearLayout
+        android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+<include layout="@layout/toolbar_client" />
+            <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listviewManagerRemoveProduct"/>
+        </LinearLayout>
+    
 
      <android.support.design.widget.FloatingActionButton      
         android:layout_width="wrap_content"

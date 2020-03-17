@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Theme.AppCompat.NoActionBar">
-      <include
-        layout="@layout/toolbar_client"/>
+     
       <ListView
         android:id="@+id/listViewOrdersHistory"
         android:layout_width="match_parent"

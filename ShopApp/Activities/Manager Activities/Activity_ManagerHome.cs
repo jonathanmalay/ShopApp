@@ -10,15 +10,18 @@ using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using ShopApp.Activities;
 
 namespace ShopApp
 {
     [Activity(Label = "Activity_ManagerHome")]
     public class Activity_ManagerHome : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {  
-        Button btn_EditProducts, btnOrders, btnSetting;
+        Button btn_EditProducts, btnOrders, btnSetting , btn_Logout;
         ISharedPreferences sp;
         Manager m;
+
+        
 
         protected async override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,7 +32,7 @@ namespace ShopApp
             this.btn_EditProducts= FindViewById<Button>(Resource.Id.btnManagerHomeEditProducts);
             this.btnOrders = FindViewById<Button>(Resource.Id.btnManagerHomeOrders);
             this.btnSetting = FindViewById<Button>(Resource.Id.btnManagerHomeSetting);
-           
+            this.btn_Logout = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string manager_usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.m = await Manager.GetManager(manager_usernameloged);
@@ -38,15 +41,25 @@ namespace ShopApp
             this.btn_EditProducts.Click += Btn_EditProducts_Click;
             this.btnOrders.Click += BtnOrders_Click;
             this.btnSetting.Click += BtnSetting_Click;
+            this.btn_Logout.Click += Btn_Logout_Click;
             
 
+        }
+
+        private void Btn_Logout_Click(object sender, EventArgs e)
+        {
+            this.sp.Edit().PutString("Username","").Apply();
+            this.sp.Edit().PutBoolean("isManager", false).Apply();
+            Intent intent = new Intent(this, typeof(MainActivity));
+
+            this.StartActivity(intent);
         }
 
         private void Btn_EditProducts_Click(object sender, EventArgs e)
         {
             try
             {
-                Intent intent = new Intent(this, typeof());
+                Intent intent = new Intent(this, typeof(Activity_ManagerProducts));
                 this.StartActivity(intent);
             }
 
@@ -103,7 +116,6 @@ namespace ShopApp
         { //פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים) ב.
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             ISharedPreferencesEditor editor = sp.Edit();
-
 
             switch (item.ItemId)
             {

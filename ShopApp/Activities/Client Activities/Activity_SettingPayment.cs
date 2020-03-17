@@ -16,7 +16,7 @@ namespace ShopApp
     public class Activity_SettingPayment : Activity
     {
         EditText etCardNum, etDate, etCVV;
-        Button btnPaymentSave;
+        Button btnPaymentSave,btn_BackPage;
         Payment p;
         ISharedPreferences sp;
         ProgressDialog pd;
@@ -30,14 +30,19 @@ namespace ShopApp
             this.etDate = FindViewById<EditText>(Resource.Id.etSettingPaymentDate);
             this.etCVV = FindViewById<EditText>(Resource.Id.etSettingPaymentCvv);
             this.btnPaymentSave = FindViewById<Button>(Resource.Id.btnSettingPaymentSave);
+            this.btn_BackPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
+
            
 
-            btnPaymentSave.Click += BtnPaymentSave_Click;
+            this.btnPaymentSave.Click += BtnPaymentSave_Click;
+            this.btn_BackPage.Click += Btn_BackPage_Click;
+
+        }
 
 
-
-
-
+        private void Btn_BackPage_Click(object sender, EventArgs e)
+        {
+           Finish();
         }
 
         private async void BtnPaymentSave_Click(object sender, EventArgs e)
@@ -50,18 +55,22 @@ namespace ShopApp
 
                 this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
                 string username = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
+
+
+
                 if (etCVV.Length() == 3)//   חוקי  cvvבודק האם הקלט של ה
-                {
+                { 
                     Payment.AddPaymentMethod(this, etCardNum.Text, etDate.Text, etCVV.Text, username);
                     Toast.MakeText(this, "פרטי האשראי נקלטו בהצלחה !", ToastLength.Long).Show();
                     Intent intent = new Intent(this, typeof(HomeActivity));//עובר להום אקטיביטי
                     this.StartActivity(intent);
 
                 }
+
+
                 else
                 {
                     Toast.MakeText(this, "cvv  Needs to be 3 charecters!", ToastLength.Long).Show();
-                    
                 }
 
                 pd.Cancel();

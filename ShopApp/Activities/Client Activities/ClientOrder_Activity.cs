@@ -15,7 +15,7 @@ using ShopApp.Activities;
 namespace ShopApp
 {
     [Activity(Label = "ClientOrder_Activity")]
-    public class ClientOrder_Activity : Activity
+    public class ClientOrder_Activity : Android.Support.V4.App.Fragment
     {
         ISharedPreferences sp;
         string userName;
@@ -27,29 +27,34 @@ namespace ShopApp
         List<SelectedProduct> selectedProducts;
         SelectedProduct cartSelectedProduct;
         ProductAdapter pa;
-        protected async override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.ClientOrder_Layout);
 
-            this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+        
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            return LayoutInflater.Inflate(Resource.Layout.ClientOrder_Layout, container, false);
+        }
+        public override async void OnViewCreated(View view, Bundle savedInstanceState)
+        {
+            base.OnViewCreated(view, savedInstanceState);
+
+            this.tv_toolbar_title = view.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "הזמנה";
 
-            this.lvProducts = FindViewById<ListView>(Resource.Id.listViewProducts);
-            this.btnMoveToPayment = FindViewById<Button>(Resource.Id.btnClientOrderLayoutMoveToPayment);
-            this.btn_back_page = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);
+            this.lvProducts = view.FindViewById<ListView>(Resource.Id.listViewProducts);
+            this.btnMoveToPayment = view.FindViewById<Button>(Resource.Id.btnClientOrderLayoutMoveToPayment);
+            this.btn_back_page = view.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
+            this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
-            CreateDialog(this);
+            CreateDialog();
 
             selectedProducts = new List<SelectedProduct>();
             selectedProducts = await SelectedProduct.GetAllProductInCart(userName);//מביא  רשימה של כל המוצרים שיש לאותו משתמש בעגלה 
 
             List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
             products = await Product.GetAllProduct();
-            
-            this.pa = new ProductAdapter(this, products,selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
+
+            this.pa = new ProductAdapter(Activity, products, selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
             this.lvProducts.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
             this.lvProducts.ItemClick += LvProducts_ItemClick;
@@ -59,11 +64,9 @@ namespace ShopApp
 
         private void Btn_back_page_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(HomeActivity)); 
+            Intent intent = new Intent(Activity, typeof(HomeActivity)); 
             this.StartActivity(intent);
         }
-
-
 
         public async Task<bool> Conrife_Order_Minimum_Price()
         {
@@ -83,19 +86,19 @@ namespace ShopApp
             bool Is_Okay = await Conrife_Order_Minimum_Price();
             if (Is_Okay)//אם סכום ההזמנה קטן מחמישים שקלים  לא יוכל לעבור לאקטיביטי ביצוע תשלום 
             {
-                Intent intent = new Intent(this, typeof(Activity_FinishOrder));//עובר לאקטיביטי תשלום וסיום הזמנה 
+                Intent intent = new Intent(Activity, typeof(Activity_FinishOrder));//עובר לאקטיביטי תשלום וסיום הזמנה 
                 this.StartActivity(intent);
             }
             else
             {
-                Toast.MakeText(this, " סכום ההזמנה המינימלי הינו 50 שקלים,על מנת לבצע תשלום אנא הוסף פריטים על מנת להגיע לסכום זה!!", ToastLength.Long).Show();
+                Toast.MakeText(Activity, " סכום ההזמנה המינימלי הינו 50 שקלים,על מנת לבצע תשלום אנא הוסף פריטים על מנת להגיע לסכום זה!!", ToastLength.Long).Show();
 
             }
         }
 
-        public  void CreateDialog(Activity activity)
+        public  void CreateDialog()
         {
-            dialogAddProduct = new Dialog(this);
+            dialogAddProduct = new Dialog(Activity);
 
             Button btnPlusProduct, btnMinusProduct, btnSaveProductAmount , btn_close_dialog;
 
@@ -126,7 +129,7 @@ namespace ShopApp
                 {
                     cartSelectedProduct.Amount = 0;
                     
-                    Toast.MakeText(this, "אנא הכנס כמות גדולה מ-0", ToastLength.Long).Show();
+                    Toast.MakeText(Activity, "אנא הכנס כמות גדולה מ-0", ToastLength.Long).Show();
                     
                 }
             };
@@ -168,8 +171,8 @@ namespace ShopApp
         private void BtnSaveProductAmount_Click(object sender, EventArgs e)
         {
             // SelectedProduct sp = new SelectedProduct(selectedProduct.Name, AmountProduct);//יוצר עצם מסוג מוצר נבחר ומכניס לפעולה הבונה שלו את הערכים שהתקבלו על ידי המשתמש בדיאלוג כלומר הכמות  של אותו מוצר
-            SelectedProduct.AddSelectedProduct(this,this.userName, cartSelectedProduct); //מוסיף את המוצר לעגלת הקניות כלומר לקולקשיין  עגלה בפיירבייס שבו יש מסמך עם השם של המשתמש שמחובר  לאפליקציה ובתוך המסמך יש את המוצרים שהזמין 
-            Toast.MakeText(this, "הפריט נוסף לעגלת הקניות (:", ToastLength.Long).Show();
+            SelectedProduct.AddSelectedProduct(Activity, this.userName, cartSelectedProduct); //מוסיף את המוצר לעגלת הקניות כלומר לקולקשיין  עגלה בפיירבייס שבו יש מסמך עם השם של המשתמש שמחובר  לאפליקציה ובתוך המסמך יש את המוצרים שהזמין 
+            Toast.MakeText(Activity, "הפריט נוסף לעגלת הקניות (:", ToastLength.Long).Show();
 
             bool exist = false;
 

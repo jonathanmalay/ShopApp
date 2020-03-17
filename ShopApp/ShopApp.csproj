@@ -68,7 +68,7 @@
     <Compile Include="Activities\Client Activities\Activity_EditAccuntSetting.cs" />
     <Compile Include="Activities\Client Activities\Activity_FinishOrder.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerOrders.cs" />
-    <Compile Include="Activities\Manager Activities\Activity_ManagerEditProducts.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerProducts.cs" />
     <Compile Include="Adapters\Adapter_ManagerOrders.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerHomeSetting.cs" />
     <Compile Include="Activities\Client Activities\Activity_SettingPayment.cs" />
@@ -83,6 +83,7 @@
     <Compile Include="Activities\FirstActivity.cs" />
     <Compile Include="Activities\Client Activities\HomeActivity.cs" />
     <Compile Include="Activities\Client Activities\HomeSetting_Activityt.cs" />
+    <Compile Include="FragmentHelper.cs" />
     <Compile Include="Models\Manager_Order.cs" />
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Services\ImageBrodcastReceiver.cs" />
@@ -378,6 +379,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\plusIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_client_home.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\selector.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

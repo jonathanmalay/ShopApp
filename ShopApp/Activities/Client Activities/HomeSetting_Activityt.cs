@@ -13,40 +13,42 @@ using Android.Widget;
 namespace ShopApp
 {
     [Activity(Label = "HomeSetting_Activityt")]
-    public class HomeSetting_Activityt : Activity
+    public class HomeSetting_Activityt : Android.Support.V4.App.Fragment
     {
         Dialog changePasswordDialog;
         TextView tv_toolbar_title;
-        Button btnChangePassword, btnEditDetails, btnDialogChangePassword, btnPaymentMethods, btn_BackPage;
+        Button btnChangePassword, btnEditDetails, btnDialogChangePassword, btnPaymentMethods;
         EditText etNewPassword, etNewPasswordConrife,etOldPassword;     
 
         ISharedPreferences sp;
         User u;
-        
-        protected async override void OnCreate(Bundle savedInstanceState)
-        { 
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.SettingHome_Layout);
 
-            this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            return LayoutInflater.Inflate(Resource.Layout.SettingHome_Layout, container, false);
+        }
+
+        public override async void OnViewCreated(View view, Bundle savedInstanceState)
+        {
+            base.OnViewCreated(view, savedInstanceState);
+
+            this.tv_toolbar_title = view.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "הגדרות";
 
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+            this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.u = await User.GetUser(usernameloged);
 
-            this.btnEditDetails = FindViewById<Button>(Resource.Id.btnSettingEtitdetails);
-            this.btnChangePassword = this.FindViewById<Button>(Resource.Id.btnSettingChangePassword);
-            this.btnPaymentMethods = this.FindViewById<Button>(Resource.Id.btnSettingPaymentMethods);
-            this.btn_BackPage = this.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);//back page button
+            this.btnEditDetails = view.FindViewById<Button>(Resource.Id.btnSettingEtitdetails);
+            this.btnChangePassword = view.FindViewById<Button>(Resource.Id.btnSettingChangePassword);
+            this.btnPaymentMethods = view.FindViewById<Button>(Resource.Id.btnSettingPaymentMethods);
 
             this.btnEditDetails.Click += BtnEditDetails_Click;
             this.btnPaymentMethods.Click += BtnPaymentMethods_Click;
             this.btnChangePassword.Click += BtnChangePassword_Click;
-            this.btn_BackPage.Click += Btn_BackPage_Click;
          
             //Dialog
-            this.changePasswordDialog = new Dialog(this);
+            this.changePasswordDialog = new Dialog(Activity);
             this.changePasswordDialog.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
             this.changePasswordDialog.SetContentView(Resource.Layout.Layout_SettingChangePassword);
             this.changePasswordDialog.SetTitle("Change Password");
@@ -58,12 +60,7 @@ namespace ShopApp
             btnDialogChangePassword.Click += BtnDialogChangePassword_Click;
         }
 
-        private void Btn_BackPage_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(this, typeof(HomeActivity)); 
-            this.StartActivity(intent);
-
-        }
+     
 
         private void BtnChangePassword_Click(object sender, EventArgs e)
         {
@@ -73,14 +70,14 @@ namespace ShopApp
         private void BtnPaymentMethods_Click(object sender, EventArgs e)
         {  
             
-            Intent intent = new Intent(this, typeof(Activity_SettingPayment));//עובר לאקטיביטי הגדרות תשלום 
+            Intent intent = new Intent(Activity, typeof(Activity_SettingPayment));//עובר לאקטיביטי הגדרות תשלום 
            this.StartActivity(intent);
 
         }
 
         private void BtnEditDetails_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(Activity_EditAccuntSetting));
+            Intent intent = new Intent(Activity, typeof(Activity_EditAccuntSetting));
            this.StartActivity(intent);
 
 
@@ -94,7 +91,7 @@ namespace ShopApp
                 User u;
             ISharedPreferences sp;
 
-                this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+                this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
                 string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
 
                 //מתבצעת בדיקה האם הסיסמא הישנה שהמשתמש הזין נכונה. במידה וכן הוא יוכל לשנות סיסמא לסיסמא חדשה.הבדיקה מלוות בהקפצת הודעות בהתאם  
@@ -110,13 +107,13 @@ namespace ShopApp
 
                         User.ChangeUserPassword(usernameloged, etNewPassword.Text);
                         //הקפצת הודעה למשתמש שהסיסמא שונתה בהצלחה 
-                        Toast.MakeText(this, "! הסיסמא שונתה בהצלחה", ToastLength.Long).Show();
+                        Toast.MakeText(Activity, "! הסיסמא שונתה בהצלחה", ToastLength.Long).Show();
                     }
 
                     else
                     {
                         //הקפצת הודעה למשתמש שהסיסמאות שהזין אינם זהות 
-                        Toast.MakeText(this, "שם משתמש או סיסמא שגויים!", ToastLength.Long).Show();
+                        Toast.MakeText(Activity, "שם משתמש או סיסמא שגויים!", ToastLength.Long).Show();
 
                     }
                 }
@@ -126,7 +123,7 @@ namespace ShopApp
                 else
                 {
                     //הקפצת הודעה למשתמש שהסיסמא הישנה שהזין שגויה 
-                    Toast.MakeText(this, "סיסמא ישנה שגויה!", ToastLength.Long).Show();
+                    Toast.MakeText(Activity, "סיסמא ישנה שגויה!", ToastLength.Long).Show();
 
                 }
             
