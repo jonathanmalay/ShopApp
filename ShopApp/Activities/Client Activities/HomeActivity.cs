@@ -22,6 +22,7 @@ namespace ShopApp
     {
         ISharedPreferences sp;
         TextView tvWelcomeUser;
+       
         BottomNavigationView bnvClient;
         User u;
         protected async override void OnCreate(Bundle savedInstanceState)
@@ -65,6 +66,7 @@ namespace ShopApp
             FragmentHelper.LoadFragment(this, new Client_HomeFragment()); //the first fragment that wiil be shown 
         }
 
+
         private void BnvClient_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)//מעבר בין הפרגמנטים על ידי לחיצה על האייקונים בתפריט
         {
             if (e.Item.ItemId == Resource.Id.action_BnvClientHome)
@@ -74,17 +76,17 @@ namespace ShopApp
 
             else if (e.Item.ItemId == Resource.Id.action_BnvClientHistory)
             {
-                FragmentHelper.LoadFragment(this, new Client_HistoryOrdersActivity()); 
+                FragmentHelper.LoadFragment(this, new Client_HistoryOrders_Fragment()); 
             }
 
             else if (e.Item.ItemId == Resource.Id.action_BnvClientCurrentOrder)
             {
-                FragmentHelper.LoadFragment(this, new ClientOrder_Activity());
+                FragmentHelper.LoadFragment(this, new ClientOrder_Fragment());
             }
 
             else if (e.Item.ItemId == Resource.Id.action_BnvClientSettings)
             {
-                FragmentHelper.LoadFragment(this, new HomeSetting_Activityt());
+                FragmentHelper.LoadFragment(this, new HomeSetting_Fragment());
             }
         }
 

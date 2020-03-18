@@ -42,10 +42,11 @@ namespace ShopApp
         }
 
       
-
+    
         private void Btn_backPage_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(HomeSetting_Activityt));
+            Finish(); //delete this activity from the stack
+            Intent intent = new Intent(this, typeof(HomeSetting_Fragment));
             this.StartActivity(intent);
 
         }

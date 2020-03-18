@@ -16,6 +16,7 @@ namespace ShopApp
     public class Client_HomeFragment : Android.Support.V4.App.Fragment  
     {
         Button btnStartOrder, btnPruchesHistory, btnSetting, btnContectUs;
+        TextView tv_toolbar_title;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -26,6 +27,8 @@ namespace ShopApp
         public override async void OnViewCreated(View view, Bundle savedInstanceState)
         {            
             base.OnViewCreated(view, savedInstanceState);
+            this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title); //change the toolbar title to the name of the fragment 
+            this.tv_toolbar_title.Text = "מסך ראשי";
 
             this.btnStartOrder = view.FindViewById<Button>(Resource.Id.btnStartShop);
             this.btnSetting = view.FindViewById<Button>(Resource.Id.btnHomeSetting);
@@ -66,26 +69,23 @@ namespace ShopApp
             }
         }
 
+
+
         private void BtnPruchesHistory_Click(object sender, EventArgs e)
         {
-            FragmentHelper.LoadFragment(, new Client_HistoryOrdersActivity());
+            FragmentHelper.LoadFragment(Activity, new Client_HistoryOrders_Fragment());
 
         }
 
         private void BtnStartOrder_Click(object sender, EventArgs e)
         {
-
-            FragmentHelper.LoadFragment( , new ClientOrder_Activity());
-
+            FragmentHelper.LoadFragment( Activity, new ClientOrder_Fragment());
         }
-
-
 
 
         private void BtnSetting_Click(object sender, EventArgs e)
         {
-            FragmentHelper.LoadFragment(, new HomeSetting_Activityt());
-
+            FragmentHelper.LoadFragment(Activity, new HomeSetting_Fragment());
 
         }
 

@@ -12,8 +12,8 @@ using Android.Widget;
 
 namespace ShopApp
 {
-    [Activity(Label = "Client_HistoryOrdersActivity")]
-    public class Client_HistoryOrdersActivity : Android.Support.V4.App.Fragment
+    [Activity(Label = "Client_HistoryOrders_Fragment")]
+    public class Client_HistoryOrders_Fragment : Android.Support.V4.App.Fragment
     {
         ISharedPreferences sp;
         string userName;
@@ -22,20 +22,22 @@ namespace ShopApp
         Orders_History Orders_History;
         Adapter_OrdersHistory pa_OrdersHistory;
         List<Orders_History> allOrders;
-
-        Button btn_backPage;
-
+        TextView tv_toolbar_title, tv_orders_Status; 
+    
+     //   מני ההומו
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             return LayoutInflater.Inflate(Resource.Layout.layout_OrdersHistory, container, false);
         }
+
         public override async void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
 
-
-
+            this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title); //change the toolbar title to the name of the fragment 
+            this.tv_toolbar_title.Text = "היסטוריית הזמנות";
+            this.tv_orders_Status = view.FindViewById<TextView>(Resource.Id.tv_Fragment_OrdersHistory_Status);
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
             User u = await User.GetUser(userName);
@@ -44,6 +46,7 @@ namespace ShopApp
 
             if (this.allOrders == null || this.allOrders.Count ==  0)//בודק האם יש ללקוח הזמנותקודמות ובמידה וכן עובר לאקטיביטי הזמנות קודמות
             {
+                this.tv_orders_Status.Text = "  ...טרם ביצעת הזמנות  "; //change the text on the page
                 Toast.MakeText(Activity, "אין הזמנות ישנות", ToastLength.Long).Show();
             }
 

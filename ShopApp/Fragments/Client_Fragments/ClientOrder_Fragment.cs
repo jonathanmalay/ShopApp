@@ -14,8 +14,8 @@ using ShopApp.Activities;
 
 namespace ShopApp
 {
-    [Activity(Label = "ClientOrder_Activity")]
-    public class ClientOrder_Activity : Android.Support.V4.App.Fragment
+    [Activity(Label = "ClientOrder_Fragment")]
+    public class ClientOrder_Fragment : Android.Support.V4.App.Fragment
     {
         ISharedPreferences sp;
         string userName;
@@ -37,7 +37,8 @@ namespace ShopApp
         {
             base.OnViewCreated(view, savedInstanceState);
 
-            this.tv_toolbar_title = view.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+
+            this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "הזמנה";
 
             this.lvProducts = view.FindViewById<ListView>(Resource.Id.listViewProducts);

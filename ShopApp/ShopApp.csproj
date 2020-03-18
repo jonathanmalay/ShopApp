@@ -81,12 +81,12 @@
     <Compile Include="Adapters\Adapter_OrdersHistory.cs" />
     <Compile Include="Adapters\Adapter_FinishOrder_SelectedProducts.cs" />
     <Compile Include="Firebase\AppData.cs" />
-    <Compile Include="Fragments\Client_Fragments\ClientOrder_Activity.cs" />
-    <Compile Include="Fragments\Client_Fragments\Client_HistoryOrdersActivity.cs" />
+    <Compile Include="Fragments\Client_Fragments\ClientOrder_Fragment.cs" />
+    <Compile Include="Fragments\Client_Fragments\Client_HistoryOrders_Fragment.cs" />
     <Compile Include="Activities\FirstActivity.cs" />
     <Compile Include="Activities\Client Activities\HomeActivity.cs" />
     <Compile Include="Fragments\Client_Fragments\Client_HomeFragment.cs" />
-    <Compile Include="Fragments\Client_Fragments\HomeSetting_Activityt.cs" />
+    <Compile Include="Fragments\Client_Fragments\HomeSetting_Fragment.cs" />
     <Compile Include="FragmentHelper.cs" />
     <Compile Include="Models\Manager_Order.cs" />
     <Compile Include="Models\Manager.cs" />

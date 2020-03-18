@@ -3487,23 +3487,23 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d0046
 			public const int SYM = 2131558470;
 			
-			// aapt resource value: 0x7f0d011d
-			public const int action0 = 2131558685;
-			
-			// aapt resource value: 0x7f0d0137
-			public const int action_BnvClientCurrentOrder = 2131558711;
-			
-			// aapt resource value: 0x7f0d0136
-			public const int action_BnvClientHistory = 2131558710;
-			
-			// aapt resource value: 0x7f0d0135
-			public const int action_BnvClientHome = 2131558709;
+			// aapt resource value: 0x7f0d011e
+			public const int action0 = 2131558686;
 			
 			// aapt resource value: 0x7f0d0138
-			public const int action_BnvClientSettings = 2131558712;
+			public const int action_BnvClientCurrentOrder = 2131558712;
 			
-			// aapt resource value: 0x7f0d013b
-			public const int action_accountSetting = 2131558715;
+			// aapt resource value: 0x7f0d0137
+			public const int action_BnvClientHistory = 2131558711;
+			
+			// aapt resource value: 0x7f0d0136
+			public const int action_BnvClientHome = 2131558710;
+			
+			// aapt resource value: 0x7f0d0139
+			public const int action_BnvClientSettings = 2131558713;
+			
+			// aapt resource value: 0x7f0d013c
+			public const int action_accountSetting = 2131558716;
 			
 			// aapt resource value: 0x7f0d0094
 			public const int action_bar = 2131558548;
@@ -3526,20 +3526,20 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d0070
 			public const int action_bar_title = 2131558512;
 			
-			// aapt resource value: 0x7f0d011a
-			public const int action_container = 2131558682;
+			// aapt resource value: 0x7f0d011b
+			public const int action_container = 2131558683;
 			
 			// aapt resource value: 0x7f0d0095
 			public const int action_context_bar = 2131558549;
 			
-			// aapt resource value: 0x7f0d0121
-			public const int action_divider = 2131558689;
+			// aapt resource value: 0x7f0d0122
+			public const int action_divider = 2131558690;
 			
-			// aapt resource value: 0x7f0d011b
-			public const int action_image = 2131558683;
+			// aapt resource value: 0x7f0d011c
+			public const int action_image = 2131558684;
 			
-			// aapt resource value: 0x7f0d0139
-			public const int action_logout = 2131558713;
+			// aapt resource value: 0x7f0d013a
+			public const int action_logout = 2131558714;
 			
 			// aapt resource value: 0x7f0d0003
 			public const int action_menu_divider = 2131558403;
@@ -3556,14 +3556,14 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d0072
 			public const int action_mode_close_button = 2131558514;
 			
-			// aapt resource value: 0x7f0d013a
-			public const int action_register = 2131558714;
+			// aapt resource value: 0x7f0d013b
+			public const int action_register = 2131558715;
 			
-			// aapt resource value: 0x7f0d011c
-			public const int action_text = 2131558684;
+			// aapt resource value: 0x7f0d011d
+			public const int action_text = 2131558685;
 			
-			// aapt resource value: 0x7f0d012a
-			public const int actions = 2131558698;
+			// aapt resource value: 0x7f0d012b
+			public const int actions = 2131558699;
 			
 			// aapt resource value: 0x7f0d0073
 			public const int activity_chooser_view_content = 2131558515;
@@ -3622,20 +3622,20 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00af
 			public const int btnClientOrderLayoutMoveToPayment = 2131558575;
 			
-			// aapt resource value: 0x7f0d010c
-			public const int btnConrifeRegister = 2131558668;
+			// aapt resource value: 0x7f0d010d
+			public const int btnConrifeRegister = 2131558669;
 			
 			// aapt resource value: 0x7f0d00df
 			public const int btnContectUs = 2131558623;
 			
-			// aapt resource value: 0x7f0d0116
-			public const int btnDialogAddProductMinus = 2131558678;
-			
-			// aapt resource value: 0x7f0d0118
-			public const int btnDialogAddProductPlus = 2131558680;
+			// aapt resource value: 0x7f0d0117
+			public const int btnDialogAddProductMinus = 2131558679;
 			
 			// aapt resource value: 0x7f0d0119
-			public const int btnDialogAddProductSave = 2131558681;
+			public const int btnDialogAddProductPlus = 2131558681;
+			
+			// aapt resource value: 0x7f0d011a
+			public const int btnDialogAddProductSave = 2131558682;
 			
 			// aapt resource value: 0x7f0d00d7
 			public const int btnEditAccuntSettingConrifeEdit = 2131558615;
@@ -3691,23 +3691,23 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00dc
 			public const int btnPruchesHistory = 2131558620;
 			
-			// aapt resource value: 0x7f0d012f
-			public const int btnSettingChangePassword = 2131558703;
-			
-			// aapt resource value: 0x7f0d012d
-			public const int btnSettingEtitdetails = 2131558701;
+			// aapt resource value: 0x7f0d0130
+			public const int btnSettingChangePassword = 2131558704;
 			
 			// aapt resource value: 0x7f0d012e
-			public const int btnSettingPaymentMethods = 2131558702;
+			public const int btnSettingEtitdetails = 2131558702;
 			
-			// aapt resource value: 0x7f0d0114
-			public const int btnSettingPaymentSave = 2131558676;
+			// aapt resource value: 0x7f0d012f
+			public const int btnSettingPaymentMethods = 2131558703;
+			
+			// aapt resource value: 0x7f0d0115
+			public const int btnSettingPaymentSave = 2131558677;
 			
 			// aapt resource value: 0x7f0d00db
 			public const int btnStartShop = 2131558619;
 			
-			// aapt resource value: 0x7f0d0115
-			public const int btn_CloentOrderActivity_dialogAddProduct_CloseDialog = 2131558677;
+			// aapt resource value: 0x7f0d0116
+			public const int btn_CloentOrderActivity_dialogAddProduct_CloseDialog = 2131558678;
 			
 			// aapt resource value: 0x7f0d00cb
 			public const int btn_DialogFinishOrderConrife = 2131558603;
@@ -3724,14 +3724,14 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00f3
 			public const int btn_ManagerDialogOrderCartClose = 2131558643;
 			
-			// aapt resource value: 0x7f0d0132
-			public const int btn_toolbar_backPage = 2131558706;
+			// aapt resource value: 0x7f0d0133
+			public const int btn_toolbar_backPage = 2131558707;
 			
 			// aapt resource value: 0x7f0d0079
 			public const int buttonPanel = 2131558521;
 			
-			// aapt resource value: 0x7f0d011e
-			public const int cancel_action = 2131558686;
+			// aapt resource value: 0x7f0d011f
+			public const int cancel_action = 2131558687;
 			
 			// aapt resource value: 0x7f0d0054
 			public const int center = 2131558484;
@@ -3745,8 +3745,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d008d
 			public const int checkbox = 2131558541;
 			
-			// aapt resource value: 0x7f0d0126
-			public const int chronometer = 2131558694;
+			// aapt resource value: 0x7f0d0127
+			public const int chronometer = 2131558695;
 			
 			// aapt resource value: 0x7f0d0068
 			public const int clip_horizontal = 2131558504;
@@ -3808,8 +3808,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d003f
 			public const int end = 2131558463;
 			
-			// aapt resource value: 0x7f0d012c
-			public const int end_padder = 2131558700;
+			// aapt resource value: 0x7f0d012d
+			public const int end_padder = 2131558701;
 			
 			// aapt resource value: 0x7f0d004e
 			public const int enterAlways = 2131558478;
@@ -3835,8 +3835,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00d1
 			public const int etEditAccuntSettingUsername = 2131558609;
 			
-			// aapt resource value: 0x7f0d0108
-			public const int etEmailRegister = 2131558664;
+			// aapt resource value: 0x7f0d0109
+			public const int etEmailRegister = 2131558665;
 			
 			// aapt resource value: 0x7f0d00e4
 			public const int etLoginManagerPassword = 2131558628;
@@ -3868,32 +3868,32 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00ee
 			public const int etManagerChangePasswordOldPassword = 2131558638;
 			
-			// aapt resource value: 0x7f0d0106
-			public const int etNameRegister = 2131558662;
-			
-			// aapt resource value: 0x7f0d010b
-			public const int etPasswordRegister = 2131558667;
-			
 			// aapt resource value: 0x7f0d0107
-			public const int etPhoneRegister = 2131558663;
+			public const int etNameRegister = 2131558663;
 			
-			// aapt resource value: 0x7f0d0109
-			public const int etRegisterCity = 2131558665;
+			// aapt resource value: 0x7f0d010c
+			public const int etPasswordRegister = 2131558668;
+			
+			// aapt resource value: 0x7f0d0108
+			public const int etPhoneRegister = 2131558664;
 			
 			// aapt resource value: 0x7f0d010a
-			public const int etRegisterStreetAddress = 2131558666;
+			public const int etRegisterCity = 2131558666;
 			
-			// aapt resource value: 0x7f0d0104
-			public const int etRegisterUsername = 2131558660;
+			// aapt resource value: 0x7f0d010b
+			public const int etRegisterStreetAddress = 2131558667;
 			
-			// aapt resource value: 0x7f0d0111
-			public const int etSettingPaymentCardNum = 2131558673;
-			
-			// aapt resource value: 0x7f0d0113
-			public const int etSettingPaymentCvv = 2131558675;
+			// aapt resource value: 0x7f0d0105
+			public const int etRegisterUsername = 2131558661;
 			
 			// aapt resource value: 0x7f0d0112
-			public const int etSettingPaymentDate = 2131558674;
+			public const int etSettingPaymentCardNum = 2131558674;
+			
+			// aapt resource value: 0x7f0d0114
+			public const int etSettingPaymentCvv = 2131558676;
+			
+			// aapt resource value: 0x7f0d0113
+			public const int etSettingPaymentDate = 2131558675;
 			
 			// aapt resource value: 0x7f0d00cd
 			public const int et_DialogPickProductImage_EnterImageUrl = 2131558605;
@@ -3949,8 +3949,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d0078
 			public const int icon = 2131558520;
 			
-			// aapt resource value: 0x7f0d012b
-			public const int icon_group = 2131558699;
+			// aapt resource value: 0x7f0d012c
+			public const int icon_group = 2131558700;
 			
 			// aapt resource value: 0x7f0d0027
 			public const int icon_only = 2131558439;
@@ -3961,14 +3961,14 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d0075
 			public const int image = 2131558517;
 			
-			// aapt resource value: 0x7f0d0105
-			public const int imageVFullname = 2131558661;
+			// aapt resource value: 0x7f0d0106
+			public const int imageVFullname = 2131558662;
 			
 			// aapt resource value: 0x7f0d00cf
 			public const int imageView_DialogPickProductImage = 2131558607;
 			
-			// aapt resource value: 0x7f0d0127
-			public const int info = 2131558695;
+			// aapt resource value: 0x7f0d0128
+			public const int info = 2131558696;
 			
 			// aapt resource value: 0x7f0d006f
 			public const int italic = 2131558511;
@@ -3988,8 +3988,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00b1
 			public const int ivProductRaw = 2131558577;
 			
-			// aapt resource value: 0x7f0d010d
-			public const int ivSelectedProductInCart = 2131558669;
+			// aapt resource value: 0x7f0d010e
+			public const int ivSelectedProductInCart = 2131558670;
 			
 			// aapt resource value: 0x7f0d0055
 			public const int labeled = 2131558485;
@@ -4018,8 +4018,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00f4
 			public const int listViewManagerDialogOrderCart = 2131558644;
 			
-			// aapt resource value: 0x7f0d0103
-			public const int listViewOrdersHistory = 2131558659;
+			// aapt resource value: 0x7f0d0104
+			public const int listViewOrdersHistory = 2131558660;
 			
 			// aapt resource value: 0x7f0d00b0
 			public const int listViewProducts = 2131558576;
@@ -4033,17 +4033,17 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00f5
 			public const int listviewManagerRemoveProduct = 2131558645;
 			
-			// aapt resource value: 0x7f0d0134
-			public const int masked = 2131558708;
+			// aapt resource value: 0x7f0d0135
+			public const int masked = 2131558709;
 			
-			// aapt resource value: 0x7f0d0120
-			public const int media_actions = 2131558688;
+			// aapt resource value: 0x7f0d0121
+			public const int media_actions = 2131558689;
+			
+			// aapt resource value: 0x7f0d013e
+			public const int menu_ManagerHomeAccountSetting = 2131558718;
 			
 			// aapt resource value: 0x7f0d013d
-			public const int menu_ManagerHomeAccountSetting = 2131558717;
-			
-			// aapt resource value: 0x7f0d013c
-			public const int menu_ManagerHomeLogOut = 2131558716;
+			public const int menu_ManagerHomeLogOut = 2131558717;
 			
 			// aapt resource value: 0x7f0d00a3
 			public const int message = 2131558563;
@@ -4075,14 +4075,14 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d002e
 			public const int normal = 2131558446;
 			
-			// aapt resource value: 0x7f0d0129
-			public const int notification_background = 2131558697;
+			// aapt resource value: 0x7f0d012a
+			public const int notification_background = 2131558698;
+			
+			// aapt resource value: 0x7f0d0124
+			public const int notification_main_column = 2131558692;
 			
 			// aapt resource value: 0x7f0d0123
-			public const int notification_main_column = 2131558691;
-			
-			// aapt resource value: 0x7f0d0122
-			public const int notification_main_column_container = 2131558690;
+			public const int notification_main_column_container = 2131558691;
 			
 			// aapt resource value: 0x7f0d0067
 			public const int outline = 2131558503;
@@ -4111,11 +4111,11 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d005c
 			public const int right = 2131558492;
 			
-			// aapt resource value: 0x7f0d0128
-			public const int right_icon = 2131558696;
+			// aapt resource value: 0x7f0d0129
+			public const int right_icon = 2131558697;
 			
-			// aapt resource value: 0x7f0d0124
-			public const int right_side = 2131558692;
+			// aapt resource value: 0x7f0d0125
+			public const int right_side = 2131558693;
 			
 			// aapt resource value: 0x7f0d000c
 			public const int save_image_matrix = 2131558412;
@@ -4231,8 +4231,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d005d
 			public const int start = 2131558493;
 			
-			// aapt resource value: 0x7f0d011f
-			public const int status_bar_latest_event_content = 2131558687;
+			// aapt resource value: 0x7f0d0120
+			public const int status_bar_latest_event_content = 2131558688;
 			
 			// aapt resource value: 0x7f0d0062
 			public const int stretch = 2131558498;
@@ -4282,8 +4282,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d001a
 			public const int textinput_helper_text = 2131558426;
 			
-			// aapt resource value: 0x7f0d0125
-			public const int time = 2131558693;
+			// aapt resource value: 0x7f0d0126
+			public const int time = 2131558694;
 			
 			// aapt resource value: 0x7f0d0023
 			public const int title = 2131558435;
@@ -4294,8 +4294,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d0085
 			public const int title_template = 2131558533;
 			
-			// aapt resource value: 0x7f0d0130
-			public const int toolbar_client_home = 2131558704;
+			// aapt resource value: 0x7f0d0131
+			public const int toolbar_client_home = 2131558705;
 			
 			// aapt resource value: 0x7f0d004d
 			public const int top = 2131558477;
@@ -4321,8 +4321,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d0013
 			public const int transition_transform = 2131558419;
 			
-			// aapt resource value: 0x7f0d0117
-			public const int tvDialogAddProductCurrentAmount = 2131558679;
+			// aapt resource value: 0x7f0d0118
+			public const int tvDialogAddProductCurrentAmount = 2131558680;
 			
 			// aapt resource value: 0x7f0d00d9
 			public const int tvFinishOrderTotalPrice = 2131558617;
@@ -4351,14 +4351,14 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00b2
 			public const int tvProductRawTitle = 2131558578;
 			
-			// aapt resource value: 0x7f0d010f
-			public const int tvSelectedProductInCartAmount = 2131558671;
-			
-			// aapt resource value: 0x7f0d010e
-			public const int tvSelectedProductInCartName = 2131558670;
-			
 			// aapt resource value: 0x7f0d0110
-			public const int tvSelectedProductInCartPrice = 2131558672;
+			public const int tvSelectedProductInCartAmount = 2131558672;
+			
+			// aapt resource value: 0x7f0d010f
+			public const int tvSelectedProductInCartName = 2131558671;
+			
+			// aapt resource value: 0x7f0d0111
+			public const int tvSelectedProductInCartPrice = 2131558673;
 			
 			// aapt resource value: 0x7f0d00b3
 			public const int tvSubTitle = 2131558579;
@@ -4368,6 +4368,9 @@ namespace ShopApp
 			
 			// aapt resource value: 0x7f0d00ca
 			public const int tv_DialogFinishOrderConrifeTerms = 2131558602;
+			
+			// aapt resource value: 0x7f0d0103
+			public const int tv_Fragment_OrdersHistory_Status = 2131558659;
 			
 			// aapt resource value: 0x7f0d00f2
 			public const int tv_ManagerDialogOrderCartHeader = 2131558642;
@@ -4393,8 +4396,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d00c3
 			public const int tv_costum_ManagerOrdersAdapterUsername = 2131558595;
 			
-			// aapt resource value: 0x7f0d0131
-			public const int tv_toolbar_title = 2131558705;
+			// aapt resource value: 0x7f0d0132
+			public const int tv_toolbar_title = 2131558706;
 			
 			// aapt resource value: 0x7f0d003c
 			public const int uniform = 2131558460;
@@ -4411,8 +4414,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0d001b
 			public const int view_offset_helper = 2131558427;
 			
-			// aapt resource value: 0x7f0d0133
-			public const int visible = 2131558707;
+			// aapt resource value: 0x7f0d0134
+			public const int visible = 2131558708;
 			
 			// aapt resource value: 0x7f0d0029
 			public const int wide = 2131558441;
