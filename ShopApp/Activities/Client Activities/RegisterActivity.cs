@@ -126,6 +126,7 @@ namespace ShopApp
                 }
 
 
+                
 
                 if (this.etEmail.Text.IndexOf('@') < 1)//בודק האם הכתובת אימייל חוקית במידה ולא מחזיר שקר
                 {
@@ -142,7 +143,6 @@ namespace ShopApp
 
                 return false;
             }
-
 
 
             return true;

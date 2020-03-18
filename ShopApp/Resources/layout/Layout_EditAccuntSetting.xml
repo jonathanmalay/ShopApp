@@ -8,7 +8,7 @@
 
 
     
-    <include android:id="@id/toolbar_client_home" layout="@layout/toolbar_client" 
+    <include layout="@layout/toolbar_client" 
     />
 
     <TextView

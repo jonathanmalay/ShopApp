@@ -32,8 +32,7 @@ namespace ShopApp
         {
             base.OnViewCreated(view, savedInstanceState);
 
-            this.tv_toolbar_title = view.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
-            this.tv_toolbar_title.Text = "הגדרות";
+           
 
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש

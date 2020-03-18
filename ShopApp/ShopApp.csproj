@@ -42,6 +42,9 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+    <MandroidI18n />
+    <AndroidUseAapt2>false</AndroidUseAapt2>
+    <AndroidDexTool>dx</AndroidDexTool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -78,11 +81,12 @@
     <Compile Include="Adapters\Adapter_OrdersHistory.cs" />
     <Compile Include="Adapters\Adapter_FinishOrder_SelectedProducts.cs" />
     <Compile Include="Firebase\AppData.cs" />
-    <Compile Include="Activities\Client Activities\ClientOrder_Activity.cs" />
-    <Compile Include="Activities\Client Activities\Client_HistoryOrdersActivity.cs" />
+    <Compile Include="Fragments\Client_Fragments\ClientOrder_Activity.cs" />
+    <Compile Include="Fragments\Client_Fragments\Client_HistoryOrdersActivity.cs" />
     <Compile Include="Activities\FirstActivity.cs" />
     <Compile Include="Activities\Client Activities\HomeActivity.cs" />
-    <Compile Include="Activities\Client Activities\HomeSetting_Activityt.cs" />
+    <Compile Include="Fragments\Client_Fragments\Client_HomeFragment.cs" />
+    <Compile Include="Fragments\Client_Fragments\HomeSetting_Activityt.cs" />
     <Compile Include="FragmentHelper.cs" />
     <Compile Include="Models\Manager_Order.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -388,6 +392,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\selector.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_fragment_home.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fragments\Manager_Fragments\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

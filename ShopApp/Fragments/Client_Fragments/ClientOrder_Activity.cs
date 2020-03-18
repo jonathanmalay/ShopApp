@@ -28,7 +28,7 @@ namespace ShopApp
         SelectedProduct cartSelectedProduct;
         ProductAdapter pa;
 
-        
+          
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             return LayoutInflater.Inflate(Resource.Layout.ClientOrder_Layout, container, false);

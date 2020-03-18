@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#9BDCDE</color>
-  <!--הצבע של הפס עם התפריט -->
- 
+  <color name="colorPrimary">#9BDCDE</color> <!--הצבע של הפס עם התפריט -->
   <color name="colorTitele">#ffffff</color>
-  <color name="colorPrimaryDark">#FFFFFF</color>
-  <!--הצבע של הפס עם השעה -->
+  <color name="colorPrimaryDark">#FFFFFF</color> <!--הצבע של הפס עם השעה -->
   <color name="colorAccent">#9BDCDE</color>
+  <color name="bottomNavigationSelectorFalse">#4a4f4f</color>
   <color name="background_color">#009688</color>
   <color name="white">#FFFFFF</color>
   <color name="black">#000000</color>
