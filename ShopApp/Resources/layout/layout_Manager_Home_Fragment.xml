@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/circlelayout">
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circlebutton"
+            android:layout_gravity="center">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconsettingpay"/>
+            <Button
+                android:text="הזמנות "
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:id="@+id/btnManagerHomeOrders"/>
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circlebutton"
+            android:layout_gravity="center">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconsbuy"/>
+            <Button
+                android:text="עריכת מוצרים"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:id="@+id/btnManagerHomeEditProducts"/>
+        </LinearLayout>
+
+
+
+
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circlebutton"
+            android:layout_gravity="center">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconsettinguser"/>
+            <Button
+                android:text="הגדרות"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:id="@+id/btnManagerHomeSetting"/>
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+</FrameLayout>

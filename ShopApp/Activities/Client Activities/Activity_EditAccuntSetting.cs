@@ -46,9 +46,6 @@ namespace ShopApp
         private void Btn_backPage_Click(object sender, EventArgs e)
         {
             Finish(); //delete this activity from the stack
-            Intent intent = new Intent(this, typeof(HomeSetting_Fragment));
-            this.StartActivity(intent);
-
         }
 
         private void BtnSaveDetails_Click(object sender, EventArgs e)

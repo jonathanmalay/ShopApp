@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace ShopApp
 {
-    [Activity(Label = "HomeSetting_Fragment")]
+    
     public class HomeSetting_Fragment : Android.Support.V4.App.Fragment
     {
         Dialog changePasswordDialog;
@@ -28,15 +28,28 @@ namespace ShopApp
             return LayoutInflater.Inflate(Resource.Layout.SettingHome_Layout, container, false);
         }
 
+
+
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+            if(hidden == false)
+            {
+                this.tv_toolbar_title.Text = "הגדרות";
+            }
+        }
+
+
         public override async void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
 
-            this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title); //change the toolbar title to the name of the fragment 
-            this.tv_toolbar_title.Text = "הגדרות";
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.u = await User.GetUser(usernameloged);
+
+            this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title); //change the toolbar title to the name of the fragment 
+            this.tv_toolbar_title.Text = "הגדרות";
 
             this.btnEditDetails = view.FindViewById<Button>(Resource.Id.btnSettingEtitdetails);
             this.btnChangePassword = view.FindViewById<Button>(Resource.Id.btnSettingChangePassword);
@@ -58,6 +71,8 @@ namespace ShopApp
             btnDialogChangePassword = this.changePasswordDialog.FindViewById<Button>(Resource.Id.btnManagerChangePasswordSave);
             btnDialogChangePassword.Click += BtnDialogChangePassword_Click;
         }
+
+
 
      
 

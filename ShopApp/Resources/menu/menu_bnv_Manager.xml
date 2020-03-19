@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--For all properties see: https://aka.ms/android-menu-resource-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+  <item android:id="@+id/action_BnvManagerHome"
+        android:icon="@drawable/icon_home"
+        android:title="בית"/>
+
+  <item android:id="@+id/action_BnvManagerOrders"
+        android:icon="@drawable/iconsorderhistory"
+        android:title="הזמנות "/>
+
+  <item android:id="@+id/action_BnvManagerProducts"
+        android:icon="@drawable/iconsbuy"
+        android:title="מוצרים "/>
+
+  <item android:id="@+id/action_BnvManagerSettings"
+        android:icon="@drawable/iconsettinguser"
+        android:title="הגדרות"/>
+
+
+</menu>

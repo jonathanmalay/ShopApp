@@ -31,8 +31,9 @@ namespace ShopApp
             this.etCVV = FindViewById<EditText>(Resource.Id.etSettingPaymentCvv);
             this.btnPaymentSave = FindViewById<Button>(Resource.Id.btnSettingPaymentSave);
             this.btn_BackPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
+            this.btn_BackPage.Visibility = ViewStates.Visible; //show the button 
 
-           
+
 
             this.btnPaymentSave.Click += BtnPaymentSave_Click;
             this.btn_BackPage.Click += Btn_BackPage_Click;
@@ -42,7 +43,8 @@ namespace ShopApp
 
         private void Btn_BackPage_Click(object sender, EventArgs e)
         {
-           Finish();
+            this.btn_BackPage.Visibility = ViewStates.Invisible; //hide the button 
+            Finish(); //delete the Activity from the stack
         }
 
         private async void BtnPaymentSave_Click(object sender, EventArgs e)

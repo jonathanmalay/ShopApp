@@ -24,11 +24,21 @@ namespace ShopApp
 
         }
 
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);//if the fragment on the screen now
+            if(hidden == false)
+            {
+                this.tv_toolbar_title.Text = "מסך ראשי";
+            }
+        }
+
         public override async void OnViewCreated(View view, Bundle savedInstanceState)
         {            
             base.OnViewCreated(view, savedInstanceState);
             this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title); //change the toolbar title to the name of the fragment 
             this.tv_toolbar_title.Text = "מסך ראשי";
+
 
             this.btnStartOrder = view.FindViewById<Button>(Resource.Id.btnStartShop);
             this.btnSetting = view.FindViewById<Button>(Resource.Id.btnHomeSetting);

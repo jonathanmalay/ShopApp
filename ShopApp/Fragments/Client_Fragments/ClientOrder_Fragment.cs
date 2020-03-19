@@ -14,7 +14,7 @@ using ShopApp.Activities;
 
 namespace ShopApp
 {
-    [Activity(Label = "ClientOrder_Fragment")]
+
     public class ClientOrder_Fragment : Android.Support.V4.App.Fragment
     {
         ISharedPreferences sp;
@@ -31,15 +31,30 @@ namespace ShopApp
           
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+
             return LayoutInflater.Inflate(Resource.Layout.ClientOrder_Layout, container, false);
         }
+
+
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+            if(hidden==false)
+            { 
+        
+            this.tv_toolbar_title.Text = "הזמנה";
+
+             }
+        }
+
+
         public override async void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
 
-
             this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "הזמנה";
+
 
             this.lvProducts = view.FindViewById<ListView>(Resource.Id.listViewProducts);
             this.btnMoveToPayment = view.FindViewById<Button>(Resource.Id.btnClientOrderLayoutMoveToPayment);

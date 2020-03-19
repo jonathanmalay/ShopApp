@@ -22,7 +22,7 @@ namespace ShopApp
     {
         ISharedPreferences sp;
         TextView tvWelcomeUser;
-       
+        Button btn_toolbar_backPage;
         BottomNavigationView bnvClient;
         User u;
         protected async override void OnCreate(Bundle savedInstanceState)
@@ -31,27 +31,13 @@ namespace ShopApp
             this.SetContentView(Resource.Layout.layout_home);
 
             this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
-
+            this.btn_toolbar_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.bnvClient = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewClient);
-            MenuInflater.Inflate(Resource.Menu.menu_client_home, this.bnvClient.Menu);
-            //ColorStateList myCsl = new ColorStateList(
-            //    new int[][]
-            //    {
-            //        new int [] {Android.Resource.Attribute.StateSelected},
-            //        new int [] {-Android.Resource.Attribute.StateSelected }
-            //    },
-            //    new int[]
-            //    {
-            //        ContextCompat.GetColor(this, Resource.Color.white),
-            //        ContextCompat.GetColor(this,Resource.Color.bottomNavigationSelectorFalse)
-            //    }
-            //    );
-            //this.bnvClient.ItemIconTintList = myCsl;
-            //this.bnvClient.ItemTextColor = myCsl;
+            
 
+            this.btn_toolbar_backPage.Visibility  = ViewStates.Invisible; //hide the back page button cause i dont need him here
             this.bnvClient.NavigationItemSelected += BnvClient_NavigationItemSelected;
-
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+                        this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.u = await User.GetUser(usernameloged);
 
@@ -126,8 +112,9 @@ namespace ShopApp
 
                 case Resource.Id.action_accountSetting:
 
-                    Intent intentAccountSetting = new Intent(this, typeof(Activity_ManagerHomeSetting));//עובר לאקטיביטי הגדרות משתמש
-                    this.StartActivity(intentAccountSetting);
+                    FragmentHelper.LoadFragment(this, new HomeSetting_Fragment());
+
+
                     break;
             }
 

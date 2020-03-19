@@ -7,7 +7,7 @@
 
 
 
-    
+    <include layout="@layout/toolbar_client"/>
 
     <LinearLayout
         android:orientation="vertical"

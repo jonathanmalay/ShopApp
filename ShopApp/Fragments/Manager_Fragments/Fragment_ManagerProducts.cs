@@ -14,8 +14,8 @@ using Android.Widget;
 
 namespace ShopApp
 {
-    [Activity(Label = "Activity_ManagerProducts")]
-    public class Activity_ManagerProducts : AppCompatActivity
+     
+    public class Fragment_ManagerProducts : Android.Support.V4.App.Fragment
     {
         ISharedPreferences sp;
         string userName;
@@ -27,43 +27,65 @@ namespace ShopApp
         Button btn_backPage;
         TextView tv_toolbar_title;
         ProductAdapter pa;
-        protected async override void OnCreate(Bundle savedInstanceState)
+
+
+
+
+
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.layout_ManagerEditProducts);
+
+            return LayoutInflater.Inflate(Resource.Layout.layout_Manager_Home_Fragment, container, false);
+        }
+
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+            if (hidden == false)
+            {
+
+                this.tv_toolbar_title.Text = "מסך הבית";
+
+            }
+        }
 
 
-            this.fab_add_NewProduct = FindViewById<FloatingActionButton>(Resource.Id.fab_Manager_addNewProduct);
-            this.lvProducts = FindViewById<ListView>(Resource.Id.listviewManagerRemoveProduct);
-            this.btn_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
-            this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);
+
+        public override async void OnViewCreated(View view, Bundle savedInstanceState)
+        {
+            base.OnViewCreated(view, savedInstanceState);
+
+
+
+            this.fab_add_NewProduct = view.FindViewById<FloatingActionButton>(Resource.Id.fab_Manager_addNewProduct);
+            this.lvProducts = view.FindViewById<ListView>(Resource.Id.listviewManagerRemoveProduct);
+            this.btn_backPage = view.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
+            this.btn_backPage.Visibility = ViewStates.Invisible; //hide this button from the toolbar 
+            this.tv_toolbar_title = view.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+            this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
-            CreateDialog(this);
+            CreateDialog(Activity);
 
             List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
 
             List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
             products = await Product.GetAllProduct();
 
-            this.pa = new ProductAdapter(this, products, selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
+            this.pa = new ProductAdapter(Activity, products, selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
             this.lvProducts.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
             this.lvProducts.ItemClick += LvProducts_ItemClick; ;
             this.fab_add_NewProduct.Click += Fab_add_NewProduct_Click;
-            this.btn_backPage.Click += Btn_backPage_Click;
+           
         }
 
-        private void Btn_backPage_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(this, typeof(Activity_ManagerHome));
-            StartActivity(intent);
-        }
+        
 
         private void Fab_add_NewProduct_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(Activity_ManagerAddProduct));
+            Intent intent = new Intent(Activity, typeof(Activity_ManagerAddProduct));
             StartActivity(intent);
 
         }
@@ -77,7 +99,7 @@ namespace ShopApp
 
         public void CreateDialog(Activity activity)
         {
-            dialogRemoveProduct = new Dialog(this);
+            dialogRemoveProduct = new Dialog(Activity);
 
             Button btn_remove_product;
 
@@ -104,13 +126,13 @@ namespace ShopApp
                 if (check_product == null)
                 {
 
-                    Toast.MakeText(this, "הפריט הוסר בהצלחה (:", ToastLength.Long).Show();
+                    Toast.MakeText(Activity, "הפריט הוסר בהצלחה (:", ToastLength.Long).Show();
 
                 }
 
                 else
                 {  //במידה והמוצר לא הוסר בהצלחה
-                    Toast.MakeText(this, "אירעה שגיאה במהלך הסרת המוצר . אנא נסה שנית", ToastLength.Long).Show();
+                    Toast.MakeText(Activity, "אירעה שגיאה במהלך הסרת המוצר . אנא נסה שנית", ToastLength.Long).Show();
 
                 }
 

@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+>
 
     <include
       layout="@layout/toolbar_client"
@@ -11,22 +11,14 @@
  
     
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_gravity="center"
-         android:layout_width="match_parent"
-         android:layout_height="0dp"
-        android:layout_weight="0.7"
-        android:layout_margin="25dp"
-        android:background="@color/white">
    
     <ListView
         android:id="@+id/listViewFinishOrder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="0.1"
         />
 
-        </LinearLayout>
 
     <TextView
         android:text=":מחיר סופי"

@@ -12,43 +12,65 @@ using Android.Widget;
 
 namespace ShopApp
 {
-    [Activity(Label = "Activity_ManagerHomeSetting")]
-    public class Activity_ManagerHomeSetting : Activity
+    
+    public class Fragment_ManagerHomeSetting : Android.Support.V4.App.Fragment
     {
 
         Button btnChangePassword, btnEditDetails, btnDialogChangePassword, btnPaymentMethods;
         EditText etNewPassword, etNewPasswordConrife, etOldPassword;
 
+        TextView tv_toolbar_title;
         ISharedPreferences sp;
         Manager manager;
-        protected async override void OnCreate(Bundle savedInstanceState)
+
+
+
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.layout_ManagerSettings);
+            return LayoutInflater.Inflate(Resource.Layout.layout_ManagerSettings, container, false);
+        }
+
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+            if (hidden == false)
+            {
+
+                this.tv_toolbar_title.Text = "הגדרות מנהל חנות";
+
+            }
+        }
 
 
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+
+        public override async void OnViewCreated(View view, Bundle savedInstanceState)
+        {
+            base.OnViewCreated(view, savedInstanceState);
+
+
+            this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string manager_usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.manager = await Manager.GetManager(manager_usernameloged);
 
-            this.btnEditDetails = FindViewById<Button>(Resource.Id.btnManagerSettingEtitdetails);
-            this.btnChangePassword = this.FindViewById<Button>(Resource.Id.btnManagerSettingChangePassword);
-            this.btnPaymentMethods = this.FindViewById<Button>(Resource.Id.btnManagerSettingPaymentMethods);
+            this.btnEditDetails = view.FindViewById<Button>(Resource.Id.btnManagerSettingEtitdetails);
+            this.btnChangePassword = view.FindViewById<Button>(Resource.Id.btnManagerSettingChangePassword);
+            this.btnPaymentMethods = view.FindViewById<Button>(Resource.Id.btnManagerSettingPaymentMethods);
 
             this.btnEditDetails.Click += BtnEditDetails_Click;
             this.btnPaymentMethods.Click += BtnPaymentMethods_Click;
             this.btnChangePassword.Click += (senderD, eD) =>//הקפצת מסך דיאלוג שמכיל לייאוט לשינוי סיסמא
             {
 
-                Dialog d = new Dialog(this);
+                Dialog d = new Dialog(Activity);
                 d.SetContentView(Resource.Layout.layout_ManagerChangePassword); 
                 d.SetTitle("שינוי סיסמה");
                 d.SetCancelable(true);
                 etOldPassword = d.FindViewById<EditText>(Resource.Id.etManagerChangePasswordOldPassword);
                 etNewPassword = d.FindViewById<EditText>(Resource.Id.etManagerChangePasswordNew);
                 etNewPasswordConrife = d.FindViewById<EditText>(Resource.Id.etManagerChangePasswordConrife);
-                this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+                this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
                 string username = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
 
                 btnDialogChangePassword = d.FindViewById<Button>(Resource.Id.btnManagerChangePasswordSave);
@@ -62,6 +84,10 @@ namespace ShopApp
 
 
         }
+
+
+
+
 
         private void BtnPaymentMethods_Click(object sender, EventArgs e)
         {

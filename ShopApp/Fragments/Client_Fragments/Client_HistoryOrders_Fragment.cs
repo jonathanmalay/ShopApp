@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace ShopApp
 {
-    [Activity(Label = "Client_HistoryOrders_Fragment")]
+   
     public class Client_HistoryOrders_Fragment : Android.Support.V4.App.Fragment
     {
         ISharedPreferences sp;
@@ -24,19 +24,28 @@ namespace ShopApp
         List<Orders_History> allOrders;
         TextView tv_toolbar_title, tv_orders_Status; 
     
-     //   מני ההומו
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             return LayoutInflater.Inflate(Resource.Layout.layout_OrdersHistory, container, false);
         }
 
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+            if(hidden == false)
+            {
+                this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title); //change the toolbar title to the name of the fragment 
+                this.tv_toolbar_title.Text = "היסטוריית הזמנות";
+            }
+        }
+
         public override async void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-
             this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title); //change the toolbar title to the name of the fragment 
             this.tv_toolbar_title.Text = "היסטוריית הזמנות";
+
             this.tv_orders_Status = view.FindViewById<TextView>(Resource.Id.tv_Fragment_OrdersHistory_Status);
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");

@@ -7,6 +7,8 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.Widget;
+using Android.Support.V4.Content;//for the  bottom nevigation 
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
@@ -17,11 +19,12 @@ namespace ShopApp
     [Activity(Label = "Activity_ManagerHome")]
     public class Activity_ManagerHome : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {  
-        Button btn_EditProducts, btnOrders, btnSetting , btn_Logout;
+        Button  btn_Logout;
         ISharedPreferences sp;
         Manager m;
+        BottomNavigationView bnv_Manager_Home;
 
-        
+
 
         protected async override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,20 +32,47 @@ namespace ShopApp
 
             SetContentView(Resource.Layout.layout_ManagerHome);
 
-            this.btn_EditProducts= FindViewById<Button>(Resource.Id.btnManagerHomeEditProducts);
-            this.btnOrders = FindViewById<Button>(Resource.Id.btnManagerHomeOrders);
-            this.btnSetting = FindViewById<Button>(Resource.Id.btnManagerHomeSetting);
+            this.bnv_Manager_Home = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewManager);
             this.btn_Logout = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string manager_usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.m = await Manager.GetManager(manager_usernameloged);
 
 
-            this.btn_EditProducts.Click += Btn_EditProducts_Click;
-            this.btnOrders.Click += BtnOrders_Click;
-            this.btnSetting.Click += BtnSetting_Click;
             this.btn_Logout.Click += Btn_Logout_Click;
-            
+            this.bnv_Manager_Home.NavigationItemSelected += Bnv_Manager_Home_NavigationItemSelected;
+            FragmentHelper.LoadFragment(this, new Manager_Home_Fragment()); //the first fragment that wiil be shown after Login
+        }
+
+        private void Bnv_Manager_Home_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
+        {
+             if(e.Item.ItemId == Resource.Id.action_BnvManagerHome)
+            {
+                FragmentHelper.LoadFragment(this, new Manager_Home_Fragment());
+            }
+
+
+            if (e.Item.ItemId == Resource.Id.action_BnvManagerOrders)
+            {
+                FragmentHelper.LoadFragment(this, new Fragment_ManagerOrders());
+
+            }
+
+
+            if (e.Item.ItemId == Resource.Id.action_BnvManagerProducts)
+            {
+                FragmentHelper.LoadFragment(this, new  Fragment_ManagerProducts());
+
+            }
+
+            if (e.Item.ItemId == Resource.Id.action_BnvManagerSettings)
+            {
+                FragmentHelper.LoadFragment(this, new Fragment_ManagerHomeSetting());
+
+            }
+
+
+
 
         }
 
@@ -55,52 +85,6 @@ namespace ShopApp
             this.StartActivity(intent);
         }
 
-        private void Btn_EditProducts_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Intent intent = new Intent(this, typeof(Activity_ManagerProducts));
-                this.StartActivity(intent);
-            }
-
-
-            catch (Exception)
-            {
-
-            }
-
-        }
-
-       
-        private void BtnSetting_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Intent intent = new Intent(this, typeof(Activity_ManagerHomeSetting));
-                this.StartActivity(intent);
-            }
-
-
-            catch (Exception )
-            {
-               
-            }
-        }
-
-
-        private void BtnOrders_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Intent intent = new Intent(this, typeof(Activity_ManagerOrders));
-                this.StartActivity(intent);
-            }
-
-            catch(Exception)
-            {
-
-            }
-        }
 
         public override bool OnCreateOptionsMenu(IMenu menu) //רשום אובררייד בגלל שתפריט  קיים וערכו נולל לכן אנחנו דורסים את הערך הקודם ויוצרים תפריט חדש
         {

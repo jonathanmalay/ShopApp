@@ -70,10 +70,10 @@
   <ItemGroup>
     <Compile Include="Activities\Client Activities\Activity_EditAccuntSetting.cs" />
     <Compile Include="Activities\Client Activities\Activity_FinishOrder.cs" />
-    <Compile Include="Activities\Manager Activities\Activity_ManagerOrders.cs" />
-    <Compile Include="Activities\Manager Activities\Activity_ManagerProducts.cs" />
+    <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerOrders.cs" />
+    <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerProducts.cs" />
     <Compile Include="Adapters\Adapter_ManagerOrders.cs" />
-    <Compile Include="Activities\Manager Activities\Activity_ManagerHomeSetting.cs" />
+    <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerHomeSetting.cs" />
     <Compile Include="Activities\Client Activities\Activity_SettingPayment.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerAddProduct.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerHome.cs" />
@@ -88,6 +88,7 @@
     <Compile Include="Fragments\Client_Fragments\Client_HomeFragment.cs" />
     <Compile Include="Fragments\Client_Fragments\HomeSetting_Fragment.cs" />
     <Compile Include="FragmentHelper.cs" />
+    <Compile Include="Fragments\Manager_Fragments\Manager_Home_Fragment.cs" />
     <Compile Include="Models\Manager_Order.cs" />
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Services\ImageBrodcastReceiver.cs" />
@@ -399,7 +400,12 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fragments\Manager_Fragments\" />
+    <AndroidResource Include="Resources\layout\layout_Manager_Home_Fragment.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_bnv_Manager.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

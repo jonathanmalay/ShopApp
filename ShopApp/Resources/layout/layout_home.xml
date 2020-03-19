@@ -38,8 +38,10 @@
        android:id="@+id/bottomNavigationViewClient"
         app:labelVisibilityMode="labeled"
         android:layout_width="match_parent"
+        app:menu="@menu/menu_client_home"
         android:layout_height="wrap_content"
         app:itemBackground="@color/colorAccent"
+        android:background="@color/colorAccent"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
       />
