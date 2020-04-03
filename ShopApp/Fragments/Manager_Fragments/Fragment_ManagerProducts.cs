@@ -35,8 +35,7 @@ namespace ShopApp
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-
-            return LayoutInflater.Inflate(Resource.Layout.layout_Manager_Home_Fragment, container, false);
+            return LayoutInflater.Inflate(Resource.Layout.layout_ManagerEditProducts, container, false);
         }
 
         public override void OnHiddenChanged(bool hidden)
@@ -59,10 +58,10 @@ namespace ShopApp
 
 
             this.fab_add_NewProduct = view.FindViewById<FloatingActionButton>(Resource.Id.fab_Manager_addNewProduct);
-            this.lvProducts = view.FindViewById<ListView>(Resource.Id.listviewManagerRemoveProduct);
-            this.btn_backPage = view.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
+            this.lvProducts = view.FindViewById<ListView>(Resource.Id.listviewManagerEditProducts);
+            this.btn_backPage = Activity.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.btn_backPage.Visibility = ViewStates.Invisible; //hide this button from the toolbar 
-            this.tv_toolbar_title = view.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+            this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
@@ -96,7 +95,7 @@ namespace ShopApp
             selected_product = this.pa[position];//מכניס לעצם מסוג מוצר  את המוצר שנמצא בתא שנלחץ בליסט ויאו 
             dialogRemoveProduct.Show(); //מפעיל את הדיאלוג
         }
-
+                                           
         public void CreateDialog(Activity activity)
         {
             dialogRemoveProduct = new Dialog(Activity);

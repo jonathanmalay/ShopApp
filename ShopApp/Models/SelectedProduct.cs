@@ -65,7 +65,7 @@ namespace ShopApp
             }
         }
 
-        public static async Task<bool> CheckIfProductInCart(string product_name, string username)
+        public static async Task<bool> CheckIfProductInCart(string product_name, string username)//פעולה אשר בודקת האם המוצר  קיים בעגלה כלומר במערכת של הפיירבייס
         {//פעולה אשר בודקת האם המוצר  קיים בעגלה כלומר במערכת של הפיירבייס
             SelectedProduct returned_product = await GetProductInCart(product_name, username);
 

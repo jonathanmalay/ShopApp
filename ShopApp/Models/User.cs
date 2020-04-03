@@ -33,8 +33,8 @@ namespace ShopApp
 
 
         }
-        public static async void AddUser(Activity activity, string username, string password, string email, string phonenum, string fullname, string city ,string streetaddress)
-        { //הפעולה מקבלת את כל התכונות של המשתמש החדש שרוצים ליצור 
+        public static async void AddUser(Activity activity, string username, string password, string email, string phonenum, string fullname, string city ,string streetaddress)//הפעולה מקבלת את כל התכונות של המשתמש החדש שרוצים ליצור 
+        { 
             try
             {
 
@@ -72,8 +72,8 @@ namespace ShopApp
         }
 
 
-        public static async Task<bool> UserExist(string username)
-        {//פעולה אשר בודקת האם המשתמש קיים במערכת של הפיירבייס
+        public static async Task<bool> UserExist(string username)//פעולה אשר בודקת האם המשתמש קיים במערכת של הפיירבייס
+        {
             User returnedUser = await GetUser(username);
 
             if (returnedUser == null) // אם המשתמש לא קיים 
@@ -104,8 +104,8 @@ namespace ShopApp
         }
 
 
-        public static async Task<string> GetUserPassword(string username)
-        {//הפעולה מחזירה את הסיסמא של השם משתמש שהפעולה קיבלה
+        public static async Task<string> GetUserPassword(string username)//הפעולה מחזירה את הסיסמא של השם משתמש שהפעולה קיבלה
+        {
             IDocumentSnapshot reference = await AppData.FireStore.GetCollection("Users").GetDocument(username).GetDocumentAsync();
             string passwordConrife = reference.ToObject<User>().Password; //מכניס לתוך משתנה מחרוזת את הערך של הסיסמא שנלקח מהפיירבייס
 
@@ -133,8 +133,8 @@ namespace ShopApp
 
 
 
-        public static async Task<User> ConrifePassword(string enteredpassword, string username)
-        { //פעולה אשר מקבלת סיסמה ושם משתמש ובודקת האם הסיסמה היא הסיסמא השמורה בפיירבייס תחת אותו שם משתמש
+        public static async Task<User> ConrifePassword(string enteredpassword, string username)//פעולה אשר מקבלת סיסמה ושם משתמש ובודקת האם הסיסמה היא הסיסמא השמורה בפיירבייס תחת אותו שם משתמש
+        { 
             try
             {
                 IDocumentSnapshot reference = await AppData.FireStore.GetCollection("Users").GetDocument(username).GetDocumentAsync();

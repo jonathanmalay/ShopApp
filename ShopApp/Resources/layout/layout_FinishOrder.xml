@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
 >
 
-    <include
-      layout="@layout/toolbar_client"
-        />
- 
-    
-
    
     <ListView
         android:id="@+id/listViewFinishOrder"

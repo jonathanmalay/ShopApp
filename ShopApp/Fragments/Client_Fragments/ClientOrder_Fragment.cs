@@ -19,7 +19,7 @@ namespace ShopApp
     {
         ISharedPreferences sp;
         string userName;
-        Button btn_back_page;
+        
         Dialog dialogAddProduct;
         TextView tvcurrentAmountProduct,tv_toolbar_title; //הכמות הנוכחית של מוצר בקנייה
         Button btnMoveToPayment;
@@ -58,7 +58,6 @@ namespace ShopApp
 
             this.lvProducts = view.FindViewById<ListView>(Resource.Id.listViewProducts);
             this.btnMoveToPayment = view.FindViewById<Button>(Resource.Id.btnClientOrderLayoutMoveToPayment);
-            this.btn_back_page = view.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
@@ -75,7 +74,7 @@ namespace ShopApp
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
             this.lvProducts.ItemClick += LvProducts_ItemClick;
             this.btnMoveToPayment.Click += BtnMoveToPayment_ClickAsync;
-            this.btn_back_page.Click += Btn_back_page_Click;
+            
         }
 
         private void Btn_back_page_Click(object sender, EventArgs e)

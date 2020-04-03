@@ -12,8 +12,9 @@ namespace ShopApp
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class MainActivity : AppCompatActivity //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {
-        EditText etUsername,etPassword;
-        Button btnLogin,btnLogin_As_Manager;
+
+        EditText etUsername, etPassword;
+        Button btnLogin, btnLogin_As_Manager;
         TextView tvRegister;
         ISharedPreferences sp;
         ImageView ivShowPassword;
@@ -58,9 +59,9 @@ namespace ShopApp
 
             }
 
-            catch(Exception)
+            catch (Exception)
             {
-                
+
             }
 
         }
@@ -73,43 +74,43 @@ namespace ShopApp
 
         private void IvShowPassword_Click(object sender, System.EventArgs e)
         {
-           // etPassword.Text.;
+            // etPassword.Text.;
         }
 
-        private void TvRegister_Click(object sender, System.EventArgs e)
-        { // מימוש האירועים המתבצעים כתוצאה  מלחיצה על כל כפתור ההרשמה
-           
-                Intent intent = new Intent(this, typeof(RegisterActivity));
-                this.StartActivity(intent);
-            
+        private void TvRegister_Click(object sender, System.EventArgs e)// מימוש האירועים המתבצעים כתוצאה  מלחיצה על כל כפתור ההרשמה
+        { 
+
+            Intent intent = new Intent(this, typeof(RegisterActivity));
+            this.StartActivity(intent);
+
         }
 
-        
-        
+
+
 
         private async void BtnLogin_Click(object sender, System.EventArgs e)
-        {   
+        {
             pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
             pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
             pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
-           
-    
-                User u = await User.ConrifePassword(etPassword.Text, etUsername.Text);//בודק האם הסיסמא שייכת למשתמש והאם הוא קיים ובמידה וכן מחזירה את המשתמש כעצם
-                if (u != null) //במידה ותהליך ההזדהות צלח
-                {   
-                    this.sp.Edit().PutString("Username", etUsername.Text).Apply();//שומר בשרד רפרנס את השם של המשתמש שהתחבר
-                    Intent intent = new Intent(this, typeof(HomeActivity));//עובר להום אקטיביטי
-                    this.StartActivity(intent);
-                    
-                }
 
-                else
-                {
-                    //הקפצת הודעה למשתמש ששם המשתמש או הסיסמא שגויים והוא צריך לבחור אחד חדש
-                    Toast.MakeText(this, "שם משתמש או סיסמא שגויים!", ToastLength.Long).Show();
-                }
+
+            User u = await User.ConrifePassword(etPassword.Text, etUsername.Text);//בודק האם הסיסמא שייכת למשתמש והאם הוא קיים ובמידה וכן מחזירה את המשתמש כעצם
+            if (u != null) //במידה ותהליך ההזדהות צלח
+            {
+                this.sp.Edit().PutString("Username", etUsername.Text).Apply();//שומר בשרד רפרנס את השם של המשתמש שהתחבר
+                Intent intent = new Intent(this, typeof(HomeActivity));//עובר להום אקטיביטי
+                this.StartActivity(intent);
+
+            }
+
+            else
+            {
+                //הקפצת הודעה למשתמש ששם המשתמש או הסיסמא שגויים והוא צריך לבחור אחד חדש
+                Toast.MakeText(this, "שם משתמש או סיסמא שגויים!", ToastLength.Long).Show();
+            }
             pd.Cancel();
-          
+
         }
 
 

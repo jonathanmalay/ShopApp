@@ -60,7 +60,7 @@ namespace ShopApp
 
 
 
-                Manager manager = await Manager.ConrifePassword(manager_password, manager_username);//בודק האם הסיסמא שייכת למשתמש והאם הוא קיים ובמידה וכן מחזירה את המשתמש כעצם
+                Manager manager = await Manager.ConrifeManagerPassword(manager_password, manager_username);//בודק האם הסיסמא שייכת למשתמש והאם הוא קיים ובמידה וכן מחזירה את המשתמש כעצם
                 if (manager != null) //במידה ותהליך ההזדהות צלח
                 {
                     this.sp.Edit().PutString("Username", manager_username).Apply();//שומר בשרד רפרנס את השם של המשתמש שהתחבר

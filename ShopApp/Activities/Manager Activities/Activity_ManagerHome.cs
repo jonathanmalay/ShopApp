@@ -41,33 +41,34 @@ namespace ShopApp
 
             this.btn_Logout.Click += Btn_Logout_Click;
             this.bnv_Manager_Home.NavigationItemSelected += Bnv_Manager_Home_NavigationItemSelected;
-            FragmentHelper.LoadFragment(this, new Manager_Home_Fragment()); //the first fragment that wiil be shown after Login
+            MenuInflater.Inflate(Resource.Menu.menu_bnv_Manager, this.bnv_Manager_Home.Menu); //set wich conteiner to use(client or Maneger)
+            FragmentHelper.LoadFragment(this, new Manager_Home_Fragment(), true); //the first fragment that wiil be shown after Login
         }
 
         private void Bnv_Manager_Home_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
         {
              if(e.Item.ItemId == Resource.Id.action_BnvManagerHome)
             {
-                FragmentHelper.LoadFragment(this, new Manager_Home_Fragment());
+                FragmentHelper.LoadFragment(this, new Manager_Home_Fragment(), true); //true because it manager conteiner and not client conteiner
             }
 
 
             if (e.Item.ItemId == Resource.Id.action_BnvManagerOrders)
             {
-                FragmentHelper.LoadFragment(this, new Fragment_ManagerOrders());
+                FragmentHelper.LoadFragment(this, new Fragment_ManagerOrders(), true);
 
             }
 
 
             if (e.Item.ItemId == Resource.Id.action_BnvManagerProducts)
             {
-                FragmentHelper.LoadFragment(this, new  Fragment_ManagerProducts());
+                FragmentHelper.LoadFragment(this, new  Fragment_ManagerProducts(), true);
 
             }
 
             if (e.Item.ItemId == Resource.Id.action_BnvManagerSettings)
             {
-                FragmentHelper.LoadFragment(this, new Fragment_ManagerHomeSetting());
+                FragmentHelper.LoadFragment(this, new Fragment_ManagerHomeSetting(), true);
 
             }
 

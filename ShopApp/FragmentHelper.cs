@@ -16,7 +16,7 @@ namespace ShopApp
 {
     public static class FragmentHelper
     {
-        public static void LoadFragment(FragmentActivity activity, Android.Support.V4.App.Fragment fragmentToLoad)
+        public static void LoadFragment(FragmentActivity activity, Android.Support.V4.App.Fragment fragmentToLoad, bool manager)
         {
             try
             {
@@ -40,24 +40,33 @@ namespace ShopApp
 
                 if (savedFragment == null)
                 {
-                    if(fragmentToLoad != null)
+                    if (fragmentToLoad != null)
                     {
                         if (!fragmentToLoad.IsAdded)
                         {
-                            fragmentTransaction
-                                .Add(Resource.Id.frameLayoutContainerClient, fragmentToLoad, tag)
-                                .AddToBackStack(tag);
+                            if (manager)
+                            {
+                                fragmentTransaction
+                                    .Add(Resource.Id.frameLayoutContainerManager, fragmentToLoad, tag)
+                                    .AddToBackStack(tag);
+                            }
+                            else
+                            {
+                                fragmentTransaction
+                                    .Add(Resource.Id.frameLayoutContainerClient, fragmentToLoad, tag)
+                                    .AddToBackStack(tag);
+                            }
                         }
                     }
-                }
-                else
-                {
-                    fragmentTransaction.Show(savedFragment).AddToBackStack(tag);
-                }
+                    else
+                    {
+                        fragmentTransaction.Show(savedFragment).AddToBackStack(tag);
+                    }
 
-                fragmentTransaction.Commit();
+                    fragmentTransaction.Commit();
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Fragment Helper Error: " + e.Message);
             }

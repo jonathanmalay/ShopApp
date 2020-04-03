@@ -1,23 +1,23 @@
 ﻿
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:id="@+id/toolbar_client_home"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:minHeight="?attr/actionBarSize"
-app:contentInsetStart="0dp"
-app:contentInsetEnd="0dp"    
-
-android:background="?attr/colorPrimary"
-android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
-
-<LinearLayout
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar_client_home"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/mtrl_toolbar_default_height"
-    android:orientation="horizontal"
-    android:background="@color/colorAccent"
-    android:weightSum="1">
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/actionBarSize"
+    app:contentInsetStart="0dp"
+    app:contentInsetEnd="0dp"
+    android:background="?attr/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mtrl_toolbar_default_height"
+        android:orientation="horizontal"
+        android:background="@color/colorAccent"
+        android:weightSum="1">
 
         <ImageView
             android:background= "@drawable/iconappnew"
@@ -46,12 +46,9 @@ app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
             android:text="@string/BackPage"
             android:textStyle="bold"
             android:layout_width="0dp"
-            
             android:elevation="7dp"
             android:layout_weight="0.2"
             android:layout_height="wrap_content"
-             
-            
             android:textColor="@android:color/white"
             android:background="@drawable/circlebutton"
             android:id="@+id/btn_toolbar_backPage"
@@ -69,5 +66,5 @@ app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
 
     </LinearLayout>
-    
+
 </android.support.v7.widget.Toolbar>

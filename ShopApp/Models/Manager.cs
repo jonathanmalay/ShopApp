@@ -80,8 +80,8 @@ namespace ShopApp
         }
 
 
-        public static async Task<Manager> GetManager(string username)
-        {//פעולה אשר לוקחת מנהל חנות מהפיירבייס
+        public static async Task<Manager> GetManager(string username)//פעולה אשר לוקחת מנהל חנות מהפיירבייס
+        {
             try
             {
                 IDocumentSnapshot reference = await AppData.managersCollection.GetDocument(username).GetDocumentAsync();
@@ -100,8 +100,8 @@ namespace ShopApp
 
 
 
-        public static async Task<Manager> ConrifePassword(string enteredpassword, string manager_username)
-        { //פעולה אשר מקבלת סיסמה ושם משתמש ובודקת האם הסיסמה היא הסיסמא השמורה בפיירבייס תחת אותו שם משתמש
+        public static async  Task<Manager> ConrifeManagerPassword(string enteredpassword, string manager_username)//פעולה אשר מקבלת סיסמה ושם משתמש ובודקת האם הסיסמה היא הסיסמא השמורה בפיירבייס תחת אותו שם משתמש
+        { 
             try
             {
                 IDocumentSnapshot reference = await AppData.managersCollection.GetDocument(manager_username).GetDocumentAsync();
@@ -129,6 +129,8 @@ namespace ShopApp
             }
 
         }
+
+
 
 
 

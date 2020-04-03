@@ -63,7 +63,7 @@ namespace ShopApp
         {
             try
             {
-                FragmentHelper.LoadFragment(Activity, new Fragment_ManagerProducts());
+                FragmentHelper.LoadFragment(Activity, new Fragment_ManagerProducts(), true);
             }
 
 
@@ -79,7 +79,7 @@ namespace ShopApp
         {
             try
             {
-                FragmentHelper.LoadFragment(Activity, new Fragment_ManagerHomeSetting());
+                FragmentHelper.LoadFragment(Activity, new Fragment_ManagerHomeSetting(), true);
 
             }
 
@@ -95,7 +95,7 @@ namespace ShopApp
         {
             try
             {
-                FragmentHelper.LoadFragment(Activity, new Fragment_ManagerOrders());
+                FragmentHelper.LoadFragment(Activity, new Fragment_ManagerOrders(), true);
 
             }
 

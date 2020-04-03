@@ -83,19 +83,19 @@ namespace ShopApp
 
         private void BtnPruchesHistory_Click(object sender, EventArgs e)
         {
-            FragmentHelper.LoadFragment(Activity, new Client_HistoryOrders_Fragment());
+            FragmentHelper.LoadFragment(Activity, new Client_HistoryOrders_Fragment(), false);
 
         }
 
         private void BtnStartOrder_Click(object sender, EventArgs e)
         {
-            FragmentHelper.LoadFragment( Activity, new ClientOrder_Fragment());
+            FragmentHelper.LoadFragment( Activity, new ClientOrder_Fragment(), false);
         }
 
 
         private void BtnSetting_Click(object sender, EventArgs e)
         {
-            FragmentHelper.LoadFragment(Activity, new HomeSetting_Fragment());
+            FragmentHelper.LoadFragment(Activity, new HomeSetting_Fragment(), false);
 
         }
 

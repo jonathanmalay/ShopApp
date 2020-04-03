@@ -97,8 +97,8 @@ namespace ShopApp
 
         }
 
-        public static async Task<List<Manager_Order>> GetAllOrders()
-        { //return all the orders of the shop 
+        public static async Task<List<Manager_Order>> GetAllOrders()//return all the orders of the shop 
+        { 
             List<Manager_Order> allOrders = new List<Manager_Order>();
             try
             {
@@ -118,8 +118,8 @@ namespace ShopApp
 
 
 
-        public static async Task<Manager_Order> GetOrder(string orderId)
-        { //מחזיר עצם מסוג הזמנה 
+        public static async Task<Manager_Order> GetOrder(string orderId)//מחזיר עצם מסוג הזמנה 
+        { 
             try
             {   //TODO:  
 

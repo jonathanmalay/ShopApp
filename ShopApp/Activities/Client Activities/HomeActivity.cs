@@ -17,8 +17,18 @@ using AlertDialog = Android.App.AlertDialog;
 
 namespace ShopApp
 {
+    public interface IHomeActivity1
+    {
+        void OnBackPressed();
+        bool OnCreateOptionsMenu(IMenu menu);
+        bool OnOptionsItemSelected(IMenuItem item);
+    }
+
     [Activity(Label = "HomeActivity")]
+
+
     public class HomeActivity : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
+, IHomeActivity1
     {
         ISharedPreferences sp;
         TextView tvWelcomeUser;
@@ -33,11 +43,11 @@ namespace ShopApp
             this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
             this.btn_toolbar_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.bnvClient = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewClient);
-            
 
-            this.btn_toolbar_backPage.Visibility  = ViewStates.Invisible; //hide the back page button cause i dont need him here
+
+            this.btn_toolbar_backPage.Visibility = ViewStates.Invisible; //hide the back page button cause i dont need him here
             this.bnvClient.NavigationItemSelected += BnvClient_NavigationItemSelected;
-                        this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.u = await User.GetUser(usernameloged);
 
@@ -49,7 +59,7 @@ namespace ShopApp
             }
 
             this.tvWelcomeUser.Text = u.Username + " ברוך הבא "; //מציג  הודעת  ברוך הבא בתוספת השם של המשתמש
-            FragmentHelper.LoadFragment(this, new Client_HomeFragment()); //the first fragment that wiil be shown 
+            FragmentHelper.LoadFragment(this, new Client_HomeFragment(), false); //the first fragment that wiil be shown 
         }
 
 
@@ -57,22 +67,22 @@ namespace ShopApp
         {
             if (e.Item.ItemId == Resource.Id.action_BnvClientHome)
             {
-                FragmentHelper.LoadFragment(this, new Client_HomeFragment()); //load homepage fragment
+                FragmentHelper.LoadFragment(this, new Client_HomeFragment(), false); //load homepage fragment
             }
 
             else if (e.Item.ItemId == Resource.Id.action_BnvClientHistory)
             {
-                FragmentHelper.LoadFragment(this, new Client_HistoryOrders_Fragment()); 
+                FragmentHelper.LoadFragment(this, new Client_HistoryOrders_Fragment(), false);
             }
 
             else if (e.Item.ItemId == Resource.Id.action_BnvClientCurrentOrder)
             {
-                FragmentHelper.LoadFragment(this, new ClientOrder_Fragment());
+                FragmentHelper.LoadFragment(this, new ClientOrder_Fragment(), false);
             }
 
             else if (e.Item.ItemId == Resource.Id.action_BnvClientSettings)
             {
-                FragmentHelper.LoadFragment(this, new HomeSetting_Fragment());
+                FragmentHelper.LoadFragment(this, new HomeSetting_Fragment(), false);
             }
         }
 
@@ -86,8 +96,8 @@ namespace ShopApp
         }
 
 
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        { //פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים) ב.
+        public override bool OnOptionsItemSelected(IMenuItem item)//פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים).
+        { 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             ISharedPreferencesEditor editor = sp.Edit();
 
@@ -112,9 +122,7 @@ namespace ShopApp
 
                 case Resource.Id.action_accountSetting:
 
-                    FragmentHelper.LoadFragment(this, new HomeSetting_Fragment());
-
-
+                    FragmentHelper.LoadFragment(this, new HomeSetting_Fragment(), true);
                     break;
             }
 
@@ -123,11 +131,9 @@ namespace ShopApp
         }
 
 
-      
-
         public override void OnBackPressed()
         {
-
+           
         }
 
     }

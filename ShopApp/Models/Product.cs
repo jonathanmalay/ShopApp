@@ -88,8 +88,8 @@ namespace ShopApp
 
 
        
-        public static async Task RemoveProduct(string username , Product product)
-        {//הפעולה מוחקת את המוצר מהפייר בייס
+        public static async Task RemoveProduct(string username , Product product)//הפעולה מוחקת את המוצר מהפייר בייס
+        {
             try
             {
                 string product_name = product.Name;
@@ -102,8 +102,8 @@ namespace ShopApp
             }
         }
 
-        public static async Task<Product> GetProduct(string name)
-        {//הפעולה מחזירה עצם מסוג מוצר
+        public static async Task<Product> GetProduct(string name)//הפעולה מחזירה עצם מסוג מוצר
+        {
             try
             {
                 IDocumentSnapshot reference = await AppData.FireStore.GetCollection("Product").GetDocument(name).GetDocumentAsync();

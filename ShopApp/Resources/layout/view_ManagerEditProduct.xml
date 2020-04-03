@@ -1,0 +1,169 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/circlelayout"
+    android:gravity="center"
+    android:weightSum="100">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginVertical="5dp"
+        android:elevation="3dp"
+        android:text="שם המוצר"
+        android:id="@+id/tv_manager_dialog_editProduct_ProductName"
+        android:textColor="@color/colorAccent"
+        android:textSize="25sp"
+        android:textStyle="bold"
+
+            />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true">
+
+        <EditText
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:hint= "שם המוצר"
+            android:gravity="center"
+            android:id="@+id/et_manager_dialog_EditProduct_ProductName"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true">
+
+        <EditText
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:hint= "מחיר"
+            android:inputType="number"
+            android:gravity="center"
+            android:id="@+id/et_manager_dialog_EditProduct_Price"
+            />
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true">
+        <LinearLayout
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:text="תמונת מוצר"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+            />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                >
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circlebutton"
+                    android:text="בחר תמונה"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:id="@+id/btn_dialog_edit_product_ChooseImage"
+                    />
+                <ImageView
+                    android:src="@drawable/icon_home"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="100dp"
+                    android:layout_margin="5dp"
+                    android:id="@+id/iv_dialog_edit_product_image"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Switch
+        android:id="@+id/switch_manager_dialog_EditProduct_ShowToClient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:checked="true"
+        android:layout_weight="10"
+        android:layout_margin="10dp"
+        android:text="האם להציג ללקוח "
+        android:textColor="@color/colorAccent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+
+        <Button
+            android:id="@+id/btn_manager_dialog_Edit_Product_DeleteProduct"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/circlebutton"
+           
+            android:elevation="3dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="הסר מוצר"
+            android:textColor="@color/colorEditTextHint"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+            />
+        <Button
+            android:id="@+id/btn_manager_dialog_Edit_Product_Save"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/circlebutton"
+            
+            android:elevation="3dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="@string/save"
+            android:textColor="@color/colorEditTextHint"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+            />
+    </LinearLayout>
+</LinearLayout>

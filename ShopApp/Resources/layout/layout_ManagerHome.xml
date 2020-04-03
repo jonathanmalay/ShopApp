@@ -34,17 +34,17 @@
 
 
     </FrameLayout>
-    
+
     <android.support.design.widget.BottomNavigationView
-       android:id="@+id/bottomNavigationViewManager"
+        android:id="@+id/bottomNavigationViewManager"
         app:labelVisibilityMode="labeled"
         android:layout_width="match_parent"
-        app:menu="@menu/menu_bnv_Manager"
         android:layout_height="wrap_content"
         app:itemBackground="@color/colorAccent"
         android:background="@color/colorAccent"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
+        
       />
 
 </LinearLayout>

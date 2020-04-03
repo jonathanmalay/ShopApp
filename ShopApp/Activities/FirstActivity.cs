@@ -11,17 +11,19 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using System.Threading;
+using System.Drawing;
 
 namespace ShopApp
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]   //המסך הראשון שיוצג בפתיחת האפליקציה
     public class FirstActivity : AppCompatActivity //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
     {
+        Bitmap shopLogo;
         protected override void OnCreate(Bundle savedInstanceState)
         {                 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.layout_first);
-            Thread.Sleep(1500); //מחכהה שנייה וחצי
+            Thread.Sleep(1500); //מחכה שנייה וחצי
             Intent intentToLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
             this.StartActivity(intentToLogin);
 

@@ -23,8 +23,8 @@ namespace ShopApp
 
         }
 
-        public static async void AddPaymentMethod(Activity activity, string cardnum, string date, string cvv, string username)
-        { //הפעולה מקבלת את כל התכונות של האשראי של המשתמש ויוצרת קובץ בפיירבייס
+        public static async void AddPaymentMethod(Activity activity, string cardnum, string date, string cvv, string username)//הפעולה מקבלת את כל התכונות של האשראי של המשתמש ויוצרת קובץ בפיירבייס
+        { 
 
             Payment p = new Payment();
             p.CardNum = cardnum;
@@ -37,8 +37,8 @@ namespace ShopApp
         }
 
 
-        public static async void ChangePaymentMethod(string username, string cardnum,string datecard ,string card_cvv)
-        {  //הפעולה מעדכנת את פרטי האשראי של המשתמש
+        public static async void ChangePaymentMethod(string username, string cardnum,string datecard ,string card_cvv)//הפעולה מעדכנת את פרטי האשראי של המשתמש
+        {  
             await AppData.FireStore.GetCollection("Payment").GetDocument(username).UpdateDataAsync("CardNum", cardnum, "Date", datecard , "CVV", card_cvv);
  
         }
