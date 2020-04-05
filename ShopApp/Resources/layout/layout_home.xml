@@ -8,10 +8,10 @@
     android:background="@drawable/back1">
 
 
-    <include layout="@layout/toolbar_client"/>
+  <include
+        layout="@layout/toolbar_Client"
+        />
 
-
-    
     <TextView
         android:text=""
         android:elevation="7dp"

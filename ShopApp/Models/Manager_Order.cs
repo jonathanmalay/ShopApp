@@ -135,10 +135,33 @@ namespace ShopApp
             }
         }
 
+        public static async Task<bool> OrderDeliverd(string order_id)
+        {
+            try
+            {
+                await AppData.manager_ordersCollection.GetDocument(order_id).UpdateDataAsync("IsDelivered",true );
+                    return true; 
+            }
+            catch(Exception)
+            {
+                return false; 
+            }
+        }
 
 
 
-
+        public static async Task<bool> DeleteOrder(string order_id)
+        {
+            try
+            {
+                await AppData.manager_ordersCollection.GetDocument(order_id).DeleteDocumentAsync();//מוחק את המסמך מהשרת 
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
     }
 }

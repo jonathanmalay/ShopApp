@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Content;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using AlertDialog = Android.App.AlertDialog;
@@ -32,9 +33,9 @@ namespace ShopApp
     {
         ISharedPreferences sp;
         TextView tvWelcomeUser;
-        Button btn_toolbar_backPage;
         BottomNavigationView bnvClient;
         User u;
+        Button btn_toolbar_backPage; 
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -42,11 +43,14 @@ namespace ShopApp
 
             this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
             this.btn_toolbar_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
+            
+
             this.bnvClient = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewClient);
+            this.bnvClient.NavigationItemSelected += BnvClient_NavigationItemSelected;
 
 
             this.btn_toolbar_backPage.Visibility = ViewStates.Invisible; //hide the back page button cause i dont need him here
-            this.bnvClient.NavigationItemSelected += BnvClient_NavigationItemSelected;
+
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.u = await User.GetUser(usernameloged);
@@ -89,10 +93,9 @@ namespace ShopApp
 
         public override bool OnCreateOptionsMenu(IMenu menu) //רשום אובררייד בגלל שתפריט  קיים וערכו נולל לכן אנחנו דורסים את הערך הקודם ויוצרים תפריט חדש
         {
-            MenuInflater.Inflate(Resource.Menu.menu_home, menu);//הופכים את המניו מאקאםאל לעצם מסוג  תפריט 
-
+            MenuInflater.Inflate(Resource.Menu.menu_home, menu); //הופכים את המניו מאקאםאל לעצם מסוג  תפריט
             return base.OnCreateOptionsMenu(menu);
-
+                                                       
         }
 
 

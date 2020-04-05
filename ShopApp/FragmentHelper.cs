@@ -16,7 +16,7 @@ namespace ShopApp
 {
     public static class FragmentHelper
     {
-        public static void LoadFragment(FragmentActivity activity, Android.Support.V4.App.Fragment fragmentToLoad, bool manager)
+        public static void LoadFragment(FragmentActivity activity, Android.Support.V4.App.Fragment fragmentToLoad, bool Is_manager_side)
         {
             try
             {
@@ -44,16 +44,16 @@ namespace ShopApp
                     {
                         if (!fragmentToLoad.IsAdded)
                         {
-                            if (manager)
+                            if (Is_manager_side)
                             {
                                 fragmentTransaction
-                                    .Add(Resource.Id.frameLayoutContainerManager, fragmentToLoad, tag)
+                                    .Add(Resource.Id.frameLayoutContainerManager, fragmentToLoad, tag)//אם זה הצד מנהל אז משתמש בקונטיינר של הצד מנהל
                                     .AddToBackStack(tag);
                             }
                             else
                             {
                                 fragmentTransaction
-                                    .Add(Resource.Id.frameLayoutContainerClient, fragmentToLoad, tag)
+                                    .Add(Resource.Id.frameLayoutContainerClient, fragmentToLoad, tag)//קונטיינר של צד לקוח 
                                     .AddToBackStack(tag);
                             }
                         }

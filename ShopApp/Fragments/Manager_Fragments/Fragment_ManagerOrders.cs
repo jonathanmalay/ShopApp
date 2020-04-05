@@ -25,10 +25,9 @@ namespace ShopApp
         Dialog dialog_order;
         ListView lvCartDialog;
         TextView tvHeaderCartDialog;
-        Button btnCloseCartDialog;
-
+        Button btnCloseCartDialog , btnCartDialogOrderDone,btnCartDialogDeleteOrder;
+        Manager_Order selected_order;
         TextView tv_toolbar_title;
-
         List<Product> allProducts;
 
 
@@ -68,6 +67,8 @@ namespace ShopApp
 
             List<Manager_Order> orders = new List<Manager_Order>();//רשימה של  כל המוצרים שקיימים בחנות
             orders  = await Manager_Order.GetAllOrders();
+            
+            
 
            this.orders_adapter = new Adapter_ManagerOrders(Activity,orders); //מכניס לתוך האדפטר את הרשימה עם כל ההזמנות של החנות 
 
@@ -83,16 +84,55 @@ namespace ShopApp
             this.lvCartDialog = this.dialog_order.FindViewById<ListView>(Resource.Id.listViewManagerDialogOrderCart);
             this.tvHeaderCartDialog = this.dialog_order.FindViewById<TextView>(Resource.Id.btn_ManagerDialogOrderCartClose);
             this.btnCloseCartDialog = this.dialog_order.FindViewById<Button>(Resource.Id.tv_ManagerDialogOrderCartHeader);
+            this.btnCartDialogDeleteOrder = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartDeleteOrder);
+            this.btnCartDialogOrderDone = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartOrderDone);
 
+            this.btnCartDialogOrderDone.Click += BtnCartDialogOrderDone_Click;
+            this.btnCartDialogDeleteOrder.Click += BtnCartDialogDeleteOrder_Click;
             this.btnCloseCartDialog.Click += BtnCloseCartDialog_Click;
-
             this.allProducts = await Product.GetAllProduct();
         }
+
+        private async  void BtnCartDialogDeleteOrder_Click(object sender, EventArgs e)
+        {
+            string order_deliverd_id = this.selected_order.ID.ToString(); // מספר ההזמנה 
+            bool check_flag = await Manager_Order.DeleteOrder(order_deliverd_id); //מוחק את ההזמנה ממאגר הנתונים בשרת 
+            if (check_flag)
+            {
+                Toast.MakeText(this.Activity, "!! הזמנה נמחקה בהצלחה", ToastLength.Long).Show();
+                this.dialog_order.Dismiss();
+            }
+            else
+            {
+                Toast.MakeText(this.Activity, "!!אירעה שגיאה אנא בדוק את החיבור לרשת האינטרנט", ToastLength.Long).Show();
+
+            }
+        }
+
+        private  async void BtnCartDialogOrderDone_Click(object sender, EventArgs e) //מעדכנת את סטטוס ההזמנה בשרת לבוצע 
+        {
+            string order_deliverd_id = this.selected_order.ID.ToString(); // מספר ההזמנה 
+            bool check_flag = await Manager_Order.OrderDeliverd(order_deliverd_id); //משנה את הסטטוס של ההזמנה בצד השרת לבוצעה
+            if(check_flag)
+            {
+                Toast.MakeText(this.Activity, "!!פרטי הזמנה עודכנו בהצלחה", ToastLength.Long).Show();
+
+            }
+            else
+            {
+                Toast.MakeText(this.Activity, "!!אירעה שגיאה אנא בדוק את החיבור לרשת האינטרנט", ToastLength.Long).Show();
+
+            }
+
+        }
+
 
         private void BtnCloseCartDialog_Click(object sender, EventArgs e)
         {
             this.dialog_order.Dismiss();
         }
+
+
 
         private void Lv_ManagerOrders_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
