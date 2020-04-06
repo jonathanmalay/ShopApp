@@ -45,8 +45,8 @@ namespace ShopApp
 
     //    public static async Task<string> Upload_Image()
 
-       public static async void AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)
-        {//פעולה אשר מוסיפה מוצר 
+       public static async void AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)//פעולה אשר מוסיפה מוצר 
+        {
 
             try
             {
@@ -55,7 +55,11 @@ namespace ShopApp
 
                 using (var stream = activity.ContentResolver.OpenInputStream(product_image))
                 {
-                   imageUrl= await AppData.ProductsStorage.Child(product_name + ".jpg").PutAsync(stream);
+                   var task= AppData.FirebaseStorage.Child("Products").Child("image.jpg").PutAsync(stream);//upload the image from the phone to the storage in the server 
+                    task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
+
+                    // await the task to wait until upload completes and get the download url
+                    imageUrl = await task;
                 }
 
                 if (imageUrl == "")
@@ -70,7 +74,7 @@ namespace ShopApp
                 p.ProductId = product_id;
                 p.Name = product_name;
                 p.Price = product_price;
-                p.ImageUrl = imageUrl;
+                p.ImageUrl = imageUrl; // the link of the image in the storage 
                 p.Quantity = product_Quantity;
 
                 await AppData.productCollection.GetDocument(product_name).SetDataAsync(p);//מוסיף לפיירבייס מסמך בפרודוקט קולקשיין עם הערכים של המוצר
@@ -92,8 +96,8 @@ namespace ShopApp
         {
             try
             {
-                string product_name = product.Name;
-                await AppData.FireStore.GetCollection("Product").GetDocument(product_name).DeleteDocumentAsync();//ההסרה של המוצר
+                await AppData.ProductsStorage.Child(product.Name).DeleteAsync(); // remove the product image from the firebase storage 
+                await AppData.FireStore.GetCollection("Product").GetDocument(product.Name).DeleteDocumentAsync();//ההסרה של המוצר מהמסד נתונים
             }
 
             catch(Exception)

@@ -24,14 +24,7 @@
         android:textStyle="bold"
 
             />
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="10dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="6dp"
-        app:cardUseCompatPadding="true">
+  
 
         <EditText
             android:layout_margin="5dp"
@@ -42,18 +35,11 @@
             android:textColorHint="@color/colorAccent"
             android:hint= "שם המוצר"
             android:gravity="center"
-            android:id="@+id/et_manager_dialog_EditProduct_ProductName"
+            android:id="@+id/et_ManagerEditProductDialogProductName"
             />
-    </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="10dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="6dp"
-        app:cardUseCompatPadding="true">
+
+    
 
         <EditText
             android:layout_margin="5dp"
@@ -65,17 +51,23 @@
             android:hint= "מחיר"
             android:inputType="number"
             android:gravity="center"
-            android:id="@+id/et_manager_dialog_EditProduct_Price"
+            android:id="@+id/et_ManagerEditProductDialogProductPrice"
             />
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="10dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="6dp"
-        app:cardUseCompatPadding="true">
+
+     <EditText
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:hint= "כמות במארז"
+            android:inputType="number"
+            android:gravity="center"
+            android:id="@+id/et_ManagerEditProductDialogProductQuantity"
+            />
+    
+   
         <LinearLayout
             android:padding="5dp"
             android:layout_width="match_parent"
@@ -118,7 +110,7 @@
                     />
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
 
     <Switch
         android:id="@+id/switch_manager_dialog_EditProduct_ShowToClient"
@@ -127,7 +119,7 @@
         android:checked="true"
         android:layout_weight="10"
         android:layout_margin="10dp"
-        android:text="האם להציג ללקוח "
+        android:text= "קיים במלאי"
         android:textColor="@color/colorAccent"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -136,7 +128,7 @@
         android:layout_weight="10">
 
         <Button
-            android:id="@+id/btn_manager_dialog_Edit_Product_DeleteProduct"
+            android:id="@+id/btn_ManagerEditProductDialogDeleteProduct"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/circlebutton"
@@ -151,7 +143,7 @@
             android:layout_margin="20dp"
             />
         <Button
-            android:id="@+id/btn_manager_dialog_Edit_Product_Save"
+            android:id="@+id/btn_ManagerEditProductDialogSave"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/circlebutton"

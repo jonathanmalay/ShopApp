@@ -73,16 +73,16 @@ namespace ShopApp
             this.DownloadImage_Brodcast_Receiver = new ImageBrodcastReceiver(this, this.iv_Dialog_Image);
         }
 
-        private void Btn_Dialog_Save_Image_Click(object sender, EventArgs e)
+        private void Btn_Dialog_Save_Image_Click(object sender, EventArgs e)//save the image from the dialog(url or from gallery)
         {
-            BitmapDrawable bitmap_drawable = ((BitmapDrawable)iv_Dialog_Image.Drawable);
+            BitmapDrawable bitmap_drawable = ((BitmapDrawable)iv_Dialog_Image.Drawable);//convert the image view to bitmap
             Bitmap Bitmap_Image = bitmap_drawable.Bitmap;
-            this.iv_Product_Image.SetImageBitmap(Bitmap_Image);
+            this.iv_Product_Image.SetImageBitmap(Bitmap_Image);//set the imageview to the selected image from thegallery/Url
 
             dialog_Pick_Product_Image.Dismiss();
         }
 
-        private void Btn_Dialog_Download_Url_Click(object sender, EventArgs e)
+        private void Btn_Dialog_Download_Url_Click(object sender, EventArgs e)//downloafd image  by link from the internet
         {
             if (this.et_Dialog_url.Text == "")
             {
@@ -91,19 +91,19 @@ namespace ShopApp
                 return;
             }
 
-            if (!Android.Webkit.URLUtil.IsValidUrl(this.et_Dialog_url.Text))
+            if (!Android.Webkit.URLUtil.IsValidUrl(this.et_Dialog_url.Text)) // check if the link is vaild
             {
                 this.et_Dialog_url.SetError("קישור לא חוקי", null);
                 this.et_Dialog_url.RequestFocus();
                 return;
             }
 
-            Intent intent = new Intent(this, typeof(ServiceImageDownload));
+            Intent intent = new Intent(this, typeof(ServiceImageDownload)); 
             intent.PutExtra("strUrl", this.et_Dialog_url.Text);//  מעביר באינטנט את הקישור לתמונה מהאינטרנט
-            StartService(intent);
+            StartService(intent);//start the dwonlowd of the image
         }
 
-        private void Btn_Dialog_Pick_Image_From_Gallery_Click(object sender, EventArgs e)
+        private void Btn_Dialog_Pick_Image_From_Gallery_Click(object sender, EventArgs e)//move to the phone gallery
         {
             Intent intent = new Intent(Intent.ActionGetContent);
             intent.SetType("image/*");
@@ -116,16 +116,16 @@ namespace ShopApp
             base.OnDestroy();
         }
 
-        private void Btn_Pick_Product_Image_Click(object sender, EventArgs e)
+        private void Btn_Pick_Product_Image_Click(object sender, EventArgs e)//מציג את הדיאלוג של בחירת תמונה 
         {
-            this.dialog_Pick_Product_Image.Show(); //מציג את הדיאלוג של בחירת תמונה 
+            this.dialog_Pick_Product_Image.Show(); 
         }
 
 
 
-        private async void Btn_Add_New_Product_ClickAsync(object sender, EventArgs e)
+        private async void Btn_Add_New_Product_ClickAsync(object sender, EventArgs e)// מוסיף מוצר חדש לפייר בייס עם כל הנתונים שהמוכר הוסיף
         {
-            try                            // מוסיף מוצר חדש לפייר בייס עם כל הנתונים שהמוכר הוסיף
+            try                            
             {
                 string product_name = et_Name_Product.Text;//שם המוצר
                 Product chek = await Product.GetProduct(product_name);
@@ -137,8 +137,9 @@ namespace ShopApp
                     
                     BitmapDrawable bitmap_drawable = ((BitmapDrawable)iv_Dialog_Image.Drawable);
                     Bitmap product_Image = bitmap_drawable.Bitmap; //תמונת המוצר
-                    if (product_image_uri == null)
+                    if (product_image_uri == null)//if the uri(the link to the place of the image in the phone files) is null end the method
                     {
+                        Toast.MakeText(this, "ישנה שגיאה נסה שנית", ToastLength.Short).Show();
                         return;
                     }
 
@@ -162,8 +163,8 @@ namespace ShopApp
 
 
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
-        {//כאשר חוזרים מהגלריה
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)//כאשר חוזרים מהגלריה
+        {
             base.OnActivityResult(requestCode, resultCode, data);
 
             if (requestCode == 200)

@@ -26,6 +26,274 @@ namespace ShopApp
 		
 		public static void UpdateIdValues()
 		{
+			global::Plugin.CloudFirestore.Resource.Attribute.alpha = global::ShopApp.Resource.Attribute.alpha;
+			global::Plugin.CloudFirestore.Resource.Attribute.buttonSize = global::ShopApp.Resource.Attribute.buttonSize;
+			global::Plugin.CloudFirestore.Resource.Attribute.circleCrop = global::ShopApp.Resource.Attribute.circleCrop;
+			global::Plugin.CloudFirestore.Resource.Attribute.colorScheme = global::ShopApp.Resource.Attribute.colorScheme;
+			global::Plugin.CloudFirestore.Resource.Attribute.coordinatorLayoutStyle = global::ShopApp.Resource.Attribute.coordinatorLayoutStyle;
+			global::Plugin.CloudFirestore.Resource.Attribute.font = global::ShopApp.Resource.Attribute.font;
+			global::Plugin.CloudFirestore.Resource.Attribute.fontProviderAuthority = global::ShopApp.Resource.Attribute.fontProviderAuthority;
+			global::Plugin.CloudFirestore.Resource.Attribute.fontProviderCerts = global::ShopApp.Resource.Attribute.fontProviderCerts;
+			global::Plugin.CloudFirestore.Resource.Attribute.fontProviderFetchStrategy = global::ShopApp.Resource.Attribute.fontProviderFetchStrategy;
+			global::Plugin.CloudFirestore.Resource.Attribute.fontProviderFetchTimeout = global::ShopApp.Resource.Attribute.fontProviderFetchTimeout;
+			global::Plugin.CloudFirestore.Resource.Attribute.fontProviderPackage = global::ShopApp.Resource.Attribute.fontProviderPackage;
+			global::Plugin.CloudFirestore.Resource.Attribute.fontProviderQuery = global::ShopApp.Resource.Attribute.fontProviderQuery;
+			global::Plugin.CloudFirestore.Resource.Attribute.fontStyle = global::ShopApp.Resource.Attribute.fontStyle;
+			global::Plugin.CloudFirestore.Resource.Attribute.fontVariationSettings = global::ShopApp.Resource.Attribute.fontVariationSettings;
+			global::Plugin.CloudFirestore.Resource.Attribute.fontWeight = global::ShopApp.Resource.Attribute.fontWeight;
+			global::Plugin.CloudFirestore.Resource.Attribute.imageAspectRatio = global::ShopApp.Resource.Attribute.imageAspectRatio;
+			global::Plugin.CloudFirestore.Resource.Attribute.imageAspectRatioAdjust = global::ShopApp.Resource.Attribute.imageAspectRatioAdjust;
+			global::Plugin.CloudFirestore.Resource.Attribute.keylines = global::ShopApp.Resource.Attribute.keylines;
+			global::Plugin.CloudFirestore.Resource.Attribute.layout_anchor = global::ShopApp.Resource.Attribute.layout_anchor;
+			global::Plugin.CloudFirestore.Resource.Attribute.layout_anchorGravity = global::ShopApp.Resource.Attribute.layout_anchorGravity;
+			global::Plugin.CloudFirestore.Resource.Attribute.layout_behavior = global::ShopApp.Resource.Attribute.layout_behavior;
+			global::Plugin.CloudFirestore.Resource.Attribute.layout_dodgeInsetEdges = global::ShopApp.Resource.Attribute.layout_dodgeInsetEdges;
+			global::Plugin.CloudFirestore.Resource.Attribute.layout_insetEdge = global::ShopApp.Resource.Attribute.layout_insetEdge;
+			global::Plugin.CloudFirestore.Resource.Attribute.layout_keyline = global::ShopApp.Resource.Attribute.layout_keyline;
+			global::Plugin.CloudFirestore.Resource.Attribute.scopeUris = global::ShopApp.Resource.Attribute.scopeUris;
+			global::Plugin.CloudFirestore.Resource.Attribute.statusBarBackground = global::ShopApp.Resource.Attribute.statusBarBackground;
+			global::Plugin.CloudFirestore.Resource.Attribute.ttcIndex = global::ShopApp.Resource.Attribute.ttcIndex;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_dark = global::ShopApp.Resource.Color.common_google_signin_btn_text_dark;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_dark_default = global::ShopApp.Resource.Color.common_google_signin_btn_text_dark_default;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_dark_disabled = global::ShopApp.Resource.Color.common_google_signin_btn_text_dark_disabled;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_dark_focused = global::ShopApp.Resource.Color.common_google_signin_btn_text_dark_focused;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_dark_pressed = global::ShopApp.Resource.Color.common_google_signin_btn_text_dark_pressed;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_light = global::ShopApp.Resource.Color.common_google_signin_btn_text_light;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_light_default = global::ShopApp.Resource.Color.common_google_signin_btn_text_light_default;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_light_disabled = global::ShopApp.Resource.Color.common_google_signin_btn_text_light_disabled;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_light_focused = global::ShopApp.Resource.Color.common_google_signin_btn_text_light_focused;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_text_light_pressed = global::ShopApp.Resource.Color.common_google_signin_btn_text_light_pressed;
+			global::Plugin.CloudFirestore.Resource.Color.common_google_signin_btn_tint = global::ShopApp.Resource.Color.common_google_signin_btn_tint;
+			global::Plugin.CloudFirestore.Resource.Color.notification_action_color_filter = global::ShopApp.Resource.Color.notification_action_color_filter;
+			global::Plugin.CloudFirestore.Resource.Color.notification_icon_bg_color = global::ShopApp.Resource.Color.notification_icon_bg_color;
+			global::Plugin.CloudFirestore.Resource.Color.notification_material_background_media_default_color = global::ShopApp.Resource.Color.notification_material_background_media_default_color;
+			global::Plugin.CloudFirestore.Resource.Color.primary_text_default_material_dark = global::ShopApp.Resource.Color.primary_text_default_material_dark;
+			global::Plugin.CloudFirestore.Resource.Color.ripple_material_light = global::ShopApp.Resource.Color.ripple_material_light;
+			global::Plugin.CloudFirestore.Resource.Color.secondary_text_default_material_dark = global::ShopApp.Resource.Color.secondary_text_default_material_dark;
+			global::Plugin.CloudFirestore.Resource.Color.secondary_text_default_material_light = global::ShopApp.Resource.Color.secondary_text_default_material_light;
+			global::Plugin.CloudFirestore.Resource.Dimension.compat_button_inset_horizontal_material = global::ShopApp.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::Plugin.CloudFirestore.Resource.Dimension.compat_button_inset_vertical_material = global::ShopApp.Resource.Dimension.compat_button_inset_vertical_material;
+			global::Plugin.CloudFirestore.Resource.Dimension.compat_button_padding_horizontal_material = global::ShopApp.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::Plugin.CloudFirestore.Resource.Dimension.compat_button_padding_vertical_material = global::ShopApp.Resource.Dimension.compat_button_padding_vertical_material;
+			global::Plugin.CloudFirestore.Resource.Dimension.compat_control_corner_material = global::ShopApp.Resource.Dimension.compat_control_corner_material;
+			global::Plugin.CloudFirestore.Resource.Dimension.compat_notification_large_icon_max_height = global::ShopApp.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::Plugin.CloudFirestore.Resource.Dimension.compat_notification_large_icon_max_width = global::ShopApp.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_action_icon_size = global::ShopApp.Resource.Dimension.notification_action_icon_size;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_action_text_size = global::ShopApp.Resource.Dimension.notification_action_text_size;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_big_circle_margin = global::ShopApp.Resource.Dimension.notification_big_circle_margin;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_content_margin_start = global::ShopApp.Resource.Dimension.notification_content_margin_start;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_large_icon_height = global::ShopApp.Resource.Dimension.notification_large_icon_height;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_large_icon_width = global::ShopApp.Resource.Dimension.notification_large_icon_width;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_main_column_padding_top = global::ShopApp.Resource.Dimension.notification_main_column_padding_top;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_media_narrow_margin = global::ShopApp.Resource.Dimension.notification_media_narrow_margin;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_right_icon_size = global::ShopApp.Resource.Dimension.notification_right_icon_size;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_right_side_padding_top = global::ShopApp.Resource.Dimension.notification_right_side_padding_top;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_small_icon_background_padding = global::ShopApp.Resource.Dimension.notification_small_icon_background_padding;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_small_icon_size_as_large = global::ShopApp.Resource.Dimension.notification_small_icon_size_as_large;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_subtext_size = global::ShopApp.Resource.Dimension.notification_subtext_size;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_top_pad = global::ShopApp.Resource.Dimension.notification_top_pad;
+			global::Plugin.CloudFirestore.Resource.Dimension.notification_top_pad_large_text = global::ShopApp.Resource.Dimension.notification_top_pad_large_text;
+			global::Plugin.CloudFirestore.Resource.Dimension.subtitle_corner_radius = global::ShopApp.Resource.Dimension.subtitle_corner_radius;
+			global::Plugin.CloudFirestore.Resource.Dimension.subtitle_outline_width = global::ShopApp.Resource.Dimension.subtitle_outline_width;
+			global::Plugin.CloudFirestore.Resource.Dimension.subtitle_shadow_offset = global::ShopApp.Resource.Dimension.subtitle_shadow_offset;
+			global::Plugin.CloudFirestore.Resource.Dimension.subtitle_shadow_radius = global::ShopApp.Resource.Dimension.subtitle_shadow_radius;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_full_open_on_phone = global::ShopApp.Resource.Drawable.common_full_open_on_phone;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_icon_dark = global::ShopApp.Resource.Drawable.common_google_signin_btn_icon_dark;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_icon_dark_focused = global::ShopApp.Resource.Drawable.common_google_signin_btn_icon_dark_focused;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_icon_dark_normal = global::ShopApp.Resource.Drawable.common_google_signin_btn_icon_dark_normal;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_icon_dark_normal_background = global::ShopApp.Resource.Drawable.common_google_signin_btn_icon_dark_normal_background;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_icon_disabled = global::ShopApp.Resource.Drawable.common_google_signin_btn_icon_disabled;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_icon_light = global::ShopApp.Resource.Drawable.common_google_signin_btn_icon_light;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_icon_light_focused = global::ShopApp.Resource.Drawable.common_google_signin_btn_icon_light_focused;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_icon_light_normal = global::ShopApp.Resource.Drawable.common_google_signin_btn_icon_light_normal;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_icon_light_normal_background = global::ShopApp.Resource.Drawable.common_google_signin_btn_icon_light_normal_background;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_text_dark = global::ShopApp.Resource.Drawable.common_google_signin_btn_text_dark;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_text_dark_focused = global::ShopApp.Resource.Drawable.common_google_signin_btn_text_dark_focused;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_text_dark_normal = global::ShopApp.Resource.Drawable.common_google_signin_btn_text_dark_normal;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_text_dark_normal_background = global::ShopApp.Resource.Drawable.common_google_signin_btn_text_dark_normal_background;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_text_disabled = global::ShopApp.Resource.Drawable.common_google_signin_btn_text_disabled;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_text_light = global::ShopApp.Resource.Drawable.common_google_signin_btn_text_light;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_text_light_focused = global::ShopApp.Resource.Drawable.common_google_signin_btn_text_light_focused;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_text_light_normal = global::ShopApp.Resource.Drawable.common_google_signin_btn_text_light_normal;
+			global::Plugin.CloudFirestore.Resource.Drawable.common_google_signin_btn_text_light_normal_background = global::ShopApp.Resource.Drawable.common_google_signin_btn_text_light_normal_background;
+			global::Plugin.CloudFirestore.Resource.Drawable.googleg_disabled_color_18 = global::ShopApp.Resource.Drawable.googleg_disabled_color_18;
+			global::Plugin.CloudFirestore.Resource.Drawable.googleg_standard_color_18 = global::ShopApp.Resource.Drawable.googleg_standard_color_18;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_action_background = global::ShopApp.Resource.Drawable.notification_action_background;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_bg = global::ShopApp.Resource.Drawable.notification_bg;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_bg_low = global::ShopApp.Resource.Drawable.notification_bg_low;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_bg_low_normal = global::ShopApp.Resource.Drawable.notification_bg_low_normal;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_bg_low_pressed = global::ShopApp.Resource.Drawable.notification_bg_low_pressed;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_bg_normal = global::ShopApp.Resource.Drawable.notification_bg_normal;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_bg_normal_pressed = global::ShopApp.Resource.Drawable.notification_bg_normal_pressed;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_icon_background = global::ShopApp.Resource.Drawable.notification_icon_background;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_template_icon_bg = global::ShopApp.Resource.Drawable.notification_template_icon_bg;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_template_icon_low_bg = global::ShopApp.Resource.Drawable.notification_template_icon_low_bg;
+			global::Plugin.CloudFirestore.Resource.Drawable.notification_tile_bg = global::ShopApp.Resource.Drawable.notification_tile_bg;
+			global::Plugin.CloudFirestore.Resource.Drawable.notify_panel_notification_icon_bg = global::ShopApp.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::Plugin.CloudFirestore.Resource.Id.action0 = global::ShopApp.Resource.Id.action0;
+			global::Plugin.CloudFirestore.Resource.Id.actions = global::ShopApp.Resource.Id.actions;
+			global::Plugin.CloudFirestore.Resource.Id.action_container = global::ShopApp.Resource.Id.action_container;
+			global::Plugin.CloudFirestore.Resource.Id.action_divider = global::ShopApp.Resource.Id.action_divider;
+			global::Plugin.CloudFirestore.Resource.Id.action_image = global::ShopApp.Resource.Id.action_image;
+			global::Plugin.CloudFirestore.Resource.Id.action_text = global::ShopApp.Resource.Id.action_text;
+			global::Plugin.CloudFirestore.Resource.Id.adjust_height = global::ShopApp.Resource.Id.adjust_height;
+			global::Plugin.CloudFirestore.Resource.Id.adjust_width = global::ShopApp.Resource.Id.adjust_width;
+			global::Plugin.CloudFirestore.Resource.Id.all = global::ShopApp.Resource.Id.all;
+			global::Plugin.CloudFirestore.Resource.Id.async = global::ShopApp.Resource.Id.async;
+			global::Plugin.CloudFirestore.Resource.Id.auto = global::ShopApp.Resource.Id.auto;
+			global::Plugin.CloudFirestore.Resource.Id.blocking = global::ShopApp.Resource.Id.blocking;
+			global::Plugin.CloudFirestore.Resource.Id.bottom = global::ShopApp.Resource.Id.bottom;
+			global::Plugin.CloudFirestore.Resource.Id.cancel_action = global::ShopApp.Resource.Id.cancel_action;
+			global::Plugin.CloudFirestore.Resource.Id.center = global::ShopApp.Resource.Id.center;
+			global::Plugin.CloudFirestore.Resource.Id.center_horizontal = global::ShopApp.Resource.Id.center_horizontal;
+			global::Plugin.CloudFirestore.Resource.Id.center_vertical = global::ShopApp.Resource.Id.center_vertical;
+			global::Plugin.CloudFirestore.Resource.Id.chronometer = global::ShopApp.Resource.Id.chronometer;
+			global::Plugin.CloudFirestore.Resource.Id.clip_horizontal = global::ShopApp.Resource.Id.clip_horizontal;
+			global::Plugin.CloudFirestore.Resource.Id.clip_vertical = global::ShopApp.Resource.Id.clip_vertical;
+			global::Plugin.CloudFirestore.Resource.Id.dark = global::ShopApp.Resource.Id.dark;
+			global::Plugin.CloudFirestore.Resource.Id.end = global::ShopApp.Resource.Id.end;
+			global::Plugin.CloudFirestore.Resource.Id.end_padder = global::ShopApp.Resource.Id.end_padder;
+			global::Plugin.CloudFirestore.Resource.Id.fill = global::ShopApp.Resource.Id.fill;
+			global::Plugin.CloudFirestore.Resource.Id.fill_horizontal = global::ShopApp.Resource.Id.fill_horizontal;
+			global::Plugin.CloudFirestore.Resource.Id.fill_vertical = global::ShopApp.Resource.Id.fill_vertical;
+			global::Plugin.CloudFirestore.Resource.Id.forever = global::ShopApp.Resource.Id.forever;
+			global::Plugin.CloudFirestore.Resource.Id.icon = global::ShopApp.Resource.Id.icon;
+			global::Plugin.CloudFirestore.Resource.Id.icon_group = global::ShopApp.Resource.Id.icon_group;
+			global::Plugin.CloudFirestore.Resource.Id.icon_only = global::ShopApp.Resource.Id.icon_only;
+			global::Plugin.CloudFirestore.Resource.Id.info = global::ShopApp.Resource.Id.info;
+			global::Plugin.CloudFirestore.Resource.Id.italic = global::ShopApp.Resource.Id.italic;
+			global::Plugin.CloudFirestore.Resource.Id.left = global::ShopApp.Resource.Id.left;
+			global::Plugin.CloudFirestore.Resource.Id.light = global::ShopApp.Resource.Id.light;
+			global::Plugin.CloudFirestore.Resource.Id.line1 = global::ShopApp.Resource.Id.line1;
+			global::Plugin.CloudFirestore.Resource.Id.line3 = global::ShopApp.Resource.Id.line3;
+			global::Plugin.CloudFirestore.Resource.Id.media_actions = global::ShopApp.Resource.Id.media_actions;
+			global::Plugin.CloudFirestore.Resource.Id.none = global::ShopApp.Resource.Id.none;
+			global::Plugin.CloudFirestore.Resource.Id.normal = global::ShopApp.Resource.Id.normal;
+			global::Plugin.CloudFirestore.Resource.Id.notification_background = global::ShopApp.Resource.Id.notification_background;
+			global::Plugin.CloudFirestore.Resource.Id.notification_main_column = global::ShopApp.Resource.Id.notification_main_column;
+			global::Plugin.CloudFirestore.Resource.Id.notification_main_column_container = global::ShopApp.Resource.Id.notification_main_column_container;
+			global::Plugin.CloudFirestore.Resource.Id.right = global::ShopApp.Resource.Id.right;
+			global::Plugin.CloudFirestore.Resource.Id.right_icon = global::ShopApp.Resource.Id.right_icon;
+			global::Plugin.CloudFirestore.Resource.Id.right_side = global::ShopApp.Resource.Id.right_side;
+			global::Plugin.CloudFirestore.Resource.Id.standard = global::ShopApp.Resource.Id.standard;
+			global::Plugin.CloudFirestore.Resource.Id.start = global::ShopApp.Resource.Id.start;
+			global::Plugin.CloudFirestore.Resource.Id.status_bar_latest_event_content = global::ShopApp.Resource.Id.status_bar_latest_event_content;
+			global::Plugin.CloudFirestore.Resource.Id.tag_transition_group = global::ShopApp.Resource.Id.tag_transition_group;
+			global::Plugin.CloudFirestore.Resource.Id.tag_unhandled_key_event_manager = global::ShopApp.Resource.Id.tag_unhandled_key_event_manager;
+			global::Plugin.CloudFirestore.Resource.Id.tag_unhandled_key_listeners = global::ShopApp.Resource.Id.tag_unhandled_key_listeners;
+			global::Plugin.CloudFirestore.Resource.Id.text = global::ShopApp.Resource.Id.text;
+			global::Plugin.CloudFirestore.Resource.Id.text2 = global::ShopApp.Resource.Id.text2;
+			global::Plugin.CloudFirestore.Resource.Id.time = global::ShopApp.Resource.Id.time;
+			global::Plugin.CloudFirestore.Resource.Id.title = global::ShopApp.Resource.Id.title;
+			global::Plugin.CloudFirestore.Resource.Id.top = global::ShopApp.Resource.Id.top;
+			global::Plugin.CloudFirestore.Resource.Id.wide = global::ShopApp.Resource.Id.wide;
+			global::Plugin.CloudFirestore.Resource.Integer.cancel_button_image_alpha = global::ShopApp.Resource.Integer.cancel_button_image_alpha;
+			global::Plugin.CloudFirestore.Resource.Integer.google_play_services_version = global::ShopApp.Resource.Integer.google_play_services_version;
+			global::Plugin.CloudFirestore.Resource.Integer.status_bar_notification_info_maxnum = global::ShopApp.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_action = global::ShopApp.Resource.Layout.notification_action;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_action_tombstone = global::ShopApp.Resource.Layout.notification_action_tombstone;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_media_action = global::ShopApp.Resource.Layout.notification_media_action;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_media_cancel_action = global::ShopApp.Resource.Layout.notification_media_cancel_action;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_big_media = global::ShopApp.Resource.Layout.notification_template_big_media;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_big_media_custom = global::ShopApp.Resource.Layout.notification_template_big_media_custom;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_big_media_narrow = global::ShopApp.Resource.Layout.notification_template_big_media_narrow;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_big_media_narrow_custom = global::ShopApp.Resource.Layout.notification_template_big_media_narrow_custom;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_custom_big = global::ShopApp.Resource.Layout.notification_template_custom_big;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_icon_group = global::ShopApp.Resource.Layout.notification_template_icon_group;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_lines_media = global::ShopApp.Resource.Layout.notification_template_lines_media;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_media = global::ShopApp.Resource.Layout.notification_template_media;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_media_custom = global::ShopApp.Resource.Layout.notification_template_media_custom;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_part_chronometer = global::ShopApp.Resource.Layout.notification_template_part_chronometer;
+			global::Plugin.CloudFirestore.Resource.Layout.notification_template_part_time = global::ShopApp.Resource.Layout.notification_template_part_time;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_enable_button = global::ShopApp.Resource.String.common_google_play_services_enable_button;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_enable_text = global::ShopApp.Resource.String.common_google_play_services_enable_text;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_enable_title = global::ShopApp.Resource.String.common_google_play_services_enable_title;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_install_button = global::ShopApp.Resource.String.common_google_play_services_install_button;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_install_text = global::ShopApp.Resource.String.common_google_play_services_install_text;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_install_title = global::ShopApp.Resource.String.common_google_play_services_install_title;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_notification_channel_name = global::ShopApp.Resource.String.common_google_play_services_notification_channel_name;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_notification_ticker = global::ShopApp.Resource.String.common_google_play_services_notification_ticker;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_unknown_issue = global::ShopApp.Resource.String.common_google_play_services_unknown_issue;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_unsupported_text = global::ShopApp.Resource.String.common_google_play_services_unsupported_text;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_update_button = global::ShopApp.Resource.String.common_google_play_services_update_button;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_update_text = global::ShopApp.Resource.String.common_google_play_services_update_text;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_update_title = global::ShopApp.Resource.String.common_google_play_services_update_title;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_updating_text = global::ShopApp.Resource.String.common_google_play_services_updating_text;
+			global::Plugin.CloudFirestore.Resource.String.common_google_play_services_wear_update_text = global::ShopApp.Resource.String.common_google_play_services_wear_update_text;
+			global::Plugin.CloudFirestore.Resource.String.common_open_on_phone = global::ShopApp.Resource.String.common_open_on_phone;
+			global::Plugin.CloudFirestore.Resource.String.common_signin_button_text = global::ShopApp.Resource.String.common_signin_button_text;
+			global::Plugin.CloudFirestore.Resource.String.common_signin_button_text_long = global::ShopApp.Resource.String.common_signin_button_text_long;
+			global::Plugin.CloudFirestore.Resource.String.status_bar_notification_info_overflow = global::ShopApp.Resource.String.status_bar_notification_info_overflow;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification_Info = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification_Info_Media = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification_Info_Media;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification_Line2_Media = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification_Line2_Media;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification_Media = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification_Media;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification_Time = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification_Time_Media = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification_Time_Media;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification_Title = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::Plugin.CloudFirestore.Resource.Style.TextAppearance_Compat_Notification_Title_Media = global::ShopApp.Resource.Style.TextAppearance_Compat_Notification_Title_Media;
+			global::Plugin.CloudFirestore.Resource.Style.Widget_Compat_NotificationActionContainer = global::ShopApp.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::Plugin.CloudFirestore.Resource.Style.Widget_Compat_NotificationActionText = global::ShopApp.Resource.Style.Widget_Compat_NotificationActionText;
+			global::Plugin.CloudFirestore.Resource.Style.Widget_Support_CoordinatorLayout = global::ShopApp.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::Plugin.CloudFirestore.Resource.Styleable.ColorStateListItem = global::ShopApp.Resource.Styleable.ColorStateListItem;
+			global::Plugin.CloudFirestore.Resource.Styleable.ColorStateListItem_alpha = global::ShopApp.Resource.Styleable.ColorStateListItem_alpha;
+			global::Plugin.CloudFirestore.Resource.Styleable.ColorStateListItem_android_alpha = global::ShopApp.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::Plugin.CloudFirestore.Resource.Styleable.ColorStateListItem_android_color = global::ShopApp.Resource.Styleable.ColorStateListItem_android_color;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout = global::ShopApp.Resource.Styleable.CoordinatorLayout;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_keylines = global::ShopApp.Resource.Styleable.CoordinatorLayout_keylines;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_Layout = global::ShopApp.Resource.Styleable.CoordinatorLayout_Layout;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::ShopApp.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::ShopApp.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::ShopApp.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::ShopApp.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::ShopApp.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::ShopApp.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::ShopApp.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::Plugin.CloudFirestore.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::ShopApp.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamily = global::ShopApp.Resource.Styleable.FontFamily;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont = global::ShopApp.Resource.Styleable.FontFamilyFont;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_android_font = global::ShopApp.Resource.Styleable.FontFamilyFont_android_font;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_android_fontStyle = global::ShopApp.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::ShopApp.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_android_fontWeight = global::ShopApp.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::ShopApp.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_font = global::ShopApp.Resource.Styleable.FontFamilyFont_font;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_fontStyle = global::ShopApp.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::ShopApp.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_fontWeight = global::ShopApp.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamilyFont_ttcIndex = global::ShopApp.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamily_fontProviderAuthority = global::ShopApp.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamily_fontProviderCerts = global::ShopApp.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::ShopApp.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::ShopApp.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamily_fontProviderPackage = global::ShopApp.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Plugin.CloudFirestore.Resource.Styleable.FontFamily_fontProviderQuery = global::ShopApp.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor = global::ShopApp.Resource.Styleable.GradientColor;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColorItem = global::ShopApp.Resource.Styleable.GradientColorItem;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColorItem_android_color = global::ShopApp.Resource.Styleable.GradientColorItem_android_color;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColorItem_android_offset = global::ShopApp.Resource.Styleable.GradientColorItem_android_offset;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_centerColor = global::ShopApp.Resource.Styleable.GradientColor_android_centerColor;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_centerX = global::ShopApp.Resource.Styleable.GradientColor_android_centerX;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_centerY = global::ShopApp.Resource.Styleable.GradientColor_android_centerY;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_endColor = global::ShopApp.Resource.Styleable.GradientColor_android_endColor;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_endX = global::ShopApp.Resource.Styleable.GradientColor_android_endX;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_endY = global::ShopApp.Resource.Styleable.GradientColor_android_endY;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_gradientRadius = global::ShopApp.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_startColor = global::ShopApp.Resource.Styleable.GradientColor_android_startColor;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_startX = global::ShopApp.Resource.Styleable.GradientColor_android_startX;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_startY = global::ShopApp.Resource.Styleable.GradientColor_android_startY;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_tileMode = global::ShopApp.Resource.Styleable.GradientColor_android_tileMode;
+			global::Plugin.CloudFirestore.Resource.Styleable.GradientColor_android_type = global::ShopApp.Resource.Styleable.GradientColor_android_type;
+			global::Plugin.CloudFirestore.Resource.Styleable.LoadingImageView = global::ShopApp.Resource.Styleable.LoadingImageView;
+			global::Plugin.CloudFirestore.Resource.Styleable.LoadingImageView_circleCrop = global::ShopApp.Resource.Styleable.LoadingImageView_circleCrop;
+			global::Plugin.CloudFirestore.Resource.Styleable.LoadingImageView_imageAspectRatio = global::ShopApp.Resource.Styleable.LoadingImageView_imageAspectRatio;
+			global::Plugin.CloudFirestore.Resource.Styleable.LoadingImageView_imageAspectRatioAdjust = global::ShopApp.Resource.Styleable.LoadingImageView_imageAspectRatioAdjust;
+			global::Plugin.CloudFirestore.Resource.Styleable.SignInButton = global::ShopApp.Resource.Styleable.SignInButton;
+			global::Plugin.CloudFirestore.Resource.Styleable.SignInButton_buttonSize = global::ShopApp.Resource.Styleable.SignInButton_buttonSize;
+			global::Plugin.CloudFirestore.Resource.Styleable.SignInButton_colorScheme = global::ShopApp.Resource.Styleable.SignInButton_colorScheme;
+			global::Plugin.CloudFirestore.Resource.Styleable.SignInButton_scopeUris = global::ShopApp.Resource.Styleable.SignInButton_scopeUris;
 		}
 		
 		public partial class Animation
@@ -3287,35 +3555,35 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c0046
 			public const int SYM = 2131492934;
 			
-			// aapt resource value: 0x7f0c0119
-			public const int action0 = 2131493145;
+			// aapt resource value: 0x7f0c011b
+			public const int action0 = 2131493147;
 			
-			// aapt resource value: 0x7f0c013f
-			public const int action_BnvClientCurrentOrder = 2131493183;
+			// aapt resource value: 0x7f0c0142
+			public const int action_BnvClientCurrentOrder = 2131493186;
 			
-			// aapt resource value: 0x7f0c013e
-			public const int action_BnvClientHistory = 2131493182;
-			
-			// aapt resource value: 0x7f0c013d
-			public const int action_BnvClientHome = 2131493181;
+			// aapt resource value: 0x7f0c0141
+			public const int action_BnvClientHistory = 2131493185;
 			
 			// aapt resource value: 0x7f0c0140
-			public const int action_BnvClientSettings = 2131493184;
-			
-			// aapt resource value: 0x7f0c0139
-			public const int action_BnvManagerHome = 2131493177;
-			
-			// aapt resource value: 0x7f0c013a
-			public const int action_BnvManagerOrders = 2131493178;
-			
-			// aapt resource value: 0x7f0c013b
-			public const int action_BnvManagerProducts = 2131493179;
-			
-			// aapt resource value: 0x7f0c013c
-			public const int action_BnvManagerSettings = 2131493180;
+			public const int action_BnvClientHome = 2131493184;
 			
 			// aapt resource value: 0x7f0c0143
-			public const int action_accountSetting = 2131493187;
+			public const int action_BnvClientSettings = 2131493187;
+			
+			// aapt resource value: 0x7f0c013c
+			public const int action_BnvManagerHome = 2131493180;
+			
+			// aapt resource value: 0x7f0c013d
+			public const int action_BnvManagerOrders = 2131493181;
+			
+			// aapt resource value: 0x7f0c013e
+			public const int action_BnvManagerProducts = 2131493182;
+			
+			// aapt resource value: 0x7f0c013f
+			public const int action_BnvManagerSettings = 2131493183;
+			
+			// aapt resource value: 0x7f0c0146
+			public const int action_accountSetting = 2131493190;
 			
 			// aapt resource value: 0x7f0c0094
 			public const int action_bar = 2131493012;
@@ -3338,20 +3606,20 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c0070
 			public const int action_bar_title = 2131492976;
 			
-			// aapt resource value: 0x7f0c0116
-			public const int action_container = 2131493142;
+			// aapt resource value: 0x7f0c0118
+			public const int action_container = 2131493144;
 			
 			// aapt resource value: 0x7f0c0095
 			public const int action_context_bar = 2131493013;
 			
-			// aapt resource value: 0x7f0c011d
-			public const int action_divider = 2131493149;
+			// aapt resource value: 0x7f0c011f
+			public const int action_divider = 2131493151;
 			
-			// aapt resource value: 0x7f0c0117
-			public const int action_image = 2131493143;
+			// aapt resource value: 0x7f0c0119
+			public const int action_image = 2131493145;
 			
-			// aapt resource value: 0x7f0c0141
-			public const int action_logout = 2131493185;
+			// aapt resource value: 0x7f0c0144
+			public const int action_logout = 2131493188;
 			
 			// aapt resource value: 0x7f0c0003
 			public const int action_menu_divider = 2131492867;
@@ -3368,14 +3636,14 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c0072
 			public const int action_mode_close_button = 2131492978;
 			
-			// aapt resource value: 0x7f0c0142
-			public const int action_register = 2131493186;
+			// aapt resource value: 0x7f0c0145
+			public const int action_register = 2131493189;
 			
-			// aapt resource value: 0x7f0c0118
-			public const int action_text = 2131493144;
+			// aapt resource value: 0x7f0c011a
+			public const int action_text = 2131493146;
 			
-			// aapt resource value: 0x7f0c0126
-			public const int actions = 2131493158;
+			// aapt resource value: 0x7f0c0128
+			public const int actions = 2131493160;
 			
 			// aapt resource value: 0x7f0c0073
 			public const int activity_chooser_view_content = 2131492979;
@@ -3416,26 +3684,26 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00dd
 			public const int bottomNavigationViewClient = 2131493085;
 			
-			// aapt resource value: 0x7f0c00f7
-			public const int bottomNavigationViewManager = 2131493111;
+			// aapt resource value: 0x7f0c00fa
+			public const int bottomNavigationViewManager = 2131493114;
 			
 			// aapt resource value: 0x7f0c00aa
 			public const int btnClientOrderLayoutMoveToPayment = 2131493034;
 			
-			// aapt resource value: 0x7f0c0108
-			public const int btnConrifeRegister = 2131493128;
+			// aapt resource value: 0x7f0c010a
+			public const int btnConrifeRegister = 2131493130;
 			
 			// aapt resource value: 0x7f0c00da
 			public const int btnContectUs = 2131493082;
 			
-			// aapt resource value: 0x7f0c0112
-			public const int btnDialogAddProductMinus = 2131493138;
-			
 			// aapt resource value: 0x7f0c0114
-			public const int btnDialogAddProductPlus = 2131493140;
+			public const int btnDialogAddProductMinus = 2131493140;
 			
-			// aapt resource value: 0x7f0c0115
-			public const int btnDialogAddProductSave = 2131493141;
+			// aapt resource value: 0x7f0c0116
+			public const int btnDialogAddProductPlus = 2131493142;
+			
+			// aapt resource value: 0x7f0c0117
+			public const int btnDialogAddProductSave = 2131493143;
 			
 			// aapt resource value: 0x7f0c00d2
 			public const int btnEditAccuntSettingConrifeEdit = 2131493074;
@@ -3473,17 +3741,17 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00e4
 			public const int btnManagerHomeSetting = 2131493092;
 			
-			// aapt resource value: 0x7f0c00fa
-			public const int btnManagerRemoveProductDialog = 2131493114;
+			// aapt resource value: 0x7f0c00f5
+			public const int btnManagerRemoveProductDialog = 2131493109;
+			
+			// aapt resource value: 0x7f0c00ff
+			public const int btnManagerSettingChangePassword = 2131493119;
 			
 			// aapt resource value: 0x7f0c00fd
-			public const int btnManagerSettingChangePassword = 2131493117;
+			public const int btnManagerSettingEtitdetails = 2131493117;
 			
-			// aapt resource value: 0x7f0c00fb
-			public const int btnManagerSettingEtitdetails = 2131493115;
-			
-			// aapt resource value: 0x7f0c00fc
-			public const int btnManagerSettingPaymentMethods = 2131493116;
+			// aapt resource value: 0x7f0c00fe
+			public const int btnManagerSettingPaymentMethods = 2131493118;
 			
 			// aapt resource value: 0x7f0c00d8
 			public const int btnPrivateInfo = 2131493080;
@@ -3491,23 +3759,23 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00d7
 			public const int btnPruchesHistory = 2131493079;
 			
+			// aapt resource value: 0x7f0c012d
+			public const int btnSettingChangePassword = 2131493165;
+			
 			// aapt resource value: 0x7f0c012b
-			public const int btnSettingChangePassword = 2131493163;
+			public const int btnSettingEtitdetails = 2131493163;
 			
-			// aapt resource value: 0x7f0c0129
-			public const int btnSettingEtitdetails = 2131493161;
+			// aapt resource value: 0x7f0c012c
+			public const int btnSettingPaymentMethods = 2131493164;
 			
-			// aapt resource value: 0x7f0c012a
-			public const int btnSettingPaymentMethods = 2131493162;
-			
-			// aapt resource value: 0x7f0c0110
-			public const int btnSettingPaymentSave = 2131493136;
+			// aapt resource value: 0x7f0c0112
+			public const int btnSettingPaymentSave = 2131493138;
 			
 			// aapt resource value: 0x7f0c00d6
 			public const int btnStartShop = 2131493078;
 			
-			// aapt resource value: 0x7f0c0111
-			public const int btn_CloentOrderActivity_dialogAddProduct_CloseDialog = 2131493137;
+			// aapt resource value: 0x7f0c0113
+			public const int btn_CloentOrderActivity_dialogAddProduct_CloseDialog = 2131493139;
 			
 			// aapt resource value: 0x7f0c00c6
 			public const int btn_DialogFinishOrderConrife = 2131493062;
@@ -3524,23 +3792,29 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00f1
 			public const int btn_ManagerDialogOrderCartClose = 2131493105;
 			
-			// aapt resource value: 0x7f0c0132
-			public const int btn_dialog_edit_product_ChooseImage = 2131493170;
+			// aapt resource value: 0x7f0c00f3
+			public const int btn_ManagerDialogOrderCartDeleteOrder = 2131493107;
+			
+			// aapt resource value: 0x7f0c00f4
+			public const int btn_ManagerDialogOrderCartOrderDone = 2131493108;
+			
+			// aapt resource value: 0x7f0c0138
+			public const int btn_ManagerEditProductDialogDeleteProduct = 2131493176;
+			
+			// aapt resource value: 0x7f0c0139
+			public const int btn_ManagerEditProductDialogSave = 2131493177;
 			
 			// aapt resource value: 0x7f0c0135
-			public const int btn_manager_dialog_Edit_Product_DeleteProduct = 2131493173;
+			public const int btn_dialog_edit_product_ChooseImage = 2131493173;
 			
-			// aapt resource value: 0x7f0c0136
-			public const int btn_manager_dialog_Edit_Product_Save = 2131493174;
-			
-			// aapt resource value: 0x7f0c012e
-			public const int btn_toolbar_backPage = 2131493166;
+			// aapt resource value: 0x7f0c0130
+			public const int btn_toolbar_backPage = 2131493168;
 			
 			// aapt resource value: 0x7f0c0079
 			public const int buttonPanel = 2131492985;
 			
-			// aapt resource value: 0x7f0c011a
-			public const int cancel_action = 2131493146;
+			// aapt resource value: 0x7f0c011c
+			public const int cancel_action = 2131493148;
 			
 			// aapt resource value: 0x7f0c0054
 			public const int center = 2131492948;
@@ -3554,8 +3828,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c008d
 			public const int checkbox = 2131493005;
 			
-			// aapt resource value: 0x7f0c0122
-			public const int chronometer = 2131493154;
+			// aapt resource value: 0x7f0c0124
+			public const int chronometer = 2131493156;
 			
 			// aapt resource value: 0x7f0c0068
 			public const int clip_horizontal = 2131492968;
@@ -3617,8 +3891,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c003f
 			public const int end = 2131492927;
 			
-			// aapt resource value: 0x7f0c0128
-			public const int end_padder = 2131493160;
+			// aapt resource value: 0x7f0c012a
+			public const int end_padder = 2131493162;
 			
 			// aapt resource value: 0x7f0c004e
 			public const int enterAlways = 2131492942;
@@ -3644,8 +3918,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00cc
 			public const int etEditAccuntSettingUsername = 2131493068;
 			
-			// aapt resource value: 0x7f0c0104
-			public const int etEmailRegister = 2131493124;
+			// aapt resource value: 0x7f0c0106
+			public const int etEmailRegister = 2131493126;
 			
 			// aapt resource value: 0x7f0c00df
 			public const int etLoginManagerPassword = 2131493087;
@@ -3677,41 +3951,44 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00ec
 			public const int etManagerChangePasswordOldPassword = 2131493100;
 			
-			// aapt resource value: 0x7f0c0102
-			public const int etNameRegister = 2131493122;
+			// aapt resource value: 0x7f0c0104
+			public const int etNameRegister = 2131493124;
 			
-			// aapt resource value: 0x7f0c0107
-			public const int etPasswordRegister = 2131493127;
-			
-			// aapt resource value: 0x7f0c0103
-			public const int etPhoneRegister = 2131493123;
+			// aapt resource value: 0x7f0c0109
+			public const int etPasswordRegister = 2131493129;
 			
 			// aapt resource value: 0x7f0c0105
-			public const int etRegisterCity = 2131493125;
+			public const int etPhoneRegister = 2131493125;
 			
-			// aapt resource value: 0x7f0c0106
-			public const int etRegisterStreetAddress = 2131493126;
+			// aapt resource value: 0x7f0c0107
+			public const int etRegisterCity = 2131493127;
 			
-			// aapt resource value: 0x7f0c0100
-			public const int etRegisterUsername = 2131493120;
+			// aapt resource value: 0x7f0c0108
+			public const int etRegisterStreetAddress = 2131493128;
 			
-			// aapt resource value: 0x7f0c010d
-			public const int etSettingPaymentCardNum = 2131493133;
+			// aapt resource value: 0x7f0c0102
+			public const int etRegisterUsername = 2131493122;
 			
 			// aapt resource value: 0x7f0c010f
-			public const int etSettingPaymentCvv = 2131493135;
+			public const int etSettingPaymentCardNum = 2131493135;
 			
-			// aapt resource value: 0x7f0c010e
-			public const int etSettingPaymentDate = 2131493134;
+			// aapt resource value: 0x7f0c0111
+			public const int etSettingPaymentCvv = 2131493137;
+			
+			// aapt resource value: 0x7f0c0110
+			public const int etSettingPaymentDate = 2131493136;
 			
 			// aapt resource value: 0x7f0c00c8
 			public const int et_DialogPickProductImage_EnterImageUrl = 2131493064;
 			
-			// aapt resource value: 0x7f0c0131
-			public const int et_manager_dialog_EditProduct_Price = 2131493169;
+			// aapt resource value: 0x7f0c0132
+			public const int et_ManagerEditProductDialogProductName = 2131493170;
 			
-			// aapt resource value: 0x7f0c0130
-			public const int et_manager_dialog_EditProduct_ProductName = 2131493168;
+			// aapt resource value: 0x7f0c0133
+			public const int et_ManagerEditProductDialogProductPrice = 2131493171;
+			
+			// aapt resource value: 0x7f0c0134
+			public const int et_ManagerEditProductDialogProductQuantity = 2131493172;
 			
 			// aapt resource value: 0x7f0c0050
 			public const int exitUntilCollapsed = 2131492944;
@@ -3722,11 +3999,11 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c008c
 			public const int expanded_menu = 2131493004;
 			
-			// aapt resource value: 0x7f0c00f4
-			public const int fab_Manager_addNewProduct = 2131493108;
+			// aapt resource value: 0x7f0c00f7
+			public const int fab_Manager_addNewProduct = 2131493111;
 			
-			// aapt resource value: 0x7f0c00f9
-			public const int fab_Manager_addOrder = 2131493113;
+			// aapt resource value: 0x7f0c00fc
+			public const int fab_Manager_addOrder = 2131493116;
 			
 			// aapt resource value: 0x7f0c0065
 			public const int fill = 2131492965;
@@ -3749,8 +4026,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00dc
 			public const int frameLayoutContainerClient = 2131493084;
 			
-			// aapt resource value: 0x7f0c00f6
-			public const int frameLayoutContainerManager = 2131493110;
+			// aapt resource value: 0x7f0c00f9
+			public const int frameLayoutContainerManager = 2131493113;
 			
 			// aapt resource value: 0x7f0c000a
 			public const int ghost_view = 2131492874;
@@ -3767,8 +4044,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c0078
 			public const int icon = 2131492984;
 			
-			// aapt resource value: 0x7f0c0127
-			public const int icon_group = 2131493159;
+			// aapt resource value: 0x7f0c0129
+			public const int icon_group = 2131493161;
 			
 			// aapt resource value: 0x7f0c0027
 			public const int icon_only = 2131492903;
@@ -3779,14 +4056,14 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c0075
 			public const int image = 2131492981;
 			
-			// aapt resource value: 0x7f0c0101
-			public const int imageVFullname = 2131493121;
+			// aapt resource value: 0x7f0c0103
+			public const int imageVFullname = 2131493123;
 			
 			// aapt resource value: 0x7f0c00ca
 			public const int imageView_DialogPickProductImage = 2131493066;
 			
-			// aapt resource value: 0x7f0c0123
-			public const int info = 2131493155;
+			// aapt resource value: 0x7f0c0125
+			public const int info = 2131493157;
 			
 			// aapt resource value: 0x7f0c006f
 			public const int italic = 2131492975;
@@ -3806,11 +4083,11 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00ac
 			public const int ivProductRaw = 2131493036;
 			
-			// aapt resource value: 0x7f0c0109
-			public const int ivSelectedProductInCart = 2131493129;
+			// aapt resource value: 0x7f0c010b
+			public const int ivSelectedProductInCart = 2131493131;
 			
-			// aapt resource value: 0x7f0c0133
-			public const int iv_dialog_edit_product_image = 2131493171;
+			// aapt resource value: 0x7f0c0136
+			public const int iv_dialog_edit_product_image = 2131493174;
 			
 			// aapt resource value: 0x7f0c0055
 			public const int labeled = 2131492949;
@@ -3839,32 +4116,32 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00f2
 			public const int listViewManagerDialogOrderCart = 2131493106;
 			
-			// aapt resource value: 0x7f0c00ff
-			public const int listViewOrdersHistory = 2131493119;
+			// aapt resource value: 0x7f0c0101
+			public const int listViewOrdersHistory = 2131493121;
 			
 			// aapt resource value: 0x7f0c00ab
 			public const int listViewProducts = 2131493035;
 			
-			// aapt resource value: 0x7f0c00f8
-			public const int listView_ManagerOrders = 2131493112;
+			// aapt resource value: 0x7f0c00fb
+			public const int listView_ManagerOrders = 2131493115;
 			
 			// aapt resource value: 0x7f0c0077
 			public const int list_item = 2131492983;
 			
-			// aapt resource value: 0x7f0c00f3
-			public const int listviewManagerEditProducts = 2131493107;
+			// aapt resource value: 0x7f0c00f6
+			public const int listviewManagerEditProducts = 2131493110;
 			
-			// aapt resource value: 0x7f0c0138
-			public const int masked = 2131493176;
+			// aapt resource value: 0x7f0c013b
+			public const int masked = 2131493179;
 			
-			// aapt resource value: 0x7f0c011c
-			public const int media_actions = 2131493148;
+			// aapt resource value: 0x7f0c011e
+			public const int media_actions = 2131493150;
 			
-			// aapt resource value: 0x7f0c0145
-			public const int menu_ManagerHomeAccountSetting = 2131493189;
+			// aapt resource value: 0x7f0c0148
+			public const int menu_ManagerHomeAccountSetting = 2131493192;
 			
-			// aapt resource value: 0x7f0c0144
-			public const int menu_ManagerHomeLogOut = 2131493188;
+			// aapt resource value: 0x7f0c0147
+			public const int menu_ManagerHomeLogOut = 2131493191;
 			
 			// aapt resource value: 0x7f0c00a3
 			public const int message = 2131493027;
@@ -3896,14 +4173,14 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c002e
 			public const int normal = 2131492910;
 			
-			// aapt resource value: 0x7f0c0125
-			public const int notification_background = 2131493157;
+			// aapt resource value: 0x7f0c0127
+			public const int notification_background = 2131493159;
 			
-			// aapt resource value: 0x7f0c011f
-			public const int notification_main_column = 2131493151;
+			// aapt resource value: 0x7f0c0121
+			public const int notification_main_column = 2131493153;
 			
-			// aapt resource value: 0x7f0c011e
-			public const int notification_main_column_container = 2131493150;
+			// aapt resource value: 0x7f0c0120
+			public const int notification_main_column_container = 2131493152;
 			
 			// aapt resource value: 0x7f0c0067
 			public const int outline = 2131492967;
@@ -3932,11 +4209,11 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c005c
 			public const int right = 2131492956;
 			
-			// aapt resource value: 0x7f0c0124
-			public const int right_icon = 2131493156;
+			// aapt resource value: 0x7f0c0126
+			public const int right_icon = 2131493158;
 			
-			// aapt resource value: 0x7f0c0120
-			public const int right_side = 2131493152;
+			// aapt resource value: 0x7f0c0122
+			public const int right_side = 2131493154;
 			
 			// aapt resource value: 0x7f0c000c
 			public const int save_image_matrix = 2131492876;
@@ -4052,8 +4329,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c005d
 			public const int start = 2131492957;
 			
-			// aapt resource value: 0x7f0c011b
-			public const int status_bar_latest_event_content = 2131493147;
+			// aapt resource value: 0x7f0c011d
+			public const int status_bar_latest_event_content = 2131493149;
 			
 			// aapt resource value: 0x7f0c0062
 			public const int stretch = 2131492962;
@@ -4064,8 +4341,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c009f
 			public const int submit_area = 2131493023;
 			
-			// aapt resource value: 0x7f0c0134
-			public const int switch_manager_dialog_EditProduct_ShowToClient = 2131493172;
+			// aapt resource value: 0x7f0c0137
+			public const int switch_manager_dialog_EditProduct_ShowToClient = 2131493175;
 			
 			// aapt resource value: 0x7f0c002f
 			public const int tabMode = 2131492911;
@@ -4106,8 +4383,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c001a
 			public const int textinput_helper_text = 2131492890;
 			
-			// aapt resource value: 0x7f0c0121
-			public const int time = 2131493153;
+			// aapt resource value: 0x7f0c0123
+			public const int time = 2131493155;
 			
 			// aapt resource value: 0x7f0c0023
 			public const int title = 2131492899;
@@ -4118,8 +4395,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c0085
 			public const int title_template = 2131492997;
 			
-			// aapt resource value: 0x7f0c012c
-			public const int toolbar_client_home = 2131493164;
+			// aapt resource value: 0x7f0c012e
+			public const int toolbar_client_home = 2131493166;
 			
 			// aapt resource value: 0x7f0c004d
 			public const int top = 2131492941;
@@ -4145,8 +4422,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c0013
 			public const int transition_transform = 2131492883;
 			
-			// aapt resource value: 0x7f0c0113
-			public const int tvDialogAddProductCurrentAmount = 2131493139;
+			// aapt resource value: 0x7f0c0115
+			public const int tvDialogAddProductCurrentAmount = 2131493141;
 			
 			// aapt resource value: 0x7f0c00d4
 			public const int tvFinishOrderTotalPrice = 2131493076;
@@ -4154,8 +4431,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00a8
 			public const int tvMainActivityRegister = 2131493032;
 			
-			// aapt resource value: 0x7f0c00f5
-			public const int tvManagerHomeWelcomeManager = 2131493109;
+			// aapt resource value: 0x7f0c00f8
+			public const int tvManagerHomeWelcomeManager = 2131493112;
 			
 			// aapt resource value: 0x7f0c00c3
 			public const int tvOrderHistoryRawDate = 2131493059;
@@ -4169,14 +4446,14 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00ad
 			public const int tvProductRawTitle = 2131493037;
 			
-			// aapt resource value: 0x7f0c010b
-			public const int tvSelectedProductInCartAmount = 2131493131;
-			
-			// aapt resource value: 0x7f0c010a
-			public const int tvSelectedProductInCartName = 2131493130;
+			// aapt resource value: 0x7f0c010d
+			public const int tvSelectedProductInCartAmount = 2131493133;
 			
 			// aapt resource value: 0x7f0c010c
-			public const int tvSelectedProductInCartPrice = 2131493132;
+			public const int tvSelectedProductInCartName = 2131493132;
+			
+			// aapt resource value: 0x7f0c010e
+			public const int tvSelectedProductInCartPrice = 2131493134;
 			
 			// aapt resource value: 0x7f0c00ae
 			public const int tvSubTitle = 2131493038;
@@ -4187,8 +4464,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00c5
 			public const int tv_DialogFinishOrderConrifeTerms = 2131493061;
 			
-			// aapt resource value: 0x7f0c00fe
-			public const int tv_Fragment_OrdersHistory_Status = 2131493118;
+			// aapt resource value: 0x7f0c0100
+			public const int tv_Fragment_OrdersHistory_Status = 2131493120;
 			
 			// aapt resource value: 0x7f0c00f0
 			public const int tv_ManagerDialogOrderCartHeader = 2131493104;
@@ -4214,11 +4491,11 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c00be
 			public const int tv_costum_ManagerOrdersAdapterUsername = 2131493054;
 			
-			// aapt resource value: 0x7f0c012f
-			public const int tv_manager_dialog_editProduct_ProductName = 2131493167;
+			// aapt resource value: 0x7f0c0131
+			public const int tv_manager_dialog_editProduct_ProductName = 2131493169;
 			
-			// aapt resource value: 0x7f0c012d
-			public const int tv_toolbar_title = 2131493165;
+			// aapt resource value: 0x7f0c012f
+			public const int tv_toolbar_title = 2131493167;
 			
 			// aapt resource value: 0x7f0c003c
 			public const int uniform = 2131492924;
@@ -4235,8 +4512,8 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c001b
 			public const int view_offset_helper = 2131492891;
 			
-			// aapt resource value: 0x7f0c0137
-			public const int visible = 2131493175;
+			// aapt resource value: 0x7f0c013a
+			public const int visible = 2131493178;
 			
 			// aapt resource value: 0x7f0c0029
 			public const int wide = 2131492905;
@@ -4524,16 +4801,16 @@ namespace ShopApp
 			public const int layout_ManagerDailogOrderCart = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int layout_ManagerEditProducts = 2130968635;
+			public const int layout_ManagerEditProductDialog = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int layout_ManagerHome = 2130968636;
+			public const int layout_ManagerEditProducts = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int layout_ManagerOrders = 2130968637;
+			public const int layout_ManagerHome = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int layout_ManagerRemoveProductDialog = 2130968638;
+			public const int layout_ManagerOrders = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
 			public const int layout_ManagerSettings = 2130968639;

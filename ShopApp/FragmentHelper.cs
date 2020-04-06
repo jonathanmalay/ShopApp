@@ -58,13 +58,13 @@ namespace ShopApp
                             }
                         }
                     }
-                    else
-                    {
-                        fragmentTransaction.Show(savedFragment).AddToBackStack(tag);
-                    }
-
-                    fragmentTransaction.Commit();
                 }
+                else
+                {
+                    fragmentTransaction.Show(savedFragment).AddToBackStack(tag);
+                }
+
+                fragmentTransaction.Commit();
             }
             catch (Exception e)
             {

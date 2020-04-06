@@ -94,8 +94,7 @@ namespace ShopApp
         public override bool OnCreateOptionsMenu(IMenu menu) //רשום אובררייד בגלל שתפריט  קיים וערכו נולל לכן אנחנו דורסים את הערך הקודם ויוצרים תפריט חדש
         {
             MenuInflater.Inflate(Resource.Menu.menu_home, menu); //הופכים את המניו מאקאםאל לעצם מסוג  תפריט
-            return base.OnCreateOptionsMenu(menu);
-                                                       
+            return base.OnCreateOptionsMenu(menu);                                    
         }
 
 
@@ -103,11 +102,8 @@ namespace ShopApp
         { 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             ISharedPreferencesEditor editor = sp.Edit();
-
-
             switch (item.ItemId)
             {
-
                 case Resource.Id.action_logout:
 
                     editor.PutString("Username", "").Apply();
@@ -128,8 +124,6 @@ namespace ShopApp
                     FragmentHelper.LoadFragment(this, new HomeSetting_Fragment(), true);
                     break;
             }
-
-
             return base.OnOptionsItemSelected(item);
         }
 

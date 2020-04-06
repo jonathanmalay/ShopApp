@@ -20,7 +20,7 @@ namespace ShopApp
         ISharedPreferences sp;
         string userName;
 
-        Dialog dialogRemoveProduct;
+        Dialog dialogEditProduct, dialogAddProduct;
         ListView lvProducts;
         FloatingActionButton fab_add_NewProduct;
         Product selected_product;
@@ -29,9 +29,12 @@ namespace ShopApp
         ProductAdapter pa;
 
 
-
-
-
+        //Dialog Edit Product
+        Button btn_DialogEditProduct_remove_product;
+        Button btn_DialogEditProduct_save_changes;
+        EditText et_DialogEditProduct_ProductPrice;
+        EditText et_DialogEditProduct_productName;
+        EditText et_DialogEditProduct_productQuantity;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -44,7 +47,7 @@ namespace ShopApp
             if (hidden == false)
             {
 
-                this.tv_toolbar_title.Text = "מסך הבית";
+                this.tv_toolbar_title.Text = "מוצרים";
 
             }
         }
@@ -65,7 +68,8 @@ namespace ShopApp
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
-            CreateDialog(Activity);
+            CreateDialogAddProduct(Activity);
+            CreateDialogEditProduct(Activity); 
 
             List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
 
@@ -84,32 +88,62 @@ namespace ShopApp
 
         private void Fab_add_NewProduct_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(Activity, typeof(Activity_ManagerAddProduct));
-            StartActivity(intent);
+            this.dialogAddProduct.Show(); 
 
         }
 
         private void LvProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
+        {   
+
             int position = e.Position;//מיקום המוצר בליסט ויאו
             selected_product = this.pa[position];//מכניס לעצם מסוג מוצר  את המוצר שנמצא בתא שנלחץ בליסט ויאו 
-            dialogRemoveProduct.Show(); //מפעיל את הדיאלוג
+
+            et_DialogEditProduct_productName.Text = this.selected_product.Name;
+            et_DialogEditProduct_ProductPrice.Text = this.selected_product.Price.ToString();
+            et_DialogEditProduct_productQuantity.Text = this.selected_product.Quantity.ToString();
+            
+            dialogEditProduct.Show(); //מפעיל את הדיאלוג
         }
-                                           
-        public void CreateDialog(Activity activity)
+
+
+
+        public void CreateDialogEditProduct(Activity activity)
         {
-            dialogRemoveProduct = new Dialog(Activity);
+            
+            dialogEditProduct = new Dialog(Activity);
+            dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
+            dialogAddProduct.SetContentView(Resource.Layout.view_ManagerEditProduct);
+            dialogAddProduct.SetTitle("עריכת מוצר");
+            dialogAddProduct.SetCancelable(true);
 
-            Button btn_remove_product;
+            et_DialogEditProduct_productName = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductName);
+            et_DialogEditProduct_ProductPrice = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductPrice);
+            et_DialogEditProduct_productQuantity = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductQuantity);
+            btn_DialogEditProduct_save_changes = dialogEditProduct.FindViewById<Button>(Resource.Id.btn_ManagerEditProductDialogSave);
+            btn_DialogEditProduct_remove_product = dialogEditProduct.FindViewById<Button>(Resource.Id.btn_ManagerEditProductDialogDeleteProduct); //כפתור ההסרה של מוצר
 
-            dialogRemoveProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-            dialogRemoveProduct.SetContentView(Resource.Layout.layout_ManagerRemoveProductDialog);
-            dialogRemoveProduct.SetTitle("הוספת מוצר");
-            dialogRemoveProduct.SetCancelable(true);
+            btn_DialogEditProduct_remove_product.Click += Btn_remove_product_Click;
+            btn_DialogEditProduct_save_changes.Click += Btn_save_changes_Click;
+
+        }
+
+        private void Btn_save_changes_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        public void CreateDialogAddProduct(Activity activity)
+        {
+            dialogAddProduct = new Dialog(Activity);
+
+           
+
+            dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
+            dialogAddProduct.SetContentView(Resource.Layout.layout_ManagerAddProduct);
+            dialogAddProduct.SetTitle("הוספת מוצר");
+            dialogAddProduct.SetCancelable(true);
 
 
-            btn_remove_product = dialogRemoveProduct.FindViewById<Button>(Resource.Id.btnManagerRemoveProductDialog); //כפתור ההסרה של מוצר
-            btn_remove_product.Click += Btn_remove_product_Click; ;
 
         }
 
@@ -135,7 +169,7 @@ namespace ShopApp
 
                 }
 
-                dialogRemoveProduct.Dismiss();
+                dialogEditProduct.Dismiss();
                 pa.NotifyDataSetChanged();
             }
 

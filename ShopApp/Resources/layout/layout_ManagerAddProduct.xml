@@ -12,7 +12,7 @@
         android:layout_height="300px"
         android:layout_width="wrap_content" />
 
-
+   
 
     <EditText
         android:layout_width="match_parent"

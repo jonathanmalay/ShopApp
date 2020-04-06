@@ -139,7 +139,7 @@ namespace ShopApp
         {
             try
             {
-                await AppData.manager_ordersCollection.GetDocument(order_id).UpdateDataAsync("IsDelivered",true );
+                   await AppData.manager_ordersCollection.GetDocument(order_id).UpdateDataAsync("IsDelivered",true );
                     return true; 
             }
             catch(Exception)
