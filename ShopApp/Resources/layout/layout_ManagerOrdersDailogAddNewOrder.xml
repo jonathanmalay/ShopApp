@@ -3,65 +3,132 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="@drawable/circlelayout"
     android:gravity="center"
+    android:weightSum="1"
     >
 
-  
 
         <EditText
             android:layout_margin="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
             android:layout_gravity="center"
             android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
-            android:hint= "שם הלקוח "
+            android:textColorHint="@color/colorEditTextHint"
+            android:hint= ":שם הלקוח "
+            android:drawableLeft="@drawable/iconusername"
             android:gravity="center"
+            android:elevation="3dp"
+          
+            android:drawableTint="@color/white"
+            android:background="@drawable/circlebutton"
             android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerName"
             />
 
-
     
+        <EditText
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorEditTextHint"
+            android:hint= "@string/phone_number"
+            android:drawableLeft="@drawable/iconphone"
+            android:gravity="center"
+            android:elevation="3dp"
+
+            android:drawableTint="@color/white"
+            android:background="@drawable/circlebutton"
+            android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerPhone"
+            />
+
 
         <EditText
             android:layout_margin="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
             android:layout_gravity="center"
             android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
-            android:hint= "סכום  הזמנה"
-            android:inputType="number"
+            android:textColorHint="@color/colorEditTextHint"
+            android:hint= "@string/Address"
+            android:drawableLeft="@drawable/icon_home"
             android:gravity="center"
-            android:id="@+id/et_ManagerOrdersDailogAddNewOrderOrderTotalPrice"
+            android:elevation="3dp"
+         
+            android:drawableTint="@color/white"
+            android:background="@drawable/circlebutton"
+            android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerAddress"
             />
 
-    
-   
-        <ListView
+        <EditText
+            android:layout_margin="5dp"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorEditTextHint"
+            android:hint= "@string/City"
+            android:drawableLeft="@drawable/iconlocation"
+            android:gravity="center"
+            android:elevation="3dp"
+      
+            android:inputType="text"
+            android:drawableTint="@color/white"
+            android:background="@drawable/circlebutton"
+            android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerCity"
+            />
+
+
+        <EditText
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorEditTextHint"
+            android:hint= ":מחיר "
+            android:drawableLeft="@drawable/iconsettingpay"
+            android:gravity="center"
+            android:inputType="number"
+            android:elevation="3dp"
+           
+            android:drawableTint="@color/white"
+            android:background="@drawable/circlebutton"
+            android:id="@+id/et_ManagerOrdersDailogAddNewOrderOrderTotalPrice"
+            />
+    
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_weight="0.3"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginVertical="8dp"
-            android:layout_height="160dp"
-            android:id="@+id/listview_ManagerOrdersDailogAddNewOrderCart"/>
-            
+        android:layout_height="0dp"
+        android:elevation="5dp"
+        android:id="@+id/listview_ManagerOrdersDailogAddNewOrderCart"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="2"
         android:orientation="horizontal"
-        android:layout_weight="10">
+        android:layout_weight="0.2">
 
         <Button
             android:id="@+id/btn_ManagerOrdersDailogAddNewOrderClose"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/circlebutton"
-           
             android:elevation="3dp"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -74,9 +141,8 @@
         <Button
             android:id="@+id/btn_ManagerOrdersDailogAddNewOrderSaveOrder"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/circlebutton"
-            
             android:elevation="3dp"
             android:layout_gravity="center"
             android:layout_weight="1"

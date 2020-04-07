@@ -3,14 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="400dp"
     android:background="@drawable/circlelayout"
     android:weightSum="1">
     <LinearLayout
         android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
         android:weightSum="1">
 
         <TextView
@@ -22,7 +23,7 @@
             android:id="@+id/tv_ManagerDialogOrderCartHeader"
             android:textColor="@color/white"
             android:textSize="25sp"
-            
+            android:layout_gravity="center_vertical"
             android:textStyle="bold"
             android:layout_weight="0.6"
             android:layout_width="0dp"
@@ -39,6 +40,7 @@
             android:textSize="20sp"
             android:layout_marginVertical="5dp"
             android:textStyle="bold"
+            android:layout_gravity="center_vertical"
             android:layout_width="0dp"
             android:layout_weight="0.3"
             android:layout_height="wrap_content"/>
@@ -47,54 +49,57 @@
     <ListView
         android:id="@+id/listViewManagerDialogOrderCart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.8"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
         android:elevation="4dp"
         android:background="@drawable/circlelayout"
         android:layout_gravity="center_horizontal"
         android:layout_margin="35dp"/>
-  
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical"
-            android:weightSum="1"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:weightSum="1"
         >
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"/>
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:background="@drawable/circlebutton"
-                android:text="מחק הזמנה"
-                android:elevation="7dp"
-                android:textColor="@color/colorEditTextHint"
-                android:id="@+id/btn_ManagerDialogOrderCartDeleteOrder"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/circlebutton"
+            android:text="מחק הזמנה"
+            android:elevation="7dp"
+            android:textColor="@color/colorEditTextHint"
+            android:id="@+id/btn_ManagerDialogOrderCartDeleteOrder"/>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"/>
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:text="הזמנה נשלחה"
-                android:elevation="7dp"
-                android:textColor="@color/colorEditTextHint"
-                android:background="@drawable/circlebutton"
-                android:id="@+id/btn_ManagerDialogOrderCartOrderDone"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="הזמנה נשלחה"
+            android:layout_gravity="center_vertical"
+            android:elevation="7dp"
+            android:textColor="@color/colorEditTextHint"
+            android:background="@drawable/circlebutton"
+            android:id="@+id/btn_ManagerDialogOrderCartOrderDone"/>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15"/>
 
-        </LinearLayout>
-    
+    </LinearLayout>
+
 </LinearLayout>

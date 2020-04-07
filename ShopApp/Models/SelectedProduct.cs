@@ -28,13 +28,13 @@ namespace ShopApp
 
 
 
-        public static async void AddSelectedProduct(Activity activity,string username, SelectedProduct sp)
+        public static async void AddSelectedProduct(Activity activity,string username, SelectedProduct selected_product)
         {
             try
             {
-                if (sp.Amount != 0)
+                if (selected_product.Amount > 0)
                 {
-                    await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocument(sp.ProductName).SetDataAsync(sp);//מוסיף מוצר  לקולקשיין עגלה של אותו אדם בפיירבייס
+                    await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocument(selected_product.ProductName).SetDataAsync(selected_product);//מוסיף מוצר  לקולקשיין עגלה של אותו אדם בפיירבייס
                 }
 
                 else
@@ -120,7 +120,7 @@ namespace ShopApp
             try
             {
                 IQuerySnapshot snapshot = await AppData.cartCollection.GetDocument(username).GetCollection("SelectedProduct").GetDocumentsAsync();//לוקח את כל המוצרים מהעגלה של אותו בן אדם ומכניס אותם לרשימה מסוג מוצר נבחר
-                productsInCart = snapshot.ToObjects<SelectedProduct>().ToList();
+                productsInCart = snapshot.ToObjects<SelectedProduct>().ToList(); 
 
                 for(int i=0; i<productsInCart.Count;i++)
                 {

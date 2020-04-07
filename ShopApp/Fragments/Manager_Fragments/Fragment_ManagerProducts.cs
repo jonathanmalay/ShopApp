@@ -22,10 +22,8 @@ namespace ShopApp
         ISharedPreferences sp;
         string userName;
         ProgressDialog pd; 
-
         Dialog dialogEditProduct, dialogAddProduct;
         GridView gridview_products;
-
         FloatingActionButton fab_add_NewProduct;
         Product selected_product;
         Button btn_backPage;
@@ -34,10 +32,10 @@ namespace ShopApp
 
 
         //Dialog Edit Product
+        TextView tv_DialogEditProduct_ProductName; 
         Button btn_DialogEditProduct_remove_product;
         Button btn_DialogEditProduct_save_changes;
         EditText et_DialogEditProduct_ProductPrice;
-        
         EditText et_DialogEditProduct_productName;
         EditText et_DialogEditProduct_productQuantity;
         ImageView iv_DialogEditProduct_ProductImage;
@@ -59,13 +57,9 @@ namespace ShopApp
             }
         }
 
-
-
         public override async void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-
-
 
             this.fab_add_NewProduct = view.FindViewById<FloatingActionButton>(Resource.Id.fab_Manager_addNewProduct);
             this.gridview_products = view.FindViewById<GridView>(Resource.Id.GreedViewManagerEditProducts);
@@ -79,7 +73,6 @@ namespace ShopApp
             CreateDialogEditProduct(Activity); 
 
             List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
-
             List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
             products = await Product.GetAllProduct();
 
@@ -105,6 +98,7 @@ namespace ShopApp
             int position = e.Position;//מיקום המוצר בגריד ויאו
             selected_product = this.pa[position];//מכניס לעצם מסוג מוצר  את המוצר שנמצא בתא שנלחץ בגריד ויאו 
 
+            tv_DialogEditProduct_ProductName.Text = this.selected_product.Name; 
             et_DialogEditProduct_productName.Text = this.selected_product.Name;
             et_DialogEditProduct_ProductPrice.Text = this.selected_product.Price.ToString();
             et_DialogEditProduct_productQuantity.Text = this.selected_product.Quantity.ToString();
@@ -118,15 +112,16 @@ namespace ShopApp
         {
             
             dialogEditProduct = new Dialog(Activity);
-            dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-            dialogAddProduct.SetContentView(Resource.Layout.view_ManagerEditProduct);
-            dialogAddProduct.SetTitle("עריכת מוצר");
-            dialogAddProduct.SetCancelable(true);
+            dialogEditProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
+            dialogEditProduct.SetContentView(Resource.Layout.view_ManagerEditProduct);
+            dialogEditProduct.SetTitle("עריכת מוצר");
+            dialogEditProduct.SetCancelable(true);
 
+            tv_DialogEditProduct_ProductName = dialogEditProduct.FindViewById<TextView>(Resource.Id.tv_manager_dialog_editProduct_ProductName);
             et_DialogEditProduct_productName = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductName);
             et_DialogEditProduct_ProductPrice = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductPrice);
             et_DialogEditProduct_productQuantity = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductQuantity);
-            btn_DialogEditProduct_save_changes = dialogEditProduct.FindViewById<Button>(Resource.Id.btn_ManagerEditProductDialogSave);
+            btn_DialogEditProduct_save_changes = dialogEditProduct.FindViewById<Button>(Resource.Id.btn_ManagerEditProductDialogSave); //כפתור שמירת המוצר לאחר השינוים שביצע המנהל
             btn_DialogEditProduct_remove_product = dialogEditProduct.FindViewById<Button>(Resource.Id.btn_ManagerEditProductDialogDeleteProduct); //כפתור ההסרה של מוצר
 
             btn_DialogEditProduct_remove_product.Click += Btn_remove_product_Click;
@@ -187,27 +182,21 @@ namespace ShopApp
 
         }
 
+
         public void CreateDialogAddProduct(Activity activity)
         {
             dialogAddProduct = new Dialog(Activity);
-
-           
-
             dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
             dialogAddProduct.SetContentView(Resource.Layout.layout_ManagerAddProduct);
             dialogAddProduct.SetTitle("הוספת מוצר");
             dialogAddProduct.SetCancelable(true);
 
-
-
         }
 
         private async void Btn_remove_product_Click(object sender, EventArgs e)
         {
-
             try
             {
-
                 await Product.RemoveProduct(this.userName, selected_product); //מסיר את המוצר ממסד התונים.
                 Product check_product = await Product.GetProduct(selected_product.Name);//בדיקה האם המוצר הוסר בהצלחה
                 //נבדוק עם לאחר ההסרה של המוצר יחזור נאל ממסד הנתונים משמע שהמוצר הוסר בהצלחה
@@ -234,5 +223,6 @@ namespace ShopApp
 
             }
         }
+
     }
 }

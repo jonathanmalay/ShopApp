@@ -43,6 +43,8 @@ namespace ShopApp
 
         }
 
+
+
         public static async Task<string> Add_Order(Activity activity, int price, DateTime date, string client_username, bool is_deliverd,List<SelectedProduct> products_list)    
         {
             try
@@ -96,6 +98,47 @@ namespace ShopApp
             }
 
         }
+
+
+        public static async Task<string> Add_Order_NonExistUser(Activity activity, int price, DateTime date, string client_username, bool is_deliverd, List<SelectedProduct> products_list, string city, string address, string phone_number)//נשתמש בפונקציה זאת כאשר המנהל מוסיף הזמנה ללקוח שלא קיים באפליקציה לכן השתמשתי בהעמסת פונקציות
+        {
+            try
+            {
+                Manager_Order order = new Manager_Order();
+
+                order.Price = price;
+                order.Date = date;
+                order.ClientUsername = client_username;
+                order.IsDelivered = is_deliverd;
+                order.Address = address;
+                order.City = city;
+                order.ClientPhone = phone_number;
+                order.CartList = products_list;//עגלת הקניות של המשתמש 
+             
+
+                var document = AppData.manager_ordersCollection.CreateDocument();
+
+                order.ID = document.Id;
+
+                await AppData.manager_ordersCollection.GetDocument(order.ID).SetDataAsync(order);//add the order to the manager_ordersCollection
+
+
+           
+                SelectedProduct.ClearAllProductFromCart(order.ClientUsername);//מנקה את עגלת הקניות של המשתמש על מנת שתהיה ריקה בקנייה הבאה
+                return order.ID;
+            }
+
+            catch (Exception e)
+            {
+                Toast.MakeText(activity, "אירעה שגיאה נסה שנית", ToastLength.Long).Show();
+                return null;
+            }
+
+
+
+        }
+
+
 
         public static async Task<List<Manager_Order>> GetAllOrders()//return all the orders of the shop 
         { 

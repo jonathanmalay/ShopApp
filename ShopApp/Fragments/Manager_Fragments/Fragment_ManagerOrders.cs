@@ -18,6 +18,8 @@ namespace ShopApp
     {
         ISharedPreferences sp;
         string userName;
+        FloatingActionButton fab_add_NewOrder;
+
 
         ListView lv_ManagerOrders;
         Adapter_ManagerOrders orders_adapter;
@@ -26,7 +28,7 @@ namespace ShopApp
         Dialog dialog_order;
         ListView lvCartDialog;
 
-        FloatingActionButton fab_add_NewOrder;
+
         TextView tvHeaderCartDialog;
         Button btnCloseCartDialog , btnCartDialogOrderDone,btnCartDialogDeleteOrder;
         int selected_order;
@@ -105,19 +107,12 @@ namespace ShopApp
             
         }
 
-        private void Btn_AddOrderDialogCartDialogOrderSaveOrder_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Btn_AddOrderDialogCloseCartDialog_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+     
 
         private void Fab_add_NewOrder_Click(object sender, EventArgs e)// open a dialog of set new order
         {
-           
+            Intent intent = new Intent(Activity, typeof(Activity_ManagerAddNewOrder));
+            this.StartActivity(intent);
         }
 
         private async  void BtnCartDialogDeleteOrder_Click(object sender, EventArgs e)
@@ -141,6 +136,7 @@ namespace ShopApp
 
             }
         }
+
 
         private  async void BtnCartDialogOrderDone_Click(object sender, EventArgs e ) //מעדכנת את סטטוס ההזמנה בשרת לבוצע 
         {

@@ -77,11 +77,7 @@ namespace ShopApp
             
         }
 
-        private void Btn_back_page_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(Activity, typeof(HomeActivity)); 
-            this.StartActivity(intent);
-        }
+        
 
         public async Task<bool> Conrife_Order_Minimum_Price()
         {
@@ -209,6 +205,8 @@ namespace ShopApp
             else if(cartSelectedProduct.Amount==0)
             {
              SelectedProduct.Remove_Product_From_Cart(userName, cartSelectedProduct.ProductName);//מסירה את המוצר שכמותו 0 מהעגלה כי במידה ולא אעשה זאת הוא יוצג בסוף ההזמנה
+             pa.CartProductsList.Remove(cartSelectedProduct); //מסיר את המוצר גם מהרשימה באדפטר מכיוון שהכמות של אותה מוצר היא 0
+
             }
 
             dialogAddProduct.Dismiss();
