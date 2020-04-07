@@ -12,5 +12,6 @@
   <color name="button_selectorcolor">#9E9E9E</color>
   <color name="colorEditTextBackground">#9BDCDE</color>
   <color name="colorEditTextHint">#FFFFFF</color>
+  <color name="colorListViewCell">#7a7e80</color>
   
 </resources>

@@ -24,6 +24,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
+            android:layout_gravity="center_vertical"
+
             />
 
 
@@ -36,34 +38,44 @@
             android:id="@+id/tv_toolbar_title"
             android:layout_width="0dp"
             android:textSize="22sp"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:layout_height="match_parent"
-            android:layout_weight="0.6"
+            android:layout_weight="0.3"
             android:textColor="@color/colorEditTextHint"
             />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"/>
 
         <Button
             android:text="@string/BackPage"
             android:textStyle="bold"
             android:layout_width="0dp"
             android:elevation="7dp"
+            android:layout_gravity="center_vertical"
             android:layout_weight="0.2"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:background="@drawable/circlebutton"
             android:id="@+id/btn_toolbar_backPage"
             />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05"/>
 
-
-
-
-
-
-
-
-
-
-
+        <Button
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:elevation="7dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.15"
+            android:layout_height="wrap_content"
+            
+            android:background="@drawable/icon_menu"
+            android:id="@+id/btn_toolbar_menu"
+            />
 
     </LinearLayout>
 

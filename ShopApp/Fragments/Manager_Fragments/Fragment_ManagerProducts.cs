@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -19,9 +21,11 @@ namespace ShopApp
     {
         ISharedPreferences sp;
         string userName;
+        ProgressDialog pd; 
 
         Dialog dialogEditProduct, dialogAddProduct;
-        ListView lvProducts;
+        GridView gridview_products;
+
         FloatingActionButton fab_add_NewProduct;
         Product selected_product;
         Button btn_backPage;
@@ -33,8 +37,11 @@ namespace ShopApp
         Button btn_DialogEditProduct_remove_product;
         Button btn_DialogEditProduct_save_changes;
         EditText et_DialogEditProduct_ProductPrice;
+        
         EditText et_DialogEditProduct_productName;
         EditText et_DialogEditProduct_productQuantity;
+        ImageView iv_DialogEditProduct_ProductImage;
+        Android.Net.Uri product_image_uri;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -61,7 +68,7 @@ namespace ShopApp
 
 
             this.fab_add_NewProduct = view.FindViewById<FloatingActionButton>(Resource.Id.fab_Manager_addNewProduct);
-            this.lvProducts = view.FindViewById<ListView>(Resource.Id.listviewManagerEditProducts);
+            this.gridview_products = view.FindViewById<GridView>(Resource.Id.GreedViewManagerEditProducts);
             this.btn_backPage = Activity.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.btn_backPage.Visibility = ViewStates.Invisible; //hide this button from the toolbar 
             this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
@@ -77,9 +84,9 @@ namespace ShopApp
             products = await Product.GetAllProduct();
 
             this.pa = new ProductAdapter(Activity, products, selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
-            this.lvProducts.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
+            this.gridview_products.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
-            this.lvProducts.ItemClick += LvProducts_ItemClick; ;
+            this.gridview_products.ItemClick += GridViewProducts_ItemClick; 
             this.fab_add_NewProduct.Click += Fab_add_NewProduct_Click;
            
         }
@@ -92,11 +99,11 @@ namespace ShopApp
 
         }
 
-        private void LvProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void GridViewProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {   
 
-            int position = e.Position;//מיקום המוצר בליסט ויאו
-            selected_product = this.pa[position];//מכניס לעצם מסוג מוצר  את המוצר שנמצא בתא שנלחץ בליסט ויאו 
+            int position = e.Position;//מיקום המוצר בגריד ויאו
+            selected_product = this.pa[position];//מכניס לעצם מסוג מוצר  את המוצר שנמצא בתא שנלחץ בגריד ויאו 
 
             et_DialogEditProduct_productName.Text = this.selected_product.Name;
             et_DialogEditProduct_ProductPrice.Text = this.selected_product.Price.ToString();
@@ -129,7 +136,55 @@ namespace ShopApp
 
         private void Btn_save_changes_Click(object sender, EventArgs e)
         {
-          
+            //save the product after all the changes
+
+            try
+            {
+                pd = ProgressDialog.Show(Activity, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
+                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
+                pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+
+
+                if (selected_product.Name.Length>2)
+                {
+                    selected_product.Price = int.Parse(et_DialogEditProduct_ProductPrice.Text);//המרה של מחרוזת למספר
+                    selected_product.Quantity = int.Parse(et_DialogEditProduct_productQuantity.Text);//המרה של המחרוזת למספר
+                    
+
+                    BitmapDrawable bitmap_drawable = ((BitmapDrawable)iv_DialogEditProduct_ProductImage.Drawable);
+                  //  Bitmap product_Image = bitmap_drawable.Bitmap; //תמונת המוצר
+                    if (product_image_uri == null)//if the uri(the link to the place of the image in the phone files) is null end the method
+                    {
+                        Toast.MakeText(Activity, "ישנה שגיאה נסה שנית", ToastLength.Short).Show();
+                        pd.Cancel();
+                        return;
+                    }
+
+                    Product.AddProduct(Activity, selected_product.ProductId,selected_product.Name, selected_product.Price, product_image_uri,selected_product.Quantity);//הוספת המוצר לפייר בייס
+
+                }
+                else
+                {
+                    Toast.MakeText(Activity, "אנא הכנס שם מוצר גדול משני תווים  ", ToastLength.Short).Show();
+                    pd.Cancel();
+                    return; 
+
+                }
+            }
+
+            catch (Exception)
+            {
+
+                Toast.MakeText(Activity, "ישנה שגיאה נסה שנית", ToastLength.Short).Show();
+                pd.Cancel();
+                return;
+
+            }
+
+            selected_product = new Product();
+            dialogEditProduct.Dismiss();
+            pd.Cancel();
+
         }
 
         public void CreateDialogAddProduct(Activity activity)

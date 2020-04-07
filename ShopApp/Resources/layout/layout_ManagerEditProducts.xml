@@ -10,10 +10,12 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content">
 
-        <ListView
+        <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listviewManagerEditProducts"/>
+        android:gravity="center"
+        android:numColumns="2" 
+        android:id="@+id/GreedViewManagerEditProducts"/>
         </LinearLayout>
     
 

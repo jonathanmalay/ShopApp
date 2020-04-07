@@ -15,7 +15,7 @@ namespace ShopApp
 {
     public class Manager_Home_Fragment : Android.Support.V4.App.Fragment
     {
-        Button btn_EditProducts, btnOrders, btnSetting;
+        Button btn_EditProducts, btnOrders, btnSetting , btn_backPage;
         TextView tv_toolbar_title;
 
 
@@ -47,6 +47,9 @@ namespace ShopApp
             this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "דף הבית"; //set the activity title
             this.btn_EditProducts = view.FindViewById<Button>(Resource.Id.btnManagerHomeEditProducts);
+            this.btn_backPage = Activity.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
+            this.btn_backPage.Visibility = ViewStates.Invisible; //hide this button from the toolbar 
+
             this.btnOrders = view.FindViewById<Button>(Resource.Id.btnManagerHomeOrders);
             this.btnSetting = view.FindViewById<Button>(Resource.Id.btnManagerHomeSetting);
 

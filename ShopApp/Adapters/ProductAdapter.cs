@@ -66,28 +66,28 @@ namespace ShopApp
                 convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.costum_Layout, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
             }
 
-            TextView tvTitle = convertView.FindViewById<TextView>(Resource.Id.tvProductRawTitle);
-            TextView tvSubTitle = convertView.FindViewById<TextView>(Resource.Id.tvSubTitle);
+            TextView tv_ProductName = convertView.FindViewById<TextView>(Resource.Id.tv_CellClientOrdeProductName);
+            TextView tv_amount = convertView.FindViewById<TextView>(Resource.Id.tv_CellClientOrdeProductAmount);
             TextView tvPrice = convertView.FindViewById<TextView>(Resource.Id.tvProductRawPrice);
             ImageView ivProduct = convertView.FindViewById<ImageView>(Resource.Id.ivProductRaw);
 
             Product tempProduct = AllProducts[position];
-            tvSubTitle.Text = "0";
+            tv_amount.Text = "0";
 
             for (int i=0 ;i<CartProductsList.Count;i++)
             {
                SelectedProduct currentSelectedProduct = CartProductsList[i];
                 if (currentSelectedProduct.ProductName == tempProduct.Name)
                 {
-                    tvSubTitle.Text = currentSelectedProduct.Amount.ToString();//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
+                    tv_amount.Text = " כמות: " + currentSelectedProduct.Amount.ToString() + " קילו ";//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
                     break;
                 }
             }
             
-            tvPrice.Text = "מחיר לקילו " + tempProduct.Price;
-            tvTitle.Text = tempProduct.Name;
+            tvPrice.Text = " מחיר לקילו: " + tempProduct.Price.ToString() + "‏₪";
+            tv_ProductName.Text = tempProduct.Name;
 
-            Picasso.With(this.activity).Load(tempProduct.ImageUrl).Into(ivProduct);
+            Picasso.With(this.activity).Load(tempProduct.ImageUrl).Into(ivProduct); //insert the pphoto to cell (from firbase Storage)
            
             return convertView;
         }

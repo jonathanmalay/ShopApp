@@ -23,10 +23,10 @@ namespace ShopApp
         Dialog dialogAddProduct;
         TextView tvcurrentAmountProduct,tv_toolbar_title; //הכמות הנוכחית של מוצר בקנייה
         Button btnMoveToPayment;
-        ListView lvProducts;
         List<SelectedProduct> selectedProducts;
         SelectedProduct cartSelectedProduct;
         ProductAdapter pa;
+        GridView gridview_products;
 
           
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -56,7 +56,7 @@ namespace ShopApp
             this.tv_toolbar_title.Text = "הזמנה";
 
 
-            this.lvProducts = view.FindViewById<ListView>(Resource.Id.listViewProducts);
+            this.gridview_products = view.FindViewById<GridView>(Resource.Id.gridView_ClientOrder);
             this.btnMoveToPayment = view.FindViewById<Button>(Resource.Id.btnClientOrderLayoutMoveToPayment);
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
@@ -70,9 +70,9 @@ namespace ShopApp
             products = await Product.GetAllProduct();
 
             this.pa = new ProductAdapter(Activity, products, selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
-            this.lvProducts.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
+            this.gridview_products.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
-            this.lvProducts.ItemClick += LvProducts_ItemClick;
+            this.gridview_products.ItemClick += GridViewProducts_ItemClick;
             this.btnMoveToPayment.Click += BtnMoveToPayment_ClickAsync;
             
         }
@@ -161,7 +161,7 @@ namespace ShopApp
 
 
 
-        public async void LvProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        public async void GridViewProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             
             int position = e.Position;//מיקום המוצר בליסט ויאו

@@ -40,7 +40,7 @@ namespace ShopApp
             if (hidden == false)
             {
 
-                this.tv_toolbar_title.Text = "הגדרות מנהל חנות";
+                this.tv_toolbar_title.Text = "הגדרות ";
 
             }
         }
@@ -55,11 +55,12 @@ namespace ShopApp
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string manager_usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.manager = await Manager.GetManager(manager_usernameloged);
-
+            this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.btnEditDetails = view.FindViewById<Button>(Resource.Id.btnManagerSettingEtitdetails);
             this.btnChangePassword = view.FindViewById<Button>(Resource.Id.btnManagerSettingChangePassword);
             this.btnPaymentMethods = view.FindViewById<Button>(Resource.Id.btnManagerSettingPaymentMethods);
 
+            this.tv_toolbar_title.Text = "הגדרות  ";
             this.btnEditDetails.Click += BtnEditDetails_Click;
             this.btnPaymentMethods.Click += BtnPaymentMethods_Click;
             this.btnChangePassword.Click += (senderD, eD) =>//הקפצת מסך דיאלוג שמכיל לייאוט לשינוי סיסמא

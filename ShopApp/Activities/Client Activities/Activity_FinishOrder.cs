@@ -18,7 +18,7 @@ namespace ShopApp.Activities
         Dialog dialog_conrife_Order;
         string userName;
         int Total_Price;
-        bool Is_Payed;
+       
         ISharedPreferences sp;
         ListView lv_Selected_Products;
         TextView tv_Total_Price,tv_toolbar_title; 
@@ -51,7 +51,7 @@ namespace ShopApp.Activities
                 this.userName = this.sp.GetString("Username", "");
 
                 Total_Price = await SelectedProduct.Calculate_TotalOrderPrice(userName);//מחשב את המחיר הסופי של הקנייה של אותו משתמש 
-                this.tv_Total_Price.Text = Total_Price.ToString() + " :מחיר סופי" ;
+                this.tv_Total_Price.Text = "מחיר סופי: " + Total_Price.ToString()  + "‏₪";
                 CreateDialog(this);
 
                 btn_BackPage.Click += Btn_BackPage_Click;
@@ -94,7 +94,9 @@ namespace ShopApp.Activities
             {
                 Toast.MakeText(this, "אירעה שגיאה נסה שנית", ToastLength.Long).Show();
                 pd.Cancel();
+
             }
+
 
         }
 

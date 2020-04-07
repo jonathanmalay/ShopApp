@@ -15,6 +15,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using AlertDialog = Android.App.AlertDialog;
+using PopupMenu = Android.Widget.PopupMenu;
 
 namespace ShopApp
 {
@@ -35,15 +36,17 @@ namespace ShopApp
         TextView tvWelcomeUser;
         BottomNavigationView bnvClient;
         User u;
-        Button btn_toolbar_backPage; 
+   
+        Button btn_toolbar_backPage , btn_toolbar_menu; 
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             this.SetContentView(Resource.Layout.layout_home);
 
             this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
+        
             this.btn_toolbar_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
-            
+            this.btn_toolbar_menu = FindViewById<Button>(Resource.Id.btn_toolbar_menu);
 
             this.bnvClient = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewClient);
             this.bnvClient.NavigationItemSelected += BnvClient_NavigationItemSelected;
@@ -64,8 +67,18 @@ namespace ShopApp
 
             this.tvWelcomeUser.Text = u.Username + " ברוך הבא "; //מציג  הודעת  ברוך הבא בתוספת השם של המשתמש
             FragmentHelper.LoadFragment(this, new Client_HomeFragment(), false); //the first fragment that wiil be shown 
+
+            btn_toolbar_menu.Click += (s, arg) => 
+            {  //יוצר את התפריט
+                PopupMenu Client_home_Menu = new PopupMenu(this, btn_toolbar_menu); // מקשר את התפריט לכפתור שלו ב toolbar
+                Client_home_Menu.Inflate(Resource.Menu.menu_home);
+                Client_home_Menu.MenuItemClick += Client_home_Menu_MenuItemClick; //הפעולות שמתבצעות כתוצאה מלחיצה על האפשרויות השונות בתפריט
+                Client_home_Menu.Show(); 
+                
+            };
         }
 
+   
 
         private void BnvClient_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)//מעבר בין הפרגמנטים על ידי לחיצה על האייקונים בתפריט
         {
@@ -91,18 +104,17 @@ namespace ShopApp
         }
 
 
-        public override bool OnCreateOptionsMenu(IMenu menu) //רשום אובררייד בגלל שתפריט  קיים וערכו נולל לכן אנחנו דורסים את הערך הקודם ויוצרים תפריט חדש
+        //public override bool OnCreateOptionsMenu(IMenu menu) //רשום אובררייד בגלל שתפריט  קיים וערכו נולל לכן אנחנו דורסים את הערך הקודם ויוצרים תפריט חדש
+        //{
+        //    MenuInflater.Inflate(Resource.Menu.menu_home, menu); //הופכים את המניו מאקאםאל לעצם מסוג  תפריט
+        //    return base.OnCreateOptionsMenu(menu);
+        //}
+
+        private void Client_home_Menu_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)//פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים
         {
-            MenuInflater.Inflate(Resource.Menu.menu_home, menu); //הופכים את המניו מאקאםאל לעצם מסוג  תפריט
-            return base.OnCreateOptionsMenu(menu);                                    
-        }
-
-
-        public override bool OnOptionsItemSelected(IMenuItem item)//פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים).
-        { 
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             ISharedPreferencesEditor editor = sp.Edit();
-            switch (item.ItemId)
+
+            switch (e.Item.ItemId)
             {
                 case Resource.Id.action_logout:
 
@@ -124,8 +136,37 @@ namespace ShopApp
                     FragmentHelper.LoadFragment(this, new HomeSetting_Fragment(), true);
                     break;
             }
-            return base.OnOptionsItemSelected(item);
         }
+
+
+        //public override bool OnOptionsItemSelected( IMenuItem item)//פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים).
+        //{ 
+            
+        //    ISharedPreferencesEditor editor = sp.Edit();
+        //    switch (item.ItemId)
+        //    {
+        //        case Resource.Id.action_logout:
+
+        //            editor.PutString("Username", "").Apply();
+        //            Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
+        //            Intent intentLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
+        //            this.StartActivity(intentLogin);
+        //            break;
+
+
+        //        case Resource.Id.action_register:
+
+        //            Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
+        //            this.StartActivity(intentRegister);
+        //            break;
+
+        //        case Resource.Id.action_accountSetting:
+
+        //            FragmentHelper.LoadFragment(this, new HomeSetting_Fragment(), true);
+        //            break;
+        //    }
+        //    return base.OnOptionsItemSelected(item);
+        //}
 
 
         public override void OnBackPressed()

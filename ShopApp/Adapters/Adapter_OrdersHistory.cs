@@ -85,8 +85,8 @@ namespace ShopApp
           
 
             tvDate.Text = temp_order.Date.ToString();//מציג את   התאריך של אותה הזמנה
-            tvPrice.Text = " סכום ההזמנה:  " + temp_order.Total_Price;//מציג כמה המשתמש שילם באותה הזמנה
-         
+            tvPrice.Text = " סכום ההזמנה:  " + temp_order.Total_Price + "₪";//מציג כמה המשתמש שילם באותה הזמנה
+               
 
             return convertView;
         }

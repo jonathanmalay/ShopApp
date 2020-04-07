@@ -65,7 +65,7 @@ namespace ShopApp
             
             if (convertView == null)
             {
-                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.layout_selectedProductInCart, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
+                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.Cell_ClientFinishOrderCart, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
             }
             TextView tvProductName = convertView.FindViewById<TextView>(Resource.Id.tvSelectedProductInCartName);
             TextView tvAmount = convertView.FindViewById<TextView>(Resource.Id.tvSelectedProductInCartAmount);
@@ -75,7 +75,8 @@ namespace ShopApp
             Product currentProduct = GetProduct(temp_SelectedProduct.ProductName);
 
             tvProductName.Text = temp_SelectedProduct.ProductName;
-            tvAmount.Text = temp_SelectedProduct.Amount + "כמות: ";
+            tvAmount.Text = "כמות: " + temp_SelectedProduct.Amount + " קילו " ;
+
 
             if (currentProduct != null)
             {

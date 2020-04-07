@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="25dp"
-        android:id = "@+id/fab_Manager_addOrder"
+        android:id = "@+id/fab_Manager_addNewOrder"
         android:src="@drawable/plusicon"/>
 
 </FrameLayout>

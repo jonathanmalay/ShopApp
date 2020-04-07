@@ -56,7 +56,7 @@ namespace ShopApp
                 using (var stream = activity.ContentResolver.OpenInputStream(product_image))
                 {
                    var task= AppData.FirebaseStorage.Child("Products").Child("image.jpg").PutAsync(stream);//upload the image from the phone to the storage in the server 
-                    task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
+                    task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %"); //for help me to debug 
 
                     // await the task to wait until upload completes and get the download url
                     imageUrl = await task;

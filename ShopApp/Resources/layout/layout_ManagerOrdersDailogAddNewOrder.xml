@@ -1,0 +1,90 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/circlelayout"
+    android:gravity="center"
+    >
+
+  
+
+        <EditText
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:hint= "שם הלקוח "
+            android:gravity="center"
+            android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerName"
+            />
+
+
+    
+
+        <EditText
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:hint= "סכום  הזמנה"
+            android:inputType="number"
+            android:gravity="center"
+            android:id="@+id/et_ManagerOrdersDailogAddNewOrderOrderTotalPrice"
+            />
+
+    
+   
+        <ListView
+            android:layout_width="match_parent"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="8dp"
+            android:layout_height="160dp"
+            android:id="@+id/listview_ManagerOrdersDailogAddNewOrderCart"/>
+            
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+
+        <Button
+            android:id="@+id/btn_ManagerOrdersDailogAddNewOrderClose"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/circlebutton"
+           
+            android:elevation="3dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="סגור"
+            android:textColor="@color/colorEditTextHint"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+            />
+        <Button
+            android:id="@+id/btn_ManagerOrdersDailogAddNewOrderSaveOrder"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/circlebutton"
+            
+            android:elevation="3dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="@string/save"
+            android:textColor="@color/colorEditTextHint"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+            />
+    </LinearLayout>
+</LinearLayout>

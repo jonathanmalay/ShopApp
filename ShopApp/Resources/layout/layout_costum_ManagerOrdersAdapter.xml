@@ -11,7 +11,7 @@
    
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    cardview:cardBackgroundColor="@color/tooltip_background_dark"
+    cardview:cardBackgroundColor="@color/colorListViewCell"
     cardview:cardCornerRadius="8dp"
     cardview:cardElevation="8dp"
     cardview:cardUseCompatPadding="true">

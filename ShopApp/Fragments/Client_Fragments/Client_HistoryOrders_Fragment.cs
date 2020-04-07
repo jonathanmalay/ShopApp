@@ -78,7 +78,7 @@ namespace ShopApp
 
         private void LvOrdersHistory_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Activities\Client Activities\Activity_EditAccuntSetting.cs" />
     <Compile Include="Activities\Client Activities\Activity_FinishOrder.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerAddNewOrder.cs" />
     <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerOrders.cs" />
     <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerProducts.cs" />
     <Compile Include="Adapters\Adapter_ManagerOrders.cs" />
@@ -287,7 +288,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_selectedProductInCart.xml">
+    <AndroidResource Include="Resources\layout\Cell_ClientFinishOrderCart.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -391,6 +392,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\view_ManagerEditProduct.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerOrdersDailogAddNewOrder.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
