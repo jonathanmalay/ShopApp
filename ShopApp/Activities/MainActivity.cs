@@ -19,12 +19,14 @@ namespace ShopApp
         ISharedPreferences sp;
         ImageView ivShowPassword;
         ProgressDialog pd;
+        bool PasswordIsVisibale ;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             try
             {
                 base.OnCreate(savedInstanceState);
                 this.SetContentView(Resource.Layout.activity_main);
+                this.PasswordIsVisibale = false;
                 this.etUsername = this.FindViewById<EditText>(Resource.Id.etLoginUsername);
                 this.etPassword = this.FindViewById<EditText>(Resource.Id.etLoginPassword);
                 this.tvRegister = this.FindViewById<TextView>(Resource.Id.tvMainActivityRegister);
@@ -74,7 +76,13 @@ namespace ShopApp
 
         private void IvShowPassword_Click(object sender, System.EventArgs e)
         {
-            // etPassword.Text.;
+            if (PasswordIsVisibale) // when  the passwor is visibale (after clicking the butto in the first time
+               etPassword.InputType = Android.Text.InputTypes.TextVariationVisiblePassword;
+            else
+                etPassword.InputType = Android.Text.InputTypes.TextVariationPassword | Android.Text.InputTypes.ClassText;
+
+            etPassword.SetSelection(etPassword.Text.Length);
+            PasswordIsVisibale = !PasswordIsVisibale; 
         }
 
         private void TvRegister_Click(object sender, System.EventArgs e)// מימוש האירועים המתבצעים כתוצאה  מלחיצה על כל כפתור ההרשמה

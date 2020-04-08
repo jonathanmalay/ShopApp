@@ -12,6 +12,7 @@ using Android.Views;
 using Android.Widget;
 using Plugin.CloudFirestore;
 using System.Threading.Tasks;
+using Firebase.Firestore;
 
 namespace ShopApp
 {
@@ -124,7 +125,6 @@ namespace ShopApp
 
 
            
-                SelectedProduct.ClearAllProductFromCart(order.ClientUsername);//מנקה את עגלת הקניות של המשתמש על מנת שתהיה ריקה בקנייה הבאה
                 return order.ID;
             }
 
@@ -206,5 +206,24 @@ namespace ShopApp
             }
         }
 
+      public static async Task<bool>  DeleteManagerCart(string manager_username)//מוחק את העגלה של המנהל בא נמצאים המוצרים של הזמנה ללקוח לא רשום
+        {
+            try
+            {
+                ICollectionReference  collection_reference  =   AppData.cartCollection.GetDocument(manager_username).GetCollection("SelectedProduct"); // קישור למסמך בשרת 
+                await AppData.DeleteAllDocumentsInCollection(collection_reference); 
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+
+        
     }
+
 }
+  

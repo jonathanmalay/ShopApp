@@ -17,7 +17,6 @@ namespace ShopApp
     {
 
         string userName;
-        Adapter_FinishOrder_SelectedProducts adapter_selected_products;
         int Total_Price;
         ProgressDialog pd;
         ISharedPreferences sp;
@@ -29,12 +28,14 @@ namespace ShopApp
         SelectedProduct cartSelectedProduct;
         ProductAdapter pa;
         GridView gridview_products;
+
         Toolbar toolbar;
 
 
 
         //dialog add order by manager
         Dialog dialog_AddNewOrder;
+        Adapter_FinishOrder_SelectedProducts adapter_selected_products;
         ListView lv_AddOrderDialogCartDialog;
         Button btn_AddOrderDialogCartDialogOrderSaveOrder, btn_AddOrderDialogCloseCartDialog ;
         EditText et_AddOrderDialogUserNameOfCustomer, et_AddOrderDialogOrderTotalPrice , et_AddOrderDialogCustomerAddress, et_AddOrderDialogCustomerCity, et_AddOrderDialogCustomerPhone;
@@ -43,19 +44,6 @@ namespace ShopApp
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ClientOrder_Layout);
-
-
-            //this.toolbar = this.FindViewById<Toolbar>(Resource.Layout.toolbar_Client); //because we need to make the toolbar visibale
-            //this.toolbar.Visibility = ViewStates.Visible;  
-            //this.btn_toolbar_backPage = this.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
-            //this.btn_toolbar_menu = this.FindViewById<Button>(Resource.Id.btn_toolbar_menu) ; 
-            //this.tv_toolbar_title = this.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
-
-            //this.tv_toolbar_title.Text = "הוספת הזמנה ";
-            //this.btn_toolbar_backPage.Visibility = ViewStates.Visible; 
-            //this.btn_toolbar_menu.Visibility = ViewStates.Invisible; //hide this button from the toolbar 
-
-
 
 
             this.gridview_products = this.FindViewById<GridView>(Resource.Id.gridView_ClientOrder);
@@ -226,8 +214,10 @@ namespace ShopApp
         public async void CreateConrifeOrderDialog()
         {
             //dialog add new order  conrife
+            pd = ProgressDialog.Show(this, "מאמת נתונים", "...אנא המתן", true); //progress daialog....
+            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
+            pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
 
-          
             this.dialog_AddNewOrder = new Dialog(this);
             this.dialog_AddNewOrder.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
 
@@ -236,8 +226,9 @@ namespace ShopApp
             this.et_AddOrderDialogUserNameOfCustomer = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerName);
             this.et_AddOrderDialogCustomerPhone = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerPhone);
             this.et_AddOrderDialogOrderTotalPrice = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderOrderTotalPrice);
+            this.et_AddOrderDialogCustomerAddress = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerAddress);
+            this.et_AddOrderDialogCustomerCity = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerCity);
             this.btn_AddOrderDialogCloseCartDialog = this.dialog_AddNewOrder.FindViewById<Button>(Resource.Id.btn_ManagerOrdersDailogAddNewOrderClose);
-
             this.btn_AddOrderDialogCartDialogOrderSaveOrder = this.dialog_AddNewOrder.FindViewById<Button>(Resource.Id.btn_ManagerOrdersDailogAddNewOrderSaveOrder);
 
             this.btn_AddOrderDialogCloseCartDialog.Click += Btn_AddOrderDialogCloseCartDialog_Click; ;
@@ -254,7 +245,7 @@ namespace ShopApp
             {
 
                 Toast.MakeText(this, "אנא הוסף מוצרים להזמנה", ToastLength.Long).Show();//מכיוון שהמנהל מבצע הזמנה בשביל משתמש שלא קיים באפליקציה לכן למשתמש הזה אין עדיין מוצרים בעגלת הקניות
-                
+           
             }
 
             else
@@ -273,17 +264,22 @@ namespace ShopApp
                 {
 
                     this.adapter_selected_products = new Adapter_FinishOrder_SelectedProducts(this, list_selectedProducts, list_products);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
-                    this.gridview_products.Adapter = this.adapter_selected_products;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
+                    this.lv_AddOrderDialogCartDialog.Adapter = this.adapter_selected_products;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
                     this.adapter_selected_products.NotifyDataSetChanged(); //הפעלת המתאם
                     
                 }
 
+               
             }
+
+            pd.Hide();
         }
 
         private void Btn_AddOrderDialogCartDialogOrderSaveOrder_Click(object sender, EventArgs e)//save the order to the database
         {
-
+            pd = ProgressDialog.Show(this, "מאמת נתונים", "...אנא המתן", true); //progress daialog....
+            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
+            pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
             btn_AddOrderDialogCartDialogOrderSaveOrder.Click += async (senderD, eD) =>
             {
                 try
@@ -311,10 +307,11 @@ namespace ShopApp
 
                 catch (Exception)
                 {
-                    Toast.MakeText(this, "אירעה שגיאה!!", ToastLength.Long).Show();
+                    Toast.MakeText(this, "!אנא מלא את כל השדות", ToastLength.Long).Show();
                 }
             };
 
+            pd.Hide(); 
         }
 
         private void Btn_AddOrderDialogCloseCartDialog_Click(object sender, EventArgs e)

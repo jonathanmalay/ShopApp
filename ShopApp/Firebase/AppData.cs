@@ -18,7 +18,6 @@ namespace ShopApp
     class AppData
     {
         public static AppData appData { get; set; }
-
         public static FirebaseStorage FirebaseStorage;
         public static FirebaseStorageReference ProductsStorage;
 
@@ -48,11 +47,36 @@ namespace ShopApp
 
         }
 
+
+
         public static void Initialize(Activity activity)
-        {
+        {    
+                  
+            
             if(appData == null)
             {
                 appData = new AppData(activity);
+            }
+        }
+
+        public  static async Task DeleteAllDocumentsInCollection(ICollectionReference collectionReference) // made by me  , delete all documents in the collection 
+        {
+            try
+            {
+                IQuerySnapshot documetns = await collectionReference.GetDocumentsAsync();
+
+
+                foreach (IDocumentSnapshot document in documetns.Documents)
+                {
+                    Console.WriteLine("Deleting document {0}", document.Id);
+                    await document.Reference.DeleteDocumentAsync();
+                }
+
+            }
+
+            catch (Exception)
+            {
+
             }
         }
 

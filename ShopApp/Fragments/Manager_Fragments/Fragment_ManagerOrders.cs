@@ -34,7 +34,7 @@ namespace ShopApp
         int selected_order;
         TextView tv_toolbar_title;
         List<Product> allProducts;
-
+        ProgressDialog pd;
         List<Manager_Order> orders;
 
       
@@ -67,6 +67,10 @@ namespace ShopApp
             this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "הזמנות";
 
+            pd = ProgressDialog.Show(Activity, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
+            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
+            pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+
             this.fab_add_NewOrder = view.FindViewById<FloatingActionButton>(Resource.Id.fab_Manager_addNewOrder);
             this.lv_ManagerOrders = view.FindViewById<ListView>(Resource.Id.listView_ManagerOrders);
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
@@ -81,7 +85,9 @@ namespace ShopApp
            this.orders_adapter = new Adapter_ManagerOrders(Activity,orders); //מכניס לתוך האדפטר את הרשימה עם כל ההזמנות של החנות 
 
             this.lv_ManagerOrders.Adapter = this.orders_adapter;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
+
             this.orders_adapter.NotifyDataSetChanged(); //הפעלת המתאם
+            this.pd.Hide();  
             this.lv_ManagerOrders.ItemClick += Lv_ManagerOrders_ItemClick;
             this.fab_add_NewOrder.Click += Fab_add_NewOrder_Click;
 
@@ -109,10 +115,25 @@ namespace ShopApp
 
      
 
-        private void Fab_add_NewOrder_Click(object sender, EventArgs e)// open a dialog of set new order
+        private async  void Fab_add_NewOrder_Click(object sender, EventArgs e)// open a dialog of set new order
         {
-            Intent intent = new Intent(Activity, typeof(Activity_ManagerAddNewOrder));
-            this.StartActivity(intent);
+            pd.Show();
+            bool flag_is_deleted = await Manager_Order.DeleteManagerCart(userName);//delete the manager products documents in  cart from the server before moving the next page .....
+            if(flag_is_deleted)
+            {
+                Intent intent = new Intent(Activity, typeof(Activity_ManagerAddNewOrder));
+                this.StartActivity(intent);
+                pd.Hide();
+
+            }
+
+            else
+            {
+                pd.Hide();  
+                Toast.MakeText(this.Activity, "אירעה שגיאה , אנא בדוק את החיבור לאינטרנט", ToastLength.Long).Show();
+
+            }
+
         }
 
         private async  void BtnCartDialogDeleteOrder_Click(object sender, EventArgs e)

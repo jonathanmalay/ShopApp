@@ -18,8 +18,9 @@ namespace ShopApp
 {
     [Activity(Label = "Activity_ManagerHome")]
     public class Activity_ManagerHome : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
-    {  
-        Button  btn_Logout , btn_toolbar_menu;
+    {
+        Button btn_Logout;
+        ImageButton btn_toolbar_menu;
         ISharedPreferences sp;
         Manager m;
         BottomNavigationView bnv_Manager_Home;
@@ -34,7 +35,7 @@ namespace ShopApp
 
             this.bnv_Manager_Home = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewManager);
             this.btn_Logout = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
-            this.btn_toolbar_menu = FindViewById<Button>(Resource.Id.btn_toolbar_menu); 
+            this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu); 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
             string manager_usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
             this.m = await Manager.GetManager(manager_usernameloged);

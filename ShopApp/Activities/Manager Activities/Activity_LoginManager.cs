@@ -20,15 +20,18 @@ namespace ShopApp
         Button btnLoginManager;
         ISharedPreferences sp;
         ProgressDialog pd;
+        ImageView IvShowPassword;
+        bool PasswordIsVisibale;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.layout_LoginManager);
-
+            this.PasswordIsVisibale = false; 
             this.etShopName = FindViewById<EditText>(Resource.Id.etLoginManagerUsername);
             this.etPassword = FindViewById<EditText>(Resource.Id.etLoginManagerPassword);
             this.btnLoginManager = FindViewById<Button>(Resource.Id.btnLoginManagerLogin);
+            this.IvShowPassword = FindViewById<ImageView>(Resource.Id.ivLoginManagerHidePassword); 
            
 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
@@ -41,10 +44,24 @@ namespace ShopApp
             }
 
             this.btnLoginManager.Click += BtnLoginManager_Click;
+            this.IvShowPassword.Click += IvShowPassword_Click1;
 
             AppData.Initialize(this);
 
         }
+
+        private void IvShowPassword_Click1(object sender, EventArgs e)
+        {
+            if (PasswordIsVisibale) // when  the passwor is visibale (after clicking the butto in the first time
+                etPassword.InputType = Android.Text.InputTypes.TextVariationVisiblePassword;
+            else
+                etPassword.InputType = Android.Text.InputTypes.TextVariationPassword | Android.Text.InputTypes.ClassText;
+
+            etPassword.SetSelection(etPassword.Text.Length);
+            PasswordIsVisibale = !PasswordIsVisibale;
+        }
+
+      
 
         private async void BtnLoginManager_Click(object sender, EventArgs e)
         {

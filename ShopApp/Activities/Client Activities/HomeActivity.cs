@@ -36,8 +36,9 @@ namespace ShopApp
         TextView tvWelcomeUser;
         BottomNavigationView bnvClient;
         User u;
-   
-        Button btn_toolbar_backPage , btn_toolbar_menu; 
+
+        Button btn_toolbar_backPage;
+        ImageButton btn_toolbar_menu; 
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -46,7 +47,7 @@ namespace ShopApp
             this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
         
             this.btn_toolbar_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
-            this.btn_toolbar_menu = FindViewById<Button>(Resource.Id.btn_toolbar_menu);
+            this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu);
 
             this.bnvClient = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewClient);
             this.bnvClient.NavigationItemSelected += BnvClient_NavigationItemSelected;

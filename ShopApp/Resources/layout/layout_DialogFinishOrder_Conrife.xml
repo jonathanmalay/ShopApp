@@ -18,7 +18,7 @@
          
             android:text="@string/orders_conrife_conditions"
             android:gravity="center"
-
+         android:textDirection="rtl"
             android:textStyle="bold"
             android:textColor="@color/colorAccent"
             android:background="@android:color/transparent"
