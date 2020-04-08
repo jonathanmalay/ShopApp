@@ -4017,9 +4017,6 @@ namespace ShopApp
 			// aapt resource value: 0x7f0c0101
 			public const int et_ManagerOrdersDailogAddNewOrderCustomerPhone = 2131493121;
 			
-			// aapt resource value: 0x7f0c0104
-			public const int et_ManagerOrdersDailogAddNewOrderOrderTotalPrice = 2131493124;
-			
 			// aapt resource value: 0x7f0c0050
 			public const int exitUntilCollapsed = 2131492944;
 			
@@ -4499,6 +4496,9 @@ namespace ShopApp
 			
 			// aapt resource value: 0x7f0c00f4
 			public const int tv_ManagerDialogOrderCartHeader = 2131493108;
+			
+			// aapt resource value: 0x7f0c0104
+			public const int tv_ManagerOrdersDailogAddNewOrderOrderTotalPrice = 2131493124;
 			
 			// aapt resource value: 0x7f0c00c5
 			public const int tv_costum_ManagerOrdersAdapterAddress = 2131493061;

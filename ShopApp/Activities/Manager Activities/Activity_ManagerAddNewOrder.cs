@@ -38,8 +38,8 @@ namespace ShopApp
         Adapter_FinishOrder_SelectedProducts adapter_selected_products;
         ListView lv_AddOrderDialogCartDialog;
         Button btn_AddOrderDialogCartDialogOrderSaveOrder, btn_AddOrderDialogCloseCartDialog ;
-        EditText et_AddOrderDialogUserNameOfCustomer, et_AddOrderDialogOrderTotalPrice , et_AddOrderDialogCustomerAddress, et_AddOrderDialogCustomerCity, et_AddOrderDialogCustomerPhone;
-
+        EditText et_AddOrderDialogUserNameOfCustomer , et_AddOrderDialogCustomerAddress, et_AddOrderDialogCustomerCity, et_AddOrderDialogCustomerPhone;
+        TextView tv_AddOrderDialogOrderTotalPrice; 
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -225,7 +225,7 @@ namespace ShopApp
             this.lv_AddOrderDialogCartDialog = this.dialog_AddNewOrder.FindViewById<ListView>(Resource.Id.listview_ManagerOrdersDailogAddNewOrderCart);
             this.et_AddOrderDialogUserNameOfCustomer = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerName);
             this.et_AddOrderDialogCustomerPhone = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerPhone);
-            this.et_AddOrderDialogOrderTotalPrice = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderOrderTotalPrice);
+            this.tv_AddOrderDialogOrderTotalPrice = this.dialog_AddNewOrder.FindViewById<TextView>(Resource.Id.tv_ManagerOrdersDailogAddNewOrderOrderTotalPrice);
             this.et_AddOrderDialogCustomerAddress = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerAddress);
             this.et_AddOrderDialogCustomerCity = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerCity);
             this.btn_AddOrderDialogCloseCartDialog = this.dialog_AddNewOrder.FindViewById<Button>(Resource.Id.btn_ManagerOrdersDailogAddNewOrderClose);
@@ -237,7 +237,7 @@ namespace ShopApp
 
     
             Total_Price = await SelectedProduct.Calculate_TotalOrderPrice(userName);//מחשב את המחיר הסופי של הקנייה של אותו משתמש 
-            this.et_AddOrderDialogOrderTotalPrice.Text = "מחיר סופי: " + Total_Price.ToString() + "‏₪";
+            this.tv_AddOrderDialogOrderTotalPrice.Text = "מחיר סופי: " + Total_Price.ToString() + "‏₪";
 
      
 

@@ -18,6 +18,8 @@ namespace ShopApp
         TextView tv_toolbar_title;
         EditText etEditFullName, etEditPhoneNumber, etEditCity ,etEditStreetAddress , etEditEmail, etEditUsername;
         Button btnSaveDetails, btn_backPage;
+        ISharedPreferences sp; 
+        ImageButton btn_toolbar_menu; 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -25,6 +27,7 @@ namespace ShopApp
 
             this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "פרטי משתמש";
+            this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu); 
             this.etEditUsername = FindViewById<EditText>(Resource.Id.etEditAccuntSettingUsername);
             this.etEditFullName = FindViewById<EditText>(Resource.Id.etEditAccuntSettingFullName);
             this.etEditPhoneNumber = FindViewById<EditText>(Resource.Id.etEditAccuntSettingPhoneNumber);
@@ -35,10 +38,24 @@ namespace ShopApp
             this.btn_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
 
 
+            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+            string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
+           
+
+
             this.btnSaveDetails.Click += BtnSaveDetails_Click;
             this.btn_backPage.Click += Btn_backPage_Click;
-        
-           
+
+            btn_toolbar_menu.Click += (s, arg) =>
+            {  //יוצר את התפריט
+                PopupMenu Client_home_Menu = new PopupMenu(this, btn_toolbar_menu); // מקשר את התפריט לכפתור שלו ב toolbar
+                Client_home_Menu.Inflate(Resource.Menu.menu_home);
+                Client_home_Menu.MenuItemClick += Client_home_Menu_MenuItemClick; //הפעולות שמתבצעות כתוצאה מלחיצה על האפשרויות השונות בתפריט
+                Client_home_Menu.Show();
+
+            };
+
+
         }
 
       
@@ -128,6 +145,32 @@ namespace ShopApp
             return true;
 
         }
+
+
+        private void Client_home_Menu_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)//פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים
+        {
+            ISharedPreferencesEditor editor = sp.Edit();
+
+            switch (e.Item.ItemId)
+            {
+                case Resource.Id.action_logout:
+
+                    editor.PutString("Username", "").Apply();
+                    Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
+                    Intent intentLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
+                    this.StartActivity(intentLogin);
+                    break;
+
+
+                case Resource.Id.action_register:
+
+                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
+                    this.StartActivity(intentRegister);
+                    break;
+
+            }
+        }
+
 
 
 

@@ -22,7 +22,7 @@ namespace ShopApp
         ISharedPreferences sp;
         string userName;
         ProgressDialog pd; 
-        Dialog dialogEditProduct, dialogAddProduct;
+        Dialog dialogEditProduct;
         GridView gridview_products;
         FloatingActionButton fab_add_NewProduct;
         Product selected_product;
@@ -40,6 +40,8 @@ namespace ShopApp
         EditText et_DialogEditProduct_productQuantity;
         ImageView iv_DialogEditProduct_ProductImage;
         Android.Net.Uri product_image_uri;
+
+        
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -69,7 +71,7 @@ namespace ShopApp
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
-            CreateDialogAddProduct(Activity);
+           
             CreateDialogEditProduct(Activity); 
 
             List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
@@ -86,10 +88,11 @@ namespace ShopApp
 
         
 
-        private void Fab_add_NewProduct_Click(object sender, EventArgs e)
-        {
-            this.dialogAddProduct.Show(); 
+        private void Fab_add_NewProduct_Click(object sender, EventArgs e) //move to add product screen 
+        {   
 
+            Intent intent = new Intent(Activity, typeof(Activity_ManagerAddProduct));
+            this.StartActivity(intent);
         }
 
         private void GridViewProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -181,18 +184,6 @@ namespace ShopApp
             pd.Cancel();
 
         }
-
-
-        public void CreateDialogAddProduct(Activity activity)
-        {
-            dialogAddProduct = new Dialog(Activity);
-            dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-            dialogAddProduct.SetContentView(Resource.Layout.layout_ManagerAddProduct);
-            dialogAddProduct.SetTitle("הוספת מוצר");
-            dialogAddProduct.SetCancelable(true);
-
-        }
-
         private async void Btn_remove_product_Click(object sender, EventArgs e)
         {
             try
@@ -223,6 +214,19 @@ namespace ShopApp
 
             }
         }
+
+
+
+        //public void CreateDialogAddProduct(Activity activity)//הוספת מוצר חדש 
+        //{
+        //    dialogAddProduct = new Dialog(Activity);
+        //    dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
+        //    dialogAddProduct.SetContentView(Resource.Layout.layout_ManagerAddProduct);
+        //    dialogAddProduct.SetTitle("הוספת מוצר");
+        //    dialogAddProduct.SetCancelable(true);
+
+
+        //}
 
     }
 }

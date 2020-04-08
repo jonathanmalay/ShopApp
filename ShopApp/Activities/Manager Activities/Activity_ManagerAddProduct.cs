@@ -20,7 +20,8 @@ namespace ShopApp
     {
         Android.Net.Uri product_image_uri;
         EditText et_Price_Product, et_Dialog_url, et_Name_Product,et_Id_Product;
-        Button btn_Pick_Product_Image, btn_Add_New_Product;
+        Button btn_Pick_Product_Image, btn_Add_New_Product, btn_toolbar_backpage ;
+        ImageButton imagebtn_toolbar_menu; 
         ImageView iv_Product_Image;
         Dialog dialog_Pick_Product_Image;
         Spinner spiner_type;
@@ -42,6 +43,8 @@ namespace ShopApp
             this.et_Id_Product = FindViewById<EditText>(Resource.Id.etManagerAddProductId);
             this.btn_Add_New_Product = FindViewById<Button>(Resource.Id.btnManagerAddProductSave);
             this.btn_Pick_Product_Image = FindViewById<Button>(Resource.Id.btnManagerAddProductPickImage);
+            this.btn_toolbar_backpage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage); 
+            this.imagebtn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu); 
             this.iv_Product_Image = FindViewById<ImageView>(Resource.Id.ivManagerAddProductImage);
             this.spiner_type = FindViewById<Spinner>(Resource.Id.spinnerManagerAddProduct);
 
@@ -59,6 +62,8 @@ namespace ShopApp
 
             this.et_Dialog_url = dialog_Pick_Product_Image.FindViewById<EditText>(Resource.Id.et_DialogPickProductImage_EnterImageUrl);
             this.btn_Dialog_Download_Url = dialog_Pick_Product_Image.FindViewById<Button>(Resource.Id.btn_DialogPickProductImage_GetImageFromUrl);
+            this.btn_toolbar_backpage.Visibility = ViewStates.Visible;
+            this.imagebtn_toolbar_menu.Visibility = ViewStates.Invisible; 
 
             this.btn_Dialog_Pick_Image_From_Gallery = dialog_Pick_Product_Image.FindViewById<Button>(Resource.Id.btn_DialogPickProductImage_PickFromGallery);
 
@@ -68,9 +73,18 @@ namespace ShopApp
             this.btn_Dialog_Save_Image.Click += Btn_Dialog_Save_Image_Click;
             this.btn_Dialog_Pick_Image_From_Gallery.Click += Btn_Dialog_Pick_Image_From_Gallery_Click;
             this.btn_Dialog_Download_Url.Click += Btn_Dialog_Download_Url_Click;
+            this.btn_toolbar_backpage.Click += Btn_toolbar_backpage_Click;
 
 
             this.DownloadImage_Brodcast_Receiver = new ImageBrodcastReceiver(this, this.iv_Dialog_Image);
+        }
+
+
+        private void Btn_toolbar_backpage_Click(object sender, EventArgs e)
+        {
+            this.imagebtn_toolbar_menu.Visibility = ViewStates.Visible;
+            Intent intent = new Intent(this, typeof(Activity_ManagerHome)); 
+            this.StartActivity(intent);
         }
 
         private void Btn_Dialog_Save_Image_Click(object sender, EventArgs e)//save the image from the dialog(url or from gallery)

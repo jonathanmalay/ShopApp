@@ -42,7 +42,7 @@
             android:hint= "@string/phone_number"
             android:drawableLeft="@drawable/iconphone"
             android:gravity="center"
-            android:elevation="3dp"
+            android:elevation="5dp"
             android:inputType="phone"
             android:drawableTint="@color/white"
             android:background="@drawable/circlebutton"
@@ -61,7 +61,7 @@
             android:hint= "@string/Address"
             android:drawableLeft="@drawable/icon_home"
             android:gravity="center"
-            android:elevation="3dp"
+            android:elevation="5dp"
          
             android:drawableTint="@color/white"
             android:background="@drawable/circlebutton"
@@ -79,7 +79,7 @@
             android:hint= "@string/City"
             android:drawableLeft="@drawable/iconlocation"
             android:gravity="center"
-            android:elevation="3dp"
+            android:elevation="5dp"
       
             android:inputType="text"
             android:drawableTint="@color/white"
@@ -88,23 +88,22 @@
             />
 
 
-        <EditText
+        <TextView
             android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
             android:layout_gravity="center"
-           android:textColor="@color/white"
-            android:textColorHint="@color/colorEditTextHint"
-            android:hint= ":מחיר "
+            android:textColor="@color/white"
+            android:text= ":מחיר "
             android:drawableLeft="@drawable/iconsettingpay"
             android:gravity="center"
             android:inputType="number"
-            android:elevation="3dp"
+            android:elevation="5dp"
            
             android:drawableTint="@color/white"
             android:background="@drawable/circlebutton"
-            android:id="@+id/et_ManagerOrdersDailogAddNewOrderOrderTotalPrice"
+            android:id="@+id/tv_ManagerOrdersDailogAddNewOrderOrderTotalPrice"
             />
     
 
