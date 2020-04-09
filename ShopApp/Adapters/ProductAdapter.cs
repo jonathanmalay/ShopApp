@@ -72,7 +72,7 @@ namespace ShopApp
             ImageView ivProduct = convertView.FindViewById<ImageView>(Resource.Id.ivProductRaw);
 
             Product tempProduct = AllProducts[position];
-            tv_amount.Text = "0";
+            tv_amount.Text = "כמות:" + "0";
 
             for (int i=0 ;i<CartProductsList.Count;i++)
             {

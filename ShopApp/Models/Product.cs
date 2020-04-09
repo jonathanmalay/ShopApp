@@ -91,8 +91,7 @@ namespace ShopApp
         }
 
 
-       
-        public static async Task RemoveProduct(string username , Product product)//הפעולה מוחקת את המוצר מהפייר בייס
+                public static async Task RemoveProduct( Product product)//הפעולה מוחקת את המוצר מהפייר בייס
         {
             try
             {

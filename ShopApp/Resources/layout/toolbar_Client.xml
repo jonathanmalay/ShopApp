@@ -30,14 +30,12 @@
 
 
 
-
-
         <TextView
             android:text="@string/app_name"
             android:textStyle="bold"
             android:id="@+id/tv_toolbar_title"
             android:layout_width="0dp"
-            android:textSize="22sp"
+            
             android:gravity="center_vertical"
             android:layout_height="match_parent"
             android:layout_weight="0.3"

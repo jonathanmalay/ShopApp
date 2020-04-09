@@ -22,7 +22,8 @@ namespace ShopApp.Activities
         ISharedPreferences sp;
         ListView lv_Selected_Products;
         TextView tv_Total_Price,tv_toolbar_title; 
-        Button btn_conrife_order,btn_BackPage;
+        Button btn_conrife_order,btn_BackPage ;
+        ImageButton btn_toolbar_menu; 
         List<SelectedProduct> list_selectedProducts;
         ProgressDialog pd;
 
@@ -46,6 +47,7 @@ namespace ShopApp.Activities
                 this.lv_Selected_Products = FindViewById<ListView>(Resource.Id.listViewFinishOrder);
                 this.btn_conrife_order = FindViewById<Button>(Resource.Id.btnFinishOrderConrifeOrder);
                 this.btn_BackPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
+                this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu);
                 this.tv_Total_Price = FindViewById<TextView>(Resource.Id.tvFinishOrderTotalPrice);
                 this.sp = GetSharedPreferences("details", FileCreationMode.Private);
                 this.userName = this.sp.GetString("Username", "");
@@ -62,7 +64,7 @@ namespace ShopApp.Activities
                 {
 
                     Toast.MakeText(this, "אירעה שגיאה  נסה שנית", ToastLength.Long).Show();
-                    pd.Cancel();
+                
                 }
 
                 else
@@ -74,7 +76,7 @@ namespace ShopApp.Activities
                     if (list_products == null)
                     {
                         Toast.MakeText(this, "אירעה שגיאה נסה שנית", ToastLength.Long).Show();
-                        pd.Cancel();
+                       
                     }
 
                     else
@@ -83,10 +85,22 @@ namespace ShopApp.Activities
                         this.adapter_selected_products = new Adapter_FinishOrder_SelectedProducts(this, list_selectedProducts, list_products);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
                         this.lv_Selected_Products.Adapter = this.adapter_selected_products;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
                         this.adapter_selected_products.NotifyDataSetChanged(); //הפעלת המתאם
-                        pd.Cancel();
+                  
                     }
 
+                    btn_toolbar_menu.Click += (s, arg) =>
+                    {  //יוצר את התפריט
+                        PopupMenu Client_home_Menu = new PopupMenu(this, btn_toolbar_menu); // מקשר את התפריט לכפתור שלו ב toolbar
+                        Client_home_Menu.Inflate(Resource.Menu.menu_home);
+                        Client_home_Menu.MenuItemClick += Client_home_Menu_MenuItemClick; //הפעולות שמתבצעות כתוצאה מלחיצה על האפשרויות השונות בתפריט
+                        Client_home_Menu.Show();
+
+                    };
+
+                
+
                 }
+
 
             }
 
@@ -96,6 +110,9 @@ namespace ShopApp.Activities
                 pd.Cancel();
 
             }
+
+
+            pd.Cancel(); 
 
 
         }
@@ -168,6 +185,36 @@ namespace ShopApp.Activities
             dialog_conrife_Order.Show(); //מפעיל את הדיאלוג
 
 
+        }
+
+
+
+        private void Client_home_Menu_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)//פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים
+        {
+            ISharedPreferencesEditor editor = sp.Edit();
+
+            switch (e.Item.ItemId)
+            {
+                case Resource.Id.action_logout:
+
+                    editor.PutString("Username", "").Apply();
+                    Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
+                    Intent intentLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
+                    this.StartActivity(intentLogin);
+                    break;
+
+
+                case Resource.Id.action_register:
+
+                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
+                    this.StartActivity(intentRegister);
+                    break;
+
+                case Resource.Id.action_accountSetting:
+
+                    this.Finish(); 
+                    break;
+            }
         }
 
         public override void OnBackPressed()

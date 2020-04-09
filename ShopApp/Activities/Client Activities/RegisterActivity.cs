@@ -48,7 +48,7 @@ namespace ShopApp
            Finish(); //עובר לאקטיביטי 
         }
 
-        private void BtnConrifRegister_Click(object sender, EventArgs e)
+        private async void BtnConrifRegister_Click(object sender, EventArgs e)
         { 
             try
 
@@ -71,18 +71,28 @@ namespace ShopApp
                     return; //לא ממשיך בפעולה
                 }
 
-                User.AddUser(this, userName ,password, email, phoneNumber, fullName, city, streetAddress);
-                //מוסיף משתמש חדש
-                Toast.MakeText(this, "ההרשמה בוצעה בהצלחה!", ToastLength.Long).Show();
 
-                this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-                ISharedPreferencesEditor editor = sp.Edit();
-                 editor.PutString("Username", "").Apply();//מאפס את השרד רפרנס על מנת שלא יתחבר שוב לאותו משתמש שהיה מחובר בעת יצירת החשבון החדש
-                    
+               bool flag = await  User.AddUser(this, userName ,password, email, phoneNumber, fullName, city, streetAddress);
+                if (flag)
+                {
+                    //מוסיף משתמש חדש
+                    Toast.MakeText(this, "ההרשמה בוצעה בהצלחה!", ToastLength.Long).Show();
+
+                    this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+                    ISharedPreferencesEditor editor = sp.Edit();
+                    editor.PutString("Username", "").Apply();//מאפס את השרד רפרנס על מנת שלא יתחבר שוב לאותו משתמש שהיה מחובר בעת יצירת החשבון החדש
+
 
                     Intent intent = new Intent(this, typeof(MainActivity));//עובר לאקטיביטי login
                     this.StartActivity(intent);
-                pd.Cancel();//סוגר את הדיאלוג
+                    pd.Cancel();//סוגר את הדיאלוג
+                }
+                else
+                {
+                    pd.Cancel(); 
+                    return;  
+                    //if there was some logic error in the thedetails that entered(for example a username alraedy exist )
+                }
  
             }
 

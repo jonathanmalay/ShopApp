@@ -188,7 +188,7 @@ namespace ShopApp
         {
             try
             {
-                await Product.RemoveProduct(this.userName, selected_product); //מסיר את המוצר ממסד התונים.
+                await Product.RemoveProduct( selected_product); //מסיר את המוצר ממסד התונים.
                 Product check_product = await Product.GetProduct(selected_product.Name);//בדיקה האם המוצר הוסר בהצלחה
                 //נבדוק עם לאחר ההסרה של המוצר יחזור נאל ממסד הנתונים משמע שהמוצר הוסר בהצלחה
                 if (check_product == null)

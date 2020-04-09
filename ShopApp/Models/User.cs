@@ -33,7 +33,7 @@ namespace ShopApp
 
 
         }
-        public static async void AddUser(Activity activity, string username, string password, string email, string phonenum, string fullname, string city ,string streetaddress)//הפעולה מקבלת את כל התכונות של המשתמש החדש שרוצים ליצור 
+        public static async Task<bool> AddUser(Activity activity, string username, string password, string email, string phonenum, string fullname, string city ,string streetaddress)//הפעולה מקבלת את כל התכונות של המשתמש החדש שרוצים ליצור 
         { 
             try
             {
@@ -56,19 +56,21 @@ namespace ShopApp
                 {
                     await AppData.usersCollection.GetDocument(username).SetDataAsync(u);
                     //מוסיף את המשתמש החדש לפיירבייס במידה ולא קיים משתמש עם אותו שם משתמש 
-
+                    return true;
                 }
 
                 else
                 {  //הקפצת הודעה למשתמש ששם משתמש זה כבר קיים והוא צריך לבחור אחד חדש
                     Toast.MakeText(activity, "שם המשתמש קיים ,נא לבחור שם משתמש חדש !", ToastLength.Long).Show();
+                    return false;
                 }
             }
             catch(Exception)
             {
                 Toast.MakeText(activity, "אירעה שגיאה", ToastLength.Long).Show();
+               
             }
-
+            return false; 
         }
 
 
