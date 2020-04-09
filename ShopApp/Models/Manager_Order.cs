@@ -178,11 +178,12 @@ namespace ShopApp
             }
         }
 
-        public static async Task<bool> OrderDeliverd(string order_id)
+        public static async Task<bool> OrderDeliverd(string order_id , bool is_sent)
         {
             try
             {
-                   await AppData.manager_ordersCollection.GetDocument(order_id).UpdateDataAsync("IsDelivered",true );
+                   
+                   await AppData.manager_ordersCollection.GetDocument(order_id).UpdateDataAsync("IsDelivered",is_sent ); //משנה את סטטוס ההזמנה בהתאם למשתנה הבוליאני שהפעולה קיבלה אם שקר ההזמנה לא נשלחה ואם אמת ההזמנה נשלחה ללקוח 
                     return true; 
             }
             catch(Exception)

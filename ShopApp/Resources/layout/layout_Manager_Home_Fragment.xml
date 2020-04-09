@@ -1,16 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="25dp"
+        android:elevation="15dp"
         android:background="@drawable/circlelayout">
 
 
@@ -21,6 +23,7 @@
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="15dp"
             android:background="@drawable/circlebutton"
             android:layout_gravity="center">
             <ImageView
@@ -46,6 +49,7 @@
             android:orientation="horizontal"
             android:layout_marginHorizontal="5dp"
             android:layout_marginTop="15dp"
+            android:elevation="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/circlebutton"
@@ -74,6 +78,7 @@
             android:orientation="horizontal"
             android:layout_marginHorizontal="5dp"
             android:layout_marginTop="15dp"
+            android:elevation="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/circlebutton"

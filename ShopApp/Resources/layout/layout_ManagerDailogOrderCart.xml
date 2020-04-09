@@ -11,7 +11,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.15"
         android:weightSum="1">
 
         <TextView
@@ -22,7 +22,7 @@
             android:text="Selected Order Cart"
             android:id="@+id/tv_ManagerDialogOrderCartHeader"
             android:textColor="@color/white"
-            android:textSize="25sp"
+            
             android:layout_gravity="center_vertical"
             android:textStyle="bold"
             android:layout_weight="0.6"
@@ -50,17 +50,30 @@
         android:id="@+id/listViewManagerDialogOrderCart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.6"
+        android:layout_weight="0.5"
         android:elevation="4dp"
         android:background="@drawable/circlelayout"
         android:layout_gravity="center_horizontal"
         android:layout_margin="35dp"/>
 
+
+
+    <Switch
+        android:id="@+id/switch_manager_dialog_EditOrder_IsSent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:checked="false"
+        android:layout_weight="0.1"
+       
+        android:text= "נשלח ללקוח"
+        android:textColor="@color/colorAccent"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.15"
         android:orientation="horizontal"
+       
         android:layout_gravity="center_vertical"
         android:weightSum="1"
         >
@@ -68,6 +81,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.15"/>
+
+        
+    
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,12 +104,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:text="הזמנה נשלחה"
+            android:text="חייג  ללקוח"
             android:layout_gravity="center_vertical"
             android:elevation="7dp"
             android:textColor="@color/colorEditTextHint"
             android:background="@drawable/circlebutton"
-            android:id="@+id/btn_ManagerDialogOrderCartOrderDone"/>
+            android:id="@+id/btn_ManagerDialogOrderCartCallClient"/>
 
         <TextView
             android:layout_width="0dp"

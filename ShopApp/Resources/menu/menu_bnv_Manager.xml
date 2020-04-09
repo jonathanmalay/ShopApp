@@ -9,11 +9,11 @@
         android:title="בית"/>
 
   <item android:id="@+id/action_BnvManagerOrders"
-        android:icon="@drawable/iconsorderhistory"
+        android:icon="@drawable/iconorders"
         android:title="הזמנות "/>
 
   <item android:id="@+id/action_BnvManagerProducts"
-        android:icon="@drawable/iconsbuy"
+        android:icon="@drawable/fruit"
         android:title="מוצרים "/>
 
   <item android:id="@+id/action_BnvManagerSettings"

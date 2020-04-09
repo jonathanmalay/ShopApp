@@ -112,15 +112,6 @@
         </LinearLayout>
 
 
-    <Switch
-        android:id="@+id/switch_manager_dialog_EditProduct_ShowToClient"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:checked="true"
-        android:layout_weight="10"
-        android:layout_margin="10dp"
-        android:text= "קיים במלאי"
-        android:textColor="@color/colorAccent"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

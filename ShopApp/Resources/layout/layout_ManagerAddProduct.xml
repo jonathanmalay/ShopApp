@@ -38,9 +38,25 @@
         android:id="@+id/etManagerAddProductId"
         android:hint="קוד מוצר"
         />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":כמות במארז "
+        android:layout_gravity="right"
+        android:textStyle="bold"
+        android:textDirection="rtl"
+        android:textSize="15sp"
+        
+        android:textColor="@color/colorAccent"/>
+
     <Spinner
+       
+      
         android:layout_margin="20dp"
         android:layout_width="match_parent"
+        android:textDirection="rtl"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerManagerAddProduct" />
     
@@ -51,7 +67,8 @@
         android:layout_marginHorizontal="20dp"
         android:textColor="@color/colorEditTextHint"
         android:textStyle="bold"
-        android:layout_width="match_parent"
+        android:paddingHorizontal="45dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/circlebutton"
         android:layout_gravity="center" 
@@ -64,8 +81,9 @@
         android:layout_marginHorizontal="20dp"
         android:textColor="@color/colorEditTextHint"
         android:textStyle="bold"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="60dp"
         android:background="@drawable/circlebutton"
         android:layout_gravity="center" 
         android:id="@+id/btnManagerAddProductSave"/>

@@ -25,7 +25,7 @@ namespace ShopApp
         ImageView iv_Product_Image;
         Dialog dialog_Pick_Product_Image;
         Spinner spiner_type;
-
+        int dialog_product_quantity; //כמות המוצר שנבחרת בספינר בדיאלוג של הוספת המוצר 
         Button btn_Dialog_Pick_Image_From_Gallery, btn_Dialog_Save_Image, btn_Dialog_Download_Url;//הפקדים שבתוך הדיאלוג
         ImageView iv_Dialog_Image; //התמונה הנבחרת של המוצר שתוצג בדיאלוג
        
@@ -52,14 +52,17 @@ namespace ShopApp
             this.btn_Add_New_Product.Click += Btn_Add_New_Product_ClickAsync;
             this.btn_Pick_Product_Image.Click += Btn_Pick_Product_Image_Click;
 
-            string[] arr_spinner = new string[] {"פירות" };
+            string[] arr_spinner = new string[] { "1" , "2"   , "3" , "4" };
             ArrayAdapter arrayAdapter_spinner = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, arr_spinner);
             this.spiner_type.Adapter = arrayAdapter_spinner;
-
+            this.spiner_type.ItemSelected += Spiner_type_ItemSelected;
+            dialog_product_quantity = 1;  //כמות ברירת המחדל של מוצר חדש שמוסף 
             //Dialog Select Image
             this.dialog_Pick_Product_Image = new Dialog(this);
-            this.dialog_Pick_Product_Image.SetContentView(Resource.Layout.layout_dialogPickProductImage);
 
+            dialog_Pick_Product_Image.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
+            this.dialog_Pick_Product_Image.SetContentView(Resource.Layout.layout_dialogPickProductImage);
+            
             this.et_Dialog_url = dialog_Pick_Product_Image.FindViewById<EditText>(Resource.Id.et_DialogPickProductImage_EnterImageUrl);
             this.btn_Dialog_Download_Url = dialog_Pick_Product_Image.FindViewById<Button>(Resource.Id.btn_DialogPickProductImage_GetImageFromUrl);
             this.btn_toolbar_backpage.Visibility = ViewStates.Visible;
@@ -79,6 +82,13 @@ namespace ShopApp
             this.DownloadImage_Brodcast_Receiver = new ImageBrodcastReceiver(this, this.iv_Dialog_Image);
         }
 
+        private void Spiner_type_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            Spinner spinner = (Spinner)sender;
+           dialog_product_quantity =  int.Parse(spinner.GetItemAtPosition(e.Position).ToString()); //ממיר את הכמות ממחזרוזת למספר שלם  
+            
+            
+        }
 
         private void Btn_toolbar_backpage_Click(object sender, EventArgs e)
         {
@@ -157,7 +167,7 @@ namespace ShopApp
                         return;
                     }
 
-                    Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, product_id);//הוספת המוצר לפייר בייס
+                    Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, dialog_product_quantity);//הוספת המוצר לפייר בייס
 
                 }
                 else

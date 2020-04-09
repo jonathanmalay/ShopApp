@@ -1,12 +1,27 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-		android:text="בחירת תמונה מהגלרייה"
-		android:layout_margin="10dp"
+    android:layout_width="300dp"
+	android:background="@drawable/circlelayout"
+    android:layout_height="wrap_content">
+
+
+	<TextView
+		android:text=" בחירת תמונת מוצר"
+		android:layout_marginVertical="20dp"
 		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textColor="@color/colorAccent"
+		android:gravity="center"
+		android:textStyle="bold"
+		android:textSize="22dp"/>
+
+    <Button
+		android:text="בחירה מהגלרייה"
+		android:padding="17dp"
+		android:layout_margin="10dp"
+		android:layout_width="wrap_content"
+		android:layout_gravity="center"
 		android:layout_height="wrap_content"
 		android:background="@drawable/circlebutton"
 		android:textColor="@android:color/white"
@@ -20,26 +35,38 @@
 		android:textColor="@color/colorAccent"
 		android:gravity="center"
 		android:textStyle="bold"/>
-		<EditText
+		
+	
+
+	<EditText
 		android:hint=" הכנס קישור לתמונה "
-		android:textColorHint="@color/colorEditTextHint"
+		android:textColorHint="@color/colorAccent"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:gravity="center"
+		
+		android:layout_margin="10dp"
 		android:id="@+id/et_DialogPickProductImage_EnterImageUrl"
-		android:background="@color/colorEditTextBackground"
-		android:textColor="@color/colorEditTextHint"
-		android:layout_marginHorizontal="15dp"
-		android:textStyle="bold"/>
+		
+	    android:elevation="4dp"
+		android:textColor="@color/colorEditTextBackground"
+		android:layout_marginHorizontal="18dp"
+		/>
+
+
 	<Button
-		android:text="העלאה מהקישור"
-		android:layout_width="match_parent"
+		android:text="הורד תמונה  מהקישור"
+		android:layout_width="wrap_content"
+		android:layout_gravity="center"
+		android:padding="17dp"
 		android:layout_height="wrap_content"
 		android:layout_margin="10dp"
 		android:background="@drawable/circlebutton"
 		android:id="@+id/btn_DialogPickProductImage_GetImageFromUrl"
 		android:textColor="@android:color/white"
 		android:textStyle="bold"/>
+
+
+
 	<ImageView
 		android:src="@android:drawable/sym_def_app_icon"
 		android:id="@+id/imageView_DialogPickProductImage"
@@ -49,8 +76,8 @@
 		android:layout_width="match_parent" />
 		<Button
 		android:text="@string/save"
-		android:layout_marginTop="10dp"
-		android:layout_width="wrap_content"
+		android:layout_marginVertical="15dp"
+		android:layout_width="150dp"
 		android:layout_gravity="center"
 		android:layout_height="wrap_content"
 		android:background="@drawable/circlebutton"

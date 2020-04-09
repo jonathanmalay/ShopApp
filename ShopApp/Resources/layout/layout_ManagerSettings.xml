@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1">
+    
+    android:background="@drawable/circlelayout">
 
      
 
@@ -11,6 +12,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="15dp"
         android:layout_margin="50dp"
         android:background ="@drawable/circlelayout"
           

@@ -19,7 +19,7 @@ namespace ShopApp
         ISharedPreferences sp;
         string userName;
         FloatingActionButton fab_add_NewOrder;
-
+        Manager_Order currentOrder; 
 
         ListView lv_ManagerOrders;
         Adapter_ManagerOrders orders_adapter;
@@ -28,9 +28,9 @@ namespace ShopApp
         Dialog dialog_order;
         ListView lvCartDialog;
 
-
+        Switch switch_DialogEditOrderIsOrderSentToClient; 
         TextView tvHeaderCartDialog;
-        Button btnCloseCartDialog , btnCartDialogOrderDone,btnCartDialogDeleteOrder;
+        Button btnCloseCartDialog , btnCartDialogOrderCallClient, btnCartDialogDeleteOrder;
         int selected_order;
         TextView tv_toolbar_title;
         List<Product> allProducts;
@@ -73,6 +73,7 @@ namespace ShopApp
 
             this.fab_add_NewOrder = view.FindViewById<FloatingActionButton>(Resource.Id.fab_Manager_addNewOrder);
             this.lv_ManagerOrders = view.FindViewById<ListView>(Resource.Id.listView_ManagerOrders);
+            
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
@@ -102,18 +103,80 @@ namespace ShopApp
             this.tvHeaderCartDialog = this.dialog_order.FindViewById<TextView>(Resource.Id.tv_ManagerDialogOrderCartHeader); 
             this.btnCloseCartDialog = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartClose);
             this.btnCartDialogDeleteOrder = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartDeleteOrder);
-            this.btnCartDialogOrderDone = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartOrderDone);
+            this.btnCartDialogOrderCallClient = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartCallClient);
+            this.switch_DialogEditOrderIsOrderSentToClient = this.dialog_order.FindViewById<Switch>(Resource.Id.switch_manager_dialog_EditOrder_IsSent); 
 
-            this.btnCartDialogOrderDone.Click += BtnCartDialogOrderDone_Click;
+            this.btnCartDialogOrderCallClient.Click += BtnCartDialogOrderCallClient_Click;
+           
             this.btnCartDialogDeleteOrder.Click += BtnCartDialogDeleteOrder_Click;
             this.btnCloseCartDialog.Click += BtnCloseCartDialog_Click;
+            this.switch_DialogEditOrderIsOrderSentToClient.CheckedChange += Switch_DialogEditOrderIsOrderSentToClient_CheckedChange;
+
             this.allProducts = await Product.GetAllProduct();
 
 
             
         }
 
-     
+        private async void Switch_DialogEditOrderIsOrderSentToClient_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        {
+
+            currentOrder = this.orders[this.selected_order];
+
+            string order_deliverd_id = currentOrder.ID.ToString(); // מספר ההזמנה 
+
+            if (e.IsChecked)
+            {
+
+                bool check_flag = await Manager_Order.OrderDeliverd(order_deliverd_id, true); //משנה את הסטטוס של ההזמנה בצד השרת לבוצעה
+                if (check_flag)
+                {
+                    this.orders[this.selected_order].IsDelivered = true;
+
+                    this.orders_adapter.NotifyDataSetChanged(); //הפעלת המתאם
+                    Toast.MakeText(this.Activity, "!!פרטי הזמנה עודכנו בהצלחה", ToastLength.Long).Show();
+                }
+                else
+                {
+                    Toast.MakeText(this.Activity, "!!אירעה שגיאה אנא בדוק את החיבור לרשת האינטרנט", ToastLength.Long).Show();
+                }
+
+            }
+           
+
+            else
+            {
+
+                bool check_flag = await Manager_Order.OrderDeliverd(order_deliverd_id , false ); //משנה את הסטטוס של ההזמנה בצד השרת ללא נשלחה
+                if (check_flag)
+                {
+                    this.orders[this.selected_order].IsDelivered = false;
+
+                    this.orders_adapter.NotifyDataSetChanged(); //הפעלת המתאם
+                    Toast.MakeText(this.Activity, "!!פרטי הזמנה עודכנו בהצלחה", ToastLength.Long).Show();
+                }
+                else
+                {
+                    Toast.MakeText(this.Activity, "!!אירעה שגיאה אנא בדוק את החיבור לרשת האינטרנט", ToastLength.Long).Show();
+                }
+
+            }
+
+        }
+
+        private void BtnCartDialogOrderCallClient_Click(object sender, EventArgs e)//צחייג ללקוח שביצע את ההזמנה 
+        {
+            Intent intent = new Intent();
+
+            intent.SetAction(Intent.ActionDial);
+
+      
+            Android.Net.Uri data = Android.Net.Uri.Parse("tel:" + orders[selected_order].ClientPhone.ToString()); //חייוג
+
+            intent.SetData(data);
+
+            StartActivity(intent);
+        }
 
         private async  void Fab_add_NewOrder_Click(object sender, EventArgs e)// open a dialog of set new order
         {
@@ -159,25 +222,7 @@ namespace ShopApp
         }
 
 
-        private  async void BtnCartDialogOrderDone_Click(object sender, EventArgs e ) //מעדכנת את סטטוס ההזמנה בשרת לבוצע 
-        {
-            Manager_Order currentOrder = this.orders[this.selected_order];
-
-            string order_deliverd_id = currentOrder.ID.ToString(); // מספר ההזמנה 
-            bool check_flag = await Manager_Order.OrderDeliverd(order_deliverd_id); //משנה את הסטטוס של ההזמנה בצד השרת לבוצעה
-            if(check_flag)
-            {
-                this.orders[this.selected_order].IsDelivered = true;
-
-                this.orders_adapter.NotifyDataSetChanged(); //הפעלת המתאם
-                Toast.MakeText(this.Activity, "!!פרטי הזמנה עודכנו בהצלחה", ToastLength.Long).Show();
-            }
-            else
-            {
-                Toast.MakeText(this.Activity, "!!אירעה שגיאה אנא בדוק את החיבור לרשת האינטרנט", ToastLength.Long).Show();
-            }
-        }
-
+     
 
         private void BtnCloseCartDialog_Click(object sender, EventArgs e)
         {
@@ -193,6 +238,17 @@ namespace ShopApp
             List<SelectedProduct> orderCart = Selected_order.CartList;
             this.selected_order = position;
 
+            if(Selected_order.IsDelivered)
+            {
+                this.switch_DialogEditOrderIsOrderSentToClient.Checked = true;//אם ההזמנה נשלחה ללקוח הוא יהיה מסומן 
+                
+            }
+
+            else
+            {
+                this.switch_DialogEditOrderIsOrderSentToClient.Checked = false;//אם ההזמנה עדיין לא נשלחה הוא לא יהיה מסומן
+            }
+            
             this.tvHeaderCartDialog.Text = Selected_order.ID + ":מזהה הזמנה";
 
             Adapter_FinishOrder_SelectedProducts adapter_cart = new Adapter_FinishOrder_SelectedProducts(Activity, orderCart, allProducts);//אדפטר שמציג את כל המוצרים שהמשתמש הזמין בהזמנה 
