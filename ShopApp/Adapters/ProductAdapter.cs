@@ -59,7 +59,7 @@ namespace ShopApp
         }
 
 
-        public override View GetView(int position, View convertView, ViewGroup parent)//הפעולה מקבלת שלוש דברים -מיקום שאליו יכנס הויאו בלולאת הפור ,
+        public override View GetView(int position, View convertView, ViewGroup parent)//return the view in each cell in the list view 
         {
             if (convertView == null)
             {

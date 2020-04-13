@@ -34,14 +34,14 @@ namespace ShopApp
                                             .Build();
 
             FirebaseApp app = FirebaseApp.InitializeApp(activity, options);//יוצר את החיבור  עם השרת של הפייר בייס ברגע שאני פונה למשתנה אפפ   
-            FireStore = CrossCloudFirestore.Current.Instance; //
-            usersCollection = FireStore.GetCollection("Users");//מתחבר לקובץ משתמשים בפיירבייס
-            paymentCollection = FireStore.GetCollection("Payment");//מתחבר לקובץ משתמשים בפיירבייס
-            productCollection = FireStore.GetCollection("Product");//connect to the product files collection in the server.
-            cartCollection = FireStore.GetCollection("Cart");//connect to the product files collection in the server.
+            FireStore = CrossCloudFirestore.Current.Instance;
+            usersCollection = FireStore.GetCollection("Users");
+            paymentCollection = FireStore.GetCollection("Payment");
+            productCollection = FireStore.GetCollection("Product");
+            cartCollection = FireStore.GetCollection("Cart");
             orders_historyCollection = FireStore.GetCollection("OrdersHistory");
-            managersCollection = FireStore.GetCollection("Managers");//מתחבר לקולקשיין מנהלים
-            manager_ordersCollection = FireStore.GetCollection("ManagerOrders");//connect to the managers orders collection
+            managersCollection = FireStore.GetCollection("Managers");
+            manager_ordersCollection = FireStore.GetCollection("ManagerOrders");
             FirebaseStorage = new FirebaseStorage("bagrutproject-dbe7a.appspot.com");
             ProductsStorage = FirebaseStorage.Child("Products");
 
@@ -49,17 +49,17 @@ namespace ShopApp
 
 
 
-        public static void Initialize(Activity activity)
+        public static void Initialize(Activity activity)//reload the connection withe the firebase database(with the server)
         {    
                   
-            
+         
             if(appData == null)
             {
                 appData = new AppData(activity);
             }
         }
 
-        public  static async Task DeleteAllDocumentsInCollection(ICollectionReference collectionReference) // made by me  , delete all documents in the collection 
+        public  static async Task DeleteAllDocumentsInCollection(ICollectionReference collectionReference) // delete all documents in the collection(i created this because that the isnt function to delete collection in the fire base Api) 
         {
             try
             {
@@ -79,7 +79,6 @@ namespace ShopApp
 
             }
         }
-
 
 
     }

@@ -15,7 +15,7 @@ namespace ShopApp
 {
     public class Manager_Home_Fragment : Android.Support.V4.App.Fragment
     {
-        Button btn_EditProducts, btnOrders, btnSetting , btn_backPage;
+        Button btn_EditProducts, btnOrders, btnSetting , btn_backPage,btn_ClientsList;
         TextView tv_toolbar_title;
 
 
@@ -52,7 +52,7 @@ namespace ShopApp
 
             this.btnOrders = view.FindViewById<Button>(Resource.Id.btnManagerHomeOrders);
             this.btnSetting = view.FindViewById<Button>(Resource.Id.btnManagerHomeSetting);
-
+            this.btn_ClientsList = view.FindViewById<Button>(Resource.Id.btn_ManagerHomeClientsList); 
 
             this.btn_EditProducts.Click += Btn_EditProducts_Click;
             this.btnOrders.Click += BtnOrders_Click;

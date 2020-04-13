@@ -29,7 +29,7 @@ namespace ShopApp
 
 
 
-        public static async void AddManager(Activity activity, string username, string password, string email, string phone_num, string fullname, string city, string street_address,string shop_name)
+        public static async void AddManager(Activity activity, string username, string password, string email, string phone_num, string fullname, string city, string street_address,string shop_name)//adds new manager to the firebase database
         { 
             try
             {
@@ -68,8 +68,8 @@ namespace ShopApp
 
         }
 
-        public static async Task<bool> ManagerExist(string manager_username)
-        {//פעולה אשר בודקת האם המשתמש קיים במערכת של הפיירבייס
+        public static async Task<bool> ManagerExist(string manager_username)//פעולה אשר בודקת האם המשתמש קיים במערכת של הפיירבייס
+        {
             Manager returnedManager = await GetManager(manager_username);
 
             if (returnedManager == null) // אם המשתמש לא קיים 
@@ -80,7 +80,7 @@ namespace ShopApp
         }
 
 
-        public static async Task<Manager> GetManager(string username)//פעולה אשר לוקחת מנהל חנות מהפיירבייס
+        public static async Task<Manager> GetManager(string username)//returns manager object from the firebase database
         {
             try
             {
@@ -117,7 +117,7 @@ namespace ShopApp
                     else
                     {             //מחבר את המנהל שסיסמתו נכונה לחשבון שלו
                         return manager;
-                    }                 //הפעולה מחזירה את המנהל 
+                    }                 
                 }
                 return null; //אם הסיסמא לא נכונה מחזיר נאל
 
@@ -134,7 +134,7 @@ namespace ShopApp
 
 
 
-        public static async void ChangeManagerPassword(string username, string newPassword)
+        public static async void ChangeManagerPassword(string username, string newPassword)//update the manager password in the firebase database
         {
             await AppData.managersCollection.GetDocument(username).UpdateDataAsync("Password", newPassword);
 

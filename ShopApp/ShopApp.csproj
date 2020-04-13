@@ -71,6 +71,8 @@
     <Compile Include="Activities\Client Activities\Activity_EditAccuntSetting.cs" />
     <Compile Include="Activities\Client Activities\Activity_FinishOrder.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerAddNewOrder.cs" />
+    <Compile Include="Fragments\Client_Fragments\Activity_ManagerClientsList.cs" />
+    <Compile Include="Adapters\Adapter_ManagerClients.cs" />
     <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerOrders.cs" />
     <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerProducts.cs" />
     <Compile Include="Adapters\Adapter_ManagerOrders.cs" />
@@ -149,10 +151,10 @@
     <PackageReference Include="Square.Picasso">
       <Version>2.5.2.2</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Android.Support.Design">
+    <PackageReference Include="Xamarin.Android.Support.Compat">
       <Version>28.0.0.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Android.Support.Media.Compat">
+    <PackageReference Include="Xamarin.Android.Support.Design">
       <Version>28.0.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.v4">
@@ -408,6 +410,19 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\iconorders.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\frame_cell.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_ManagerClientsListActivity.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Cell_ManagerClientsAdapter.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

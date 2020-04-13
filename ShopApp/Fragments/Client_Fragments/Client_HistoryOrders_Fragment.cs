@@ -64,7 +64,7 @@ namespace ShopApp
 
             this.pa_OrdersHistory = new Adapter_OrdersHistory(Activity, this.allOrders);//מקבל אקטיביטי ואת רשימת ההזמנות שביצע המשתמש
 
-            this.lvOrdersHistory.Adapter = this.pa_OrdersHistory;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
+            this.lvOrdersHistory.Adapter = this.pa_OrdersHistory;
 
 
             this.pa_OrdersHistory.NotifyDataSetChanged(); //הפעלת המתאם

@@ -34,8 +34,8 @@ namespace ShopApp
             this.IvShowPassword = FindViewById<ImageView>(Resource.Id.ivLoginManagerHidePassword); 
            
 
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-            string usernameloged = this.sp.GetString("Username", "");//
+            this.sp = GetSharedPreferences("details", FileCreationMode.Private);
+            string usernameloged = this.sp.GetString("Username", "");
             if (usernameloged != "")
             {
                 //כשהמשתמש מחובר
@@ -52,7 +52,7 @@ namespace ShopApp
 
         private void IvShowPassword_Click1(object sender, EventArgs e)
         {
-            if (PasswordIsVisibale) // when  the passwor is visibale (after clicking the butto in the first time
+            if (PasswordIsVisibale) // when  the password is visibale (after clicking the button in the first time)
                 etPassword.InputType = Android.Text.InputTypes.TextVariationVisiblePassword;
             else
                 etPassword.InputType = Android.Text.InputTypes.TextVariationPassword | Android.Text.InputTypes.ClassText;
@@ -63,26 +63,24 @@ namespace ShopApp
 
       
 
-        private async void BtnLoginManager_Click(object sender, EventArgs e)
+        private async void BtnLoginManager_Click(object sender, EventArgs e)//check the login details that the manager enterd and if they are match the login details in the server he moves to  manager home activity
         {
             try
             {
-                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
-                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
-                pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); 
+                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+                pd.SetCancelable(false);
 
 
                 string manager_username = this.etShopName.Text;
                 string manager_password = this.etPassword.Text;
-
-
 
                 Manager manager = await Manager.ConrifeManagerPassword(manager_password, manager_username);//בודק האם הסיסמא שייכת למשתמש והאם הוא קיים ובמידה וכן מחזירה את המשתמש כעצם
                 if (manager != null) //במידה ותהליך ההזדהות צלח
                 {
                     this.sp.Edit().PutString("Username", manager_username).Apply();//שומר בשרד רפרנס את השם של המשתמש שהתחבר
                     this.sp.Edit().PutBoolean("isManager", true).Apply();//כותב לשרד רפרנס שהמנהל מחובר  לצורך התחברות אוטומטית עתידית 
-                    Intent intent = new Intent(this, typeof(Activity_ManagerHome));//עובר להום  מנהל אקטיביטי
+                    Intent intent = new Intent(this, typeof(Activity_ManagerHome));
                     this.StartActivity(intent);
                     Manager m = new Manager();
                     
@@ -90,7 +88,7 @@ namespace ShopApp
 
                 else
                 {
-                    //הקפצת הודעה למשתמש ששם המשתמש או הסיסמא שגויים והוא צריך לבחור אחד חדש
+                    
                     Toast.MakeText(this, "שם משתמש או סיסמא שגויים!", ToastLength.Long).Show();
                 }
                 pd.Cancel();
@@ -102,10 +100,6 @@ namespace ShopApp
                 Toast.MakeText(this, "!שגיאה", ToastLength.Long).Show();
 
             }
-
-
-
-
         }
 
 

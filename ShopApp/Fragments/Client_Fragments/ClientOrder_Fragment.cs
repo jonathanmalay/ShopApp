@@ -109,14 +109,16 @@ namespace ShopApp
 
         public  void CreateDialog()
         {
-            dialogAddProduct = new Dialog(Activity);
+            this.dialogAddProduct = new Dialog(Activity);
 
             Button btnPlusProduct, btnMinusProduct, btnSaveProductAmount , btn_close_dialog;
 
-            dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-            dialogAddProduct.SetContentView(Resource.Layout.layoutAddProductDialog);
-            dialogAddProduct.SetTitle("הוספת מוצר");
-            dialogAddProduct.SetCancelable(true);
+            this.dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
+            this.dialogAddProduct.SetCancelable(false); //לא ניתן לסגור אותו על ידי לחיצה מחוץ לדיאלוג
+
+            this.dialogAddProduct.SetContentView(Resource.Layout.layoutAddProductDialog);
+            this.dialogAddProduct.SetTitle("הוספת מוצר");
+           
 
             tvcurrentAmountProduct = dialogAddProduct.FindViewById<TextView>(Resource.Id.tvDialogAddProductCurrentAmount);
             btnMinusProduct = dialogAddProduct.FindViewById<Button>(Resource.Id.btnDialogAddProductMinus); //כפתור ההורדה של הכמות

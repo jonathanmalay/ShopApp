@@ -46,11 +46,11 @@ namespace ShopApp
             return position;
         }
 
-        public override View GetView(int position, View convertView, ViewGroup parent)
+        public override View GetView(int position, View convertView, ViewGroup parent)//return the view of the cell in the list view 
         {
             if (convertView == null)
             {
-                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.layout_costum_ManagerOrdersAdapter, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
+                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.layout_costum_ManagerOrdersAdapter, parent, false);
             }
 
             TextView tv_ClientName = convertView.FindViewById<TextView>(Resource.Id.tv_costum_ManagerOrdersAdapterUsername);

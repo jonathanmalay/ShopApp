@@ -162,11 +162,15 @@ namespace ShopApp
             {
                 return null;
             }
-  
-           
-
+ 
         }
 
+
+        public async  static Task<List<User>> GetAllClients() //return  a list with all the users of the app 
+        {
+            IQuerySnapshot all_clients = await AppData.usersCollection.GetDocumentsAsync();
+            return all_clients.ToObjects<User>().ToList(); 
+        }
     }
 
 }

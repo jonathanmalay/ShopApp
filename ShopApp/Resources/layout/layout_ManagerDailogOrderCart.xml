@@ -56,7 +56,42 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="35dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":מספר אשראי"
+        android:layout_gravity="right"
+        android:textColor="@color/colorAccent"
+        android:textSize="16dp"
+        android:layout_marginRight="10dp"
+        android:textDirection="rtl"
+        android:id="@+id/tv_ManagerDialogOrderCart_ClientCreditCardNumber"
+        />
 
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":תוקף אשראי"
+        android:layout_gravity="right"
+        android:textColor="@color/colorAccent"
+        android:textSize="16dp"
+        android:layout_marginRight="10dp"
+        android:textDirection="rtl"
+        android:id="@+id/tv_ManagerDialogOrderCart_ClientCreditCardDate"
+        />
+
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":CVV"
+        android:layout_gravity="right"
+        android:textColor="@color/colorAccent"
+        android:textSize="16dp"
+        android:layout_marginRight="10dp"
+        android:textDirection="rtl"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/tv_ManagerDialogOrderCart_ClientCreditCardCvv"
+        />
 
     <Switch
         android:id="@+id/switch_manager_dialog_EditOrder_IsSent"

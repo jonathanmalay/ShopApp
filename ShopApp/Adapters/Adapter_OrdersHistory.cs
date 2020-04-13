@@ -54,24 +54,24 @@ namespace ShopApp
 
 
 
-        public override Orders_History this[int position]
+        public override Orders_History this[int position]//מחזיר את האיבר במקום מסוים
         {
             get
             {
-                return this.AllOrders[position]; //מחזיר את האיבר במקום מסוים
+                return this.AllOrders[position]; 
 
             }
 
         }
 
 
-        public override View GetView(int position, View convertView, ViewGroup parent)//הפעולה מקבלת שלוש דברים -מיקום שאליו יכנס הויאו בלולאת הפור ,
+        public override View GetView(int position, View convertView, ViewGroup parent)//return the view in the adapter cell 
         {
 
             if (convertView == null)
 
             {
-                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.layout_customOrderHistory, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
+                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.layout_customOrderHistory, parent, false);
             }
 
 

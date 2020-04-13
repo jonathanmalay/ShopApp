@@ -49,39 +49,39 @@ namespace ShopApp
 
             btn_toolbar_menu.Click += (s, arg) =>
             {  //יוצר את התפריט
-                PopupMenu Client_home_Menu = new PopupMenu(this, btn_toolbar_menu); // מקשר את התפריט לכפתור שלו ב toolbar
+                PopupMenu Client_home_Menu = new PopupMenu(this, btn_toolbar_menu); 
                 Client_home_Menu.Inflate(Resource.Menu.menu_home);
-                Client_home_Menu.MenuItemClick += Client_home_Menu_MenuItemClick; //הפעולות שמתבצעות כתוצאה מלחיצה על האפשרויות השונות בתפריט
+                Client_home_Menu.MenuItemClick += Client_home_Menu_MenuItemClick; 
                 Client_home_Menu.Show();
 
             };
         }
 
 
-        private void Btn_BackPage_Click(object sender, EventArgs e)
+        private void Btn_BackPage_Click(object sender, EventArgs e)//delete the Activity from the stack
         {
-            this.btn_BackPage.Visibility = ViewStates.Invisible; //hide the button 
-            Finish(); //delete the Activity from the stack
+            this.btn_BackPage.Visibility = ViewStates.Invisible; 
+            Finish(); 
         }
 
-        private async void BtnPaymentSave_Click(object sender, EventArgs e)
+        private async void BtnPaymentSave_Click(object sender, EventArgs e) //save the new payment details  in the server database
         {
             try
             {
-                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
-                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
-                pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); 
+                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+                pd.SetCancelable(false);
 
-                this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-                string username = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
+                this.sp = GetSharedPreferences("details", FileCreationMode.Private);
+                string username = this.sp.GetString("Username", "");
 
 
 
-                if (etCVV.Length() == 3)//   חוקי  cvvבודק האם הקלט של ה
+                if (etCVV.Length() == 3)//  חוקי  cvvבודק האם הקלט של ה
                 { 
                     Payment.AddPaymentMethod(this, etCardNum.Text, etDate.Text, etCVV.Text, username);
                     Toast.MakeText(this, "פרטי האשראי נקלטו בהצלחה !", ToastLength.Long).Show();
-                    Intent intent = new Intent(this, typeof(HomeActivity));//עובר להום אקטיביטי
+                    Intent intent = new Intent(this, typeof(HomeActivity));
                     this.StartActivity(intent);
 
                 }
@@ -107,8 +107,6 @@ namespace ShopApp
 
 
 
-
-
         private void Client_home_Menu_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)//פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים
         {
             ISharedPreferencesEditor editor = sp.Edit();
@@ -119,14 +117,14 @@ namespace ShopApp
 
                     editor.PutString("Username", "").Apply();
                     Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
-                    Intent intentLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
+                    Intent intentLogin = new Intent(this, typeof(MainActivity));
                     this.StartActivity(intentLogin);
                     break;
 
 
                 case Resource.Id.action_register:
 
-                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
+                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));
                     this.StartActivity(intentRegister);
                     break;
 

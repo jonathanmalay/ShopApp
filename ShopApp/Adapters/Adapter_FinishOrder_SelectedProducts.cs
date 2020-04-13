@@ -65,7 +65,7 @@ namespace ShopApp
             
             if (convertView == null)
             {
-                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.Cell_ClientFinishOrderCart, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
+                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.Cell_ClientFinishOrderCart, parent, false);
             }
             TextView tvProductName = convertView.FindViewById<TextView>(Resource.Id.tvSelectedProductInCartName);
             TextView tvAmount = convertView.FindViewById<TextView>(Resource.Id.tvSelectedProductInCartAmount);

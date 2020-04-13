@@ -16,7 +16,7 @@ using System.Drawing;
 namespace ShopApp
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]   //המסך הראשון שיוצג בפתיחת האפליקציה
-    public class FirstActivity : AppCompatActivity //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
+    public class FirstActivity : AppCompatActivity 
     {
         Bitmap shopLogo;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -24,10 +24,10 @@ namespace ShopApp
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.layout_first);
             Thread.Sleep(1500); //מחכה שנייה וחצי
-            Intent intentToLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
+            Intent intentToLogin = new Intent(this, typeof(MainActivity));
             this.StartActivity(intentToLogin);
 
-            Finish(); //סוגר את המסך הנוכחי
+            Finish(); 
 
         }
     }

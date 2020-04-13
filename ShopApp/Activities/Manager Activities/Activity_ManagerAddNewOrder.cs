@@ -122,7 +122,7 @@ namespace ShopApp
 
             tvcurrentAmountProduct.Text = cartSelectedProduct.Amount.ToString();
 
-            dialogAddProduct.Show(); //מפעיל את הדיאלוג
+            dialogAddProduct.Show(); 
 
         }
 
@@ -134,9 +134,11 @@ namespace ShopApp
             Button btnPlusProduct, btnMinusProduct, btnSaveProductAmount, btn_close_dialog;
 
             dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
+            this.dialogAddProduct.SetCancelable(false); 
+
             dialogAddProduct.SetContentView(Resource.Layout.layoutAddProductDialog);
             dialogAddProduct.SetTitle("הוספת מוצר");
-            dialogAddProduct.SetCancelable(true);
+           
 
             tvcurrentAmountProduct = dialogAddProduct.FindViewById<TextView>(Resource.Id.tvDialogAddProductCurrentAmount);
             btnMinusProduct = dialogAddProduct.FindViewById<Button>(Resource.Id.btnDialogAddProductMinus); //כפתור ההורדה של הכמות
@@ -167,7 +169,7 @@ namespace ShopApp
 
             btn_close_dialog.Click += (senderD, eD) =>
             {
-                dialogAddProduct.Dismiss(); // סוגר את הדיאלוג 
+                dialogAddProduct.Dismiss();  
 
             };
 
@@ -175,10 +177,9 @@ namespace ShopApp
         }
 
 
-        private void BtnSaveProductAmount_Click(object sender, EventArgs e)
+        private void BtnSaveProductAmount_Click(object sender, EventArgs e)//save the amount of the products that the user choose
         {
 
-            // SelectedProduct sp = new SelectedProduct(selectedProduct.Name, AmountProduct);//יוצר עצם מסוג מוצר נבחר ומכניס לפעולה הבונה שלו את הערכים שהתקבלו על ידי המשתמש בדיאלוג כלומר הכמות  של אותו מוצר
             SelectedProduct.AddSelectedProduct(this, this.userName, cartSelectedProduct); //מוסיף את המוצר לעגלת הקניות כלומר לקולקשיין  עגלה בפיירבייס שבו יש מסמך עם השם של המשתמש שמחובר  לאפליקציה ובתוך המסמך יש את המוצרים שהזמין 
             Toast.MakeText(this, "הפריט נוסף לעגלת הקניות (:", ToastLength.Long).Show();
 
@@ -211,15 +212,15 @@ namespace ShopApp
         }
 
 
-        public async void CreateConrifeOrderDialog()
+        public async void CreateConrifeOrderDialog()//create the dialog of conride dialog
         {
-            //dialog add new order  conrife
-            pd = ProgressDialog.Show(this, "מאמת נתונים", "...אנא המתן", true); //progress daialog....
-            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
-            pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+            pd = ProgressDialog.Show(this, "מאמת נתונים", "...אנא המתן", true); 
+            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+            pd.SetCancelable(false);
 
             this.dialog_AddNewOrder = new Dialog(this);
             this.dialog_AddNewOrder.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
+            this.dialogAddProduct.SetCancelable(false); 
 
             this.dialog_AddNewOrder.SetContentView(Resource.Layout.layout_ManagerOrdersDailogAddNewOrder);
             this.lv_AddOrderDialogCartDialog = this.dialog_AddNewOrder.FindViewById<ListView>(Resource.Id.listview_ManagerOrdersDailogAddNewOrderCart);
@@ -234,8 +235,6 @@ namespace ShopApp
             this.btn_AddOrderDialogCloseCartDialog.Click += Btn_AddOrderDialogCloseCartDialog_Click; ;
             this.btn_AddOrderDialogCartDialogOrderSaveOrder.Click += Btn_AddOrderDialogCartDialogOrderSaveOrder_Click; ;
 
-
-    
             Total_Price = await SelectedProduct.Calculate_TotalOrderPrice(userName);//מחשב את המחיר הסופי של הקנייה של אותו משתמש 
             this.tv_AddOrderDialogOrderTotalPrice.Text = "מחיר סופי: " + Total_Price.ToString() + "‏₪";
 
@@ -264,8 +263,8 @@ namespace ShopApp
                 {
 
                     this.adapter_selected_products = new Adapter_FinishOrder_SelectedProducts(this, list_selectedProducts, list_products);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
-                    this.lv_AddOrderDialogCartDialog.Adapter = this.adapter_selected_products;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
-                    this.adapter_selected_products.NotifyDataSetChanged(); //הפעלת המתאם
+                    this.lv_AddOrderDialogCartDialog.Adapter = this.adapter_selected_products;
+                    this.adapter_selected_products.NotifyDataSetChanged(); 
                     
                 }
 
@@ -275,16 +274,16 @@ namespace ShopApp
             pd.Hide();
         }
 
-        private void Btn_AddOrderDialogCartDialogOrderSaveOrder_Click(object sender, EventArgs e)//save the order to the database
+        private void Btn_AddOrderDialogCartDialogOrderSaveOrder_Click(object sender, EventArgs e)//save the new  order to the database
         {
-            pd = ProgressDialog.Show(this, "מאמת נתונים", "...אנא המתן", true); //progress daialog....
-            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
-            pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+            pd = ProgressDialog.Show(this, "מאמת נתונים", "...אנא המתן", true); 
+            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+            pd.SetCancelable(false);
             btn_AddOrderDialogCartDialogOrderSaveOrder.Click += async (senderD, eD) =>
             {
                 try
                 {
-                    DateTime correct_order_date = DateTime.Now; //הזמן הנוכחי 
+                    DateTime correct_order_date = DateTime.Now; 
                     string order_id = await Manager_Order.Add_Order_NonExistUser(this, Total_Price, correct_order_date, et_AddOrderDialogUserNameOfCustomer.Text, false, list_selectedProducts , et_AddOrderDialogCustomerCity.Text , et_AddOrderDialogCustomerAddress.Text  , et_AddOrderDialogCustomerPhone.Text );//שולח את ההזמנה  ומכיוון שצריך ששם המסמך בפייר בייס שמכיל את ההזמנה יהיה השם של הלקוח 
 
                     if (order_id != null)
@@ -298,13 +297,10 @@ namespace ShopApp
                         else
                         {
                             Toast.MakeText(this, "!!ההזמנה בוצעה בהצלחה", ToastLength.Long).Show();
-                            Finish();//go back to the manager orders Fragment (delete this Activity from the stack)
+                            Finish();
                         }
                     }
-
-
                 }
-
                 catch (Exception)
                 {
                     Toast.MakeText(this, "!אנא מלא את כל השדות", ToastLength.Long).Show();
@@ -314,7 +310,7 @@ namespace ShopApp
             pd.Hide(); 
         }
 
-        private void Btn_AddOrderDialogCloseCartDialog_Click(object sender, EventArgs e)
+        private void Btn_AddOrderDialogCloseCartDialog_Click(object sender, EventArgs e)//close the  add order dialog 
         {
             dialogAddProduct.Dismiss();
         }

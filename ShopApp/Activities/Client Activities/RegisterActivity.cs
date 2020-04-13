@@ -43,9 +43,9 @@ namespace ShopApp
            
         }
 
-        private void Btn_backPage_Click(object sender, EventArgs e)
+        private void Btn_backPage_Click(object sender, EventArgs e) //close the activity
         {
-           Finish(); //עובר לאקטיביטי 
+           Finish(); 
         }
 
         private async void BtnConrifRegister_Click(object sender, EventArgs e)
@@ -53,9 +53,9 @@ namespace ShopApp
             try
 
             {
-                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
-                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
-                pd.SetCancelable(true);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); 
+                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+                pd.SetCancelable(true);
 
                 string fullName = this.etFullName.Text;
                 string phoneNumber = this.etPhoneNumber.Text;
@@ -68,7 +68,7 @@ namespace ShopApp
 
                 if (!CheckFields())
                 {
-                    return; //לא ממשיך בפעולה
+                    return; 
                 }
 
 
@@ -78,20 +78,20 @@ namespace ShopApp
                     //מוסיף משתמש חדש
                     Toast.MakeText(this, "ההרשמה בוצעה בהצלחה!", ToastLength.Long).Show();
 
-                    this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
+                    this.sp = GetSharedPreferences("details", FileCreationMode.Private);
                     ISharedPreferencesEditor editor = sp.Edit();
                     editor.PutString("Username", "").Apply();//מאפס את השרד רפרנס על מנת שלא יתחבר שוב לאותו משתמש שהיה מחובר בעת יצירת החשבון החדש
 
 
-                    Intent intent = new Intent(this, typeof(MainActivity));//עובר לאקטיביטי login
+                    Intent intent = new Intent(this, typeof(MainActivity));
                     this.StartActivity(intent);
-                    pd.Cancel();//סוגר את הדיאלוג
+                    pd.Cancel();
                 }
                 else
                 {
                     pd.Cancel(); 
                     return;  
-                    //if there was some logic error in the thedetails that entered(for example a username alraedy exist )
+                    //if there was some logic error in the the details that entered(for example a username alraedy exist )
                 }
  
             }
@@ -107,7 +107,7 @@ namespace ShopApp
 
 
 
-        public bool CheckFields()
+        public bool CheckFields()//check that all the values that enterd by the client are vailds .
         {
            
                 if (this.etFullName.Text.Length < 2)//בודק האם השם קטן משתי תווים

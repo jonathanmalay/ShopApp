@@ -167,7 +167,7 @@ namespace ShopApp
                         return;
                     }
 
-                    Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, dialog_product_quantity);//הוספת המוצר לפייר בייס
+                    Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, dialog_product_quantity);
 
                 }
                 else

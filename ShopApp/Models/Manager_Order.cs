@@ -161,7 +161,7 @@ namespace ShopApp
 
 
 
-        public static async Task<Manager_Order> GetOrder(string orderId)//מחזיר עצם מסוג הזמנה 
+        public static async Task<Manager_Order> GetOrder(string orderId)//return the order object  ofb the order id that enterd by parameter to the function 
         { 
             try
             {   //TODO:  
@@ -178,12 +178,12 @@ namespace ShopApp
             }
         }
 
-        public static async Task<bool> OrderDeliverd(string order_id , bool is_sent)
+        public static async Task<bool> OrderDeliverd(string order_id , bool is_sent) //משנה את סטטוס ההזמנה בהתאם למשתנה הבוליאני שהפעולה קיבלה אם שקר ההזמנה לא נשלחה ואם אמת ההזמנה נשלחה ללקוח 
         {
             try
             {
                    
-                   await AppData.manager_ordersCollection.GetDocument(order_id).UpdateDataAsync("IsDelivered",is_sent ); //משנה את סטטוס ההזמנה בהתאם למשתנה הבוליאני שהפעולה קיבלה אם שקר ההזמנה לא נשלחה ואם אמת ההזמנה נשלחה ללקוח 
+                   await AppData.manager_ordersCollection.GetDocument(order_id).UpdateDataAsync("IsDelivered",is_sent ); 
                     return true; 
             }
             catch(Exception)
@@ -194,11 +194,11 @@ namespace ShopApp
 
 
 
-        public static async Task<bool> DeleteOrder(string order_id)
+        public static async Task<bool> DeleteOrder(string order_id)//delete the order from the firbase database 
         {
             try
             {
-                await AppData.manager_ordersCollection.GetDocument(order_id).DeleteDocumentAsync();//מוחק את המסמך מהשרת 
+                await AppData.manager_ordersCollection.GetDocument(order_id).DeleteDocumentAsync();
                 return true;
             }
             catch (Exception)

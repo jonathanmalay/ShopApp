@@ -24,7 +24,7 @@ namespace ShopApp
             this.Total_Price = total_price;
         }
 
-        public static async void AddOrderToHistory(string username  ,Orders_History order)
+        public static async void AddOrderToHistory(string username  ,Orders_History order)//add order to the client orders history in the firebase database 
         {
             try
             {

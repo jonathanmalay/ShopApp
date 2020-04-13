@@ -76,7 +76,7 @@ namespace ShopApp
 
         private void IvShowPassword_Click(object sender, System.EventArgs e)
         {
-            if (PasswordIsVisibale) // when  the passwor is visibale (after clicking the butto in the first time
+            if (PasswordIsVisibale) // when  the password is visibale (after clicking the button in the first time)
                etPassword.InputType = Android.Text.InputTypes.TextVariationVisiblePassword;
             else
                 etPassword.InputType = Android.Text.InputTypes.TextVariationPassword | Android.Text.InputTypes.ClassText;
@@ -85,7 +85,7 @@ namespace ShopApp
             PasswordIsVisibale = !PasswordIsVisibale; 
         }
 
-        private void TvRegister_Click(object sender, System.EventArgs e)// מימוש האירועים המתבצעים כתוצאה  מלחיצה על כל כפתור ההרשמה
+        private void TvRegister_Click(object sender, System.EventArgs e)// move to the  register activity 
         { 
 
             Intent intent = new Intent(this, typeof(RegisterActivity));
@@ -98,23 +98,22 @@ namespace ShopApp
 
         private async void BtnLogin_Click(object sender, System.EventArgs e)
         {
-            pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
-            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
-            pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+            pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); 
+            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+            pd.SetCancelable(false);
 
 
             User u = await User.ConrifePassword(etPassword.Text, etUsername.Text);//בודק האם הסיסמא שייכת למשתמש והאם הוא קיים ובמידה וכן מחזירה את המשתמש כעצם
             if (u != null) //במידה ותהליך ההזדהות צלח
             {
                 this.sp.Edit().PutString("Username", etUsername.Text).Apply();//שומר בשרד רפרנס את השם של המשתמש שהתחבר
-                Intent intent = new Intent(this, typeof(HomeActivity));//עובר להום אקטיביטי
+                Intent intent = new Intent(this, typeof(HomeActivity));
                 this.StartActivity(intent);
 
             }
 
             else
             {
-                //הקפצת הודעה למשתמש ששם המשתמש או הסיסמא שגויים והוא צריך לבחור אחד חדש
                 Toast.MakeText(this, "שם משתמש או סיסמא שגויים!", ToastLength.Long).Show();
             }
             pd.Cancel();
@@ -122,7 +121,7 @@ namespace ShopApp
         }
 
 
-        public override void OnBackPressed()
+        public override void OnBackPressed()//disable the back page button  on the smartphone 
         {
 
         }

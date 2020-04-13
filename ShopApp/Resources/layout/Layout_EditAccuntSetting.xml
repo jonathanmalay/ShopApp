@@ -7,19 +7,11 @@
     android:background="@drawable/back1">
 
 
-    
-    <include layout="@layout/toolbar_client" 
+
+    <include
+        layout="@layout/toolbar_client" 
     />
 
-    <TextView
-        android:text="פרטי משתמש"
-        android:textColor="@color/colorTitele"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        android:gravity="center"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -27,16 +19,24 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingHorizontal="60dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginVertical="5dp"
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/circlelayout">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="שם משתמש"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="right"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/edittextbackground">
 
             <ImageView
@@ -47,17 +47,28 @@
                 android:hint="@string/enter_username"
                 android:textColorHint="@color/colorEditTextHint"
                 android:inputType="textPersonName"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/etEditAccuntSettingUsername" />
         </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" שם מלא "
+            android:layout_marginTop="3dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:layout_gravity="right"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/edittextbackground">
             <ImageView
                 android:layout_width="32dp"
@@ -69,17 +80,28 @@
                 android:textColorHint="@color/colorEditTextHint"
                 android:inputType="textPersonName"
                 android:layout_width="match_parent"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:id="@+id/etEditAccuntSettingFullName" />
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:layout_gravity="right"/>
+
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/edittextbackground">
 
             <ImageView
@@ -91,17 +113,29 @@
                 android:hint="@string/phone_number"
                 android:textColorHint="@color/colorEditTextHint"
                 android:inputType="phone"
+                android:gravity="right"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/etEditAccuntSettingPhoneNumber" />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:layout_gravity="right"/>
+
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/edittextbackground">
             <ImageView
                 android:layout_width="32dp"
@@ -112,16 +146,28 @@
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:id="@+id/etEditAccuntSettingEmail" />
         </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="עיר מגורים"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:layout_gravity="right"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:background="@drawable/edittextbackground">
             <ImageView
                 android:layout_width="32dp"
@@ -131,10 +177,20 @@
                 android:textColorHint="@color/colorEditTextHint"
                 android:hint="עיר"
                 android:inputType="text"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/etEditAccuntSettingCity" />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="כתובת "
+            android:layout_marginTop="3dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:layout_gravity="right"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -151,6 +207,7 @@
                 android:textColorHint="@color/colorEditTextHint"
                 android:hint="רחוב ומספר בית"
                 android:inputType="text"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/etEditAccuntSettingStreetAddress" />
@@ -162,7 +219,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginHorizontal="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/circlebutton"
             android:text="@string/save"
             android:textColor="@color/colorEditTextHint"

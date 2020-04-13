@@ -41,7 +41,30 @@
         </LinearLayout>
 
 
+             <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="15dp"
+            android:elevation="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circlebutton"
+            android:layout_gravity="center">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconusername"/>
+            <Button
+                android:text="לקוחות "
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:id="@+id/btn_ManagerHomeClientsList"/>
 
+
+        </LinearLayout>
 
 
 
@@ -95,11 +118,16 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:id="@+id/btnManagerHomeSetting"/>
+
+
         </LinearLayout>
 
 
+        
+
+   
 
 
-
+    
     </LinearLayout>
 </FrameLayout>

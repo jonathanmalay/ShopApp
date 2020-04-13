@@ -20,7 +20,7 @@ namespace ShopApp
         Button btnSaveDetails, btn_backPage;
         ISharedPreferences sp; 
         ImageButton btn_toolbar_menu; 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Layout_EditAccuntSetting);
@@ -38,19 +38,27 @@ namespace ShopApp
             this.btn_backPage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
 
 
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-            string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
-           
+            this.sp = GetSharedPreferences("details", FileCreationMode.Private);
+            string usernameloged = this.sp.GetString("Username", "");
 
+            User user = await User.GetUser(usernameloged);
+
+            this.etEditUsername.Text = user.Username;
+            this.etEditFullName.Text = user.FullName;
+            this.etEditPhoneNumber.Text = user.PhoneNum;
+            this.etEditStreetAddress.Text = user.StreetAddress;
+            this.etEditCity.Text = user.City;
+            this.etEditEmail.Text = user.Email; 
+            
 
             this.btnSaveDetails.Click += BtnSaveDetails_Click;
             this.btn_backPage.Click += Btn_backPage_Click;
 
             btn_toolbar_menu.Click += (s, arg) =>
             {  //יוצר את התפריט
-                PopupMenu Client_home_Menu = new PopupMenu(this, btn_toolbar_menu); // מקשר את התפריט לכפתור שלו ב toolbar
+                PopupMenu Client_home_Menu = new PopupMenu(this, btn_toolbar_menu);
                 Client_home_Menu.Inflate(Resource.Menu.menu_home);
-                Client_home_Menu.MenuItemClick += Client_home_Menu_MenuItemClick; //הפעולות שמתבצעות כתוצאה מלחיצה על האפשרויות השונות בתפריט
+                Client_home_Menu.MenuItemClick += Client_home_Menu_MenuItemClick; 
                 Client_home_Menu.Show();
 
             };
@@ -157,14 +165,14 @@ namespace ShopApp
 
                     editor.PutString("Username", "").Apply();
                     Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
-                    Intent intentLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
+                    Intent intentLogin = new Intent(this, typeof(MainActivity));
                     this.StartActivity(intentLogin);
                     break;
 
 
                 case Resource.Id.action_register:
 
-                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
+                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));
                     this.StartActivity(intentRegister);
                     break;
 

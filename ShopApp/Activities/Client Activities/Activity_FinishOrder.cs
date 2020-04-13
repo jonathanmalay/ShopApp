@@ -121,9 +121,9 @@ namespace ShopApp.Activities
 
 
         
-        private void Btn_BackPage_Click(object sender, EventArgs e)
+        private void Btn_BackPage_Click(object sender, EventArgs e)//מוחק את האקטיביטי מהמחסנית של האקטיביטים
         {
-            Finish(); //מוחק את האקטיביטי מהמחסנית של האקטיביטים
+            Finish(); 
         }
 
 
@@ -131,7 +131,7 @@ namespace ShopApp.Activities
 
 
 
-        public void CreateDialog(Activity activity)
+        public void CreateDialog(Activity activity)//create the dialog of conrife order 
         {
              dialog_conrife_Order = new Dialog(this);
 
@@ -144,7 +144,7 @@ namespace ShopApp.Activities
 
       
            
-            btn_conrife_dialog_save = dialog_conrife_Order.FindViewById<Button>(Resource.Id.btn_DialogFinishOrderConrife); //כפתור השמירה
+            btn_conrife_dialog_save = dialog_conrife_Order.FindViewById<Button>(Resource.Id.btn_DialogFinishOrderConrife); 
 
             btn_conrife_dialog_save.Click += async (senderD, eD) =>
             {
@@ -180,9 +180,9 @@ namespace ShopApp.Activities
         }
 
 
-        private void Btn_conrife_order_Click(object sender, EventArgs e)
+        private void Btn_conrife_order_Click(object sender, EventArgs e)//present the conrife order dialog 
         {
-            dialog_conrife_Order.Show(); //מפעיל את הדיאלוג
+            dialog_conrife_Order.Show();
 
 
         }
@@ -199,14 +199,14 @@ namespace ShopApp.Activities
 
                     editor.PutString("Username", "").Apply();
                     Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
-                    Intent intentLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
+                    Intent intentLogin = new Intent(this, typeof(MainActivity));
                     this.StartActivity(intentLogin);
                     break;
 
 
                 case Resource.Id.action_register:
 
-                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
+                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));
                     this.StartActivity(intentRegister);
                     break;
 

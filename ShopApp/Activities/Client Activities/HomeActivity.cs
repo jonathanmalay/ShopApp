@@ -53,10 +53,10 @@ namespace ShopApp
             this.bnvClient.NavigationItemSelected += BnvClient_NavigationItemSelected;
 
 
-            this.btn_toolbar_backPage.Visibility = ViewStates.Invisible; //hide the back page button cause i dont need him here
+            this.btn_toolbar_backPage.Visibility = ViewStates.Invisible; 
 
-            this.sp = GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-            string usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
+            this.sp = GetSharedPreferences("details", FileCreationMode.Private);
+            string usernameloged = this.sp.GetString("Username", "");
             this.u = await User.GetUser(usernameloged);
 
             if (this.u == null)
@@ -66,14 +66,14 @@ namespace ShopApp
                 return;
             }
 
-            this.tvWelcomeUser.Text = u.Username + " ברוך הבא "; //מציג  הודעת  ברוך הבא בתוספת השם של המשתמש
+            this.tvWelcomeUser.Text = u.Username + " ברוך הבא "; 
             FragmentHelper.LoadFragment(this, new Client_HomeFragment(), false); //the first fragment that wiil be shown 
 
             btn_toolbar_menu.Click += (s, arg) => 
             {  //יוצר את התפריט
-                PopupMenu Client_home_Menu = new PopupMenu(this, btn_toolbar_menu); // מקשר את התפריט לכפתור שלו ב toolbar
+                PopupMenu Client_home_Menu = new PopupMenu(this, btn_toolbar_menu); 
                 Client_home_Menu.Inflate(Resource.Menu.menu_home);
-                Client_home_Menu.MenuItemClick += Client_home_Menu_MenuItemClick; //הפעולות שמתבצעות כתוצאה מלחיצה על האפשרויות השונות בתפריט
+                Client_home_Menu.MenuItemClick += Client_home_Menu_MenuItemClick; 
                 Client_home_Menu.Show(); 
                 
             };
@@ -85,7 +85,7 @@ namespace ShopApp
         {
             if (e.Item.ItemId == Resource.Id.action_BnvClientHome)
             {
-                FragmentHelper.LoadFragment(this, new Client_HomeFragment(), false); //load homepage fragment
+                FragmentHelper.LoadFragment(this, new Client_HomeFragment(), false); 
             }
 
             else if (e.Item.ItemId == Resource.Id.action_BnvClientHistory)
@@ -105,12 +105,6 @@ namespace ShopApp
         }
 
 
-        //public override bool OnCreateOptionsMenu(IMenu menu) //רשום אובררייד בגלל שתפריט  קיים וערכו נולל לכן אנחנו דורסים את הערך הקודם ויוצרים תפריט חדש
-        //{
-        //    MenuInflater.Inflate(Resource.Menu.menu_home, menu); //הופכים את המניו מאקאםאל לעצם מסוג  תפריט
-        //    return base.OnCreateOptionsMenu(menu);
-        //}
-
         private void Client_home_Menu_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)//פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים
         {
             ISharedPreferencesEditor editor = sp.Edit();
@@ -121,14 +115,14 @@ namespace ShopApp
 
                     editor.PutString("Username", "").Apply();
                     Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
-                    Intent intentLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
+                    Intent intentLogin = new Intent(this, typeof(MainActivity));
                     this.StartActivity(intentLogin);
                     break;
 
 
                 case Resource.Id.action_register:
 
-                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
+                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));
                     this.StartActivity(intentRegister);
                     break;
 
@@ -140,37 +134,8 @@ namespace ShopApp
         }
 
 
-        //public override bool OnOptionsItemSelected( IMenuItem item)//פעולות המתרחשות כתוצאה מלחיצה על כפתורים בתפריט(אינטנטים).
-        //{ 
-            
-        //    ISharedPreferencesEditor editor = sp.Edit();
-        //    switch (item.ItemId)
-        //    {
-        //        case Resource.Id.action_logout:
 
-        //            editor.PutString("Username", "").Apply();
-        //            Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
-        //            Intent intentLogin = new Intent(this, typeof(MainActivity));//עובר למסך ההתחברות 
-        //            this.StartActivity(intentLogin);
-        //            break;
-
-
-        //        case Resource.Id.action_register:
-
-        //            Intent intentRegister = new Intent(this, typeof(RegisterActivity));//עובר לאקטיביטי הרשמה
-        //            this.StartActivity(intentRegister);
-        //            break;
-
-        //        case Resource.Id.action_accountSetting:
-
-        //            FragmentHelper.LoadFragment(this, new HomeSetting_Fragment(), true);
-        //            break;
-        //    }
-        //    return base.OnOptionsItemSelected(item);
-        //}
-
-
-        public override void OnBackPressed()
+        public override void OnBackPressed() //disable the user from press back page button 
         {
            
         }

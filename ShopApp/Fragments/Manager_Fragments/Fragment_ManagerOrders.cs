@@ -36,7 +36,7 @@ namespace ShopApp
         List<Product> allProducts;
         ProgressDialog pd;
         List<Manager_Order> orders;
-
+        TextView tv_dialog_ClientCreditCard_Number , tv_dialog_ClientCreditCard_ExpirisionDate , tv_dialog_ClientCreditCard_CVV; 
       
 
 
@@ -93,29 +93,37 @@ namespace ShopApp
             this.fab_add_NewOrder.Click += Fab_add_NewOrder_Click;
 
 
+            CreateDialogOrder();
+            
 
+
+            
+        }
+
+        public async void CreateDialogOrder()//create the order dialog
+        {
             //Dialog order
             this.dialog_order = new Dialog(Activity);
             this.dialog_order.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-
+            this.dialog_order.SetCancelable(false); //לא ניתן לסגור אותו על ידי לחיצה מחוץ לדיאלוג
             this.dialog_order.SetContentView(Resource.Layout.layout_ManagerDailogOrderCart);
             this.lvCartDialog = this.dialog_order.FindViewById<ListView>(Resource.Id.listViewManagerDialogOrderCart);
-            this.tvHeaderCartDialog = this.dialog_order.FindViewById<TextView>(Resource.Id.tv_ManagerDialogOrderCartHeader); 
+            this.tvHeaderCartDialog = this.dialog_order.FindViewById<TextView>(Resource.Id.tv_ManagerDialogOrderCartHeader);
             this.btnCloseCartDialog = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartClose);
             this.btnCartDialogDeleteOrder = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartDeleteOrder);
             this.btnCartDialogOrderCallClient = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartCallClient);
-            this.switch_DialogEditOrderIsOrderSentToClient = this.dialog_order.FindViewById<Switch>(Resource.Id.switch_manager_dialog_EditOrder_IsSent); 
+            this.tv_dialog_ClientCreditCard_Number = this.dialog_order.FindViewById<TextView>(Resource.Id.tv_ManagerDialogOrderCart_ClientCreditCardNumber);
+            this.tv_dialog_ClientCreditCard_ExpirisionDate = this.dialog_order.FindViewById<TextView>(Resource.Id.tv_ManagerDialogOrderCart_ClientCreditCardDate);
+            this.tv_dialog_ClientCreditCard_CVV = this.dialog_order.FindViewById<TextView>(Resource.Id.tv_ManagerDialogOrderCart_ClientCreditCardCvv);
+            this.switch_DialogEditOrderIsOrderSentToClient = this.dialog_order.FindViewById<Switch>(Resource.Id.switch_manager_dialog_EditOrder_IsSent);
 
             this.btnCartDialogOrderCallClient.Click += BtnCartDialogOrderCallClient_Click;
-           
+
             this.btnCartDialogDeleteOrder.Click += BtnCartDialogDeleteOrder_Click;
             this.btnCloseCartDialog.Click += BtnCloseCartDialog_Click;
             this.switch_DialogEditOrderIsOrderSentToClient.CheckedChange += Switch_DialogEditOrderIsOrderSentToClient_CheckedChange;
 
             this.allProducts = await Product.GetAllProduct();
-
-
-            
         }
 
         private async void Switch_DialogEditOrderIsOrderSentToClient_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
@@ -134,7 +142,7 @@ namespace ShopApp
                     this.orders[this.selected_order].IsDelivered = true;
 
                     this.orders_adapter.NotifyDataSetChanged(); //הפעלת המתאם
-                    Toast.MakeText(this.Activity, "!!פרטי הזמנה עודכנו בהצלחה", ToastLength.Long).Show();
+                 
                 }
                 else
                 {
@@ -153,7 +161,7 @@ namespace ShopApp
                     this.orders[this.selected_order].IsDelivered = false;
 
                     this.orders_adapter.NotifyDataSetChanged(); //הפעלת המתאם
-                    Toast.MakeText(this.Activity, "!!פרטי הזמנה עודכנו בהצלחה", ToastLength.Long).Show();
+                  
                 }
                 else
                 {
@@ -231,7 +239,7 @@ namespace ShopApp
 
 
 
-        private void Lv_ManagerOrders_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private async void Lv_ManagerOrders_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             int position = e.Position;//מיקום המוצר בליסט ויאו
             Manager_Order Selected_order = this.orders[position];//מכניס לעצם מסוג מוצר  את המוצר שנמצא בתא שנלחץ בליסט ויאו 
@@ -250,6 +258,12 @@ namespace ShopApp
             }
             
             this.tvHeaderCartDialog.Text = Selected_order.ID + ":מזהה הזמנה";
+
+            Payment user_payment_details = await Payment.GetUserPaymentDetails(Selected_order.ClientUsername);
+
+            this.tv_dialog_ClientCreditCard_Number.Text = user_payment_details.CardNum;
+            this.tv_dialog_ClientCreditCard_ExpirisionDate.Text = user_payment_details.Date;
+            this.tv_dialog_ClientCreditCard_CVV.Text = user_payment_details.CVV; 
 
             Adapter_FinishOrder_SelectedProducts adapter_cart = new Adapter_FinishOrder_SelectedProducts(Activity, orderCart, allProducts);//אדפטר שמציג את כל המוצרים שהמשתמש הזמין בהזמנה 
 

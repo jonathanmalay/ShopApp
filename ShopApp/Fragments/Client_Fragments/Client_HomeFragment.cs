@@ -18,13 +18,13 @@ namespace ShopApp
         Button btnStartOrder, btnPruchesHistory, btnSetting, btnContectUs;
         TextView tv_toolbar_title;
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)//inflate the view of the fragment 
         {
             return LayoutInflater.Inflate(Resource.Layout.layout_fragment_home, container, false);
 
         }
 
-        public override void OnHiddenChanged(bool hidden)
+        public override void OnHiddenChanged(bool hidden)//whats happens when the fragment is hidden 
         {
             base.OnHiddenChanged(hidden);//if the fragment on the screen now
             if(hidden == false)
@@ -33,7 +33,7 @@ namespace ShopApp
             }
         }
 
-        public override async void OnViewCreated(View view, Bundle savedInstanceState)
+        public override async void OnViewCreated(View view, Bundle savedInstanceState)//
         {            
             base.OnViewCreated(view, savedInstanceState);
             this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title); //change the toolbar title to the name of the fragment 
@@ -56,7 +56,7 @@ namespace ShopApp
 
 
 
-        private void BtnContectUs_Click(object sender, EventArgs e)
+        private void BtnContectUs_Click(object sender, EventArgs e) //call to the shop  
         {
             try
             {
@@ -64,7 +64,7 @@ namespace ShopApp
 
                 intent.SetAction(Intent.ActionDial);
 
-                Android.Net.Uri data = Android.Net.Uri.Parse("tel:" + "053-8285819"); //חייוג
+                Android.Net.Uri data = Android.Net.Uri.Parse("tel:" + "053-8285819"); 
 
                 intent.SetData(data);
 
@@ -81,19 +81,19 @@ namespace ShopApp
 
 
 
-        private void BtnPruchesHistory_Click(object sender, EventArgs e)
+        private void BtnPruchesHistory_Click(object sender, EventArgs e) // move to the client orders history screen 
         {
             FragmentHelper.LoadFragment(Activity, new Client_HistoryOrders_Fragment(), false);
 
         }
 
-        private void BtnStartOrder_Click(object sender, EventArgs e)
+        private void BtnStartOrder_Click(object sender, EventArgs e)// move to start order fragment 
         {
             FragmentHelper.LoadFragment( Activity, new ClientOrder_Fragment(), false);
         }
 
 
-        private void BtnSetting_Click(object sender, EventArgs e)
+        private void BtnSetting_Click(object sender, EventArgs e)//move to  the client setting fragment
         {
             FragmentHelper.LoadFragment(Activity, new HomeSetting_Fragment(), false);
 
