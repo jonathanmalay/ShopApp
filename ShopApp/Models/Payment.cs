@@ -25,7 +25,7 @@ namespace ShopApp
         }
 
         public static async void AddPaymentMethod(Activity activity, string cardnum, string date, string cvv, string username)//הפעולה מקבלת את כל התכונות של האשראי של המשתמש ויוצרת מסמך חדש שמכיל את פרטי האשראי של המשתמש  בפיירבייס
-        { 
+        {
 
             Payment p = new Payment();
             p.CardNum = cardnum;
@@ -38,19 +38,38 @@ namespace ShopApp
         }
 
 
-        public static async Task ChangePaymentMethod(string username, string cardnum,string datecard ,string card_cvv)//הפעולה מעדכנת את פרטי האשראי של המשתמש
-        {  
-            await AppData.FireStore.GetCollection("Payment").GetDocument(username).UpdateDataAsync("CardNum", cardnum, "Date", datecard , "CVV", card_cvv);
- 
+        public static async Task ChangePaymentMethod(string username, string cardnum, string datecard, string card_cvv)//הפעולה מעדכנת את פרטי האשראי של המשתמש
+        {
+            await AppData.FireStore.GetCollection("Payment").GetDocument(username).UpdateDataAsync("CardNum", cardnum, "Date", datecard, "CVV", card_cvv);
+
         }
-        
+
 
         public static async Task<Payment> GetUserPaymentDetails(string client_username)//return client payments details 
         {
             IDocumentSnapshot document = await AppData.paymentCollection.GetDocument(client_username).GetDocumentAsync();
-            return document.ToObject<Payment>(); 
+            return document.ToObject<Payment>();
         }
 
+        public async static Task<bool> UserHasPayment(string username)//checks if the client has a payment method
+        {
+            try
+            {
+                IDocumentSnapshot document = await AppData.paymentCollection.GetDocument(username).GetDocumentAsync();
+                if (document.Data != null) 
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch(Exception)
+            {
+                return false; 
+            }
+        }
 
 
     }

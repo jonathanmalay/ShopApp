@@ -128,7 +128,16 @@ namespace ShopApp
                 }
 
 
-                if (this.etPhoneNumber.Length() !=10 )//בודק אם מספר הספרות שהמשתמש הזין חוקי לכתובת טלפון
+            if (this.etUsername.Text.Length < 4)
+            {
+                this.etUsername.SetError("אנא הכנס שם משתמש גדול מ4 ספרות", null);
+                this.etUsername.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.etPhoneNumber.Length() !=10 )//בודק אם מספר הספרות שהמשתמש הזין חוקי לכתובת טלפון
                 {
                     this.etPhoneNumber.SetError("מספר ספרות לא חוקי!", null);
                     this.etPhoneNumber.RequestFocus();
@@ -138,7 +147,7 @@ namespace ShopApp
 
                 
 
-                if (this.etEmail.Text.IndexOf('@') < 1)//בודק האם הכתובת אימייל חוקית במידה ולא מחזיר שקר
+                if (this.etEmail.Text.IndexOf('@') < 1 || this.etEmail.Text.IndexOf("gmail") <1 || etEmail.Text.Length < 4)//בודק האם הכתובת אימייל חוקית במידה ולא מחזיר שקר
                 {
                     this.etEmail.SetError("כתובת אימייל אינה חוקית", null);
                     this.etEmail.RequestFocus();
@@ -154,6 +163,34 @@ namespace ShopApp
                 return false;
             }
 
+
+            if (this.etCity.Text.Length < 3)
+            {
+                this.etCity.SetError("אנא הזן שם עיר", null);
+                this.etCity.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.etStreetAddress.Text.Length < 3)
+            {
+                this.etStreetAddress.SetError("אנא הזן כתובת מגורים ", null);
+                this.etStreetAddress.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.etPassword.Text.Length < 6 )
+            {
+                this.etPassword.SetError("!נא להזין סיסמה באורך של 6 תווים לפחות", null);
+                this.etPassword.RequestFocus();
+                return false;
+            }
+
+
+        
 
             return true;
            

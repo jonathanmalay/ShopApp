@@ -101,12 +101,14 @@ namespace ShopApp
         }
 
 
-        public static async Task<string> Add_Order_NonExistUser(Activity activity, int price, DateTime date, string client_username, bool is_deliverd, List<SelectedProduct> products_list, string city, string address, string phone_number)//נשתמש בפונקציה זאת כאשר המנהל מוסיף הזמנה ללקוח שלא קיים באפליקציה לכן השתמשתי בהעמסת פונקציות
+        public static async Task<string> Add_Order_NonExistUser(Activity activity, int price, DateTime date, 
+        string client_username, bool is_deliverd, List<SelectedProduct> products_list, string city,
+        string address, string phone_number , string creditCard_number , string creditCard_Date , string creditCard_CVV)//נשתמש בפונקציה זאת כאשר המנהל מוסיף הזמנה ללקוח שלא קיים באפליקציה לכן השתמשתי בהעמסת פונקציות
         {
             try
             {
                 Manager_Order order = new Manager_Order();
-
+                
                 order.Price = price;
                 order.Date = date;
                 order.ClientUsername = client_username;
@@ -115,15 +117,15 @@ namespace ShopApp
                 order.City = city;
                 order.ClientPhone = phone_number;
                 order.CartList = products_list;//עגלת הקניות של המשתמש 
-             
 
+              
                 var document = AppData.manager_ordersCollection.CreateDocument();
 
                 order.ID = document.Id;
 
                 await AppData.manager_ordersCollection.GetDocument(order.ID).SetDataAsync(order);//add the order to the manager_ordersCollection
 
-
+                Payment.AddPaymentMethod(  activity ,creditCard_number, creditCard_Date, creditCard_CVV, client_username); //add payment method of the client 
            
                 return order.ID;
             }

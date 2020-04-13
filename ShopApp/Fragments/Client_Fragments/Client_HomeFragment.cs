@@ -84,7 +84,6 @@ namespace ShopApp
         private void BtnPruchesHistory_Click(object sender, EventArgs e) // move to the client orders history screen 
         {
             FragmentHelper.LoadFragment(Activity, new Client_HistoryOrders_Fragment(), false);
-
         }
 
         private void BtnStartOrder_Click(object sender, EventArgs e)// move to start order fragment 

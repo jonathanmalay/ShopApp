@@ -23,7 +23,6 @@ namespace ShopApp
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-
             return LayoutInflater.Inflate(Resource.Layout.layout_Manager_Home_Fragment, container, false);
         }
 
@@ -56,11 +55,16 @@ namespace ShopApp
 
             this.btn_EditProducts.Click += Btn_EditProducts_Click;
             this.btnOrders.Click += BtnOrders_Click;
+            this.btn_ClientsList.Click += Btn_ClientsList_Click;
             this.btnSetting.Click += BtnSetting_Click;
 
         }
 
-
+        private void Btn_ClientsList_Click(object sender, EventArgs e)
+        {
+            Intent intentRegister = new Intent(Activity , typeof(Activity_ManagerClientsList));
+            this.StartActivity(intentRegister);
+        }
 
         private void Btn_EditProducts_Click(object sender, EventArgs e)
         {
@@ -68,7 +72,6 @@ namespace ShopApp
             {
                 FragmentHelper.LoadFragment(Activity, new Fragment_ManagerProducts(), true);
             }
-
 
             catch (Exception)
             {

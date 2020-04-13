@@ -142,7 +142,7 @@ namespace ShopApp.Activities
             dialog_conrife_Order.SetTitle("אישור סופי");
             dialog_conrife_Order.SetCancelable(true);
 
-      
+            
            
             btn_conrife_dialog_save = dialog_conrife_Order.FindViewById<Button>(Resource.Id.btn_DialogFinishOrderConrife); 
 
@@ -150,23 +150,32 @@ namespace ShopApp.Activities
             {
                 try
                 {
-                    DateTime correct_order_date = DateTime.Now; //הזמן הנוכחי 
-                    string order_id = await Manager_Order.Add_Order(this, Total_Price, correct_order_date, userName, false,list_selectedProducts);//שולח את ההזמנה 
-
-                    if (order_id != null)
+                    if (await Payment.UserHasPayment(userName))
                     {
-                        Manager_Order order_check = await Manager_Order.GetOrder(order_id);//במידה וחוזר עצם מסוג הזמנה ההזמנה נשלחה בהצלחה 
-                        if (order_check == null)
-                        {
-                            Toast.MakeText(this, "אירעה שגיאה!!", ToastLength.Long).Show();
-                        }
+                        DateTime correct_order_date = DateTime.Now; //הזמן הנוכחי 
+                        string order_id = await Manager_Order.Add_Order(this, Total_Price, correct_order_date, userName, false, list_selectedProducts);//שולח את ההזמנה 
 
-                        else
+                        if (order_id != null)
                         {
-                            Toast.MakeText(this, "!!ההזמנה בוצעה בהצלחה", ToastLength.Long).Show();
-                            Intent intent = new Intent(this, typeof(HomeActivity)); 
-                            this.StartActivity(intent);
+                            Manager_Order order_check = await Manager_Order.GetOrder(order_id);//במידה וחוזר עצם מסוג הזמנה ההזמנה נשלחה בהצלחה 
+                            if (order_check == null)
+                            {
+                                Toast.MakeText(this, "אירעה שגיאה!!", ToastLength.Long).Show();
+                            }
+
+                            else
+                            {
+                                Toast.MakeText(this, "!!ההזמנה בוצעה בהצלחה", ToastLength.Long).Show();
+                                Intent intent = new Intent(this, typeof(HomeActivity));
+                                this.StartActivity(intent);
+                            }
                         }
+                    }
+
+                    else
+                    {
+                        Toast.MakeText(this, "אנא הגדר פרטי אשראי דרך ההגדרות על מנת לבצע את הרכישה", ToastLength.Long).Show();
+
                     }
 
 

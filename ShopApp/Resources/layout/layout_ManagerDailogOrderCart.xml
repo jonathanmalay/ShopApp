@@ -2,8 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_width="350dp"
+    android:layout_height="500dp"
     android:background="@drawable/circlelayout"
     android:weightSum="1">
     <LinearLayout
@@ -55,6 +55,13 @@
         android:background="@drawable/circlelayout"
         android:layout_gravity="center_horizontal"
         android:layout_margin="35dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":פרטי אשראי של הלקוח"
+        android:layout_gravity="right"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,6 +80,7 @@
         android:layout_height="wrap_content"
         android:text=":תוקף אשראי"
         android:layout_gravity="right"
+        android:layoutDirection="rtl"
         android:textColor="@color/colorAccent"
         android:textSize="16dp"
         android:layout_marginRight="10dp"

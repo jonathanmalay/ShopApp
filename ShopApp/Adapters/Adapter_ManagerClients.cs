@@ -56,25 +56,29 @@ namespace ShopApp
                 convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.Cell_ManagerClientsAdapter, parent, false);
             }
 
-            ////TextView tv_ClientName = convertView.FindViewById<TextView>(Resource.Id.tv_costum_ManagerClientsAdapterUsername);
-            ////TextView tv_ClientCity = convertView.FindViewById<TextView>(Resource.Id.tv_costum_ManagerClientsAdapterCity);
-            ////TextView tv_ClientAddress = convertView.FindViewById<TextView>(Resource.Id.tv_costum_ManagerClientsAdapterAddress);
-            ////Button btn_callClient = convertView.FindViewById<Button>(Resource.Id.btn_costum_ManagerClientsAdapterCallToClient);
+            TextView tv_clientEmail = convertView.FindViewById<TextView>(Resource.Id.tv_costum_ManagerClientsAdapterEmail);
+            TextView tv_ClientName = convertView.FindViewById<TextView>(Resource.Id.tv_costum_ManagerClientsAdapterFullName);
+            TextView tv_ClientCity = convertView.FindViewById<TextView>(Resource.Id.tv_costum_ManagerClientsAdapterCity);
+            TextView tv_ClientAddress = convertView.FindViewById<TextView>(Resource.Id.tv_costum_ManagerClientsAdapterAddress);
+            Button btn_callClient = convertView.FindViewById<Button>(Resource.Id.btn_costum_ManagerClientsAdapterCallToClient);
 
-            //User temp_user = Manager_Clients_list[position];
+            User temp_user = Manager_Clients_list[position];
 
-            ////tv_ClientName.Text = temp_user.FullName + ":שם הלקוח";
-            ////tv_ClientCity.Text = temp_user.City + ":עיר מגורים";
-            ////tv_ClientAddress.Text = temp_user.StreetAddress + ":כתובת";
+            tv_ClientName.Text = " שם הלקוח: " + temp_user.FullName  ;
+            tv_ClientCity.Text = " עיר מגורים: " + temp_user.City ;
+            tv_ClientAddress.Text = " כתובת: " + temp_user.StreetAddress  ;
+            tv_clientEmail.Text = " מייל: "+ temp_user.Email  ;
+            
 
-            //btn_callClient.Click += (object sender, EventArgs e) => {
+            btn_callClient.Click += (object sender, EventArgs e) =>
+            {
 
-            //    Intent intent = new Intent();
-            //    intent.SetAction(Intent.ActionDial);
-            //    Android.Net.Uri data = Android.Net.Uri.Parse("tel:" + temp_user.PhoneNum.ToString()); //חייוג
-            //    intent.SetData(data);
-            //    activity.StartActivity(intent);
-            //};
+                Intent intent = new Intent();
+                intent.SetAction(Intent.ActionDial);
+                Android.Net.Uri data = Android.Net.Uri.Parse("tel:" + temp_user.PhoneNum.ToString()); //חייוג
+                intent.SetData(data);
+                activity.StartActivity(intent);
+            };
 
             return convertView;
         }

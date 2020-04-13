@@ -29,7 +29,7 @@ namespace ShopApp
         ListView lvCartDialog;
 
         Switch switch_DialogEditOrderIsOrderSentToClient; 
-        TextView tvHeaderCartDialog;
+        TextView tvHeaderCartDialog , tv_NoOrdersYet;
         Button btnCloseCartDialog , btnCartDialogOrderCallClient, btnCartDialogDeleteOrder;
         int selected_order;
         TextView tv_toolbar_title;
@@ -47,14 +47,14 @@ namespace ShopApp
             return LayoutInflater.Inflate(Resource.Layout.layout_ManagerOrders, container, false);
         }
 
-        public override void OnHiddenChanged(bool hidden)
+        public async override void OnHiddenChanged(bool hidden)//what happend every time i load the fragment 
         {
             base.OnHiddenChanged(hidden);
             if (hidden == false)
             {
 
                 this.tv_toolbar_title.Text = "הזמנות";
-
+                this.orders = await Manager_Order.GetAllOrders();
             }
         }
 
@@ -73,13 +73,18 @@ namespace ShopApp
 
             this.fab_add_NewOrder = view.FindViewById<FloatingActionButton>(Resource.Id.fab_Manager_addNewOrder);
             this.lv_ManagerOrders = view.FindViewById<ListView>(Resource.Id.listView_ManagerOrders);
-            
+            this.tv_NoOrdersYet = view.FindViewById<TextView>(Resource.Id.tv_ManagerOrders_EmptyList);
             this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
             this.userName = this.sp.GetString("Username", "");
 
 
-            this.orders = new List<Manager_Order>();//רשימה של  כל המוצרים שקיימים בחנות
+            this.orders = new List<Manager_Order>();
             this.orders = await Manager_Order.GetAllOrders();
+
+            if(orders.Count() == 0)
+            {
+                this.tv_NoOrdersYet.Text = "...אין כרגע הזמנות במערכת";
+            }    
             
             
 
@@ -261,9 +266,9 @@ namespace ShopApp
 
             Payment user_payment_details = await Payment.GetUserPaymentDetails(Selected_order.ClientUsername);
 
-            this.tv_dialog_ClientCreditCard_Number.Text = user_payment_details.CardNum;
-            this.tv_dialog_ClientCreditCard_ExpirisionDate.Text = user_payment_details.Date;
-            this.tv_dialog_ClientCreditCard_CVV.Text = user_payment_details.CVV; 
+            this.tv_dialog_ClientCreditCard_Number.Text = "מספר אשראי: " + user_payment_details.CardNum;
+            this.tv_dialog_ClientCreditCard_ExpirisionDate.Text = "תאריך תפוגה: " + user_payment_details.Date;
+            this.tv_dialog_ClientCreditCard_CVV.Text ="ספרות בגב הכרטיס: " + user_payment_details.CVV; 
 
             Adapter_FinishOrder_SelectedProducts adapter_cart = new Adapter_FinishOrder_SelectedProducts(Activity, orderCart, allProducts);//אדפטר שמציג את כל המוצרים שהמשתמש הזמין בהזמנה 
 

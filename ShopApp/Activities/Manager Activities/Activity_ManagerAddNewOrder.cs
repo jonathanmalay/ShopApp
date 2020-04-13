@@ -29,17 +29,14 @@ namespace ShopApp
         ProductAdapter pa;
         GridView gridview_products;
 
-        Toolbar toolbar;
-
-
-
         //dialog add order by manager
         Dialog dialog_AddNewOrder;
         Adapter_FinishOrder_SelectedProducts adapter_selected_products;
         ListView lv_AddOrderDialogCartDialog;
         Button btn_AddOrderDialogCartDialogOrderSaveOrder, btn_AddOrderDialogCloseCartDialog ;
-        EditText et_AddOrderDialogUserNameOfCustomer , et_AddOrderDialogCustomerAddress, et_AddOrderDialogCustomerCity, et_AddOrderDialogCustomerPhone;
-        TextView tv_AddOrderDialogOrderTotalPrice; 
+        EditText et_AddOrderDialogUserNameOfCustomer , et_AddOrderDialogCustomerAddress, et_AddOrderDialogCustomerCity, et_AddOrderDialogCustomerPhone,etAddOrderDialogCustomerCreditCardNumber , etAddOrderDialogCustomerCreditCardDate , etAddOrderDialogCustomerCreditCard_CVV;
+        TextView tv_AddOrderDialogOrderTotalPrice;
+        
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -62,12 +59,12 @@ namespace ShopApp
             products = await Product.GetAllProduct();
 
             this.pa = new ProductAdapter(this, products, list_selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים (שיש למשתמש שהמנהל בחר לשלוח לו את המוצר ) בעגלה
-            this.gridview_products.Adapter = this.pa;//אומר לגריד ויואו שהוא עובד עם המתאם הזה
-            this.pa.NotifyDataSetChanged(); //הפעלת המתאם
+            this.gridview_products.Adapter = this.pa;
+            this.pa.NotifyDataSetChanged(); 
 
             this.gridview_products.ItemClick += Gridview_products_ItemClick; ;
             this.btnMovetoOrderdetails.Click += BtnMovetoOrderdetails_Click; ;
-          //  this.btn_toolbar_backPage.Click += Btn_toolbar_backPage_Click;
+          
         }
 
         private void Btn_toolbar_backPage_Click(object sender, EventArgs e)
@@ -228,12 +225,15 @@ namespace ShopApp
             this.et_AddOrderDialogCustomerPhone = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerPhone);
             this.tv_AddOrderDialogOrderTotalPrice = this.dialog_AddNewOrder.FindViewById<TextView>(Resource.Id.tv_ManagerOrdersDailogAddNewOrderOrderTotalPrice);
             this.et_AddOrderDialogCustomerAddress = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerAddress);
+            this.etAddOrderDialogCustomerCreditCardNumber = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerCreditCardNumber);
+            this.etAddOrderDialogCustomerCreditCardDate = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerCreditCardDate);
+            this.etAddOrderDialogCustomerCreditCard_CVV = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerCreditCardCVV);
             this.et_AddOrderDialogCustomerCity = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerCity);
             this.btn_AddOrderDialogCloseCartDialog = this.dialog_AddNewOrder.FindViewById<Button>(Resource.Id.btn_ManagerOrdersDailogAddNewOrderClose);
             this.btn_AddOrderDialogCartDialogOrderSaveOrder = this.dialog_AddNewOrder.FindViewById<Button>(Resource.Id.btn_ManagerOrdersDailogAddNewOrderSaveOrder);
 
             this.btn_AddOrderDialogCloseCartDialog.Click += Btn_AddOrderDialogCloseCartDialog_Click; ;
-            this.btn_AddOrderDialogCartDialogOrderSaveOrder.Click += Btn_AddOrderDialogCartDialogOrderSaveOrder_Click; ;
+            this.btn_AddOrderDialogCartDialogOrderSaveOrder.Click += Btn_AddOrderDialogCartDialogOrderSaveOrder_Click; 
 
             Total_Price = await SelectedProduct.Calculate_TotalOrderPrice(userName);//מחשב את המחיר הסופי של הקנייה של אותו משתמש 
             this.tv_AddOrderDialogOrderTotalPrice.Text = "מחיר סופי: " + Total_Price.ToString() + "‏₪";
@@ -283,21 +283,24 @@ namespace ShopApp
             {
                 try
                 {
-                    DateTime correct_order_date = DateTime.Now; 
-                    string order_id = await Manager_Order.Add_Order_NonExistUser(this, Total_Price, correct_order_date, et_AddOrderDialogUserNameOfCustomer.Text, false, list_selectedProducts , et_AddOrderDialogCustomerCity.Text , et_AddOrderDialogCustomerAddress.Text  , et_AddOrderDialogCustomerPhone.Text );//שולח את ההזמנה  ומכיוון שצריך ששם המסמך בפייר בייס שמכיל את ההזמנה יהיה השם של הלקוח 
-
-                    if (order_id != null)
+                    if (CheckFields())
                     {
-                        Manager_Order order_check = await Manager_Order.GetOrder(order_id);//במידה וחוזר עצם מסוג הזמנה ההזמנה נשלחה בהצלחה 
-                        if (order_check == null)
-                        {
-                            Toast.MakeText(this, "אירעה שגיאה!!", ToastLength.Long).Show();
-                        }
+                        DateTime correct_order_date = DateTime.Now;
+                        string order_id = await Manager_Order.Add_Order_NonExistUser(this, Total_Price, correct_order_date, et_AddOrderDialogUserNameOfCustomer.Text, false, list_selectedProducts, et_AddOrderDialogCustomerCity.Text, et_AddOrderDialogCustomerAddress.Text, et_AddOrderDialogCustomerPhone.Text ,etAddOrderDialogCustomerCreditCardNumber.Text , etAddOrderDialogCustomerCreditCardDate.Text , etAddOrderDialogCustomerCreditCard_CVV.Text);//שולח את ההזמנה  ומכיוון שצריך ששם המסמך בפייר בייס שמכיל את ההזמנה יהיה השם של הלקוח 
 
-                        else
+                        if (order_id != null)
                         {
-                            Toast.MakeText(this, "!!ההזמנה בוצעה בהצלחה", ToastLength.Long).Show();
-                            Finish();
+                            Manager_Order order_check = await Manager_Order.GetOrder(order_id);//במידה וחוזר עצם מסוג הזמנה ההזמנה נשלחה בהצלחה 
+                            if (order_check == null)
+                            {
+                                Toast.MakeText(this, "אירעה שגיאה!!", ToastLength.Long).Show();
+                            }
+
+                            else
+                            {
+                                Toast.MakeText(this, "!!ההזמנה בוצעה בהצלחה", ToastLength.Long).Show();
+                                Finish();
+                            }
                         }
                     }
                 }
@@ -313,6 +316,96 @@ namespace ShopApp
         private void Btn_AddOrderDialogCloseCartDialog_Click(object sender, EventArgs e)//close the  add order dialog 
         {
             dialogAddProduct.Dismiss();
+        }
+
+
+
+        public bool CheckFields()//check that all the values that enterd by the client are vailds .
+        {
+            if (this.et_AddOrderDialogUserNameOfCustomer.Text.Length < 2)//בודק האם השם קטן משתי תווים
+            {
+                this.et_AddOrderDialogUserNameOfCustomer.SetError("שם קצר מידי !", null);
+                this.et_AddOrderDialogUserNameOfCustomer.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.et_AddOrderDialogUserNameOfCustomer.Text.Any(char.IsDigit))//בודק האם בשם יש רק תווים חוקיים ולא מספרים
+            {
+                this.et_AddOrderDialogUserNameOfCustomer.SetError("אין לרשום מספר בשם!", null);
+                this.et_AddOrderDialogUserNameOfCustomer.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.et_AddOrderDialogUserNameOfCustomer.Text.Length < 4)
+            {
+                this.et_AddOrderDialogUserNameOfCustomer.SetError("אנא הכנס שם לקוח גדול מ4 ספרות", null);
+                this.et_AddOrderDialogUserNameOfCustomer.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.et_AddOrderDialogCustomerPhone.Length() != 10)//בודק אם מספר הספרות שהמשתמש הזין חוקי לכתובת טלפון
+            {
+                this.et_AddOrderDialogCustomerPhone.SetError("מספר ספרות לא חוקי!", null);
+                this.et_AddOrderDialogCustomerPhone.RequestFocus();
+                return false;
+            }
+
+            if (this.et_AddOrderDialogCustomerCity.Text.Any(char.IsDigit))//בודק האם בשם של העיר יש רק תווים חוקיים ולא מספרים
+            {
+                this.et_AddOrderDialogCustomerCity.SetError("אין לרשום מספר בשם עיר !", null);
+                this.et_AddOrderDialogCustomerCity.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.et_AddOrderDialogCustomerCity.Text.Length < 3)
+            {
+                this.et_AddOrderDialogCustomerCity.SetError("אנא הזן שם עיר", null);
+                this.et_AddOrderDialogCustomerCity.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.et_AddOrderDialogCustomerAddress.Text.Length < 3)
+            {
+                this.et_AddOrderDialogCustomerAddress.SetError("אנא הזן כתובת מגורים ", null);
+                this.et_AddOrderDialogCustomerAddress.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.etAddOrderDialogCustomerCreditCardNumber.Text.Length < 6)
+            {
+                this.etAddOrderDialogCustomerCreditCardNumber.SetError("!נא להזין מספר כרטיס אשראי ", null);
+                this.etAddOrderDialogCustomerCreditCardNumber.RequestFocus();
+                return false;
+            }
+
+            if (this.etAddOrderDialogCustomerCreditCard_CVV.Text.Length < 3)
+            {
+                this.etAddOrderDialogCustomerCreditCard_CVV.SetError("!נא להזין CVV ", null);
+                this.etAddOrderDialogCustomerCreditCard_CVV.RequestFocus();
+                return false;
+            }
+
+            if (this.etAddOrderDialogCustomerCreditCardDate.Text.Length < 3)
+            {
+                this.etAddOrderDialogCustomerCreditCardDate.SetError("!נא להזין תוקף כרטיס אשראי ", null);
+                this.etAddOrderDialogCustomerCreditCardDate.RequestFocus();
+                return false;
+            }
+
+
+            return true;
         }
     }
 }

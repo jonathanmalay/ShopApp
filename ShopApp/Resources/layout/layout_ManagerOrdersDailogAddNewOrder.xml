@@ -12,100 +12,144 @@
     >
 
 
-        <EditText
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textColorHint="@color/colorEditTextHint"
-            android:hint= ":שם הלקוח "
-            android:drawableLeft="@drawable/iconusername"
-            android:gravity="center"
-            android:elevation="3dp"
-          
-            android:drawableTint="@color/white"
-            android:background="@drawable/circlebutton"
-            android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerName"
-            />
-
-    
-        <EditText
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textColorHint="@color/colorEditTextHint"
-            android:hint= "@string/phone_number"
-            android:drawableLeft="@drawable/iconphone"
-            android:gravity="center"
-            android:elevation="5dp"
-            android:inputType="phone"
-            android:drawableTint="@color/white"
-            android:background="@drawable/circlebutton"
-            android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerPhone"
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorEditTextHint"
+        android:hint= ":שם הלקוח "
+        android:drawableLeft="@drawable/iconusername"
+        android:gravity="center"
+        android:elevation="3dp"
+        android:drawableTint="@color/white"
+        android:background="@drawable/circlebutton"
+        android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerName"
             />
 
 
-        <EditText
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textColorHint="@color/colorEditTextHint"
-            android:hint= "@string/Address"
-            android:drawableLeft="@drawable/icon_home"
-            android:gravity="center"
-            android:elevation="5dp"
-         
-            android:drawableTint="@color/white"
-            android:background="@drawable/circlebutton"
-            android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerAddress"
-            />
-
-        <EditText
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textColorHint="@color/colorEditTextHint"
-            android:hint= "@string/City"
-            android:drawableLeft="@drawable/iconlocation"
-            android:gravity="center"
-            android:elevation="5dp"
-      
-            android:inputType="text"
-            android:drawableTint="@color/white"
-            android:background="@drawable/circlebutton"
-            android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerCity"
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorEditTextHint"
+        android:hint= "@string/phone_number"
+        android:drawableLeft="@drawable/iconphone"
+        android:gravity="center"
+        android:elevation="5dp"
+        android:inputType="phone"
+        android:drawableTint="@color/white"
+        android:background="@drawable/circlebutton"
+        android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerPhone"
             />
 
 
-        <TextView
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:text= ":מחיר "
-            android:drawableLeft="@drawable/iconsettingpay"
-            android:gravity="center"
-            android:inputType="number"
-            android:elevation="5dp"
-           
-            android:drawableTint="@color/white"
-            android:background="@drawable/circlebutton"
-            android:id="@+id/tv_ManagerOrdersDailogAddNewOrderOrderTotalPrice"
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorEditTextHint"
+        android:hint= "@string/Address"
+        android:drawableLeft="@drawable/icon_home"
+        android:gravity="center"
+        android:elevation="5dp"
+        android:drawableTint="@color/white"
+        android:background="@drawable/circlebutton"
+        android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerAddress"
             />
-    
+
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorEditTextHint"
+        android:hint= "@string/City"
+        android:drawableLeft="@drawable/iconlocation"
+        android:gravity="center"
+        android:elevation="5dp"
+        android:inputType="text"
+        android:drawableTint="@color/white"
+        android:background="@drawable/circlebutton"
+        android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerCity"
+            />
+
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorEditTextHint"
+        android:hint= "מספר כרטיס אשראי"
+        android:drawableLeft="@drawable/icon_creditcard"
+        android:gravity="center"
+        android:elevation="5dp"
+        android:inputType="text"
+        android:drawableTint="@color/white"
+        android:background="@drawable/circlebutton"
+        android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerCreditCardNumber"
+            />
+
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorEditTextHint"
+        android:hint= "תוקף כרטיס אשראי"
+        android:drawableLeft="@drawable/icon_home"
+        android:gravity="center"
+        android:elevation="5dp"
+        android:inputType="text"
+        android:drawableTint="@color/white"
+        android:background="@drawable/circlebutton"
+        android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerCreditCardDate"
+            />
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorEditTextHint"
+        android:hint= "CVV"
+        android:drawableLeft="@drawable/iconsettingpay"
+        android:gravity="center"
+        android:elevation="5dp"
+        android:inputType="number"
+        android:drawableTint="@color/white"
+        android:background="@drawable/circlebutton"
+        android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerCreditCardCVV"
+            />
+
+
+    <TextView
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+        android:text= ":מחיר "
+        android:textStyle="bold"
+        android:gravity="center"
+        android:inputType="number"
+        android:elevation="5dp"
+        android:id="@+id/tv_ManagerOrdersDailogAddNewOrderOrderTotalPrice"
+            />
+
 
     <ListView
         android:layout_width="match_parent"
