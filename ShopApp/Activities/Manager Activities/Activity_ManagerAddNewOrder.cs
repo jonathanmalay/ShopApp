@@ -274,13 +274,12 @@ namespace ShopApp
             pd.Hide();
         }
 
-        private void Btn_AddOrderDialogCartDialogOrderSaveOrder_Click(object sender, EventArgs e)//save the new  order to the database
+        private async void Btn_AddOrderDialogCartDialogOrderSaveOrder_Click(object sender, EventArgs e)//save the new  order to the database
         {
             pd = ProgressDialog.Show(this, "מאמת נתונים", "...אנא המתן", true); 
             pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
             pd.SetCancelable(false);
-            btn_AddOrderDialogCartDialogOrderSaveOrder.Click += async (senderD, eD) =>
-            {
+          
                 try
                 {
                     if (CheckFields())
@@ -308,7 +307,7 @@ namespace ShopApp
                 {
                     Toast.MakeText(this, "!אנא מלא את כל השדות", ToastLength.Long).Show();
                 }
-            };
+          
 
             pd.Hide(); 
         }

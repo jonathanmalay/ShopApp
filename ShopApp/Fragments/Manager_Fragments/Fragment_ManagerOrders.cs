@@ -55,6 +55,12 @@ namespace ShopApp
 
                 this.tv_toolbar_title.Text = "הזמנות";
                 this.orders = await Manager_Order.GetAllOrders();
+
+                this.orders_adapter = new Adapter_ManagerOrders(Activity, orders); //מכניס לתוך האדפטר את הרשימה עם כל ההזמנות של החנות 
+                this.lv_ManagerOrders.Adapter = this.orders_adapter;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
+
+                this.orders_adapter.NotifyDataSetChanged(); //הפעלת המתאם
+
             }
         }
 
@@ -92,7 +98,7 @@ namespace ShopApp
 
             this.lv_ManagerOrders.Adapter = this.orders_adapter;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
 
-            this.orders_adapter.NotifyDataSetChanged(); //הפעלת המתאם
+            this.orders_adapter.NotifyDataSetChanged(); 
             this.pd.Hide();  
             this.lv_ManagerOrders.ItemClick += Lv_ManagerOrders_ItemClick;
             this.fab_add_NewOrder.Click += Fab_add_NewOrder_Click;
