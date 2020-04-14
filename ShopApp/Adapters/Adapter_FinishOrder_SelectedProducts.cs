@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Square.Picasso;
 
 namespace ShopApp
 {
@@ -70,7 +71,7 @@ namespace ShopApp
             TextView tvProductName = convertView.FindViewById<TextView>(Resource.Id.tvSelectedProductInCartName);
             TextView tvAmount = convertView.FindViewById<TextView>(Resource.Id.tvSelectedProductInCartAmount);
             TextView tvProduct_Price = convertView.FindViewById<TextView>(Resource.Id.tvSelectedProductInCartPrice);
-
+            ImageView ivProduct = convertView.FindViewById<ImageView>(Resource.Id.ivSelectedProductInCart); 
             SelectedProduct temp_SelectedProduct = list_selected_products[position];
             Product currentProduct = GetProduct(temp_SelectedProduct.ProductName);
 
@@ -82,6 +83,7 @@ namespace ShopApp
             {
                 tvProduct_Price.Text = "מחיר כולל: " + temp_SelectedProduct.Amount * currentProduct.Price;//מציג את   המחיר של אותו מוצר 
             }
+            Picasso.With(this.activity).Load(currentProduct.ImageUrl).Into(ivProduct); //insert the pphoto to cell (from firbase Storage)
 
             return convertView;
         }

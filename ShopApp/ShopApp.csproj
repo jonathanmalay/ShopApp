@@ -71,6 +71,7 @@
     <Compile Include="Activities\Client Activities\Activity_EditAccuntSetting.cs" />
     <Compile Include="Activities\Client Activities\Activity_FinishOrder.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerAddNewOrder.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerEditAccountDetails.cs" />
     <Compile Include="Fragments\Client_Fragments\Activity_ManagerClientsList.cs" />
     <Compile Include="Adapters\Adapter_ManagerClients.cs" />
     <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerOrders.cs" />
@@ -139,11 +140,11 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FirebaseStorage.net">
-      <Version>1.0.3</Version>
-    </PackageReference>
     <PackageReference Include="Plugin.CloudFirestore">
       <Version>3.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.FirebaseStorage">
+      <Version>2.0.0</Version>
     </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.6.292</Version>

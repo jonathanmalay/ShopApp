@@ -22,10 +22,10 @@
             android:text="Selected Order Cart"
             android:id="@+id/tv_ManagerDialogOrderCartHeader"
             android:textColor="@color/white"
-            
+            android:gravity="center"
             android:layout_gravity="center_vertical"
             android:textStyle="bold"
-            android:layout_weight="0.6"
+            android:layout_weight="0.7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
         <TextView
@@ -42,7 +42,7 @@
             android:textStyle="bold"
             android:layout_gravity="center_vertical"
             android:layout_width="0dp"
-            android:layout_weight="0.3"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
@@ -60,6 +60,7 @@
         android:layout_height="wrap_content"
         android:text=":פרטי אשראי של הלקוח"
         android:layout_gravity="right"
+        android:textDirection="rtl"
         android:textSize="18sp"
         android:textColor="@color/colorAccent"/>
 

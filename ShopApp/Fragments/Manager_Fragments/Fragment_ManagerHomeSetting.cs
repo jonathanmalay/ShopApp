@@ -34,7 +34,7 @@ namespace ShopApp
             return LayoutInflater.Inflate(Resource.Layout.layout_ManagerSettings, container, false);
         }
 
-        public override void OnHiddenChanged(bool hidden)
+        public override void OnHiddenChanged(bool hidden)//whats happen every time that the fragment view again 
         {
             base.OnHiddenChanged(hidden);
             if (hidden == false)
@@ -52,31 +52,30 @@ namespace ShopApp
             base.OnViewCreated(view, savedInstanceState);
 
 
-            this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-            string manager_usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
+            this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
+            string manager_usernameloged = this.sp.GetString("Username", "");
             this.manager = await Manager.GetManager(manager_usernameloged);
             this.tv_toolbar_title = Activity.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.btnEditDetails = view.FindViewById<Button>(Resource.Id.btnManagerSettingEtitdetails);
             this.btnChangePassword = view.FindViewById<Button>(Resource.Id.btnManagerSettingChangePassword);
-            this.btnPaymentMethods = view.FindViewById<Button>(Resource.Id.btnManagerSettingPaymentMethods);
 
             this.tv_toolbar_title.Text = "הגדרות  ";
             this.btnEditDetails.Click += BtnEditDetails_Click;
-            this.btnPaymentMethods.Click += BtnPaymentMethods_Click;
+            
             this.btnChangePassword.Click += (senderD, eD) =>//הקפצת מסך דיאלוג שמכיל לייאוט לשינוי סיסמא
             {
 
                 d = new Dialog(Activity);
 
-                d.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent); //בשביל העיצוב 
+                d.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent); 
                 d.SetContentView(Resource.Layout.layout_ManagerChangePassword); 
                 d.SetTitle("שינוי סיסמה");
                 d.SetCancelable(true);
                 etOldPassword = d.FindViewById<EditText>(Resource.Id.etManagerChangePasswordOldPassword);
                 etNewPassword = d.FindViewById<EditText>(Resource.Id.etManagerChangePasswordNew);
                 etNewPasswordConrife = d.FindViewById<EditText>(Resource.Id.etManagerChangePasswordConrife);
-                this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-                string username = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
+                this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
+                string username = this.sp.GetString("Username", "");
 
                 btnDialogChangePassword = d.FindViewById<Button>(Resource.Id.btnManagerChangePasswordSave);
                 btnDialogChangePassword.Click += BtnDialogChangePassword_Click;
@@ -94,14 +93,10 @@ namespace ShopApp
 
 
 
-        private void BtnPaymentMethods_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void BtnEditDetails_Click(object sender, EventArgs e)
         {
-          
+            Intent intent = new Intent(Activity, typeof(Activity_ManagerEditAccountDetails));
+            this.StartActivity(intent);
         }
 
         private async void BtnDialogChangePassword_Click(object sender, EventArgs e)//save the new manager password 
@@ -110,14 +105,12 @@ namespace ShopApp
             {
 
                 pd = ProgressDialog.Show(Activity, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
-                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
-                pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
+                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+                pd.SetCancelable(false);
 
-                Manager manager;
-                ISharedPreferences sp;
-                
-                this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);//sp הגדרת
-                string manager_usernameloged = this.sp.GetString("Username", "");//לוקח מהשרד רפרנס את השם משתמש
+        
+                this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
+                string manager_usernameloged = this.sp.GetString("Username", "");
 
                 //מתבצעת בדיקה האם הסיסמא הישנה שהמשתמש הזין נכונה. במידה וכן הוא יוכל לשנות סיסמא לסיסמא חדשה.הבדיקה מלוות בהקפצת הודעות בהתאם  
 

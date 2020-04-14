@@ -43,9 +43,9 @@ namespace ShopApp
             Quantity = quantity;
         }
 
-    //    public static async Task<string> Upload_Image()
+        //    public static async Task<string> Upload_Image()
 
-       public static async void AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)//פעולה אשר מוסיפה מוצר 
+        public static async void AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)//פעולה אשר מוסיפה מוצר 
         {
 
             try
@@ -55,11 +55,22 @@ namespace ShopApp
 
                 using (var stream = activity.ContentResolver.OpenInputStream(product_image))
                 {
-                   var task= AppData.FirebaseStorage.Child("Products").Child("image.jpg").PutAsync(stream);//upload the image from the phone to the storage in the server 
-                    task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %"); //for help me to debug 
+                    try
+                    {
+                        await AppData.ProductsStorage.GetChild(product_name).GetChild("image.jpg").PutStreamAsync(stream);
 
-                    // await the task to wait until upload completes and get the download url
-                    imageUrl = await task;
+                        Uri url = await AppData.ProductsStorage.GetChild(product_name).GetChild("image.jpg").GetDownloadUrlAsync();
+                        imageUrl = url.ToString();
+                        //var task = AppData.FirebaseStorage.Child("Products").Child("image.jpg").PutAsync(stream);//upload the image from the phone to the storage in the server 
+                        //task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %"); //for help me to debug 
+
+                        // await the task to wait until upload completes and get the download url
+                        //imageUrl = await task;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                 }
 
                 if (imageUrl == "")
@@ -83,25 +94,25 @@ namespace ShopApp
                 Toast.MakeText(activity, "המוצר הועלה בהצלחה!", ToastLength.Long).Show();
 
             }
-            catch(Exception e)
-            {  
+            catch (Exception e)
+            {
                 Toast.MakeText(activity, "חלה שגיאה, אנא נסה שוב", ToastLength.Long).Show();
             }
 
         }
 
 
-                public static async Task RemoveProduct( Product product)//הפעולה מוחקת את המוצר מהפייר בייס
+        public static async Task RemoveProduct(Product product)//הפעולה מוחקת את המוצר מהפייר בייס
         {
             try
             {
-                await AppData.ProductsStorage.Child(product.Name).DeleteAsync(); // remove the product image from the firebase storage 
+                await AppData.ProductsStorage.GetChild(product.Name).DeleteAsync(); // remove the product image from the firebase storage 
                 await AppData.FireStore.GetCollection("Product").GetDocument(product.Name).DeleteDocumentAsync();//ההסרה של המוצר מהמסד נתונים
             }
 
-            catch(Exception)
+            catch (Exception)
             {
-               
+
             }
         }
 
@@ -121,7 +132,7 @@ namespace ShopApp
 
         }
 
-        
+
 
         public static async Task<List<Product>> GetAllProduct()
         {

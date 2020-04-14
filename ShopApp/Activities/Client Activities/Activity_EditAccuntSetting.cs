@@ -169,7 +169,6 @@ namespace ShopApp
                     this.StartActivity(intentLogin);
                     break;
 
-
                 case Resource.Id.action_register:
 
                     Intent intentRegister = new Intent(this, typeof(RegisterActivity));

@@ -33,7 +33,7 @@
                 
                  />
             <Button
-                android:text="ערוך פרטי משתמש"
+                android:text="ערוך פרטי מנהל"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,27 +41,7 @@
                 android:background="@android:color/transparent"
                 android:id="@+id/btnManagerSettingEtitdetails"/>
         </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:background="@drawable/circlebutton"
-            android:paddingHorizontal="10dp"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/iconsettingpay"/>
-            <Button
-                android:text="ערוך פרטי אשראי"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:background="@android:color/transparent"
-                android:id="@+id/btnManagerSettingPaymentMethods"/>
-        </LinearLayout>
+       
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

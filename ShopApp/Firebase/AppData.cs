@@ -10,19 +10,22 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Firebase;
-using Firebase.Storage;
 using Plugin.CloudFirestore;
+using Plugin.FirebaseStorage;
 
 namespace ShopApp
 {
     class AppData
     {
         public static AppData appData { get; set; }
-        public static FirebaseStorage FirebaseStorage;
-        public static FirebaseStorageReference ProductsStorage;
+        //public static FirebaseStorage FirebaseStorage;
+        //public static FirebaseStorageReference ProductsStorage;
+        public static IStorage FirebaseStorage;
+        public static IStorageReference ProductsStorage;
+
 
         public static IFirestore FireStore { get; set; }
-        public static ICollectionReference usersCollection, paymentCollection, productCollection, cartCollection, orders_historyCollection,managersCollection , manager_ordersCollection;
+        public static ICollectionReference usersCollection, shopCollection ,  paymentCollection, productCollection, cartCollection, orders_historyCollection,managersCollection , manager_ordersCollection;
         private AppData(Activity activity)
         { 
             FirebaseOptions options = new FirebaseOptions.Builder()//מגדיר את הנתונים של הפיירבייס שלי כדי שאוכל להתחבר אליו וליצור תקשורת 
@@ -39,12 +42,14 @@ namespace ShopApp
             paymentCollection = FireStore.GetCollection("Payment");
             productCollection = FireStore.GetCollection("Product");
             cartCollection = FireStore.GetCollection("Cart");
+            shopCollection = FireStore.GetCollection("Shop");
             orders_historyCollection = FireStore.GetCollection("OrdersHistory");
             managersCollection = FireStore.GetCollection("Managers");
             manager_ordersCollection = FireStore.GetCollection("ManagerOrders");
-            FirebaseStorage = new FirebaseStorage("bagrutproject-dbe7a.appspot.com");
-            ProductsStorage = FirebaseStorage.Child("Products");
+       
 
+            FirebaseStorage = CrossFirebaseStorage.Current.Instance;
+            ProductsStorage = FirebaseStorage.RootReference.GetChild("ProductsNew");
         }
 
 

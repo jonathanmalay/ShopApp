@@ -12,6 +12,10 @@ using Android.Provider;
 using Android.Widget;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using Android.Support.V4.Content;
+using Android;
+using Android.Support.V4.App;
+using Android.Content.PM;
 
 namespace ShopApp
 {
@@ -49,6 +53,8 @@ namespace ShopApp
             this.spiner_type = FindViewById<Spinner>(Resource.Id.spinnerManagerAddProduct);
 
 
+
+
             this.btn_Add_New_Product.Click += Btn_Add_New_Product_ClickAsync;
             this.btn_Pick_Product_Image.Click += Btn_Pick_Product_Image_Click;
 
@@ -80,6 +86,16 @@ namespace ShopApp
 
 
             this.DownloadImage_Brodcast_Receiver = new ImageBrodcastReceiver(this, this.iv_Dialog_Image);
+
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) != Permission.Granted || ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != Permission.Granted)
+            {
+                string[] permissions = new string[2];
+                permissions[0] = Manifest.Permission.ReadExternalStorage;
+                permissions[1] = Manifest.Permission.WriteExternalStorage;
+
+                ActivityCompat.RequestPermissions(this, permissions, 1000);
+            }
         }
 
         private void Spiner_type_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -214,7 +230,20 @@ namespace ShopApp
             }
         }
 
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
+            if(requestCode == 1000)
+            {
+                if(grantResults[0] == Permission.Denied || grantResults[0] == Permission.Denied)
+                {
+                    Toast.MakeText(this, "אנא אפשר גישה כדי להעלות מוצר לחנות", ToastLength.Long).Show();
+                    Finish();
+                    return;
+                }
+            }
+        }
 
     }
 }

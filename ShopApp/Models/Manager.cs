@@ -141,5 +141,10 @@ namespace ShopApp
 
         }
 
+        public static async Task<string> GetShopPhone()
+        {
+            IDocumentSnapshot document =  await AppData.shopCollection.GetDocument("Details").GetDocumentAsync();
+            return document.Data["Phone"].ToString(); 
+        }
     }
 }

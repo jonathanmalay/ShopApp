@@ -56,15 +56,20 @@ namespace ShopApp
 
 
 
-        private void BtnContectUs_Click(object sender, EventArgs e) //call to the shop  
+        private async void BtnContectUs_Click(object sender, EventArgs e) //call to the shop  
         {
             try
             {
+
+
+                string shop_phone = await Manager.GetShopPhone();
+                
                 Intent intent = new Intent();
 
                 intent.SetAction(Intent.ActionDial);
 
-                Android.Net.Uri data = Android.Net.Uri.Parse("tel:" + "053-8285819"); 
+
+                Android.Net.Uri data = Android.Net.Uri.Parse("tel:" + shop_phone); 
 
                 intent.SetData(data);
 

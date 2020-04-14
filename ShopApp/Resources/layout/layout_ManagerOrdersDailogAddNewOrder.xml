@@ -16,7 +16,7 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.075"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textColorHint="@color/colorEditTextHint"
@@ -34,8 +34,9 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.075"
         android:layout_gravity="center"
+        android:maxLength="10"
         android:textColor="@color/white"
         android:textColorHint="@color/colorEditTextHint"
         android:hint= "@string/phone_number"
@@ -53,7 +54,7 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.075"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textColorHint="@color/colorEditTextHint"
@@ -70,7 +71,7 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.075"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textColorHint="@color/colorEditTextHint"
@@ -87,7 +88,8 @@
     <EditText
         android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.075"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textColorHint="@color/colorEditTextHint"
@@ -104,7 +106,8 @@
     <EditText
         android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.075"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textColorHint="@color/colorEditTextHint"
@@ -120,7 +123,9 @@
     <EditText
         android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+                android:layout_weight="0.075"
+
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textColorHint="@color/colorEditTextHint"
@@ -129,6 +134,7 @@
         android:gravity="center"
         android:elevation="5dp"
         android:inputType="number"
+        android:maxLength="3"
         android:drawableTint="@color/white"
         android:background="@drawable/circlebutton"
         android:id="@+id/et_ManagerOrdersDailogAddNewOrderCustomerCreditCardCVV"
@@ -139,7 +145,7 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.075"
         android:layout_gravity="center"
         android:textColor="@color/colorAccent"
         android:text= ":מחיר "
@@ -162,10 +168,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:weightSum="2"
         android:orientation="horizontal"
-        android:layout_weight="0.2">
+        >
 
         <Button
             android:id="@+id/btn_ManagerOrdersDailogAddNewOrderClose"
