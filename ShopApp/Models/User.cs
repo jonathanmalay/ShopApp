@@ -125,12 +125,23 @@ namespace ShopApp
 
 
 
-        public static async void ChangeUserDetails(string username, string email,  string phoneNumber, string fullName, string city, string streetAddress)
+        public static async void ChangeUserDetails(string old_username , string email,  string phoneNumber, string fullName, string city, string streetAddress)
         {
-            await AppData.FireStore.GetCollection("Users").GetDocument(username).UpdateDataAsync("FullName", fullName ,"PhoneNum",phoneNumber,
-                "Email",email , "City", city , "StreetAddress",streetAddress); //מעדכן את הפרטים של המשתמש על פי הערכים שהכניס בשדות
+            try
+            {
 
+                await AppData.FireStore.GetCollection("Users").GetDocument(old_username).UpdateDataAsync("FullName", fullName, "PhoneNum", phoneNumber,
+                    "Email", email, "City", city, "StreetAddress", streetAddress , "Username" , old_username); //מעדכן את הפרטים של המשתמש על פי הערכים שהכניס בשדות
+                //we needs to update all the documents in the  collections that  contain that old use3r name and to update the sherd preference 
+                //IDocumentSnapshot document_user_cartCollection  =  await AppData.cartCollection.GetDocument(old_username).GetDocumentAsync();
+                // IDocumentSnapshot document_user_PaymentCollection = await AppData.paymentCollection.GetDocument(old_username).GetDocumentAsync();
+                // IDocumentSnapshot document_user_userscollection = await AppData.usersCollection.GetDocument(old_username).GetDocumentAsync();  
+            }
 
+            catch (Exception)
+            {
+
+            }
         }
 
 

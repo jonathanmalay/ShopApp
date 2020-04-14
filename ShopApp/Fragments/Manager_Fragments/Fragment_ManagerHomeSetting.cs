@@ -25,7 +25,11 @@ namespace ShopApp
         ProgressDialog pd;
         Dialog d;
 
-
+        //Dialog edit acount Details
+        Dialog dialogEditAccountDetails;
+        Button btnDialogUpdateDetails;
+        EditText  et_ShopPhoneNumber;
+        TextView tv_ManagerUsername; 
 
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -86,18 +90,67 @@ namespace ShopApp
 
             };
 
-
+            CreateDialogEditAccountDetails(); 
         }
 
 
-
-
-
-        private void BtnEditDetails_Click(object sender, EventArgs e)
+        public async void CreateDialogEditAccountDetails() //create the dialog 
         {
-            Intent intent = new Intent(Activity, typeof(Activity_ManagerEditAccountDetails));
-            this.StartActivity(intent);
+            try
+            {
+                dialogEditAccountDetails = new Dialog(Activity);
+
+                dialogEditAccountDetails.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
+                dialogEditAccountDetails.SetContentView(Resource.Layout.dialog_ManagerEditAccuntSetting);
+                dialogEditAccountDetails.SetTitle("פרטי חנות");
+                dialogEditAccountDetails.SetCancelable(true);
+                tv_ManagerUsername = dialogEditAccountDetails.FindViewById<TextView>(Resource.Id.tvManagerDialogEditDetailsUsername);
+                et_ShopPhoneNumber = dialogEditAccountDetails.FindViewById<EditText>(Resource.Id.etManagerDialogEditDetailsShopPhoneNumber);
+               
+   
+                this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
+               
+                this.tv_ManagerUsername.Text = this.sp.GetString("Username", ""); 
+                this.et_ShopPhoneNumber.Text = await Manager.GetShopPhone(); 
+
+                btnDialogUpdateDetails = dialogEditAccountDetails.FindViewById<Button>(Resource.Id.btnManagerChangePasswordSave);
+                btnDialogUpdateDetails.Click += BtnDialogUpdateDetails_Click;
+            }
+
+            catch(Exception)
+            {
+
+            }
         }
+
+
+        private async void BtnDialogUpdateDetails_Click(object sender, EventArgs e)//Update the Manager username and the shop phone number
+        {
+            pd = ProgressDialog.Show(Activity, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
+            pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+            pd.SetCancelable(false);
+
+            try
+            {
+                if(CheckFields())
+                {
+                    await Manager.UpdateManagerUserName( Activity ,tv_ManagerUsername.Text , this.sp.GetString("Username", "") );
+                    await Manager.UpdateShopPhone(et_ShopPhoneNumber.Text); 
+                }
+            }
+            catch(Exception)
+            {
+
+            }
+
+        }
+
+        private void BtnEditDetails_Click(object sender, EventArgs e)//make the edit details dialog visibale
+        {
+
+            dialogEditAccountDetails.Show(); 
+        }
+
 
         private async void BtnDialogChangePassword_Click(object sender, EventArgs e)//save the new manager password 
         {
@@ -167,9 +220,50 @@ namespace ShopApp
                 pd.Cancel();
 
             }
-
-
-
         }
+
+
+
+        public bool CheckFields() // cheack if the values that the manager enterded are vaildes  
+        {
+
+            if (this.tv_ManagerUsername.Text.Length < 2)//בודק האם השם קטן משתי תווים
+            {
+                this.tv_ManagerUsername.SetError("שם קצר מידי !", null);
+                this.tv_ManagerUsername.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.tv_ManagerUsername.Text.Any(char.IsDigit))//בודק האם בשם יש רק תווים חוקיים ולא מספרים
+            {
+                this.tv_ManagerUsername.SetError("אין לרשום מספר בשם!", null);
+                this.tv_ManagerUsername.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.tv_ManagerUsername.Text.Length < 4)
+            {
+                this.tv_ManagerUsername.SetError("אנא הכנס שם משתמש גדול מ4 ספרות", null);
+                this.tv_ManagerUsername.RequestFocus();
+
+                return false;
+            }
+
+
+            if (this.et_ShopPhoneNumber.Length() != 10)//בודק אם מספר הספרות שהמשתמש הזין חוקי לכתובת טלפון
+            {
+                this.et_ShopPhoneNumber.SetError("מספר ספרות לא חוקי!", null);
+                this.et_ShopPhoneNumber.RequestFocus();
+                return false;
+            }
+
+            return true; 
+        }
+
+
     }
 }

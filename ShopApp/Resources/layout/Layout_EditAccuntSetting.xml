@@ -34,8 +34,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="40dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/edittextbackground">
 
@@ -43,14 +42,17 @@
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/iconusername" />
-            <EditText
+            <TextView
                 android:hint="@string/enter_username"
                 android:textColorHint="@color/colorEditTextHint"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/etEditAccuntSettingUsername" />
+                android:id="@+id/tv_EditAccuntSettingUsername" />
         </LinearLayout>
 
 

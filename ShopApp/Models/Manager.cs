@@ -146,5 +146,23 @@ namespace ShopApp
             IDocumentSnapshot document =  await AppData.shopCollection.GetDocument("Details").GetDocumentAsync();
             return document.Data["Phone"].ToString(); 
         }
+        
+        public static async Task UpdateShopPhone(string new_shop_phoneNumber)//update the shop phone number 
+        {
+            await AppData.managersCollection.GetDocument("Details").UpdateDataAsync("GetShopPhone", new_shop_phoneNumber);
+        }
+
+        public static async Task UpdateManagerUserName(Activity activity,string new_manager_username , string old_username) // update the manager username 
+        {
+            try
+            {
+                await AppData.managersCollection.GetDocument(old_username).UpdateDataAsync("Username" , new_manager_username);
+            }
+
+            catch(Exception)
+            {
+
+            }
+        }
     }
 }

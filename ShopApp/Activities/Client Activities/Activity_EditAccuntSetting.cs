@@ -15,11 +15,13 @@ namespace ShopApp
     [Activity(Label = "Activity_EditAccuntSetting")]
     public class Activity_EditAccuntSetting : Activity
     {
-        TextView tv_toolbar_title;
-        EditText etEditFullName, etEditPhoneNumber, etEditCity ,etEditStreetAddress , etEditEmail, etEditUsername;
+        TextView tv_toolbar_title , tv_Username;
+        EditText etEditFullName, etEditPhoneNumber, etEditCity ,etEditStreetAddress , etEditEmail;
         Button btnSaveDetails, btn_backPage;
         ISharedPreferences sp; 
-        ImageButton btn_toolbar_menu; 
+        ImageButton btn_toolbar_menu;
+        string usernameloged;
+        User user;
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,7 +30,7 @@ namespace ShopApp
             this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "פרטי משתמש";
             this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu); 
-            this.etEditUsername = FindViewById<EditText>(Resource.Id.etEditAccuntSettingUsername);
+            this.tv_Username = FindViewById<TextView>(Resource.Id.tv_EditAccuntSettingUsername);
             this.etEditFullName = FindViewById<EditText>(Resource.Id.etEditAccuntSettingFullName);
             this.etEditPhoneNumber = FindViewById<EditText>(Resource.Id.etEditAccuntSettingPhoneNumber);
             this.etEditEmail = FindViewById<EditText>(Resource.Id.etEditAccuntSettingEmail);
@@ -39,11 +41,11 @@ namespace ShopApp
 
 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
-            string usernameloged = this.sp.GetString("Username", "");
+             usernameloged = this.sp.GetString("Username", "");
 
-            User user = await User.GetUser(usernameloged);
+             user = await User.GetUser(usernameloged);
 
-            this.etEditUsername.Text = user.Username;
+            this.tv_Username.Text = user.Username;
             this.etEditFullName.Text = user.FullName;
             this.etEditPhoneNumber.Text = user.PhoneNum;
             this.etEditStreetAddress.Text = user.StreetAddress;
@@ -79,8 +81,9 @@ namespace ShopApp
             {
                 string fullName = this.etEditFullName.Text;
                 string phoneNumber = this.etEditPhoneNumber.Text;
-                string userName = this.etEditUsername.Text;
+                //string userName = this.tv_Username.Text;
                 string email = this.etEditEmail.Text;
+                
                 string city = this.etEditCity.Text;
                 string streetAddress = this.etEditStreetAddress.Text;
 
@@ -90,8 +93,8 @@ namespace ShopApp
                     return; //לא ממשיך בפעולה
                 }
 
-                User.ChangeUserDetails(userName, email, phoneNumber, fullName, city, streetAddress);
-                //מוסיף משתמש חדש 
+                User.ChangeUserDetails(usernameloged, email, phoneNumber, fullName, city, streetAddress);
+                // מעדכן את פרטי המשתמש החדשים 
             }
 
             catch (Exception)

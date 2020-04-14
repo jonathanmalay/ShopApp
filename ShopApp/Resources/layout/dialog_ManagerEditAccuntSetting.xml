@@ -1,0 +1,110 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/circlelayout"
+    android:layout_height="match_parent">
+
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingHorizontal="60dp"
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/circlelayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text=" שם משתמש מנהל"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="right"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/edittextbackground">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconusername" />
+            <TextView
+                android:hint="@string/enter_username"
+                android:textColorHint="@color/colorEditTextHint"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvManagerDialogEditDetailsUsername" />
+        </LinearLayout>
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="טלפון החנות"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:layout_gravity="right"/>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/edittextbackground">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/iconphone"/>
+
+            <EditText
+                android:hint="@string/phone_number"
+                android:textColorHint="@color/colorEditTextHint"
+                android:inputType="phone"
+                android:gravity="right"
+                android:maxLength="10"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etManagerDialogEditDetailsShopPhoneNumber" />
+        </LinearLayout>
+
+
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/circlebutton"
+            android:text="@string/save"
+            android:textColor="@color/colorEditTextHint"
+            android:textStyle="bold"
+            android:id="@+id/btnManagerEditAccuntSettingConrifeEdit"/>
+    </LinearLayout>
+
+</LinearLayout>
