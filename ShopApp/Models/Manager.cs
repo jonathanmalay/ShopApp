@@ -147,9 +147,20 @@ namespace ShopApp
             return document.Data["Phone"].ToString(); 
         }
         
-        public static async Task UpdateShopPhone(string new_shop_phoneNumber)//update the shop phone number 
+        public static async Task UpdateShopPhone(Activity activity , string new_shop_phoneNumber)//update the shop phone number 
         {
-            await AppData.managersCollection.GetDocument("Details").UpdateDataAsync("GetShopPhone", new_shop_phoneNumber);
+            try
+            {
+
+                await AppData.shopCollection.GetDocument("Details").UpdateDataAsync("Phone", new_shop_phoneNumber);
+                Toast.MakeText(activity, "!!מספר הטלפון החדש עודכן בהצלחה  ", ToastLength.Long).Show();
+
+            }
+            catch (Exception)
+            {
+                Toast.MakeText(activity, " אירעה שגיאה , אנא בדוק את החיבור לרשת האינטרנט ", ToastLength.Long).Show();
+
+            }
         }
 
         public static async Task UpdateManagerUserName(Activity activity,string new_manager_username , string old_username) // update the manager username 

@@ -134,8 +134,7 @@ namespace ShopApp
 
         private void Btn_save_changes_Click(object sender, EventArgs e)
         {
-            //save the product after all the changes
-
+            
             try
             {
                 pd = ProgressDialog.Show(Activity, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....

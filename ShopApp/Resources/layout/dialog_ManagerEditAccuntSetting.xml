@@ -96,8 +96,9 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp"
+            android:paddingHorizontal="15dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/circlebutton"

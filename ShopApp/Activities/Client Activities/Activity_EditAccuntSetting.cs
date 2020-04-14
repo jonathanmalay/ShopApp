@@ -95,6 +95,8 @@ namespace ShopApp
 
                 User.ChangeUserDetails(usernameloged, email, phoneNumber, fullName, city, streetAddress);
                 // מעדכן את פרטי המשתמש החדשים 
+                Toast.MakeText(this, "!!פרטי המשתמש החדשים עודכנו בהצלחה ", ToastLength.Long).Show();
+
             }
 
             catch (Exception)
@@ -126,7 +128,7 @@ namespace ShopApp
             }
 
 
-            if (this.etEditPhoneNumber.Length() != 9)//בודק אם מספר הספרות שהמשתמש הזין חוקי לכתובת טלפון
+            if (this.etEditPhoneNumber.Length() != 10)//בודק אם מספר הספרות שהמשתמש הזין חוקי לכתובת טלפון
             {
                 this.etEditPhoneNumber.SetError("מספר ספרות לא חוקי!", null);
                 this.etEditPhoneNumber.RequestFocus();

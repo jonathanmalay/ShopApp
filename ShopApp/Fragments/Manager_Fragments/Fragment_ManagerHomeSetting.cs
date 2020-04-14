@@ -83,12 +83,9 @@ namespace ShopApp
 
                 btnDialogChangePassword = d.FindViewById<Button>(Resource.Id.btnManagerChangePasswordSave);
                 btnDialogChangePassword.Click += BtnDialogChangePassword_Click;
-
-
                 d.Show();
-
-
             };
+
 
             CreateDialogEditAccountDetails(); 
         }
@@ -106,14 +103,13 @@ namespace ShopApp
                 dialogEditAccountDetails.SetCancelable(true);
                 tv_ManagerUsername = dialogEditAccountDetails.FindViewById<TextView>(Resource.Id.tvManagerDialogEditDetailsUsername);
                 et_ShopPhoneNumber = dialogEditAccountDetails.FindViewById<EditText>(Resource.Id.etManagerDialogEditDetailsShopPhoneNumber);
-               
+                btnDialogUpdateDetails = dialogEditAccountDetails.FindViewById<Button>(Resource.Id.btnManagerEditAccuntSettingConrifeEdit);
    
                 this.sp = Context.GetSharedPreferences("details", FileCreationMode.Private);
                
                 this.tv_ManagerUsername.Text = this.sp.GetString("Username", ""); 
                 this.et_ShopPhoneNumber.Text = await Manager.GetShopPhone(); 
 
-                btnDialogUpdateDetails = dialogEditAccountDetails.FindViewById<Button>(Resource.Id.btnManagerChangePasswordSave);
                 btnDialogUpdateDetails.Click += BtnDialogUpdateDetails_Click;
             }
 
@@ -124,7 +120,7 @@ namespace ShopApp
         }
 
 
-        private async void BtnDialogUpdateDetails_Click(object sender, EventArgs e)//Update the Manager username and the shop phone number
+        private async void BtnDialogUpdateDetails_Click(object sender, EventArgs e)//Update the  shop phone number
         {
             pd = ProgressDialog.Show(Activity, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
             pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
@@ -134,14 +130,16 @@ namespace ShopApp
             {
                 if(CheckFields())
                 {
-                    await Manager.UpdateManagerUserName( Activity ,tv_ManagerUsername.Text , this.sp.GetString("Username", "") );
-                    await Manager.UpdateShopPhone(et_ShopPhoneNumber.Text); 
+                    await Manager.UpdateShopPhone(Activity ,et_ShopPhoneNumber.Text);
+
                 }
             }
             catch(Exception)
             {
+                Toast.MakeText(Activity, "אירעה שגיאה אנא בדוק את החיבור לרשת האינטרנט ", ToastLength.Long).Show();
 
             }
+            pd.Hide(); 
 
         }
 
@@ -226,32 +224,6 @@ namespace ShopApp
 
         public bool CheckFields() // cheack if the values that the manager enterded are vaildes  
         {
-
-            if (this.tv_ManagerUsername.Text.Length < 2)//בודק האם השם קטן משתי תווים
-            {
-                this.tv_ManagerUsername.SetError("שם קצר מידי !", null);
-                this.tv_ManagerUsername.RequestFocus();
-
-                return false;
-            }
-
-
-            if (this.tv_ManagerUsername.Text.Any(char.IsDigit))//בודק האם בשם יש רק תווים חוקיים ולא מספרים
-            {
-                this.tv_ManagerUsername.SetError("אין לרשום מספר בשם!", null);
-                this.tv_ManagerUsername.RequestFocus();
-
-                return false;
-            }
-
-
-            if (this.tv_ManagerUsername.Text.Length < 4)
-            {
-                this.tv_ManagerUsername.SetError("אנא הכנס שם משתמש גדול מ4 ספרות", null);
-                this.tv_ManagerUsername.RequestFocus();
-
-                return false;
-            }
 
 
             if (this.et_ShopPhoneNumber.Length() != 10)//בודק אם מספר הספרות שהמשתמש הזין חוקי לכתובת טלפון
