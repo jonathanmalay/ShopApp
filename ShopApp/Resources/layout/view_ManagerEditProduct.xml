@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical"
@@ -24,92 +24,149 @@
         android:textStyle="bold"
 
             />
-  
 
-        <EditText
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
-            android:hint= "שם המוצר"
-            android:gravity="center"
-            android:id="@+id/et_ManagerEditProductDialogProductName"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="שם המוצר "
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:layout_gravity="right"
+        android:layout_marginHorizontal="10dp"
+        
+        />
+
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:hint= "שם המוצר"
+        android:gravity="center"
+        android:layout_marginHorizontal="15dp"
+        android:id="@+id/et_ManagerEditProductDialogProductName"
             />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="מחיר המוצר"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:layout_gravity="right"
+        android:layout_marginHorizontal="10dp"
+        
+        />
+
+
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:hint= "מחיר"
+        android:inputType="number"
+        android:gravity="center"
+        android:id="@+id/et_ManagerEditProductDialogProductPrice"
+            />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="כמות במארז"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:layout_gravity="right"
+        android:layout_marginHorizontal="10dp"
+        
+        />
+
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:hint= "כמות במארז"
+        android:inputType="number"
+        android:gravity="center"
+        android:id="@+id/et_ManagerEditProductDialogProductQuantity"
+            />
 
     
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="קוד המוצר"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:layout_gravity="right"
+        android:layout_marginHorizontal="10dp"
+        
+        />
 
-        <EditText
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
-            android:hint= "מחיר"
-            android:inputType="number"
-            android:gravity="center"
-            android:id="@+id/et_ManagerEditProductDialogProductPrice"
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:hint= "קוד מוצר "
+        android:inputType="number"
+        android:gravity="center"
+        android:id="@+id/et_ManagerEditProductDialogProductCode"
             />
 
-     <EditText
-            android:layout_margin="5dp"
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:text="תמונת מוצר"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
-            android:hint= "כמות במארז"
-            android:inputType="number"
-            android:gravity="center"
-            android:id="@+id/et_ManagerEditProductDialogProductQuantity"
             />
-    
-   
+
         <LinearLayout
-            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:text="תמונת מוצר"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-            />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
+            android:orientation="horizontal"
+            android:weightSum="1"
                 >
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="0.7"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/circlebutton"
-                    android:text="בחר תמונה"
-                    android:textSize="18sp"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:id="@+id/btn_dialog_edit_product_ChooseImage"
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circlebutton"
+                android:text="בחר תמונה"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:id="@+id/btn_Managerdialog_edit_product_ChooseImage"
                     />
-                <ImageView
-                    android:src="@drawable/icon_home"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.3"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    android:id="@+id/iv_dialog_edit_product_image"
+            <ImageView
+                android:src="@drawable/icon_home"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:id="@+id/iv_dialog_edit_product_image"
                     />
-            </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
 
     <LinearLayout
@@ -123,7 +180,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/circlebutton"
-           
             android:elevation="3dp"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -138,7 +194,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/circlebutton"
-            
             android:elevation="3dp"
             android:layout_gravity="center"
             android:layout_weight="1"

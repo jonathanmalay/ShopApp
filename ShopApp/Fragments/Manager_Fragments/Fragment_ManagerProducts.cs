@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Android;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
+using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
+using Android.Provider;
 using Android.Runtime;
 using Android.Support.Design.Widget;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Square.Picasso;
 
 namespace ShopApp
 {
@@ -38,10 +45,12 @@ namespace ShopApp
         EditText et_DialogEditProduct_ProductPrice;
         EditText et_DialogEditProduct_productName;
         EditText et_DialogEditProduct_productQuantity;
+        EditText et_DialogEditProduct_productCode;
         ImageView iv_DialogEditProduct_ProductImage;
+        Button btn_DialogEditProduct_PickImage; 
         Android.Net.Uri product_image_uri;
 
-        
+        public ImageBrodcastReceiver DownloadImage_Brodcast_Receiver { get; private set; }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -83,7 +92,19 @@ namespace ShopApp
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
             this.gridview_products.ItemClick += GridViewProducts_ItemClick; 
             this.fab_add_NewProduct.Click += Fab_add_NewProduct_Click;
-           
+
+            this.DownloadImage_Brodcast_Receiver = new ImageBrodcastReceiver(Activity, this.iv_DialogEditProduct_ProductImage);
+
+
+            if (ContextCompat.CheckSelfPermission(Activity, Manifest.Permission.ReadExternalStorage) != Permission.Granted || ContextCompat.CheckSelfPermission(Activity, Manifest.Permission.WriteExternalStorage) != Permission.Granted)
+            {
+                string[] permissions = new string[2];
+                permissions[0] = Manifest.Permission.ReadExternalStorage;
+                permissions[1] = Manifest.Permission.WriteExternalStorage;
+
+                ActivityCompat.RequestPermissions(Activity, permissions, 1000);
+            }
+
         }
 
         
@@ -105,7 +126,9 @@ namespace ShopApp
             et_DialogEditProduct_productName.Text = this.selected_product.Name;
             et_DialogEditProduct_ProductPrice.Text = this.selected_product.Price.ToString();
             et_DialogEditProduct_productQuantity.Text = this.selected_product.Quantity.ToString();
-            
+            et_DialogEditProduct_productCode.Text = this.selected_product.ProductId.ToString();
+
+            Picasso.With(Activity).Load(this.selected_product.ImageUrl).Into(iv_DialogEditProduct_ProductImage); //insert the pphoto to cell (from firbase Storage)
             dialogEditProduct.Show(); //מפעיל את הדיאלוג
         }
 
@@ -123,13 +146,23 @@ namespace ShopApp
             tv_DialogEditProduct_ProductName = dialogEditProduct.FindViewById<TextView>(Resource.Id.tv_manager_dialog_editProduct_ProductName);
             et_DialogEditProduct_productName = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductName);
             et_DialogEditProduct_ProductPrice = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductPrice);
+            et_DialogEditProduct_productCode = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductCode);
             et_DialogEditProduct_productQuantity = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductQuantity);
             btn_DialogEditProduct_save_changes = dialogEditProduct.FindViewById<Button>(Resource.Id.btn_ManagerEditProductDialogSave); //כפתור שמירת המוצר לאחר השינוים שביצע המנהל
             btn_DialogEditProduct_remove_product = dialogEditProduct.FindViewById<Button>(Resource.Id.btn_ManagerEditProductDialogDeleteProduct); //כפתור ההסרה של מוצר
-
+            btn_DialogEditProduct_PickImage = dialogEditProduct.FindViewById<Button>(Resource.Id.btn_Managerdialog_edit_product_ChooseImage); 
+            iv_DialogEditProduct_ProductImage = dialogEditProduct.FindViewById<ImageView>(Resource.Id.iv_dialog_edit_product_image);
+            
             btn_DialogEditProduct_remove_product.Click += Btn_remove_product_Click;
             btn_DialogEditProduct_save_changes.Click += Btn_save_changes_Click;
+            btn_DialogEditProduct_PickImage.Click += Btn_DialogEditProduct_PickImage_Click;
+        }
 
+        private void Btn_DialogEditProduct_PickImage_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(Intent.ActionGetContent);
+            intent.SetType("image/*");
+            StartActivityForResult(intent, 200);
         }
 
         private void Btn_save_changes_Click(object sender, EventArgs e)
@@ -146,10 +179,9 @@ namespace ShopApp
                 {
                     selected_product.Price = int.Parse(et_DialogEditProduct_ProductPrice.Text);//המרה של מחרוזת למספר
                     selected_product.Quantity = int.Parse(et_DialogEditProduct_productQuantity.Text);//המרה של המחרוזת למספר
-                    
+                    selected_product.ProductId = int.Parse(et_DialogEditProduct_productCode.Text);
 
-                    BitmapDrawable bitmap_drawable = ((BitmapDrawable)iv_DialogEditProduct_ProductImage.Drawable);
-                  //  Bitmap product_Image = bitmap_drawable.Bitmap; //תמונת המוצר
+
                     if (product_image_uri == null)//if the uri(the link to the place of the image in the phone files) is null end the method
                     {
                         Toast.MakeText(Activity, "ישנה שגיאה נסה שנית", ToastLength.Short).Show();
@@ -167,6 +199,7 @@ namespace ShopApp
                     return; 
 
                 }
+               
             }
 
             catch (Exception)
@@ -192,9 +225,7 @@ namespace ShopApp
                 //נבדוק עם לאחר ההסרה של המוצר יחזור נאל ממסד הנתונים משמע שהמוצר הוסר בהצלחה
                 if (check_product == null)
                 {
-
                     Toast.MakeText(Activity, "הפריט הוסר בהצלחה (:", ToastLength.Long).Show();
-
                 }
 
                 else
@@ -216,16 +247,49 @@ namespace ShopApp
 
 
 
-        //public void CreateDialogAddProduct(Activity activity)//הוספת מוצר חדש 
-        //{
-        //    dialogAddProduct = new Dialog(Activity);
-        //    dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-        //    dialogAddProduct.SetContentView(Resource.Layout.layout_ManagerAddProduct);
-        //    dialogAddProduct.SetTitle("הוספת מוצר");
-        //    dialogAddProduct.SetCancelable(true);
 
+       public override void OnActivityResult(int requestCode, int resultCode, Intent data)//כאשר חוזרים מהגלריה
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
 
-        //}
+            if (requestCode == 200)
+            {
+                if (resultCode == int.Parse(Result.Ok.ToString()))
+                {
+                    if (data != null)//בודק שבאמת קיבלתי תמונה
+                    {
+                        product_image_uri = data.Data;//מביא את המיקום של התמונה(הקישור) 
+                        Bitmap Bitmap_Image = MediaStore.Images.Media.GetBitmap(Activity.ContentResolver, product_image_uri);//מביא את התמונה באמצעות הקישור
+
+                        if (Bitmap_Image != null)
+                        {
+                            this.iv_DialogEditProduct_ProductImage.SetImageBitmap(Bitmap_Image);
+                        }
+                        else
+                        {
+                            Toast.MakeText(Activity, "ישנה שגיאה נסה שנית", ToastLength.Short).Show();
+                        }
+                    }
+
+                }
+            }
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            if (requestCode == 1000)
+            {
+                if (grantResults[0] == Permission.Denied || grantResults[0] == Permission.Denied)
+                {
+                    Toast.MakeText(Activity, "אנא אפשר גישה כדי להעלות מוצר לחנות", ToastLength.Long).Show();
+                    Activity.Finish();
+                    return;
+                }
+            }
+        }
+
 
     }
 }
