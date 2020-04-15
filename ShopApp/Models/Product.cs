@@ -45,7 +45,7 @@ namespace ShopApp
 
         //    public static async Task<string> Upload_Image()
 
-        public static async void AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)//פעולה אשר מוסיפה מוצר 
+        public static async Task<bool> AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)//פעולה אשר מוסיפה מוצר 
         {
 
             try
@@ -70,6 +70,7 @@ namespace ShopApp
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
+                        return false;
                     }
                 }
 
@@ -77,6 +78,7 @@ namespace ShopApp
                 {
                     Toast.MakeText(activity, "קיימת בעיה בתמונה, אנא נסה שוב", ToastLength.Long).Show();
                     imageUrl = "";
+                    return false; 
                 }
 
 
@@ -90,13 +92,14 @@ namespace ShopApp
 
                 await AppData.productCollection.GetDocument(product_name).SetDataAsync(p);//מוסיף לפיירבייס מסמך בפרודוקט קולקשיין עם הערכים של המוצר
 
-
+                
                 Toast.MakeText(activity, "המוצר הועלה בהצלחה!", ToastLength.Long).Show();
-
+                return true; 
             }
             catch (Exception e)
             {
                 Toast.MakeText(activity, "חלה שגיאה, אנא נסה שוב", ToastLength.Long).Show();
+                return false; 
             }
 
         }

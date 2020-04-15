@@ -35,7 +35,6 @@ namespace ShopApp
             SetContentView(Resource.Layout.layout_ManagerHome);
 
             this.bnv_Manager_Home = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewManager);
-            this.btn_Logout = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
             this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu);
             this.tv_welcome_manager = FindViewById<TextView>(Resource.Id.tvManagerHomeWelcomeManager); 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
@@ -44,7 +43,6 @@ namespace ShopApp
 
             this.tv_welcome_manager.Text = " ברוך הבא " + m.FullName ; 
 
-            this.btn_Logout.Click += Btn_Logout_Click;
             this.bnv_Manager_Home.NavigationItemSelected += Bnv_Manager_Home_NavigationItemSelected;
             MenuInflater.Inflate(Resource.Menu.menu_bnv_Manager, this.bnv_Manager_Home.Menu); //set wich conteiner for the fragments to use(client or Maneger)
             FragmentHelper.LoadFragment(this, new Manager_Home_Fragment(), true); //the first fragment that wiil be shown after Login
@@ -120,17 +118,7 @@ namespace ShopApp
 
         }
 
-        private void Btn_Logout_Click(object sender, EventArgs e)
-        {
-            this.sp.Edit().PutString("Username","").Apply();
-            this.sp.Edit().PutBoolean("isManager", false).Apply();
-            Intent intent = new Intent(this, typeof(MainActivity));
-
-            this.StartActivity(intent);
-        }
-
-
- 
+       
 
         public override void OnBackPressed() // diaable the back press button 
         {

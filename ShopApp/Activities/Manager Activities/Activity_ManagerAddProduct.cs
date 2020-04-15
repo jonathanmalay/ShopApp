@@ -22,17 +22,18 @@ namespace ShopApp
     [Activity(Label = "Activity_ManagerAddProduct")]
     public class Activity_ManagerAddProduct : Activity
     {
+        ISharedPreferences sp;
         Android.Net.Uri product_image_uri;
         EditText et_Price_Product, et_Dialog_url, et_Name_Product,et_Id_Product;
         Button btn_Pick_Product_Image, btn_Add_New_Product, btn_toolbar_backpage ;
-        ImageButton imagebtn_toolbar_menu; 
+        ImageButton btn_toolbar_menu; 
         ImageView iv_Product_Image;
         Dialog dialog_Pick_Product_Image;
         Spinner spiner_type;
         int dialog_product_quantity; //כמות המוצר שנבחרת בספינר בדיאלוג של הוספת המוצר 
         Button btn_Dialog_Pick_Image_From_Gallery, btn_Dialog_Save_Image, btn_Dialog_Download_Url;//הפקדים שבתוך הדיאלוג
         ImageView iv_Dialog_Image; //התמונה הנבחרת של המוצר שתוצג בדיאלוג
-       
+        ProgressDialog pd; 
 
         ImageBrodcastReceiver DownloadImage_Brodcast_Receiver; 
 
@@ -48,11 +49,12 @@ namespace ShopApp
             this.btn_Add_New_Product = FindViewById<Button>(Resource.Id.btnManagerAddProductSave);
             this.btn_Pick_Product_Image = FindViewById<Button>(Resource.Id.btnManagerAddProductPickImage);
             this.btn_toolbar_backpage = FindViewById<Button>(Resource.Id.btn_toolbar_backPage); 
-            this.imagebtn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu); 
+            this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu);
             this.iv_Product_Image = FindViewById<ImageView>(Resource.Id.ivManagerAddProductImage);
             this.spiner_type = FindViewById<Spinner>(Resource.Id.spinnerManagerAddProduct);
 
-
+            this.sp = GetSharedPreferences("details", FileCreationMode.Private);
+            string manager_usernameloged = this.sp.GetString("Username", "");
 
 
             this.btn_Add_New_Product.Click += Btn_Add_New_Product_ClickAsync;
@@ -72,7 +74,7 @@ namespace ShopApp
             this.et_Dialog_url = dialog_Pick_Product_Image.FindViewById<EditText>(Resource.Id.et_DialogPickProductImage_EnterImageUrl);
             this.btn_Dialog_Download_Url = dialog_Pick_Product_Image.FindViewById<Button>(Resource.Id.btn_DialogPickProductImage_GetImageFromUrl);
             this.btn_toolbar_backpage.Visibility = ViewStates.Visible;
-            this.imagebtn_toolbar_menu.Visibility = ViewStates.Invisible; 
+             
 
             this.btn_Dialog_Pick_Image_From_Gallery = dialog_Pick_Product_Image.FindViewById<Button>(Resource.Id.btn_DialogPickProductImage_PickFromGallery);
 
@@ -96,6 +98,47 @@ namespace ShopApp
 
                 ActivityCompat.RequestPermissions(this, permissions, 1000);
             }
+
+
+            btn_toolbar_menu.Click += (s, arg) =>
+            {  //יוצר את התפריט
+                PopupMenu Manager_home_Menu = new PopupMenu(this, btn_toolbar_menu);
+                Manager_home_Menu.Inflate(Resource.Menu.menu_ManagerHome);
+                Manager_home_Menu.MenuItemClick += Manager_home_Menu_MenuItemClick; ;
+                Manager_home_Menu.Show();
+
+            };
+        }
+
+        private void Manager_home_Menu_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)//הפעולות שמתבצעות כתוצאה מלחיצה על האפשרויות השונות בתפריט
+        {
+            ISharedPreferencesEditor editor = sp.Edit();
+
+            switch (e.Item.ItemId)
+            {
+                case Resource.Id.menu_ManagerHomeLogOut:
+
+                    editor.PutString("Username", "").Apply();
+                    editor.PutBoolean("isManager", false).Apply();
+                    Toast.MakeText(this, "you selected to log out", ToastLength.Long).Show();
+                    Intent intentLogin = new Intent(this, typeof(MainActivity));
+                    this.StartActivity(intentLogin);
+                    break;
+
+                case Resource.Id.action_register:
+
+                    Intent intentRegister = new Intent(this, typeof(RegisterActivity));
+                    this.StartActivity(intentRegister);
+                    break;
+
+                case Resource.Id.menu_ManagerHomeAccountSetting:
+
+                    Intent intent = new Intent(this, typeof(Activity_ManagerHome));
+                    this.StartActivity(intent);
+                    break;
+
+
+            }
         }
 
         private void Spiner_type_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -108,7 +151,6 @@ namespace ShopApp
 
         private void Btn_toolbar_backpage_Click(object sender, EventArgs e)
         {
-            this.imagebtn_toolbar_menu.Visibility = ViewStates.Visible;
             Intent intent = new Intent(this, typeof(Activity_ManagerHome)); 
             this.StartActivity(intent);
         }
@@ -167,6 +209,10 @@ namespace ShopApp
         {
             try                            
             {
+                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true);
+                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+                pd.SetCancelable(false);
+
                 string product_name = et_Name_Product.Text;//שם המוצר
                 Product chek = await Product.GetProduct(product_name);
                 if (chek == null)//במידה ולא קיים מוצר עם השם הזה יוסיף את המוצר
@@ -180,15 +226,28 @@ namespace ShopApp
                     if (product_image_uri == null)//if the uri(the link to the place of the image in the phone files) is null end the method
                     {
                         Toast.MakeText(this, "ישנה שגיאה נסה שנית", ToastLength.Short).Show();
+                        pd.Cancel();
                         return;
                     }
 
-                    Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, dialog_product_quantity);
+                bool flag = await  Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, dialog_product_quantity);
+
+                    if (flag)
+                    {
+                        Toast.MakeText(this, "המוצר הועלה בהצלחה  ", ToastLength.Short).Show();
+                        pd.Cancel(); 
+                        Intent intent = new Intent(this, typeof(Activity_ManagerHome));
+                        StartActivity(intent); 
+
+                    }
+                    pd.Cancel();
 
                 }
                 else
                 {
+                    pd.Cancel(); 
                     Toast.MakeText(this, "קיים מוצר עם שם זה , אנא הוסף מוצר עם שם שונה ", ToastLength.Short).Show();
+
                 }
             }
 
@@ -196,8 +255,10 @@ namespace ShopApp
             {
               
                 Toast.MakeText(this, "ישנה שגיאה נסה שנית", ToastLength.Short).Show();
+                pd.Cancel();
 
             }
+            pd.Cancel();
 
         }
 

@@ -72,7 +72,7 @@
     <Compile Include="Activities\Client Activities\Activity_FinishOrder.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerAddNewOrder.cs" />
     <Compile Include="Activities\Manager Activities\Activity_ManagerEditAccountDetails.cs" />
-    <Compile Include="Fragments\Client_Fragments\Activity_ManagerClientsList.cs" />
+    <Compile Include="Activities\Manager Activities\Activity_ManagerClientsList.cs" />
     <Compile Include="Adapters\Adapter_ManagerClients.cs" />
     <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerOrders.cs" />
     <Compile Include="Fragments\Manager_Fragments\Fragment_ManagerProducts.cs" />

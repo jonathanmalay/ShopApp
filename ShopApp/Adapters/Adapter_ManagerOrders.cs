@@ -64,11 +64,11 @@ namespace ShopApp
 
             Manager_Order temp_order = Manager_orders_list[position];
 
-            tv_ClientName.Text = temp_order.ClientUsername + ":שם הלקוח"; 
-            tv_OrderDate.Text = temp_order.Date.ToString() + ":תאריך הזמנה";
+            tv_ClientName.Text = "שם הלקוח: " + temp_order.ClientUsername ; 
+            tv_OrderDate.Text = "תאריך הזמנה: " + temp_order.Date.ToString() ;
             tv_OrderPrice.Text = "סכום הזמנה: " + temp_order.Price.ToString() ;
-            tv_OrderCity.Text = temp_order.City + ":עיר מגורים";
-            tv_OrderAddress.Text = temp_order.Address + ":כתובת";
+            tv_OrderCity.Text = "עיר מגורים: " + temp_order.City;
+            tv_OrderAddress.Text =  "כתובת מגורים: "  + temp_order.Address ;
             tv_OrderPhoneNum.Text = "טלפון לקוח: " + temp_order.ClientPhone ;
            if(temp_order.IsDelivered)
             {

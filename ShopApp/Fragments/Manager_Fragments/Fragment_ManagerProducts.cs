@@ -38,7 +38,11 @@ namespace ShopApp
         ProductAdapter pa;
 
 
+        List<SelectedProduct> selectedProducts;
+        List<Product> products;
+        int position; 
         //Dialog Edit Product
+
         TextView tv_DialogEditProduct_ProductName; 
         Button btn_DialogEditProduct_remove_product;
         Button btn_DialogEditProduct_save_changes;
@@ -64,6 +68,8 @@ namespace ShopApp
             {
 
                 this.tv_toolbar_title.Text = "מוצרים";
+                this.pa.NotifyDataSetChanged();
+
 
             }
         }
@@ -83,9 +89,9 @@ namespace ShopApp
            
             CreateDialogEditProduct(Activity); 
 
-            List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
-            List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
-            products = await Product.GetAllProduct();
+             selectedProducts = new List<SelectedProduct>();
+             products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
+             products = await Product.GetAllProduct();
 
             this.pa = new ProductAdapter(Activity, products, selectedProducts , 1); //מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
             this.gridview_products.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
@@ -119,7 +125,7 @@ namespace ShopApp
         private void GridViewProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {   
 
-            int position = e.Position;//מיקום המוצר בגריד ויאו
+             position = e.Position;//מיקום המוצר בגריד ויאו
             selected_product = this.pa[position];//מכניס לעצם מסוג מוצר  את המוצר שנמצא בתא שנלחץ בגריד ויאו 
 
             tv_DialogEditProduct_ProductName.Text = this.selected_product.Name; 
@@ -165,22 +171,18 @@ namespace ShopApp
             StartActivityForResult(intent, 200);
         }
 
-        private void Btn_save_changes_Click(object sender, EventArgs e)
+        private async void Btn_save_changes_Click(object sender, EventArgs e)
         {
-            
             try
             {
-                pd = ProgressDialog.Show(Activity, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); //progress daialog....
-                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);//סוג הדיאלוג שיהיה
-                pd.SetCancelable(false);//שלוחצים מחוץ לדיאלוג האם הוא יסגר
-
-
+                pd = ProgressDialog.Show(Activity, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); 
+                pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
+                pd.SetCancelable(false);
                 if (selected_product.Name.Length>2)
                 {
                     selected_product.Price = int.Parse(et_DialogEditProduct_ProductPrice.Text);//המרה של מחרוזת למספר
                     selected_product.Quantity = int.Parse(et_DialogEditProduct_productQuantity.Text);//המרה של המחרוזת למספר
                     selected_product.ProductId = int.Parse(et_DialogEditProduct_productCode.Text);
-
 
                     if (product_image_uri == null)//if the uri(the link to the place of the image in the phone files) is null end the method
                     {
@@ -189,15 +191,34 @@ namespace ShopApp
                         return;
                     }
 
-                    Product.AddProduct(Activity, selected_product.ProductId,selected_product.Name, selected_product.Price, product_image_uri,selected_product.Quantity);//הוספת המוצר לפייר בייס
+                    else
+                    {
 
+                      
+                        Bitmap Bitmap_Image = MediaStore.Images.Media.GetBitmap(Activity.ContentResolver, product_image_uri);//מביא את התמונה באמצעות הקישור
+                        this.pa[position].setImage
+
+                        bool flag = await Product.AddProduct(Activity, selected_product.ProductId, selected_product.Name, selected_product.Price, product_image_uri, selected_product.Quantity);//הוספת המוצר לפייר בייס
+
+                        if (flag)
+                        {
+
+                            this.pa.NotifyDataSetChanged();
+                            Toast.MakeText(Activity, "המוצר עודכן בהצלחה ", ToastLength.Short).Show();
+
+                        }
+
+                   
+                    }
+
+                   
                 }
+
                 else
                 {
                     Toast.MakeText(Activity, "אנא הכנס שם מוצר גדול משני תווים  ", ToastLength.Short).Show();
                     pd.Cancel();
                     return; 
-
                 }
                
             }
@@ -254,7 +275,8 @@ namespace ShopApp
 
             if (requestCode == 200)
             {
-                if (resultCode == int.Parse(Result.Ok.ToString()))
+                Result convert_ResultCode = (Result)resultCode;
+                if ( convert_ResultCode == Result.Ok)
                 {
                     if (data != null)//בודק שבאמת קיבלתי תמונה
                     {
@@ -272,6 +294,11 @@ namespace ShopApp
                     }
 
                 }
+            }
+
+            else
+            {
+                Toast.MakeText(Activity, "ישנה שגיאה במעבר לגלריה אנא  נסה שנית", ToastLength.Short).Show();
             }
         }
 
