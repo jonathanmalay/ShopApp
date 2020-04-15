@@ -58,7 +58,7 @@ namespace ShopApp
             List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
             products = await Product.GetAllProduct();
 
-            this.pa = new ProductAdapter(this, products, list_selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים (שיש למשתמש שהמנהל בחר לשלוח לו את המוצר ) בעגלה
+            this.pa = new ProductAdapter(this, products, list_selectedProducts , 0);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים (שיש למשתמש שהמנהל בחר לשלוח לו את המוצר ) בעגלה
             this.gridview_products.Adapter = this.pa;
             this.pa.NotifyDataSetChanged(); 
 

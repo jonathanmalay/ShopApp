@@ -87,7 +87,7 @@ namespace ShopApp
             List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
             products = await Product.GetAllProduct();
 
-            this.pa = new ProductAdapter(Activity, products, selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
+            this.pa = new ProductAdapter(Activity, products, selectedProducts , 1); //מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
             this.gridview_products.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
             this.gridview_products.ItemClick += GridViewProducts_ItemClick; 
@@ -284,7 +284,7 @@ namespace ShopApp
                 if (grantResults[0] == Permission.Denied || grantResults[0] == Permission.Denied)
                 {
                     Toast.MakeText(Activity, "אנא אפשר גישה כדי להעלות מוצר לחנות", ToastLength.Long).Show();
-                    Activity.Finish();
+                   // Activity.Finish();
                     return;
                 }
             }

@@ -69,7 +69,7 @@ namespace ShopApp
             List<Product> products = new List<Product>();//רשימה של  כל המוצרים שקיימים בחנות
             products = await Product.GetAllProduct();
 
-            this.pa = new ProductAdapter(Activity, products, selectedProducts);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
+            this.pa = new ProductAdapter(Activity, products, selectedProducts , 0);//מקבל אקטיביטי ואת רשימת המוצרים בחנות ואת רשימת המוצרים שיש למשתמש הנוכחי בעגלה
             this.gridview_products.Adapter = this.pa;//אומר לליסט ויואו שהוא עובד עם המתאם הזה
             this.pa.NotifyDataSetChanged(); //הפעלת המתאם
             this.gridview_products.ItemClick += GridViewProducts_ItemClick;

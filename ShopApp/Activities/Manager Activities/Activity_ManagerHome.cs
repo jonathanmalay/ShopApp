@@ -24,6 +24,7 @@ namespace ShopApp
         ISharedPreferences sp;
         Manager m;
         BottomNavigationView bnv_Manager_Home;
+        TextView tv_welcome_manager; 
 
 
 
@@ -35,11 +36,13 @@ namespace ShopApp
 
             this.bnv_Manager_Home = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewManager);
             this.btn_Logout = FindViewById<Button>(Resource.Id.btn_toolbar_backPage);
-            this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu); 
+            this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu);
+            this.tv_welcome_manager = FindViewById<TextView>(Resource.Id.tvManagerHomeWelcomeManager); 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
             string manager_usernameloged = this.sp.GetString("Username", "");
             this.m = await Manager.GetManager(manager_usernameloged);
 
+            this.tv_welcome_manager.Text = " ברוך הבא " + m.FullName ; 
 
             this.btn_Logout.Click += Btn_Logout_Click;
             this.bnv_Manager_Home.NavigationItemSelected += Bnv_Manager_Home_NavigationItemSelected;
