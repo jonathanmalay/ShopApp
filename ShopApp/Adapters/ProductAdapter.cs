@@ -17,6 +17,7 @@ namespace ShopApp
         public List<Product> AllProducts { get; set; }
         public List<SelectedProduct> CartProductsList { get; set; }
 
+
         public ProductAdapter(Activity activity, List<Product> allProducts,List<SelectedProduct>cartProductsList , int activity_id)//מקבלת אקטיביטי ומקבלת  רשימה של מוצרים ומספר זיהוי של אקטיביטי כדי שידע איזה ויאו להציג מכיוון שמשתמשים במתאם זה בכמה מסכים שלכל אחד מהם צרכים שונים
         {
             this.activity = activity;
