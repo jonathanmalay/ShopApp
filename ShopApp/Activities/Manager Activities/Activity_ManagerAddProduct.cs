@@ -230,9 +230,9 @@ namespace ShopApp
                         return;
                     }
 
-                bool flag = await  Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, dialog_product_quantity);
+                Product p = await  Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, dialog_product_quantity);
 
-                    if (flag)
+                    if (p!=null)
                     {
                         Toast.MakeText(this, "המוצר הועלה בהצלחה  ", ToastLength.Short).Show();
                         pd.Cancel(); 

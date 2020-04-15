@@ -45,9 +45,9 @@ namespace ShopApp
 
         //    public static async Task<string> Upload_Image()
 
-        public static async Task<bool> AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)//פעולה אשר מוסיפה מוצר 
+        public static async Task<Product> AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)//פעולה אשר מוסיפה מוצר 
         {
-
+            Product p = new Product();
             try
             {
                 //העלאת התמונה וקבלת הקישור של התמונה
@@ -61,16 +61,12 @@ namespace ShopApp
 
                         Uri url = await AppData.ProductsStorage.GetChild(product_name).GetChild("image.jpg").GetDownloadUrlAsync();
                         imageUrl = url.ToString();
-                        //var task = AppData.FirebaseStorage.Child("Products").Child("image.jpg").PutAsync(stream);//upload the image from the phone to the storage in the server 
-                        //task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %"); //for help me to debug 
-
-                        // await the task to wait until upload completes and get the download url
-                        //imageUrl = await task;
+                        
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
-                        return false;
+                        return p;
                     }
                 }
 
@@ -78,12 +74,11 @@ namespace ShopApp
                 {
                     Toast.MakeText(activity, "קיימת בעיה בתמונה, אנא נסה שוב", ToastLength.Long).Show();
                     imageUrl = "";
-                    return false; 
+                    return p; 
                 }
 
 
                 //העלאת המוצר לאחר שיש לנו את הקישור של התמונה
-                Product p = new Product();
                 p.ProductId = product_id;
                 p.Name = product_name;
                 p.Price = product_price;
@@ -91,15 +86,15 @@ namespace ShopApp
                 p.Quantity = product_Quantity;
 
                 await AppData.productCollection.GetDocument(product_name).SetDataAsync(p);//מוסיף לפיירבייס מסמך בפרודוקט קולקשיין עם הערכים של המוצר
-
+                
                 
                 Toast.MakeText(activity, "המוצר הועלה בהצלחה!", ToastLength.Long).Show();
-                return true; 
+                return p; 
             }
             catch (Exception e)
             {
                 Toast.MakeText(activity, "חלה שגיאה, אנא נסה שוב", ToastLength.Long).Show();
-                return false; 
+                return p; 
             }
 
         }

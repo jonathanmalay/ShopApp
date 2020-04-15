@@ -194,17 +194,18 @@ namespace ShopApp
                     else
                     {
 
-                      
-                        Bitmap Bitmap_Image = MediaStore.Images.Media.GetBitmap(Activity.ContentResolver, product_image_uri);//מביא את התמונה באמצעות הקישור
-                        this.pa[position].setImage
+                        Product product_with_newImageURl = await Product.AddProduct(Activity, selected_product.ProductId, selected_product.Name, selected_product.Price, product_image_uri, selected_product.Quantity);//הוספת המוצר לפייר בייס
 
-                        bool flag = await Product.AddProduct(Activity, selected_product.ProductId, selected_product.Name, selected_product.Price, product_image_uri, selected_product.Quantity);//הוספת המוצר לפייר בייס
-
-                        if (flag)
+                        if (product_with_newImageURl!=null)
                         {
-
+                            this.pa[position].ImageUrl = product_with_newImageURl.ImageUrl; 
                             this.pa.NotifyDataSetChanged();
                             Toast.MakeText(Activity, "המוצר עודכן בהצלחה ", ToastLength.Short).Show();
+
+                        }
+
+                        else
+                        {
 
                         }
 
