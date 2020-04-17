@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShopApp.Fragment_ManagerHomeSetting">
+    <Position X="8.75" Y="12.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ACAABQEIAACAAAAAAAgAACgEiAAEAIQEBAAAiAAAGAQ=</HashCode>
+      <FileName>Fragments\Manager_Fragments\Fragment_ManagerHomeSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Fragment_ManagerOrders">
+    <Position X="11.75" Y="12.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAEBBFAABAAAAAgAAEAACGAMQgDACggQgSEAEAQ=</HashCode>
+      <FileName>Fragments\Manager_Fragments\Fragment_ManagerOrders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Fragment_ManagerProducts">
+    <Position X="16.5" Y="12.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAECIgQAIQAAIAgMJYAkCQAEAKIAAAQghAMACAQ=</HashCode>
+      <FileName>Fragments\Manager_Fragments\Fragment_ManagerProducts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Manager_Home_Fragment">
+    <Position X="20" Y="12.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAIEAAAQAAACgAAAIACQAUAAAAAAIAAAAAAIA=</HashCode>
+      <FileName>Fragments\Manager_Fragments\Manager_Home_Fragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Client_HistoryOrders_Fragment">
+    <Position X="14" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAGEEAAgAAAAAAAAgAAAAACAAEAAAAAAAAhAEAAAA=</HashCode>
+      <FileName>Fragments\Client_Fragments\Client_HistoryOrders_Fragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Client_HomeFragment">
+    <Position X="11.5" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEACAAAAQAAAAgDAAAACAAEBAAAABIAAQAAAAA=</HashCode>
+      <FileName>Fragments\Client_Fragments\Client_HomeFragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.ClientOrder_Fragment">
+    <Position X="16.75" Y="7.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAUBAEKEAAAAAAAAAgABYAgCAQEAAAAABAAgAEAAAA=</HashCode>
+      <FileName>Fragments\Client_Fragments\ClientOrder_Fragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.HomeSetting_Fragment">
+    <Position X="19.75" Y="7.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AGAAAAEIAACACAAAAAgAACgADAAEAIAABAIAiAAAEAA=</HashCode>
+      <FileName>Fragments\Client_Fragments\HomeSetting_Fragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>

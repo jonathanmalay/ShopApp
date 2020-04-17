@@ -109,6 +109,12 @@
     <Compile Include="Models\User.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="UML%27s\UML_Adapters.cd" />
+    <None Include="UML%27s\UML_Activities.cd" />
+    <None Include="UML%27s\UML_ServicesAndBrodcast.cd" />
+    <None Include="UML%27s\UML_Fragments.cd" />
+    <None Include="UML%27s\UML_AllProject.cd" />
+    <None Include="UML%27s\UML_Class.cd" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />

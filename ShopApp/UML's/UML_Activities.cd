@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShopApp.Activity_ManagerHome">
+    <Position X="18.5" Y="8.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAIAAAAAAAAAAAAAiAAAAACAAAAAQIgAAggEAAAA=</HashCode>
+      <FileName>Activities\Manager Activities\Activity_ManagerHome.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.MainActivity">
+    <Position X="16.75" Y="1" Width="4.25" />
+    <InheritanceLine Type="Android.Support.V7.App.AppCompatActivity" ManuallyRouted="true">
+      <Path>
+        <Point X="21.25" Y="7" />
+        <Point X="21.25" Y="7.236" />
+        <Point X="18.875" Y="7.236" />
+        <Point X="18.875" Y="5.564" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>gAgACAAAAAAAAAiAAQQAAAQAACAACIAAAAAAggBAAAQ=</HashCode>
+      <FileName>Activities\MainActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.FirstActivity">
+    <Position X="22.5" Y="1" Width="2.25" />
+    <InheritanceLine Type="Android.Support.V7.App.AppCompatActivity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="21.25" Y="7" />
+        <Point X="21.25" Y="6.625" />
+        <Point X="22.676" Y="6.625" />
+        <Point X="22.676" Y="2.824" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Activities\FirstActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Activity_LoginManager">
+    <Position X="26" Y="8.25" Width="2.75" />
+    <InheritanceLine Type="Android.App.Activity" ManuallyRouted="true">
+      <Path>
+        <Point X="23.25" Y="7.738" />
+        <Point X="23.25" Y="7.516" />
+        <Point X="27.375" Y="7.516" />
+        <Point X="27.375" Y="8.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgABAAAAIQIACAAAIAAAAAAgAAAAAw=</HashCode>
+      <FileName>Activities\Manager Activities\Activity_LoginManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Android.Support.V7.App.AppCompatActivity" Collapsed="true">
+    <Position X="20.5" Y="7" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.31" />
+  </Class>
+  <Class Name="ShopApp.Activity_ManagerAddProduct">
+    <Position X="22.25" Y="8.25" Width="3.25" />
+    <InheritanceLine Type="Android.App.Activity" ManuallyRouted="true">
+      <Path>
+        <Point X="23.25" Y="7.738" />
+        <Point X="23.875" Y="7.738" />
+        <Point X="23.875" Y="8.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>EAABABgAACgwAQAAIAIYAAAEgCQAECIwAkAAgAEECMQ=</HashCode>
+      <FileName>Activities\Manager Activities\Activity_ManagerAddProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Activity_ManagerEditAccountDetails">
+    <Position X="29" Y="8.25" Width="2.5" />
+    <InheritanceLine Type="Android.App.Activity" ManuallyRouted="true">
+      <Path>
+        <Point X="23.25" Y="7.738" />
+        <Point X="23.25" Y="7.368" />
+        <Point X="30.25" Y="7.368" />
+        <Point X="30.25" Y="8.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Activities\Manager Activities\Activity_ManagerEditAccountDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Android.App.Activity" Collapsed="true">
+    <Position X="22.5" Y="7" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShopApp.Activity_EditAccuntSetting">
+    <Position X="33.5" Y="1" Width="2.75" />
+    <InheritanceLine Type="Android.App.Activity" ManuallyRouted="true">
+      <Path>
+        <Point X="23.25" Y="7" />
+        <Point X="23.25" Y="7.176" />
+        <Point X="34.875" Y="7.176" />
+        <Point X="34.875" Y="6.196" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>gAAEBAEAIAAAAAgAAAAAgBAAACAAYCAQgAAAiAAAAQA=</HashCode>
+      <FileName>Activities\Client Activities\Activity_EditAccuntSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Activities.Activity_FinishOrder">
+    <Position X="27.25" Y="1" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIkgIBBAAAAAAAAAAQAAACAAIAAQAAQgggEhAAQ=</HashCode>
+      <FileName>Activities\Client Activities\Activity_FinishOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Activity_SettingPayment">
+    <Position X="30.25" Y="1" Width="3" />
+    <InheritanceLine Type="Android.App.Activity" ManuallyRouted="true">
+      <Path>
+        <Point X="23.25" Y="7" />
+        <Point X="31.75" Y="7" />
+        <Point X="31.75" Y="5.142" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAABIAAEAIAAAAAAAAAAIAAACAAIAAwAEAggAAAAAQ=</HashCode>
+      <FileName>Activities\Client Activities\Activity_SettingPayment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.HomeActivity">
+    <Position X="13.75" Y="1" Width="2.75" />
+    <InheritanceLine Type="Android.Support.V7.App.AppCompatActivity" ManuallyRouted="true">
+      <Path>
+        <Point X="21.25" Y="7" />
+        <Point X="21.25" Y="7.433" />
+        <Point X="15.125" Y="7.433" />
+        <Point X="15.125" Y="4.51" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEABAAAAAAAAAAAAAAAACAAIAAQAAIAgggAAIA=</HashCode>
+      <FileName>Activities\Client Activities\HomeActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.RegisterActivity">
+    <Position X="25" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQUAIQAAAAiAgBQAAAAAACAAAAAAgAAAgAAAAgQ=</HashCode>
+      <FileName>Activities\Client Activities\RegisterActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>

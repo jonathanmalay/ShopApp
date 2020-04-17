@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShopApp.Manager">
+    <Position X="37.5" Y="34.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAABAAAAAAAAAAAEAAAAAgAAAAAAgkAAAAAAAAAEAg=</HashCode>
+      <FileName>Models\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Manager_Order">
+    <Position X="43.5" Y="29.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAARGAAQACoEAIAAAAAAAAAAAAAAADAEAAgAAQAAg=</HashCode>
+      <FileName>Models\Manager_Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Orders_History">
+    <Position X="40.5" Y="29.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAAAARAAg=</HashCode>
+      <FileName>Models\Orders_History.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Payment">
+    <Position X="35.5" Y="29.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgEAAIAAAAEAAAABKAAAAAAAAAA=</HashCode>
+      <FileName>Models\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Product">
+    <Position X="46.25" Y="29.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAQAAAAQAAAAAAAAAIQAQAAAAAAAAAQAAAiAAAAAA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.SelectedProduct">
+    <Position X="48.75" Y="29.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIBAAAAAAgAAAAAACAAAABAQAAAAAAAAAIAgg=</HashCode>
+      <FileName>Models\SelectedProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.User">
+    <Position X="38" Y="29.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>iAAAEAAAACAAAIAIAQAAAgAAAEAAAAAiMAAAAAAIABA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.AppData">
+    <Position X="32" Y="29.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAQBAAEALAAAAAAAAAAAIAAFBBgAAAgA=</HashCode>
+      <FileName>Firebase\AppData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="49.25" Y="28.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShopApp.FragmentHelper">
+    <Position X="51.5" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FragmentHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>

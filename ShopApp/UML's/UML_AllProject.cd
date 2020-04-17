@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShopApp.Activity_ManagerHome">
+    <Position X="16.25" Y="8.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAIAAAAAAAAAAAAAiAAAAACAAAAAQIgAAggEAAAA=</HashCode>
+      <FileName>Activities\Manager Activities\Activity_ManagerHome.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.MainActivity">
+    <Position X="26.75" Y="8.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>gAgACAAAAAAAAAiAAQQAAAQAACAACIAAAAAAggBAAAQ=</HashCode>
+      <FileName>Activities\MainActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.FirstActivity">
+    <Position X="26.25" Y="4.25" Width="4" />
+    <InheritanceLine Type="Android.Support.V7.App.AppCompatActivity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="20.5" Y="6.5" />
+        <Point X="20.5" Y="6.25" />
+        <Point X="26.562" Y="6.25" />
+        <Point X="26.562" Y="6.074" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Activities\FirstActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Activity_LoginManager">
+    <Position X="21.75" Y="8.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgABAAAAIQIACAAAIAAAAAAgAAAAAw=</HashCode>
+      <FileName>Activities\Manager Activities\Activity_LoginManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Android.Support.V7.App.AppCompatActivity" Collapsed="true">
+    <Position X="19.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.31" />
+  </Class>
+  <Class Name="ShopApp.Fragment_ManagerHomeSetting">
+    <Position X="6.75" Y="12.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ACAABQEIAACAAAAAAAgAACgEiAAEAIQEBAAAiAAAGAQ=</HashCode>
+      <FileName>Fragments\Manager_Fragments\Fragment_ManagerHomeSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Fragment_ManagerOrders">
+    <Position X="10.25" Y="12.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAEBBFAABAAAAAgAAEAACGAMQgDACggQgSEAEAQ=</HashCode>
+      <FileName>Fragments\Manager_Fragments\Fragment_ManagerOrders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Fragment_ManagerProducts">
+    <Position X="15.75" Y="12.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAECIgQAIQAAIAgMJYAkCQAEAKIAAAQghAMACAQ=</HashCode>
+      <FileName>Fragments\Manager_Fragments\Fragment_ManagerProducts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Manager_Home_Fragment">
+    <Position X="19.5" Y="12.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAIEAAAQAAACgAAAIACQAUAAAAAAIAAAAAAIA=</HashCode>
+      <FileName>Fragments\Manager_Fragments\Manager_Home_Fragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Client_HistoryOrders_Fragment">
+    <Position X="33.5" Y="12.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAGEEAAgAAAAAAAAgAAAAACAAEAAAAAAAAhAEAAAA=</HashCode>
+      <FileName>Fragments\Client_Fragments\Client_HistoryOrders_Fragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Client_HomeFragment">
+    <Position X="36" Y="12.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEACAAAAQAAAAgDAAAACAAEBAAAABIAAQAAAAA=</HashCode>
+      <FileName>Fragments\Client_Fragments\Client_HomeFragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.ClientOrder_Fragment">
+    <Position X="38.5" Y="12.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAUBAEKEAAAAAAAAAgABYAgCAQEAAAAABAAgAEAAAA=</HashCode>
+      <FileName>Fragments\Client_Fragments\ClientOrder_Fragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.HomeSetting_Fragment">
+    <Position X="41.5" Y="12.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AGAAAAEIAACACAAAAAgAACgADAAEAIAABAIAiAAAEAA=</HashCode>
+      <FileName>Fragments\Client_Fragments\HomeSetting_Fragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Activity_ManagerAddProduct">
+    <Position X="19.75" Y="21" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>EAABABgAACgwAQAAIAIYAAAEgCQAECIwAkAAgAEECMQ=</HashCode>
+      <FileName>Activities\Manager Activities\Activity_ManagerAddProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Activity_ManagerEditAccountDetails">
+    <Position X="6.75" Y="20" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Activities\Manager Activities\Activity_ManagerEditAccountDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Android.App.Activity" Collapsed="true">
+    <Position X="22.5" Y="7" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShopApp.Activity_EditAccuntSetting">
+    <Position X="41.5" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>gAAEBAEAIAAAAAgAAAAAgBAAACAAYCAQgAAAiAAAAQA=</HashCode>
+      <FileName>Activities\Client Activities\Activity_EditAccuntSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Activities.Activity_FinishOrder">
+    <Position X="38.5" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIkgIBBAAAAAAAAAAQAAACAAIAAQAAQgggEhAAQ=</HashCode>
+      <FileName>Activities\Client Activities\Activity_FinishOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Activity_SettingPayment">
+    <Position X="45" Y="18.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAABIAAEAIAAAAAAAAAAIAAACAAIAAwAEAggAAAAAQ=</HashCode>
+      <FileName>Activities\Client Activities\Activity_SettingPayment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.HomeActivity">
+    <Position X="32.5" Y="9" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEABAAAAAAAAAAAAAAAACAAIAAQAAIAgggAAIA=</HashCode>
+      <FileName>Activities\Client Activities\HomeActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.RegisterActivity">
+    <Position X="27.5" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQUAIQAAAAiAgBQAAAAAACAAAAAAgAAAgAAAAgQ=</HashCode>
+      <FileName>Activities\Client Activities\RegisterActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Manager">
+    <Position X="37.5" Y="34.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAABAAAAAAAAAAAEAAAAAgAAAAAAgkAAAAAAAAAEAg=</HashCode>
+      <FileName>Models\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Manager_Order">
+    <Position X="43.5" Y="29.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAARGAAQACoEAIAAAAAAAAAAAAAAADAEAAgAAQAAg=</HashCode>
+      <FileName>Models\Manager_Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Orders_History">
+    <Position X="40.5" Y="29.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAAAARAAg=</HashCode>
+      <FileName>Models\Orders_History.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Payment">
+    <Position X="35.5" Y="29.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgEAAIAAAAEAAAABKAAAAAAAAAA=</HashCode>
+      <FileName>Models\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Product">
+    <Position X="46.25" Y="29.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAQAAAAQAAAAAAAAAIQAQAAAAAAAAAQAAAiAAAAAA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.SelectedProduct">
+    <Position X="48.75" Y="29.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIBAAAAAAgAAAAAACAAAABAQAAAAAAAAAIAgg=</HashCode>
+      <FileName>Models\SelectedProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.User">
+    <Position X="38" Y="29.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>iAAAEAAAACAAAIAIAQAAAgAAAEAAAAAiMAAAAAAIABA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.AppData">
+    <Position X="32" Y="29.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAQBAAEALAAAAAAAAAAAIAAFBBgAAAgA=</HashCode>
+      <FileName>Firebase\AppData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Adapter_FinishOrder_SelectedProducts">
+    <Position X="15" Y="31.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAABwAAAAAAAAAQAABiAEAAAI=</HashCode>
+      <FileName>Adapters\Adapter_FinishOrder_SelectedProducts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Adapter_ManagerClients">
+    <Position X="18.5" Y="31.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAAAQAAAAAAAAAQAABgABAAAA=</HashCode>
+      <FileName>Adapters\Adapter_ManagerClients.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Adapter_ManagerOrders">
+    <Position X="21" Y="31.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAAAQAAAAAAAAAQAABgAAACAA=</HashCode>
+      <FileName>Adapters\Adapter_ManagerOrders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Adapter_OrdersHistory">
+    <Position X="23.75" Y="31.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAAAQAAAAAAAAAQAABgAEAAAo=</HashCode>
+      <FileName>Adapters\Adapter_OrdersHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Android.Widget.BaseAdapter&lt;T&gt;" Collapsed="true">
+    <Position X="24.5" Y="30.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShopApp.ProductAdapter">
+    <Position X="27" Y="31.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAIACAAACAAAAASAAAAAAAAAQAABgAEAAAI=</HashCode>
+      <FileName>Adapters\ProductAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="49.25" Y="28.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShopApp.FragmentHelper">
+    <Position X="51.5" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FragmentHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.ImageBrodcastReceiver">
+    <Position X="6.25" Y="31.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAABAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Services\ImageBrodcastReceiver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.ServiceImageDownload">
+    <Position X="9.75" Y="31.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAIAAAAAAEABAACAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Services\ServiceImageDownload.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Android.App.Service" Collapsed="true">
+    <Position X="10.25" Y="30.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Android.Content.BroadcastReceiver" Collapsed="true">
+    <Position X="7" Y="30.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShopApp.Adapter_FinishOrder_SelectedProducts">
+    <Position X="15" Y="31.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAABwAAAAAAAAAQAABiAEAAAI=</HashCode>
+      <FileName>Adapters\Adapter_FinishOrder_SelectedProducts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Adapter_ManagerClients">
+    <Position X="18.5" Y="31.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAAAQAAAAAAAAAQAABgABAAAA=</HashCode>
+      <FileName>Adapters\Adapter_ManagerClients.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Adapter_ManagerOrders">
+    <Position X="21" Y="31.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAAAQAAAAAAAAAQAABgAAACAA=</HashCode>
+      <FileName>Adapters\Adapter_ManagerOrders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.Adapter_OrdersHistory">
+    <Position X="23.75" Y="31.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAAAQAAAAAAAAAQAABgAEAAAo=</HashCode>
+      <FileName>Adapters\Adapter_OrdersHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Android.Widget.BaseAdapter&lt;T&gt;" Collapsed="true">
+    <Position X="24.5" Y="30.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShopApp.ProductAdapter">
+    <Position X="27" Y="31.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAIACAAACAAAAASAAAAAAAAAQAABgAEAAAI=</HashCode>
+      <FileName>Adapters\ProductAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>

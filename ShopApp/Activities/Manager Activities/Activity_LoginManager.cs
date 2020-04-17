@@ -10,6 +10,12 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+
+
+
+
+
+
 namespace ShopApp
 {
     [Activity(Label = "Activity_LoginManager")]
@@ -27,12 +33,12 @@ namespace ShopApp
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.layout_LoginManager);
-            this.PasswordIsVisibale = false; 
+            this.PasswordIsVisibale = false;
             this.etShopName = FindViewById<EditText>(Resource.Id.etLoginManagerUsername);
             this.etPassword = FindViewById<EditText>(Resource.Id.etLoginManagerPassword);
             this.btnLoginManager = FindViewById<Button>(Resource.Id.btnLoginManagerLogin);
-            this.IvShowPassword = FindViewById<ImageView>(Resource.Id.ivLoginManagerHidePassword); 
-           
+            this.IvShowPassword = FindViewById<ImageView>(Resource.Id.ivLoginManagerHidePassword);
+
 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
             string usernameloged = this.sp.GetString("Username", "");
@@ -61,13 +67,15 @@ namespace ShopApp
             PasswordIsVisibale = !PasswordIsVisibale;
         }
 
-      
+
 
         private async void BtnLoginManager_Click(object sender, EventArgs e)//check the login details that the manager enterd and if they are match the login details in the server he moves to  manager home activity
         {
             try
             {
-                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true); 
+
+                AppData.Initialize(this);
+                pd = ProgressDialog.Show(this, "מאמת נתונים", "מאמת פרטים  אנא המתן...", true);
                 pd.SetProgressStyle(ProgressDialogStyle.Horizontal);
                 pd.SetCancelable(false);
 
@@ -83,19 +91,19 @@ namespace ShopApp
                     Intent intent = new Intent(this, typeof(Activity_ManagerHome));
                     this.StartActivity(intent);
                     Manager m = new Manager();
-                    
+
                 }
 
                 else
                 {
-                    
+
                     Toast.MakeText(this, "שם משתמש או סיסמא שגויים!", ToastLength.Long).Show();
                 }
                 pd.Cancel();
 
             }
 
-            catch(Exception)
+            catch (Exception)
             {
                 Toast.MakeText(this, "!שגיאה", ToastLength.Long).Show();
 
@@ -104,5 +112,5 @@ namespace ShopApp
 
 
     }
-    
+
 }

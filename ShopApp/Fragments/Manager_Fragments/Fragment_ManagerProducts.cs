@@ -183,12 +183,11 @@ namespace ShopApp
                     selected_product.Price = int.Parse(et_DialogEditProduct_ProductPrice.Text);//המרה של מחרוזת למספר
                     selected_product.Quantity = int.Parse(et_DialogEditProduct_productQuantity.Text);//המרה של המחרוזת למספר
                     selected_product.ProductId = int.Parse(et_DialogEditProduct_productCode.Text);
-
+                  
                     if (product_image_uri == null)//if the uri(the link to the place of the image in the phone files) is null end the method
                     {
-                        Toast.MakeText(Activity, "ישנה שגיאה נסה שנית", ToastLength.Short).Show();
-                        pd.Cancel();
-                        return;
+                        await Product.AddProductWithoutImage(Activity , selected_product);
+                        this.pa.NotifyDataSetChanged();
                     }
 
                     else

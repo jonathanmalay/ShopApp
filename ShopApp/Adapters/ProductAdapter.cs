@@ -70,6 +70,7 @@ namespace ShopApp
                     convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.costum_Layout, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
                 }
 
+                TextView tv_ProductQuantity = convertView.FindViewById<TextView>(Resource.Id.tv_CellClientOrdeProductQuantity);
                 TextView tv_ProductName = convertView.FindViewById<TextView>(Resource.Id.tv_CellClientOrdeProductName);
                 TextView tv_amount = convertView.FindViewById<TextView>(Resource.Id.tv_CellClientOrdeProductAmount);
                 TextView tvPrice = convertView.FindViewById<TextView>(Resource.Id.tvProductRawPrice);
@@ -77,13 +78,13 @@ namespace ShopApp
 
                 Product tempProduct = AllProducts[position];
                 tv_amount.Text = "כמות:" + "0";
-
+                tv_ProductQuantity.Text = " כמות במארז: " + AllProducts[position].Quantity;  
                 for (int i = 0; i < CartProductsList.Count; i++)
                 {
                     SelectedProduct currentSelectedProduct = CartProductsList[i];
                     if (currentSelectedProduct.ProductName == tempProduct.Name)
                     {
-                        tv_amount.Text = " כמות: " + currentSelectedProduct.Amount.ToString() + " קילו ";//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
+                        tv_amount.Text = "  כמות בעגלה: " + currentSelectedProduct.Amount.ToString() + " קילו ";//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
                         break;
                     }
                 }

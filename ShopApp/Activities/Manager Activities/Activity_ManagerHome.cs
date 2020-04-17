@@ -125,5 +125,9 @@ namespace ShopApp
 
         }
 
+        public void Method()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -19,18 +19,13 @@ using PopupMenu = Android.Widget.PopupMenu;
 
 namespace ShopApp
 {
-    public interface IHomeActivity1
-    {
-        void OnBackPressed();
-        bool OnCreateOptionsMenu(IMenu menu);
-        bool OnOptionsItemSelected(IMenuItem item);
-    }
+
 
     [Activity(Label = "HomeActivity")]
 
 
     public class HomeActivity : AppCompatActivity  //הגרסה החדשה של אקטיביטי זה  אפפקומפאטאקטיביטי
-, IHomeActivity1
+
     {
         ISharedPreferences sp;
         TextView tvWelcomeUser;

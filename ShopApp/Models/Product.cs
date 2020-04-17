@@ -100,7 +100,27 @@ namespace ShopApp
         }
 
 
-        public static async Task RemoveProduct(Product product)//הפעולה מוחקת את המוצר מהפייר בייס
+        public static async Task AddProductWithoutImage(Activity activity , Product p )//Edit Product Details without new image 
+        {
+      
+            try
+            {
+              
+                await AppData.productCollection.GetDocument(p.Name).SetDataAsync(p);//מוסיף לפיירבייס מסמך בפרודוקט קולקשיין עם הערכים של המוצר
+
+
+                Toast.MakeText(activity, "המוצר הועלה בהצלחה!", ToastLength.Long).Show();
+                
+            }
+            catch (Exception e)
+            {
+                Toast.MakeText(activity, "חלה שגיאה, אנא נסה שוב", ToastLength.Long).Show();
+               
+            }
+        }
+
+
+        public static async Task RemoveProduct(Product product)//הפעולה מוחקת את המוצר מהפייר בייס 
         {
             try
             {
@@ -108,7 +128,7 @@ namespace ShopApp
                 await AppData.FireStore.GetCollection("Product").GetDocument(product.Name).DeleteDocumentAsync();//ההסרה של המוצר מהמסד נתונים
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
 
             }

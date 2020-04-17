@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShopApp.ImageBrodcastReceiver">
+    <Position X="6.25" Y="31.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAABAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Services\ImageBrodcastReceiver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopApp.ServiceImageDownload">
+    <Position X="9.5" Y="31.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAIAAAAAAEABAACAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Services\ServiceImageDownload.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Android.App.Service" Collapsed="true">
+    <Position X="10.25" Y="30.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Android.Content.BroadcastReceiver" Collapsed="true">
+    <Position X="7" Y="30.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>

@@ -22,5 +22,7 @@ namespace ShopApp
             //SetContentView(Resource.Layout.);  
 
         }
+
+
     }
 }
