@@ -56,12 +56,12 @@ namespace ShopApp
 
         public ImageBrodcastReceiver DownloadImage_Brodcast_Receiver { get; private set; }
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) //return a View from this method that is the root of the  fragment's layout.
         {
             return LayoutInflater.Inflate(Resource.Layout.Fragment_ManagerEditProducts, container, false);
         }
 
-        public override void OnHiddenChanged(bool hidden)
+        public override void OnHiddenChanged(bool hidden)//whats happen every time that the fragment view again 
         {
             base.OnHiddenChanged(hidden);
             if (hidden == false)
@@ -74,7 +74,7 @@ namespace ShopApp
             }
         }
 
-        public override async void OnViewCreated(View view, Bundle savedInstanceState)
+        public override async void OnViewCreated(View view, Bundle savedInstanceState) // this method called just after onCreateView and get has parameter the inflated view. Its return type is void
         {
             base.OnViewCreated(view, savedInstanceState);
 
@@ -122,7 +122,7 @@ namespace ShopApp
             this.StartActivity(intent);
         }
 
-        private void GridViewProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void GridViewProducts_ItemClick(object sender, AdapterView.ItemClickEventArgs e)//whats happen whan clicked on cell in the Grid view(open the EditProduct Dialog)
         {   
 
              position = e.Position;//מיקום המוצר בגריד ויאו
@@ -140,7 +140,7 @@ namespace ShopApp
 
 
 
-        public void CreateDialogEditProduct(Activity activity)
+        public void CreateDialogEditProduct(Activity activity)//create the edit product dialog 
         {
             
             dialogEditProduct = new Dialog(Activity);
@@ -164,14 +164,14 @@ namespace ShopApp
             btn_DialogEditProduct_PickImage.Click += Btn_DialogEditProduct_PickImage_Click;
         }
 
-        private void Btn_DialogEditProduct_PickImage_Click(object sender, EventArgs e)
+        private void Btn_DialogEditProduct_PickImage_Click(object sender, EventArgs e)//move the user to the gallery for choosing the product image
         {
             Intent intent = new Intent(Intent.ActionGetContent);
             intent.SetType("image/*");
             StartActivityForResult(intent, 200);
         }
 
-        private async void Btn_save_changes_Click(object sender, EventArgs e)
+        private async void Btn_save_changes_Click(object sender, EventArgs e) // save the new changes of the product in the  firebase data base
         {
             try
             {
@@ -237,7 +237,7 @@ namespace ShopApp
             pd.Cancel();
 
         }
-        private async void Btn_remove_product_Click(object sender, EventArgs e)
+        private async void Btn_remove_product_Click(object sender, EventArgs e)//remove the selected product from the database and the firebase storage 
         {
             try
             {
@@ -269,7 +269,7 @@ namespace ShopApp
 
 
 
-       public override void OnActivityResult(int requestCode, int resultCode, Intent data)//כאשר חוזרים מהגלריה
+       public override void OnActivityResult(int requestCode, int resultCode, Intent data)//when the  manager return from the  gallary after he pick image for product
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
@@ -302,7 +302,7 @@ namespace ShopApp
             }
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)//check if the manager smartphone give the app premission to the storage in the phone
         {
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 

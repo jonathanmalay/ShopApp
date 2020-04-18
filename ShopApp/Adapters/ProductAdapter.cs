@@ -78,18 +78,18 @@ namespace ShopApp
 
                 Product tempProduct = AllProducts[position];
                 tv_amount.Text = "  כמות בעגלה: " + "0";
-                tv_ProductQuantity.Text = " כמות במארז: " + AllProducts[position].Quantity;  
+                tv_ProductQuantity.Text = " כמות במארז: " + AllProducts[position].Quantity + " קילו ";  
                 for (int i = 0; i < CartProductsList.Count; i++)
                 {
                     SelectedProduct currentSelectedProduct = CartProductsList[i];
                     if (currentSelectedProduct.ProductName == tempProduct.Name)
                     {
-                        tv_amount.Text = "  כמות בעגלה: " + currentSelectedProduct.Amount.ToString() + " קילו ";//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
+                        tv_amount.Text = "  כמות בעגלה: " + currentSelectedProduct.Amount.ToString();//מציג את   הכמות של אותו מוצר שהמשתמש הוסיף כבר
                         break;
                     }
                 }
 
-                tvPrice.Text = " מחיר לקילו: " + tempProduct.Price.ToString() + "‏₪";
+                tvPrice.Text = " מחיר למארז: " + tempProduct.Price.ToString() + "‏₪";
                 tv_ProductName.Text = tempProduct.Name;
 
                 Picasso.With(this.activity).Load(tempProduct.ImageUrl).Into(ivProduct); //insert the pphoto to cell (from firbase Storage)
@@ -113,10 +113,10 @@ namespace ShopApp
 
                 tv_ProductQuantity.Visibility = ViewStates.Invisible; 
                 Product tempProduct = AllProducts[position];
-                tv_amount.Text = "כמות במארז: " + tempProduct.Quantity ;
+                tv_amount.Text = "כמות במארז: " + tempProduct.Quantity + " קילו ";
 
                  
-                tvPrice.Text = " מחיר לקילו: " + tempProduct.Price.ToString() + "‏₪";
+                tvPrice.Text = " מחיר למארז: " + tempProduct.Price.ToString() + "‏₪";
                 tv_ProductName.Text = tempProduct.Name;
 
                 Picasso.With(this.activity).Load(tempProduct.ImageUrl).Into(ivProduct); //insert the pphoto to cell (from firbase Storage)

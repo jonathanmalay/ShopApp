@@ -41,7 +41,7 @@ namespace ShopApp
 
 
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) //return a View from this method that is the root of the  fragment's layout.
         {
 
             return LayoutInflater.Inflate(Resource.Layout.Fragment_ManagerOrders, container, false);
@@ -66,7 +66,7 @@ namespace ShopApp
 
 
 
-        public override async void OnViewCreated(View view, Bundle savedInstanceState)
+        public override async void OnViewCreated(View view, Bundle savedInstanceState)// this method called just after onCreateView and get has parameter the inflated view. Its return type is void
         {
             base.OnViewCreated(view, savedInstanceState);
 
@@ -137,7 +137,7 @@ namespace ShopApp
             this.allProducts = await Product.GetAllProduct();
         }
 
-        private async void Switch_DialogEditOrderIsOrderSentToClient_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        private async void Switch_DialogEditOrderIsOrderSentToClient_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)//change the selected order status by the switch check listiner 
         {
 
             currentOrder = this.orders[this.selected_order];
@@ -183,7 +183,7 @@ namespace ShopApp
 
         }
 
-        private void BtnCartDialogOrderCallClient_Click(object sender, EventArgs e)//צחייג ללקוח שביצע את ההזמנה 
+        private void BtnCartDialogOrderCallClient_Click(object sender, EventArgs e)//call the client the ordered the selected order 
         {
             Intent intent = new Intent();
 
@@ -197,7 +197,7 @@ namespace ShopApp
             StartActivity(intent);
         }
 
-        private async  void Fab_add_NewOrder_Click(object sender, EventArgs e)// open a dialog of set new order
+        private async  void Fab_add_NewOrder_Click(object sender, EventArgs e)//move to Add new Order Activity
         {
             pd.Show();
             bool flag_is_deleted = await Manager_Order.DeleteManagerCart(userName);//delete the manager products documents in  cart from the server before moving the next page .....
@@ -218,7 +218,7 @@ namespace ShopApp
 
         }
 
-        private async  void BtnCartDialogDeleteOrder_Click(object sender, EventArgs e)
+        private async  void BtnCartDialogDeleteOrder_Click(object sender, EventArgs e)//delete the selected order from the firebase  
         {
             Manager_Order currentOrder = this.orders[this.selected_order];
             string order_deliverd_id = currentOrder.ID.ToString(); // מספר ההזמנה 
@@ -243,14 +243,14 @@ namespace ShopApp
 
      
 
-        private void BtnCloseCartDialog_Click(object sender, EventArgs e)
+        private void BtnCloseCartDialog_Click(object sender, EventArgs e)//close the  selected Order cart_dialog   
         {
             this.dialog_order.Dismiss();
         }
 
 
 
-        private async void Lv_ManagerOrders_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private async void Lv_ManagerOrders_ItemClick(object sender, AdapterView.ItemClickEventArgs e)//open  a dialog with the selected order  details 
         {
             int position = e.Position;//מיקום המוצר בליסט ויאו
             Manager_Order Selected_order = this.orders[position];//מכניס לעצם מסוג מוצר  את המוצר שנמצא בתא שנלחץ בליסט ויאו 

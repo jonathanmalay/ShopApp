@@ -60,13 +60,13 @@ namespace ShopApp
 
         }
 
-        private void Btn_ClientsList_Click(object sender, EventArgs e)
+        private void Btn_ClientsList_Click(object sender, EventArgs e) // open the client list Activity 
         {
             Intent intentRegister = new Intent(Activity , typeof(Activity_ManagerClientsList));
             this.StartActivity(intentRegister);
         }
 
-        private void Btn_EditProducts_Click(object sender, EventArgs e)
+        private void Btn_EditProducts_Click(object sender, EventArgs e)//open the  ManagerProduct Fragment 
         {
             try
             {
@@ -81,7 +81,7 @@ namespace ShopApp
         }
 
 
-        private void BtnSetting_Click(object sender, EventArgs e)
+        private void BtnSetting_Click(object sender, EventArgs e) //open the  ManagerSetting  Fragment 
         {
             try
             {
@@ -97,7 +97,7 @@ namespace ShopApp
         }
 
 
-        private void BtnOrders_Click(object sender, EventArgs e)
+        private void BtnOrders_Click(object sender, EventArgs e) //open the  Manager Orders   Fragment 
         {
             try
             {

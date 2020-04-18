@@ -32,7 +32,7 @@ namespace ShopApp
         TextView tv_ManagerUsername; 
 
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)//return a View from this method that is the root of the  fragment's layout.
         {
 
             return LayoutInflater.Inflate(Resource.Layout.Fragment_ManagerSettings, container, false);

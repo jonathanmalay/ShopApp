@@ -41,7 +41,7 @@ namespace ShopApp
             string manager_usernameloged = this.sp.GetString("Username", "");
             this.m = await Manager.GetManager(manager_usernameloged);
 
-            this.tv_welcome_manager.Text = " ברוך הבא " + m.FullName ; 
+            this.tv_welcome_manager.Text = " ברוך הבא המנהל " + m.FullName ; 
 
             this.bnv_Manager_Home.NavigationItemSelected += Bnv_Manager_Home_NavigationItemSelected;
             MenuInflater.Inflate(Resource.Menu.menu_bnv_Manager, this.bnv_Manager_Home.Menu); //set wich conteiner for the fragments to use(client or Maneger)

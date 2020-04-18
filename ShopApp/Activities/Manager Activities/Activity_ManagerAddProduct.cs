@@ -26,6 +26,7 @@ namespace ShopApp
         Android.Net.Uri product_image_uri;
         EditText et_Price_Product, et_Dialog_url, et_Name_Product,et_Id_Product;
         Button btn_Pick_Product_Image, btn_Add_New_Product, btn_toolbar_backpage ;
+        TextView tv_toolbar_title; 
         ImageButton btn_toolbar_menu; 
         ImageView iv_Product_Image;
         Dialog dialog_Pick_Product_Image;
@@ -52,6 +53,9 @@ namespace ShopApp
             this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu);
             this.iv_Product_Image = FindViewById<ImageView>(Resource.Id.ivManagerAddProductImage);
             this.spiner_type = FindViewById<Spinner>(Resource.Id.spinnerManagerAddProduct);
+            this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
+
+            this.tv_toolbar_title.Text = "הוספת מוצר";
 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
             string manager_usernameloged = this.sp.GetString("Username", "");

@@ -16,9 +16,6 @@ namespace ShopApp
     {
 
         Activity activity;
-        ISharedPreferences sp;
-        
-
         public List<User> Manager_Clients_list { get; set; }
 
         public Adapter_ManagerClients(Activity activity, List<User> clients_list)
@@ -33,7 +30,7 @@ namespace ShopApp
             get { return this.Manager_Clients_list.Count; }
         }
 
-        public override User this[int position]
+        public override User this[int position]//return the user in the position
         {
             get
             {
