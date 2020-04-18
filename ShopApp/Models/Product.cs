@@ -100,7 +100,7 @@ namespace ShopApp
         }
 
 
-        public static async Task AddProductWithoutImage(Activity activity , Product p )//Edit Product Details without new image 
+        public static async Task AddProductWithoutImage(Activity activity , Product p )// upload new Product Details without new image (using the old url )
         {
       
             try

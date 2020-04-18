@@ -25,7 +25,7 @@ namespace ShopApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            this.SetContentView(Resource.Layout.layout_Register);
+            this.SetContentView(Resource.Layout.Activity_Register);
 
             this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "הרשמה";

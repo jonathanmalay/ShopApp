@@ -35,7 +35,7 @@ namespace ShopApp.Activities
             try
             {
                 base.OnCreate(savedInstanceState);
-                SetContentView(Resource.Layout.layout_FinishOrder);
+                SetContentView(Resource.Layout.Activity_ClientFinishOrder);
 
                 this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
                 this.tv_toolbar_title.Text = " סיום הזמנה";
@@ -138,7 +138,7 @@ namespace ShopApp.Activities
             Button btn_conrife_dialog_save;
 
             dialog_conrife_Order.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-            dialog_conrife_Order.SetContentView(Resource.Layout.layout_DialogFinishOrder_Conrife);
+            dialog_conrife_Order.SetContentView(Resource.Layout.Dialog_ClientFinishOrder_Conrife);
             dialog_conrife_Order.SetTitle("אישור סופי");
             dialog_conrife_Order.SetCancelable(true);
 

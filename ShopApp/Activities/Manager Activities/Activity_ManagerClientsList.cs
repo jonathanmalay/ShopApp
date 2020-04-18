@@ -33,7 +33,7 @@ namespace ShopApp
             base.OnCreate(savedInstanceState);
 
 
-            SetContentView(Resource.Layout.layout_ManagerClientsListActivity); 
+            SetContentView(Resource.Layout.Activity_ManagerClientsList); 
             this.tv_toolbar_title = this.FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "רשימת לקוחות ";
             this.btn_toolbar_BackPage = this.FindViewById<Button>(Resource.Id.btn_toolbar_backPage);

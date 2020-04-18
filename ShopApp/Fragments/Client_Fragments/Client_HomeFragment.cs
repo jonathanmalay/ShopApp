@@ -20,7 +20,7 @@ namespace ShopApp
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)//inflate the view of the fragment 
         {
-            return LayoutInflater.Inflate(Resource.Layout.layout_fragment_home, container, false);
+            return LayoutInflater.Inflate(Resource.Layout.Fragment_ClientHome, container, false);
 
         }
 

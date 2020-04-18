@@ -120,7 +120,7 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_main.xml">
+    <AndroidResource Include="Resources\layout\Activity_Login.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\values\colors.xml" />
@@ -172,22 +172,22 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_Register.xml">
+    <AndroidResource Include="Resources\layout\Activity_Register.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_home.xml">
+    <AndroidResource Include="Resources\layout\Activity_ClientHome.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\SettingHome_Layout.xml">
+    <AndroidResource Include="Resources\layout\Fragment_ClientSettingHome.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Layout_SettingChangePassword.xml">
+    <AndroidResource Include="Resources\layout\Dialog_ManagerSettingChangePassword.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -222,7 +222,7 @@
     <AndroidResource Include="Resources\drawable\iconsettingpay.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_SettingPayment.xml">
+    <AndroidResource Include="Resources\layout\Activity_ClientSettingPayment.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -233,7 +233,7 @@
     <AndroidResource Include="Resources\drawable\iconAppNew.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\ClientOrder_Layout.xml">
+    <AndroidResource Include="Resources\layout\Fragment_ClientOrder.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -241,7 +241,7 @@
     <AndroidResource Include="Resources\menu\menu_home.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\costum_Layout.xml">
+    <AndroidResource Include="Resources\layout\Cell_Product.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -252,7 +252,7 @@
     <AndroidResource Include="Resources\drawable\iconsorderhistory.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Layout_EditAccuntSetting.xml">
+    <AndroidResource Include="Resources\layout\Activity_ClientEditAccuntSetting.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -272,27 +272,27 @@
     <AndroidResource Include="Resources\drawable\EditTextBackground.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_first.xml">
+    <AndroidResource Include="Resources\layout\Activity_first.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layoutAddProductDialog.xml">
+    <AndroidResource Include="Resources\layout\Dialog_AddProduct.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_customOrderHistory.xml">
+    <AndroidResource Include="Resources\layout\Cell_ClientOrderHistory.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_OrdersHistory.xml">
+    <AndroidResource Include="Resources\layout\Fragment_ClientOrdersHistory.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_FinishOrder.xml">
+    <AndroidResource Include="Resources\layout\Activity_ClientFinishOrder.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -302,52 +302,52 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_dialogPickProductImage.xml">
+    <AndroidResource Include="Resources\layout\Dialog_ManagerPickProductImage.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerAddProduct.xml">
+    <AndroidResource Include="Resources\layout\Activity_ManagerAddProduct.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerHome.xml">
+    <AndroidResource Include="Resources\layout\Activity_ManagerHome.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerSettings.xml">
+    <AndroidResource Include="Resources\layout\Fragment_ManagerSettings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_LoginManager.xml">
+    <AndroidResource Include="Resources\layout\Activity_LoginManager.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerChangePassword.xml">
+    <AndroidResource Include="Resources\layout\Dialog_ClientChangePassword.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerEditProducts.xml">
+    <AndroidResource Include="Resources\layout\Fragment_ManagerEditProducts.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_costum_ManagerOrdersAdapter.xml">
+    <AndroidResource Include="Resources\layout\Cell_ManagerOrdersAdapter.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerOrders.xml">
+    <AndroidResource Include="Resources\layout\Fragment_ManagerOrders.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerDailogOrderCart.xml">
+    <AndroidResource Include="Resources\layout\Dialog_ManagerOrderCart.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -361,7 +361,7 @@
     <AndroidResource Include="Resources\drawable\icon_creditcard.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_DialogFinishOrder_Conrife.xml">
+    <AndroidResource Include="Resources\layout\Dialog_ClientFinishOrder_Conrife.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -387,12 +387,12 @@
     <AndroidResource Include="Resources\drawable\selector.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_fragment_home.xml">
+    <AndroidResource Include="Resources\layout\Fragment_ClientHome.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_Manager_Home_Fragment.xml">
+    <AndroidResource Include="Resources\layout\Fragment_ManagerHome.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -400,7 +400,7 @@
     <AndroidResource Include="Resources\menu\menu_bnv_Manager.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\view_ManagerEditProduct.xml">
+    <AndroidResource Include="Resources\layout\Dialog_ManagerEditProduct.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -408,7 +408,7 @@
     <AndroidResource Include="Resources\drawable\icon_menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerOrdersDailogAddNewOrder.xml">
+    <AndroidResource Include="Resources\layout\Dialog_ManagerOrdersAddNewOrder.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -422,7 +422,7 @@
     <AndroidResource Include="Resources\drawable\frame_cell.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout_ManagerClientsListActivity.xml">
+    <AndroidResource Include="Resources\layout\Activity_ManagerClientsList.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -432,7 +432,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\dialog_ManagerEditAccuntSetting.xml">
+    <AndroidResource Include="Resources\layout\Dialog_ManagerEditAccuntSetting.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

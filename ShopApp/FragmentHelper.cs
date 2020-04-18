@@ -16,7 +16,7 @@ namespace ShopApp
 {
     public static class FragmentHelper
     {
-        public static void LoadFragment(FragmentActivity activity, Android.Support.V4.App.Fragment fragmentToLoad, bool Is_manager_side)
+        public static void LoadFragment(FragmentActivity activity, Android.Support.V4.App.Fragment fragmentToLoad, bool Is_manager_side)//load  the new fragment from the stack to the container
         {
             try
             {

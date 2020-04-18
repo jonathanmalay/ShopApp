@@ -41,7 +41,7 @@ namespace ShopApp
         protected override void OnCreate(Bundle savedInstanceState)
         {   
             base.OnCreate(savedInstanceState);
-            this.SetContentView(Resource.Layout.layout_ManagerAddProduct);
+            this.SetContentView(Resource.Layout.Activity_ManagerAddProduct);
 
             this.et_Name_Product = FindViewById<EditText>(Resource.Id.etManagerAddProductName);
             this.et_Price_Product = FindViewById<EditText>(Resource.Id.etManagerAddProductPrice);
@@ -69,7 +69,7 @@ namespace ShopApp
             this.dialog_Pick_Product_Image = new Dialog(this);
 
             dialog_Pick_Product_Image.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-            this.dialog_Pick_Product_Image.SetContentView(Resource.Layout.layout_dialogPickProductImage);
+            this.dialog_Pick_Product_Image.SetContentView(Resource.Layout.Dialog_ManagerPickProductImage);
             
             this.et_Dialog_url = dialog_Pick_Product_Image.FindViewById<EditText>(Resource.Id.et_DialogPickProductImage_EnterImageUrl);
             this.btn_Dialog_Download_Url = dialog_Pick_Product_Image.FindViewById<Button>(Resource.Id.btn_DialogPickProductImage_GetImageFromUrl);

@@ -25,7 +25,7 @@ namespace ShopApp
             try
             {
                 base.OnCreate(savedInstanceState);
-                this.SetContentView(Resource.Layout.activity_main);
+                this.SetContentView(Resource.Layout.Activity_Login);
                 this.PasswordIsVisibale = false;
                 this.etUsername = this.FindViewById<EditText>(Resource.Id.etLoginUsername);
                 this.etPassword = this.FindViewById<EditText>(Resource.Id.etLoginPassword);
@@ -143,7 +143,7 @@ namespace ShopApp
             try
             {
                 base.OnCreate(savedInstanceState);
-                this.SetContentView(Resource.Layout.activity_main);
+                this.SetContentView(Resource.Layout.Activity_Login);
                 this.PasswordIsVisibale = false;
                 this.etUsername = this.FindViewById<EditText>(Resource.Id.etLoginUsername);
                 this.etPassword = this.FindViewById<EditText>(Resource.Id.etLoginPassword);

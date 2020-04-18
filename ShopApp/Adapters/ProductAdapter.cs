@@ -67,7 +67,7 @@ namespace ShopApp
             {
                 if (convertView == null)
                 {
-                    convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.costum_Layout, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
+                    convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.Cell_Product, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
                 }
 
                 TextView tv_ProductQuantity = convertView.FindViewById<TextView>(Resource.Id.tv_CellClientOrdeProductQuantity);
@@ -77,7 +77,7 @@ namespace ShopApp
                 ImageView ivProduct = convertView.FindViewById<ImageView>(Resource.Id.ivProductRaw);
 
                 Product tempProduct = AllProducts[position];
-                tv_amount.Text = "כמות:" + "0";
+                tv_amount.Text = "  כמות בעגלה: " + "0";
                 tv_ProductQuantity.Text = " כמות במארז: " + AllProducts[position].Quantity;  
                 for (int i = 0; i < CartProductsList.Count; i++)
                 {
@@ -102,14 +102,16 @@ namespace ShopApp
 
                 if (convertView == null)
                 {
-                    convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.costum_Layout, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
+                    convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.Cell_Product, parent, false);/*מגדיר לו איזה לייאוט להפוך לוויאו*/
                 }
 
                 TextView tv_ProductName = convertView.FindViewById<TextView>(Resource.Id.tv_CellClientOrdeProductName);
                 TextView tv_amount = convertView.FindViewById<TextView>(Resource.Id.tv_CellClientOrdeProductAmount);
                 TextView tvPrice = convertView.FindViewById<TextView>(Resource.Id.tvProductRawPrice);
+                TextView tv_ProductQuantity = convertView.FindViewById<TextView>(Resource.Id.tv_CellClientOrdeProductQuantity);  
                 ImageView ivProduct = convertView.FindViewById<ImageView>(Resource.Id.ivProductRaw);
 
+                tv_ProductQuantity.Visibility = ViewStates.Invisible; 
                 Product tempProduct = AllProducts[position];
                 tv_amount.Text = "כמות במארז: " + tempProduct.Quantity ;
 

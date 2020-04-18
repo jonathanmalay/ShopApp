@@ -32,7 +32,7 @@ namespace ShopApp
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.layout_LoginManager);
+            SetContentView(Resource.Layout.Activity_LoginManager);
             this.PasswordIsVisibale = false;
             this.etShopName = FindViewById<EditText>(Resource.Id.etLoginManagerUsername);
             this.etPassword = FindViewById<EditText>(Resource.Id.etLoginManagerPassword);

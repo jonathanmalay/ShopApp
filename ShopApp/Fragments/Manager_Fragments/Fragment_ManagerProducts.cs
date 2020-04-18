@@ -58,7 +58,7 @@ namespace ShopApp
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            return LayoutInflater.Inflate(Resource.Layout.layout_ManagerEditProducts, container, false);
+            return LayoutInflater.Inflate(Resource.Layout.Fragment_ManagerEditProducts, container, false);
         }
 
         public override void OnHiddenChanged(bool hidden)
@@ -145,7 +145,7 @@ namespace ShopApp
             
             dialogEditProduct = new Dialog(Activity);
             dialogEditProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-            dialogEditProduct.SetContentView(Resource.Layout.view_ManagerEditProduct);
+            dialogEditProduct.SetContentView(Resource.Layout.Dialog_ManagerEditProduct);
             dialogEditProduct.SetTitle("עריכת מוצר");
             dialogEditProduct.SetCancelable(true);
 

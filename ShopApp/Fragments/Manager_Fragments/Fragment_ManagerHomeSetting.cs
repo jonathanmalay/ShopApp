@@ -35,7 +35,7 @@ namespace ShopApp
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
 
-            return LayoutInflater.Inflate(Resource.Layout.layout_ManagerSettings, container, false);
+            return LayoutInflater.Inflate(Resource.Layout.Fragment_ManagerSettings, container, false);
         }
 
         public override void OnHiddenChanged(bool hidden)//whats happen every time that the fragment view again 
@@ -72,7 +72,7 @@ namespace ShopApp
                 d = new Dialog(Activity);
 
                 d.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent); 
-                d.SetContentView(Resource.Layout.layout_ManagerChangePassword); 
+                d.SetContentView(Resource.Layout.Dialog_ManagerSettingChangePassword); 
                 d.SetTitle("שינוי סיסמה");
                 d.SetCancelable(true);
                 etOldPassword = d.FindViewById<EditText>(Resource.Id.etManagerChangePasswordOldPassword);
@@ -98,7 +98,7 @@ namespace ShopApp
                 dialogEditAccountDetails = new Dialog(Activity);
 
                 dialogEditAccountDetails.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-                dialogEditAccountDetails.SetContentView(Resource.Layout.dialog_ManagerEditAccuntSetting);
+                dialogEditAccountDetails.SetContentView(Resource.Layout.Dialog_ManagerEditAccuntSetting);
                 dialogEditAccountDetails.SetTitle("פרטי חנות");
                 dialogEditAccountDetails.SetCancelable(true);
                 tv_ManagerUsername = dialogEditAccountDetails.FindViewById<TextView>(Resource.Id.tvManagerDialogEditDetailsUsername);

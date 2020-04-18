@@ -32,7 +32,7 @@ namespace ShopApp
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
 
-            return LayoutInflater.Inflate(Resource.Layout.ClientOrder_Layout, container, false);
+            return LayoutInflater.Inflate(Resource.Layout.Fragment_ClientOrder, container, false);
         }
 
 
@@ -116,7 +116,7 @@ namespace ShopApp
             this.dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
             this.dialogAddProduct.SetCancelable(false); //לא ניתן לסגור אותו על ידי לחיצה מחוץ לדיאלוג
 
-            this.dialogAddProduct.SetContentView(Resource.Layout.layoutAddProductDialog);
+            this.dialogAddProduct.SetContentView(Resource.Layout.Dialog_AddProduct);
             this.dialogAddProduct.SetTitle("הוספת מוצר");
            
 

@@ -50,7 +50,7 @@ namespace ShopApp
         {
             if (convertView == null)
             {
-                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.layout_costum_ManagerOrdersAdapter, parent, false);
+                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.Cell_ManagerOrdersAdapter, parent, false);
             }
 
             TextView tv_ClientName = convertView.FindViewById<TextView>(Resource.Id.tv_costum_ManagerOrdersAdapterUsername);

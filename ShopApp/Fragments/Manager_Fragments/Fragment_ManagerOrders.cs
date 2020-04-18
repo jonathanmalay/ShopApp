@@ -44,7 +44,7 @@ namespace ShopApp
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
 
-            return LayoutInflater.Inflate(Resource.Layout.layout_ManagerOrders, container, false);
+            return LayoutInflater.Inflate(Resource.Layout.Fragment_ManagerOrders, container, false);
         }
 
         public async override void OnHiddenChanged(bool hidden)//what happend every time i load the fragment 
@@ -117,7 +117,7 @@ namespace ShopApp
             this.dialog_order = new Dialog(Activity);
             this.dialog_order.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
             this.dialog_order.SetCancelable(false); //לא ניתן לסגור אותו על ידי לחיצה מחוץ לדיאלוג
-            this.dialog_order.SetContentView(Resource.Layout.layout_ManagerDailogOrderCart);
+            this.dialog_order.SetContentView(Resource.Layout.Dialog_ManagerOrderCart);
             this.lvCartDialog = this.dialog_order.FindViewById<ListView>(Resource.Id.listViewManagerDialogOrderCart);
             this.tvHeaderCartDialog = this.dialog_order.FindViewById<TextView>(Resource.Id.tv_ManagerDialogOrderCartHeader);
             this.btnCloseCartDialog = this.dialog_order.FindViewById<Button>(Resource.Id.btn_ManagerDialogOrderCartClose);

@@ -22,7 +22,7 @@ namespace ShopApp
         protected override void OnCreate(Bundle savedInstanceState)
         {                 
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.layout_first);
+            SetContentView(Resource.Layout.Activity_first);
             Thread.Sleep(1500); //מחכה שנייה וחצי
             Intent intentToLogin = new Intent(this, typeof(MainActivity));
             this.StartActivity(intentToLogin);

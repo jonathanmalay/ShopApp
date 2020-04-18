@@ -25,7 +25,7 @@ namespace ShopApp
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.layout_SettingPayment);
+            SetContentView(Resource.Layout.Activity_ClientSettingPayment);
 
             this.etCardNum = FindViewById<EditText>(Resource.Id.etSettingPaymentCardNum);
             this.etDate = FindViewById<EditText>(Resource.Id.etSettingPaymentDate);

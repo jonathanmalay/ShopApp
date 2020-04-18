@@ -37,7 +37,7 @@ namespace ShopApp
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            this.SetContentView(Resource.Layout.layout_home);
+            this.SetContentView(Resource.Layout.Activity_ClientHome);
 
             this.tvWelcomeUser = FindViewById<TextView>(Resource.Id.tvWelcomeUser);
         

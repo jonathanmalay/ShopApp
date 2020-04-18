@@ -25,7 +25,7 @@ namespace ShopApp
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Layout_EditAccuntSetting);
+            SetContentView(Resource.Layout.Activity_ClientEditAccuntSetting);
 
             this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
             this.tv_toolbar_title.Text = "פרטי משתמש";

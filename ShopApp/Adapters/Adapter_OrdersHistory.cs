@@ -71,7 +71,7 @@ namespace ShopApp
             if (convertView == null)
 
             {
-                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.layout_customOrderHistory, parent, false);
+                convertView = this.activity.LayoutInflater.Inflate(Resource.Layout.Cell_ClientOrderHistory, parent, false);
             }
 
 

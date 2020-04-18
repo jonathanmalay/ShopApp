@@ -23,7 +23,7 @@ namespace ShopApp
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            return LayoutInflater.Inflate(Resource.Layout.layout_Manager_Home_Fragment, container, false);
+            return LayoutInflater.Inflate(Resource.Layout.Fragment_ManagerHome, container, false);
         }
 
         public override void OnHiddenChanged(bool hidden)

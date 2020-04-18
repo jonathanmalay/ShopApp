@@ -27,7 +27,7 @@ namespace ShopApp
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            return LayoutInflater.Inflate(Resource.Layout.layout_OrdersHistory, container, false);
+            return LayoutInflater.Inflate(Resource.Layout.Fragment_ClientOrdersHistory, container, false);
         }
 
         public override void OnHiddenChanged(bool hidden)

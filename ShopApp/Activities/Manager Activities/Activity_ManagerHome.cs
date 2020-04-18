@@ -32,7 +32,7 @@ namespace ShopApp
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.layout_ManagerHome);
+            SetContentView(Resource.Layout.Activity_ManagerHome);
 
             this.bnv_Manager_Home = FindViewById<BottomNavigationView>(Resource.Id.bottomNavigationViewManager);
             this.btn_toolbar_menu = FindViewById<ImageButton>(Resource.Id.btn_toolbar_menu);

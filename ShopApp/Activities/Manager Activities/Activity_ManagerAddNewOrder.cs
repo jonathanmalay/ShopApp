@@ -40,7 +40,7 @@ namespace ShopApp
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.ClientOrder_Layout);
+            SetContentView(Resource.Layout.Fragment_ClientOrder);
 
 
             this.gridview_products = this.FindViewById<GridView>(Resource.Id.gridView_ClientOrder);
@@ -133,7 +133,7 @@ namespace ShopApp
             dialogAddProduct.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
             this.dialogAddProduct.SetCancelable(false); 
 
-            dialogAddProduct.SetContentView(Resource.Layout.layoutAddProductDialog);
+            dialogAddProduct.SetContentView(Resource.Layout.Dialog_AddProduct);
             dialogAddProduct.SetTitle("הוספת מוצר");
            
 
@@ -219,7 +219,7 @@ namespace ShopApp
             this.dialog_AddNewOrder.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
             this.dialogAddProduct.SetCancelable(false); 
 
-            this.dialog_AddNewOrder.SetContentView(Resource.Layout.layout_ManagerOrdersDailogAddNewOrder);
+            this.dialog_AddNewOrder.SetContentView(Resource.Layout.Dialog_ManagerOrdersAddNewOrder);
             this.lv_AddOrderDialogCartDialog = this.dialog_AddNewOrder.FindViewById<ListView>(Resource.Id.listview_ManagerOrdersDailogAddNewOrderCart);
             this.et_AddOrderDialogUserNameOfCustomer = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerName);
             this.et_AddOrderDialogCustomerPhone = this.dialog_AddNewOrder.FindViewById<EditText>(Resource.Id.et_ManagerOrdersDailogAddNewOrderCustomerPhone);

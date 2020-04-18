@@ -25,7 +25,7 @@ namespace ShopApp
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            return LayoutInflater.Inflate(Resource.Layout.SettingHome_Layout, container, false);
+            return LayoutInflater.Inflate(Resource.Layout.Fragment_ClientSettingHome, container, false);
         }
 
 
@@ -62,13 +62,13 @@ namespace ShopApp
             //Dialog
             this.changePasswordDialog = new Dialog(Activity);
             this.changePasswordDialog.Window.SetBackgroundDrawableResource(Android.Resource.Color.Transparent);
-            this.changePasswordDialog.SetContentView(Resource.Layout.Layout_SettingChangePassword);
+            this.changePasswordDialog.SetContentView(Resource.Layout.Dialog_ClientChangePassword);
             this.changePasswordDialog.SetTitle("Change Password");
             this.changePasswordDialog.SetCancelable(true);
-            etOldPassword = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.etManagerChangePasswordOldPassword);
-            etNewPassword = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.etManagerChangePasswordNew);
-            etNewPasswordConrife = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.etManagerChangePasswordConrife);
-            btnDialogChangePassword = this.changePasswordDialog.FindViewById<Button>(Resource.Id.btnManagerChangePasswordSave);
+            etOldPassword = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.et_ClientChangePasswordOldPassword);
+            etNewPassword = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.et_ClientChangePasswordNew);
+            etNewPasswordConrife = this.changePasswordDialog.FindViewById<EditText>(Resource.Id.et_ClientChangePasswordConrife);
+            btnDialogChangePassword = this.changePasswordDialog.FindViewById<Button>(Resource.Id.btn_ClientChangePasswordSave);
             btnDialogChangePassword.Click += BtnDialogChangePassword_Click;
         }
 
