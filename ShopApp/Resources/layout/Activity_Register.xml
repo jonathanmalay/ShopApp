@@ -9,12 +9,25 @@
      <include
         layout="@layout/toolbar_client"/>
 
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+            android:layout_weight="0.05"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+            android:layout_weight="0.9"
+        android:layout_height="wrap_content"
+        
+        android:gravity="center_vertical"
+        
         android:layout_marginVertical="10dp"
         android:paddingTop="15dp"
         android:paddingHorizontal="40dp"
@@ -165,5 +178,6 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:id="@+id/btnConrifeRegister"/>
+    </LinearLayout>
     </LinearLayout>
 </LinearLayout>

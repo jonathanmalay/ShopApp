@@ -34,11 +34,21 @@ namespace ShopApp
         [return: GeneratedEnum]
         public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)//moving a link to download the image for the theard action
         {
-            this.strUrl = intent.GetStringExtra("strUrl");
-            ThreadStart thread_Start = new ThreadStart(this.DownloadImage);
-             thread = new Thread(thread_Start);
-            thread.Start();
-            return base.OnStartCommand(intent, flags, startId);
+            try
+            {
+                this.strUrl = intent.GetStringExtra("strUrl");
+                ThreadStart thread_Start = new ThreadStart(this.DownloadImage);
+                thread = new Thread(thread_Start);
+                thread.Start();
+
+                return base.OnStartCommand(intent, flags, startId);
+            }
+
+            catch(Exception e)
+            {
+                return base.OnStartCommand(intent, flags, startId);
+
+            }
         }
 
 
