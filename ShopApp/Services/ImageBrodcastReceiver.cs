@@ -33,7 +33,7 @@ namespace ShopApp
             
             
         }
-        public override void OnReceive(Context context, Intent intent)
+        public override void OnReceive(Context context, Intent intent)//get the path to the image and than convert to image 
         {
             if(iv_Product == null)
             {
@@ -45,7 +45,7 @@ namespace ShopApp
 
             if (image_Bitmap != null)
             {
-                this.iv_Product.SetImageBitmap(image_Bitmap);//מכניס לתוך האימ'ג ויאו  את התמונה
+                    this.iv_Product.SetImageBitmap(image_Bitmap);//מכניס לתוך האימ'ג ויאו  את התמונה
             }
 
             else

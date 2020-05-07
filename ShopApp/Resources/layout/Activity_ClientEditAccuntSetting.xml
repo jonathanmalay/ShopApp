@@ -11,9 +11,10 @@
     <include
         layout="@layout/toolbar_client" 
     />
-
+    
 
     <LinearLayout
+        
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,11 +25,13 @@
         android:background="@drawable/circlelayout">
 
         <TextView
+            
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="שם משתמש"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
+         
             android:layout_marginTop="10dp"
             android:layout_gravity="right"/>
         <LinearLayout

@@ -124,7 +124,7 @@ namespace ShopApp
         {
             try
             {
-                await AppData.ProductsStorage.GetChild(product.Name).DeleteAsync(); // remove the product image from the firebase storage 
+                //await AppData.ProductsStorage.GetChild(product.Name).DeleteAsync(); // remove the product image from the firebase storage 
                 await AppData.FireStore.GetCollection("Product").GetDocument(product.Name).DeleteDocumentAsync();//ההסרה של המוצר מהמסד נתונים
             }
 

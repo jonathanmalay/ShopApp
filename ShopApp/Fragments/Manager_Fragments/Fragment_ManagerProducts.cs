@@ -247,6 +247,7 @@ namespace ShopApp
                 if (check_product == null)
                 {
                     Toast.MakeText(Activity, "הפריט הוסר בהצלחה (:", ToastLength.Long).Show();
+                    this.pa.AllProducts.Remove(selected_product); //update the products list 
                 }
 
                 else

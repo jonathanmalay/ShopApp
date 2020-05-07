@@ -10,9 +10,17 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
         android:layout_marginHorizontal="30dp"
         android:background="@drawable/circlelayout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="התחברות מנהל"
+            android:textSize="26sp"
+            android:textColor="@color/colorAccent"/>
         <LinearLayout
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
@@ -23,6 +31,7 @@
             android:weightSum="1"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="10dp">
+
 
             <ImageView
                 android:layout_width="0dp"

@@ -72,7 +72,7 @@ namespace ShopApp
             this.Finish(); 
         }
 
-        private async void BtnMovetoOrderdetails_Click(object sender, EventArgs e)//move to the addproduct dialog to set the orders details
+        private async void BtnMovetoOrderdetails_Click(object sender, EventArgs e)//move to the addproduct dialog to set the order details
         {
             bool Is_Okay = await Conrife_Order_Minimum_Price();
             if (Is_Okay)//אם סכום ההזמנה קטן מחמישים שקלים  לא יוכל לעבור לאקטיביטי ביצוע תשלום
@@ -89,7 +89,7 @@ namespace ShopApp
             }
         }
 
-        public async Task<bool> Conrife_Order_Minimum_Price()
+        public async Task<bool> Conrife_Order_Minimum_Price()//check if the order is more of the shop minimum price limit
         {
             int price_check = await SelectedProduct.Calculate_TotalOrderPrice(userName);
             if (price_check < 50)
@@ -124,7 +124,7 @@ namespace ShopApp
         }
 
 
-        public void CreateAddProductToCartDialog()
+        public void CreateAddProductToCartDialog()//create the add product to cart dialog
         {
             dialogAddProduct = new Dialog(this);
 
@@ -209,7 +209,7 @@ namespace ShopApp
         }
 
 
-        public async void CreateConrifeOrderDialog()//create the dialog of conride dialog
+        public async void CreateConrifeOrderDialog()//create the dialog of conrifee dialog
         {
             pd = ProgressDialog.Show(this, "מאמת נתונים", "...אנא המתן", true); 
             pd.SetProgressStyle(ProgressDialogStyle.Horizontal);

@@ -21,7 +21,7 @@ namespace ShopApp
         
 
         private string strUrl = "";
-
+        Thread thread;
 
         public override void OnCreate()
         {
@@ -32,11 +32,11 @@ namespace ShopApp
 
 
         [return: GeneratedEnum]
-        public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
+        public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)//moving a link to download the image for the theard action
         {
             this.strUrl = intent.GetStringExtra("strUrl");
             ThreadStart thread_Start = new ThreadStart(this.DownloadImage);
-            Thread thread = new Thread(thread_Start);
+             thread = new Thread(thread_Start);
             thread.Start();
             return base.OnStartCommand(intent, flags, startId);
         }
@@ -55,16 +55,16 @@ namespace ShopApp
 
 
 
-        private void DownloadImage()
+        private void DownloadImage()//makes a connection with the net and than download the image to the smartphone
         { 
             WebClient web_Client = new WebClient();
-            Uri uri = new Uri(this.strUrl); //קישור עמוק 
+            Uri uri = new Uri(this.strUrl); //the link of the photo in the phone 
 
             
-             byte[] bytes = null;
+             byte[] image_bytes = null;
             try
             {
-                bytes = web_Client.DownloadData(uri); //מוריד את התמונה מהקישור לסוג בייטים בכך שמשתמש בפעולה 
+                image_bytes = web_Client.DownloadData(uri); //מוריד את התמונה מהקישור לסוג בייטים בכך שמשתמש בפעולה 
             }
 
             catch(Exception e)
@@ -72,12 +72,12 @@ namespace ShopApp
                 return;
             }
 
-            string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);//
-            string localFilename = "ImageProduct.png";
-            string local_Path = System.IO.Path.Combine(documentsPath, localFilename);//משלב את שני הסטרינגים לסטרינג אחד של קישור בעזרת הפעולה קומביין
+            string Path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);//
+            string File_name_in_phone = "ImageProduct.png";
+            string local_Path = System.IO.Path.Combine(Path, File_name_in_phone);//משלב את שני הסטרינגים לסטרינג אחד של קישור בעזרת הפעולה קומביין
 
             FileStream fStream = new FileStream(local_Path, FileMode.OpenOrCreate);//פותח את הקובץ שנמצא במשתנה לוקאלפת ומשאיר אותו פתוח באופן זמני
-            fStream.Write(bytes, 0, bytes.Length);//מתחיל לכתוב לקובץ את כל הבייטים של התמונה שהורדנו
+            fStream.Write(image_bytes, 0, image_bytes.Length);//מתחיל לכתוב לקובץ את כל הבייטים של התמונה שהורדנו
             fStream.Close();//שומר את התמונה
 
            
