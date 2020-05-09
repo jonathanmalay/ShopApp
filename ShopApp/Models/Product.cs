@@ -43,13 +43,13 @@ namespace ShopApp
             Quantity = quantity;
         }
 
-        //    public static async Task<string> Upload_Image()
+
 
         public static async Task<Product> AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)//פעולה אשר מוסיפה מוצר 
         {
             Product p = new Product();
             try
-            {
+            { 
                 //העלאת התמונה וקבלת הקישור של התמונה
                 string imageUrl = "";
 
@@ -96,7 +96,6 @@ namespace ShopApp
                 Toast.MakeText(activity, "חלה שגיאה, אנא נסה שוב", ToastLength.Long).Show();
                 return p; 
             }
-
         }
 
 

@@ -58,23 +58,29 @@ namespace ShopApp
             //    }
 
 
-            string urlNativ = intent.GetStringExtra("file_Path"); //the problem is that there is no image file exist in this path
+            string image_uri = intent.GetStringExtra("file_Path"); //the problem is that there is no image file exist in this path
 
-            Bitmap image = BitmapFactory.DecodeFile(urlNativ);  
+            Bitmap product_image = BitmapFactory.DecodeFile(image_uri);  
              if(iv_Product != null)
             {
 
-                if(image == null )
+                if(product_image == null )
                 {
                     Toast.MakeText(context, "יש תקלה אנא אפשר הורדת תמונות מהרשת בהרשאות האפליקציה", ToastLength.Short).Show();
                 }
 
                 else
                 {
-                    iv_Product.SetImageBitmap(image);
+                    iv_Product.SetImageBitmap(product_image);
+                    Activity_ManagerAddProduct.product_image_uri = Android.Net.Uri.Parse(image_uri)  ;  //uri for image 
+                    Activity_ManagerAddProduct.flag_choose_from_UrlLink = true; 
                 }
 
             }
+
+
+
+
 
 
 

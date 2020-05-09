@@ -85,7 +85,7 @@ namespace ShopApp
             string File_name_in_phone = "ImageProduct.png";
             string local_Path = System.IO.Path.Combine(Path, File_name_in_phone);//משלב את שני הסטרינגים לסטרינג אחד של קישור בעזרת הפעולה קומביין
 
-            FileStream fStream = new FileStream(local_Path, FileMode.OpenOrCreate);//פותח את הקובץ שנמצא במשתנה לוקאלפת ומשאיר אותו פתוח באופן זמני
+            FileStream fStream = new FileStream(local_Path, FileMode.OpenOrCreate  , FileAccess.ReadWrite);//פותח את הקובץ שנמצא במשתנה לוקאלפת ומשאיר אותו פתוח באופן זמני
 
             fStream.Write(image_bytes, 0, image_bytes.Length); //מתחיל לכתוב לקובץ את כל הבייטים של התמונה שהורדנו   //the problem is here (dont write to the path )
             fStream.Close();//שומר את התמונה
@@ -98,11 +98,8 @@ namespace ShopApp
          
             this.SendBroadcast(intent);
 
-            Activity_ManagerAddProduct.flag_choose_from_UrlLink = true; 
 
         }
-
-
 
         
     }

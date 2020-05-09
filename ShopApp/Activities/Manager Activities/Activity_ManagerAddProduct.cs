@@ -23,7 +23,7 @@ namespace ShopApp
     public class Activity_ManagerAddProduct : Activity
     {
         ISharedPreferences sp;
-        Android.Net.Uri product_image_uri;
+         public static   Android.Net.Uri product_image_uri;
         EditText et_Price_Product, et_Dialog_url, et_Name_Product,et_Id_Product;
         Button btn_Pick_Product_Image, btn_Add_New_Product, btn_toolbar_backpage ;
         TextView tv_toolbar_title; 
@@ -40,6 +40,7 @@ namespace ShopApp
 
         public static bool flag_choose_from_UrlLink ; 
 
+        
 
         protected override void OnCreate(Bundle savedInstanceState)
         {   
@@ -168,22 +169,18 @@ namespace ShopApp
 
         private void Btn_Dialog_Save_Image_Click(object sender, EventArgs e)//save the image from the dialog(url or from gallery)
         {
-            
-                 
-            //if(/*iv_Dialog_Image.Drawable.Equals(Resource.Drawable.iconAppNew) || */ flag_choosefromgallery== false && flag_choose_from_UrlLink == false  || iv_Dialog_Image.Drawable == null )
-            //{
-            //    Toast.MakeText(this, "אנא בחר תמונה !", ToastLength.Short).Show();
-            //    return;
-          
-            //}
+            if(flag_choosefromgallery == false && flag_choose_from_UrlLink==false ) //if the manager didnt choose picture for the product
+            {
+                Toast.MakeText(this, "אנא בחר תמונה !", ToastLength.Short).Show();
+                return;  
+            }
 
+            
             BitmapDrawable bitmap_drawable = ((BitmapDrawable)iv_Dialog_Image.Drawable);//convert the image view to bitmap
             Bitmap Bitmap_Image = bitmap_drawable.Bitmap;
-            this.iv_Product_Image.SetImageBitmap(Bitmap_Image);//set the imageview to the selected image from thegallery/Url
-
+            this.iv_Product_Image.SetImageBitmap(Bitmap_Image); //set the imageview to the selected image from thegallery/Url
             dialog_Pick_Product_Image.Dismiss();
 
-            flag_choose_from_UrlLink = false;  
         }
 
         private void Btn_Dialog_Download_Url_Click(object sender, EventArgs e)//downloafd image  by link from the internet
@@ -223,6 +220,10 @@ namespace ShopApp
 
         private void Btn_Pick_Product_Image_Click(object sender, EventArgs e)//מציג את הדיאלוג של בחירת תמונה 
         {
+            //איפוס לדגלים
+            this.flag_choosefromgallery = false;
+            flag_choose_from_UrlLink = false;
+
             this.dialog_Pick_Product_Image.Show(); 
         }
 
@@ -244,7 +245,7 @@ namespace ShopApp
                     int product_price = int.Parse(et_Price_Product.Text);//המרה של המחרוזת למספר
 
                     
-                    BitmapDrawable bitmap_drawable = ((BitmapDrawable)iv_Dialog_Image.Drawable);
+                    BitmapDrawable bitmap_drawable = (BitmapDrawable)iv_Dialog_Image.Drawable;
                     Bitmap product_Image = bitmap_drawable.Bitmap; //תמונת המוצר
                     if (product_image_uri == null)//if the uri(the link to the place of the image in the phone files) is null end the method
                     {
@@ -253,7 +254,11 @@ namespace ShopApp
                         return;
                     }
 
-                Product p = await  Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, dialog_product_quantity);
+
+                        Product p = await Product.AddProduct(this, product_id, product_name, product_price, product_image_uri, dialog_product_quantity);
+
+            
+
 
                     if (p!=null)
                     {
