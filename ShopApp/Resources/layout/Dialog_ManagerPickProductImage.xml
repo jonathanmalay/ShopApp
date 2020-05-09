@@ -68,7 +68,7 @@
 
 
 	<ImageView
-		android:src="@android:drawable/sym_def_app_icon"
+		android:src="@android:drawable/ic_menu_gallery"
 		android:id="@+id/imageView_DialogPickProductImage"
 		android:layout_gravity="center"
 		android:foregroundGravity="center"

@@ -129,7 +129,6 @@ namespace ShopApp
             selected_product = this.pa[position];//מכניס לעצם מסוג מוצר  את המוצר שנמצא בתא שנלחץ בגריד ויאו 
 
             tv_DialogEditProduct_ProductName.Text = this.selected_product.Name; 
-            et_DialogEditProduct_productName.Text = this.selected_product.Name;
             et_DialogEditProduct_ProductPrice.Text = this.selected_product.Price.ToString();
             et_DialogEditProduct_productQuantity.Text = this.selected_product.Quantity.ToString();
             et_DialogEditProduct_productCode.Text = this.selected_product.ProductId.ToString();
@@ -150,7 +149,7 @@ namespace ShopApp
             dialogEditProduct.SetCancelable(true);
 
             tv_DialogEditProduct_ProductName = dialogEditProduct.FindViewById<TextView>(Resource.Id.tv_manager_dialog_editProduct_ProductName);
-            et_DialogEditProduct_productName = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductName);
+            
             et_DialogEditProduct_ProductPrice = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductPrice);
             et_DialogEditProduct_productCode = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductCode);
             et_DialogEditProduct_productQuantity = dialogEditProduct.FindViewById<EditText>(Resource.Id.et_ManagerEditProductDialogProductQuantity);

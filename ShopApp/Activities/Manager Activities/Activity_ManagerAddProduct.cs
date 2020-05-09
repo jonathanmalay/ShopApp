@@ -34,9 +34,11 @@ namespace ShopApp
         int dialog_product_quantity; //כמות המוצר שנבחרת בספינר בדיאלוג של הוספת המוצר 
         Button btn_Dialog_Pick_Image_From_Gallery, btn_Dialog_Save_Image, btn_Dialog_Download_Url;//הפקדים שבתוך הדיאלוג
         ImageView iv_Dialog_Image; //התמונה הנבחרת של המוצר שתוצג בדיאלוג
-        ProgressDialog pd; 
-
+        ProgressDialog pd;
+        bool flag_choosefromgallery ; 
         ImageBrodcastReceiver DownloadImage_Brodcast_Receiver; 
+
+        public static bool flag_choose_from_UrlLink ; 
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -54,7 +56,8 @@ namespace ShopApp
             this.iv_Product_Image = FindViewById<ImageView>(Resource.Id.ivManagerAddProductImage);
             this.spiner_type = FindViewById<Spinner>(Resource.Id.spinnerManagerAddProduct);
             this.tv_toolbar_title = FindViewById<TextView>(Resource.Id.tv_toolbar_title);
-
+            this.flag_choosefromgallery = false; //if manager choose photo from gallery 
+            flag_choose_from_UrlLink = false;  //if manager download image by url link 
             this.tv_toolbar_title.Text = "הוספת מוצר";
 
             this.sp = GetSharedPreferences("details", FileCreationMode.Private);
@@ -92,16 +95,16 @@ namespace ShopApp
 
 
             this.DownloadImage_Brodcast_Receiver = new ImageBrodcastReceiver(this, this.iv_Dialog_Image);
+            this.RegisterReceiver(this.DownloadImage_Brodcast_Receiver, new IntentFilter("ImageDownloadStaion")); //fix the problem (was missing )
 
+            //if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) != Permission.Granted || ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != Permission.Granted)
+            //{
+            //    string[] permissions = new string[2];
+            //    permissions[0] = Manifest.Permission.ReadExternalStorage;
+            //    permissions[1] = Manifest.Permission.WriteExternalStorage;
 
-            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) != Permission.Granted || ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != Permission.Granted)
-            {
-                string[] permissions = new string[2];
-                permissions[0] = Manifest.Permission.ReadExternalStorage;
-                permissions[1] = Manifest.Permission.WriteExternalStorage;
-
-                ActivityCompat.RequestPermissions(this, permissions, 1000);
-            }
+            //    ActivityCompat.RequestPermissions(this, permissions, 1000);
+            //}
 
 
             btn_toolbar_menu.Click += (s, arg) =>
@@ -112,6 +115,10 @@ namespace ShopApp
                 Manager_home_Menu.Show();
 
             };
+
+
+           
+
         }
 
         private void Manager_home_Menu_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)//הפעולות שמתבצעות כתוצאה מלחיצה על האפשרויות השונות בתפריט
@@ -161,11 +168,22 @@ namespace ShopApp
 
         private void Btn_Dialog_Save_Image_Click(object sender, EventArgs e)//save the image from the dialog(url or from gallery)
         {
+            
+                 
+            //if(/*iv_Dialog_Image.Drawable.Equals(Resource.Drawable.iconAppNew) || */ flag_choosefromgallery== false && flag_choose_from_UrlLink == false  || iv_Dialog_Image.Drawable == null )
+            //{
+            //    Toast.MakeText(this, "אנא בחר תמונה !", ToastLength.Short).Show();
+            //    return;
+          
+            //}
+
             BitmapDrawable bitmap_drawable = ((BitmapDrawable)iv_Dialog_Image.Drawable);//convert the image view to bitmap
             Bitmap Bitmap_Image = bitmap_drawable.Bitmap;
             this.iv_Product_Image.SetImageBitmap(Bitmap_Image);//set the imageview to the selected image from thegallery/Url
 
             dialog_Pick_Product_Image.Dismiss();
+
+            flag_choose_from_UrlLink = false;  
         }
 
         private void Btn_Dialog_Download_Url_Click(object sender, EventArgs e)//downloafd image  by link from the internet
@@ -188,6 +206,7 @@ namespace ShopApp
             intent.PutExtra("strUrl", this.et_Dialog_url.Text);//  מעביר באינטנט את הקישור לתמונה מהאינטרנט
             StartService(intent);//start the dwonlowd of the image
         }
+
 
         private void Btn_Dialog_Pick_Image_From_Gallery_Click(object sender, EventArgs e)//move to the phone gallery
         {
@@ -284,6 +303,7 @@ namespace ShopApp
                         if (Bitmap_Image != null)
                         {
                             this.iv_Dialog_Image.SetImageBitmap(Bitmap_Image);//מכניס את התמונה לדיאלוג
+                            flag_choosefromgallery = true; 
                         }
                         else
                         {

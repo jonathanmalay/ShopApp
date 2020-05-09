@@ -25,7 +25,7 @@
 
             />
 
-    <TextView
+ <!--    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="שם המוצר "
@@ -36,7 +36,7 @@
         
         />
 
-    <EditText
+   <EditText
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
         android:gravity="center"
         android:layout_marginHorizontal="15dp"
         android:id="@+id/et_ManagerEditProductDialogProductName"
-            />
+            /> -->
 
     <TextView
         android:layout_width="wrap_content"
