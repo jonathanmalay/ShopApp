@@ -13,6 +13,7 @@ using Android.Graphics;
 using Plugin.CloudFirestore;
 using System.Threading.Tasks;
 using System.IO;
+using Square.Picasso;
 
 namespace ShopApp
 {
@@ -43,6 +44,9 @@ namespace ShopApp
             Quantity = quantity;
         }
 
+
+
+       
 
 
         public static async Task<Product> AddProduct(Activity activity, int product_id, string product_name, int product_price, Android.Net.Uri product_image, double product_Quantity)//פעולה אשר מוסיפה מוצר 

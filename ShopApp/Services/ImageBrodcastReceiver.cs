@@ -72,7 +72,7 @@ namespace ShopApp
                 else
                 {
                     iv_Product.SetImageBitmap(product_image);
-                    Activity_ManagerAddProduct.product_image_uri = Android.Net.Uri.Parse(image_uri)  ;  //uri for image 
+                    Activity_ManagerAddProduct.product_image_uri = Android.Net.Uri.Parse("file://" + image_uri)  ;  //uri for image 
                     Activity_ManagerAddProduct.flag_choose_from_UrlLink = true; 
                 }
 

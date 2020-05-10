@@ -16,6 +16,7 @@ using Android.Support.V4.Content;
 using Android;
 using Android.Content.PM;
 using Android.Support.V4.App;
+using Android.Provider;
 
 namespace ShopApp
 {
@@ -82,14 +83,26 @@ namespace ShopApp
             }
 
             string Path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);//
+
+            //var jfolder = new Java.IO.File(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures) , "ShopAppUrlImages");  // folder for saving the photo 
+
+            //if (!jfolder.Exists()) //if the folder isnt exist create new one 
+            //    jfolder.Mkdirs();
+
+            //jfolder.CanRead();
+            //jfolder.CanWrite();
+
             string File_name_in_phone = "ImageProduct.png";
             string local_Path = System.IO.Path.Combine(Path, File_name_in_phone);//משלב את שני הסטרינגים לסטרינג אחד של קישור בעזרת הפעולה קומביין
 
-            FileStream fStream = new FileStream(local_Path, FileMode.OpenOrCreate  , FileAccess.ReadWrite);//פותח את הקובץ שנמצא במשתנה לוקאלפת ומשאיר אותו פתוח באופן זמני
+            FileStream fStream = new FileStream(local_Path, FileMode.OpenOrCreate, FileAccess.ReadWrite);//פותח את הקובץ שנמצא במשתנה לוקאלפת ומשאיר אותו פתוח באופן זמני
 
             fStream.Write(image_bytes, 0, image_bytes.Length); //מתחיל לכתוב לקובץ את כל הבייטים של התמונה שהורדנו   //the problem is here (dont write to the path )
             fStream.Close();//שומר את התמונה
-            this.StopSelf();
+
+           
+        
+                    this.StopSelf();
 
             Intent intent = new Intent("ImageDownloadStaion"); //the intent filter
             intent.PutExtra("file_Path", local_Path);//מעביר לאינטנט את המיקום של התמונה שהורדה בתוך הטלפון
